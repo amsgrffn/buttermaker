@@ -1,0 +1,147 @@
+{{!< default}}
+<h1 style="color: red; font-size: 48px;">RIPLEY THEME LOADED!</h1>
+{{! Category Tabs }}
+<div class="category-tabs">
+	<button class="category-tab active" data-filter="all">All</button>
+	<button class="category-tab" data-filter="poetry">Poetry</button>
+	<button class="category-tab" data-filter="fiction">Fiction</button>
+	<button class="category-tab" data-filter="art">Art</button>
+	<button class="category-tab" data-filter="cartoon">Cartoons</button>
+	<button class="category-tab" data-filter="essay">Essays</button>
+	<button class="category-tab" data-filter="journal">Journal</button>
+</div>
+
+{{! Featured Masonry Section }}
+<section class="featured-masonry-section">
+	<h2 class="section-title">Featured Creative Works</h2>
+	<div class="masonry-grid">
+		{{#foreach posts limit="12"}}
+		<article class="masonry-card {{#has tag="poetry,poem"}}tall{{/has}}{{#has tag="cartoon,drawing,art"}}wide{{/has}}{{#has tag="short-story,fiction"}}large{{/has}}" data-tags="{{tags separator=" "}}">
+			{{#if feature_image}}
+			<div class="masonry-image">
+				<img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
+				{{#has tag="cartoon,drawing,art,illustration"}}
+				<div class="content-type-badge">🎨</div>
+				{{/has}}
+				{{#has tag="poetry,poem"}}
+				<div class="content-type-badge">✍️</div>
+				{{/has}}
+				{{#has tag="story,fiction,short-story"}}
+				<div class="content-type-badge">📖</div>
+				{{/has}}
+				{{#has tag="essay,opinion,thoughts"}}
+				<div class="content-type-badge">💭</div>
+				{{/has}}
+			</div>
+			{{/if}}
+
+			<div class="masonry-content">
+				<h3 class="masonry-title">
+					<a href="{{url}}">{{title}}</a>
+				</h3>
+				{{#unless feature_image}}
+				<div class="masonry-excerpt">{{excerpt words="25"}}</div>
+				{{/unless}}
+				<div class="masonry-meta">
+					<time class="masonry-date" datetime="{{date published_at format="YYYY-MM-DD"}}">
+						{{date published_at format="DD MMM YYYY"}}
+					</time>
+					{{#if primary_tag}}
+					<span class="masonry-tag">{{primary_tag.name}}</span>
+					{{/if}}
+					{{#if reading_time}}
+					<span class="masonry-reading-time">{{reading_time}}</span>
+					{{/if}}
+				</div>
+			</div>
+
+			<a href="{{url}}" class="masonry-link" aria-label="Read {{title}}"></a>
+		</article>
+		{{/foreach}}
+	</div>
+</section>
+
+{{! CTA Banner }}
+<section class="cta-banner">
+	<div class="cta-content">
+		<h2 class="cta-title">{{@site.title}}</h2>
+		<p class="cta-description">{{@site.description}}</p>
+		<div class="cta-buttons">
+			{{#unless @member}}
+			<a href="#/portal/signup" class="cta-btn primary" data-portal="signup">Subscribe for free</a>
+			<a href="{{@site.url}}/about/" class="cta-btn secondary">Learn more</a>
+			{{else}}
+			<a href="#/portal/account" class="cta-btn primary" data-portal="account">Manage subscription</a>
+			<a href="{{@site.url}}/archive/" class="cta-btn secondary">Browse archive</a>
+			{{/unless}}
+		</div>
+	</div>
+</section>
+
+{{! Regular Post Feed }}
+<section class="post-feed">
+	<h2 class="section-title">Latest Posts</h2>
+	{{#foreach posts offset="12"}}
+	<article class="post-card">
+		<div class="post-header">
+			<img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
+			<div class="author-info">
+				<a href="{{primary_author.url}}" class="author-name">{{primary_author.name}}</a>
+				<div class="post-meta">
+					<time datetime="{{date published_at format="YYYY-MM-DD"}}">
+						{{date published_at timeago="true"}}
+					</time>
+					{{#if reading_time}}
+					• {{reading_time}}
+					{{/if}}
+				</div>
+			</div>
+			{{#unless @member}}
+			<a href="#/portal/signup" class="subscribe-btn-small" data-portal="signup">Subscribe</a>
+			{{/unless}}
+		</div>
+
+		<div class="post-content">
+			<h2 class="post-title">
+				<a href="{{url}}">{{title}}</a>
+			</h2>
+			<p class="post-excerpt">{{excerpt words="50"}}</p>
+		</div>
+
+		{{#if feature_image}}
+		<div class="post-media">
+			<a href="{{url}}">
+				<img src="{{img_url feature_image size="l"}}" alt="{{title}}" class="post-image">
+			</a>
+		</div>
+		{{/if}}
+
+		<div class="post-actions">
+			<span class="post-action" data-action="like">👍 Like</span>
+			<a href="{{url}}#comments" class="post-action">💬 Comment</a>
+			<span class="post-action" data-action="share">🔗 Share</span>
+			<span class="post-action" data-action="save">⭐ Save</span>
+		</div>
+	</article>
+	{{/foreach}}
+</section>
+
+{{! Pagination }}
+{{pagination}}
+
+{{! Search functionality }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	const searchInput = document.querySelector('.search-input');
+	if (searchInput) {
+		searchInput.addEventListener('keypress', function(e) {
+			if (e.key === 'Enter') {
+				const searchTerm = this.value.trim();
+				if (searchTerm) {
+					window.location.href = `{{@site.url}}/search/?q=${encodeURIComponent(searchTerm)}`;
+				}
+			}
+		});
+	}
+});
+</script>
