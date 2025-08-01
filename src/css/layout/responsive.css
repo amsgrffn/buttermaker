@@ -14,8 +14,9 @@
 	margin-left: var(--sidebar-width);
 	padding: var(--space-xl);
 	max-width: var(--content-max-width);
+	/* Center the content in the remaining space */
+	margin-left: calc(var(--sidebar-width) + ((100vw - var(--sidebar-width) - var(--content-max-width)) / 2));
 	margin-right: auto;
-	padding-left: var(--content-left-spacing);
 }
 
 /* Container utilities */
@@ -150,7 +151,8 @@
 @media (min-width: 1200px) {
 	.main-content {
 		max-width: var(--content-max-width-wide);
-		padding-left: var(--content-left-spacing-large);
+		/* Adjust centering for larger screens */
+		margin-left: calc(var(--sidebar-width) + ((100vw - var(--sidebar-width) - var(--content-max-width-wide)) / 2));
 	}
 
 	.container {

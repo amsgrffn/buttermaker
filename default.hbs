@@ -11,6 +11,8 @@
 
 	{{! Theme styles }}
 	<link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}">
+	<link rel="preload" href="https://use.typekit.net/unt3hxg.css" as="style">
+	<link rel="stylesheet" href="https://use.typekit.net/unt3hxg.css">
 </head>
 <body class="{{body_class}}">
 	{{! Top Header }}
@@ -74,7 +76,7 @@
 					<span class="widget-title">FEATURED</span>
 				</div>
 
-				{{#get "posts" filter="featured:true" limit="1" as |featured_posts|}}
+				{{#get "posts" filter="featured:true" limit="3" as |featured_posts|}}
 				{{#foreach featured_posts}}
 				<div class="widget-content">
 					<div class="widget-cover">
@@ -86,7 +88,7 @@
 					</div>
 
 					<div class="widget-info">
-						<div class="widget-post-title">{{title}}</div>
+						<div class="widget-post-title">{{title}}poop</div>
 						<div class="widget-author">by {{primary_author.name}}</div>
 					</div>
 				</div>
@@ -119,5 +121,54 @@
 
 	{{! Theme JavaScript }}
 	<script src="{{asset "built/script.js"}}"></script>
+	{{!-- Add this to default.hbs right before </body> tag --}}
+	{{!-- Development auto-refresh for HBS files --}}
+	<script>
+		// Only run in development (when localhost)
+		if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+			console.log('🔄 Development mode: Auto-refresh enabled');
+
+			let lastModified = null;
+			let checkInterval = null;
+
+			// Function to check if page was modified
+			async function checkForChanges() {
+				try {
+					const response = await fetch(location.href, {
+						method: 'HEAD',
+						cache: 'no-cache'
+					});
+
+					const currentModified = response.headers.get('last-modified');
+					const currentEtag = response.headers.get('etag');
+
+					// Use both last-modified and etag for better detection
+					const pageSignature = currentModified + currentEtag;
+
+					if (lastModified && lastModified !== pageSignature) {
+						console.log('🔄 Page changed, refreshing...');
+						location.reload();
+					}
+
+					lastModified = pageSignature;
+				} catch (error) {
+					// Silently handle errors (might be network issues)
+				}
+			}
+
+			// Check every 2 seconds
+			checkInterval = setInterval(checkForChanges, 2000);
+
+			// Initial check after 1 second
+			setTimeout(checkForChanges, 1000);
+
+			// Cleanup when page unloads
+			window.addEventListener('beforeunload', () => {
+				if (checkInterval) {
+					clearInterval(checkInterval);
+				}
+			});
+		}
+	</script>
 </body>
 </html>

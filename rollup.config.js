@@ -33,6 +33,19 @@ if (!isDev) {
 	);
 }
 
+// Live reload configuration - shared between builds
+const liveReloadConfig = isDev ? livereload({
+	watch: [
+		'assets/built',      // Compiled assets
+		'*.hbs',             // Root level templates
+		'partials/**/*.hbs', // Partial templates
+		'members/**/*.hbs'   // Member templates (if you have them)
+	],
+	verbose: true,          // Show more detailed logging
+	port: 35729,           // Default livereload port
+	delay: 500             // Increased delay for stability
+}) : null;
+
 export default [
 	// JavaScript build
 	{
@@ -60,10 +73,8 @@ export default [
 				]
 			}),
 			!isDev && terser(),
-			isDev && livereload({
-				watch: ['assets/built', '*.hbs', 'partials/**/*.hbs'],
-				delay: 300
-			})
+			// Only add livereload to one build to avoid conflicts
+			liveReloadConfig
 		].filter(Boolean)
 	},
 

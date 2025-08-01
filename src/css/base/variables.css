@@ -25,7 +25,7 @@
 	--color-error: #e74c3c;
 
 	/* Typography */
-	--font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+	--font-family-base: 'aktiv-grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
 	--font-family-mono: 'Monaco', 'Consolas', 'Courier New', monospace;
 
 	--font-size-xs: 11px;
