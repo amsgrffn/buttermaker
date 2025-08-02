@@ -1,33 +1,233 @@
 /* ==========================================================================
-   Horizontal Scroll Component + Wide Category Tabs
+   Horizontal Scroll Component + Category Tabs (Fixed for Split Layout)
    ========================================================================== */
 
-/* ==========================================================================
-   Horizontal Scroll Component + Complete Category Tabs Styles
-   ========================================================================== */
-
-/* Category Tabs - Exact Same Structure as Horizontal Scroll */
-.category-tabs-section {
-	/* Identical to horizontal-scroll-section */
+/* Horizontal Scroll Section - KEEP viewport spanning for trending section */
+.horizontal-scroll-section {
 	width: 100vw;
 	position: relative;
 	left: 50%;
 	right: 50%;
+	border-bottom: 1px solid var(--color-border-dark);
 	margin-left: -50vw;
 	margin-right: -50vw;
-	margin-bottom: var(--space-3xl);
-	padding: 0 var(--space-xl);
+	margin-bottom: 0;
+	padding: 0 var(--space-xl) var(--space-2xl);
+	overflow: hidden;
+}
+
+.horizontal-scroll-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 0 var(--space-lg);
+	margin-bottom: var(--space-lg);
+}
+
+.horizontal-scroll-title {
+	font-family: var(--font-family-display);
+	font-size: var(--font-size-2xl);
+	font-weight: var(--font-weight-bold);
+	color: var(--color-text-dark);
+	margin: 0;
+}
+
+.horizontal-scroll-controls {
+	display: flex;
+	gap: var(--space-sm);
+}
+
+.scroll-btn {
+	width: 40px;
+	height: 40px;
+	border-radius: var(--radius-full);
+	border: 1px solid var(--color-border);
+	background: var(--color-background);
+	color: var(--color-text-dark);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all var(--transition-base);
+	font-size: var(--font-size-md);
+	font-weight: var(--font-weight-bold);
+}
+
+.scroll-btn:hover {
+	background: var(--color-text-dark);
+	color: white;
+	border-color: var(--color-text-dark);
+}
+
+.scroll-btn:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.horizontal-scroll-container {
+	position: relative;
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 0 var(--space-lg);
+}
+
+.horizontal-scroll-track {
+	display: flex;
+	gap: var(--space-lg);
+	overflow-x: auto;
+	scroll-behavior: smooth;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	padding-bottom: var(--space-sm);
+}
+
+.horizontal-scroll-track::-webkit-scrollbar {
+	display: none;
+}
+
+.scroll-card {
+	flex: 0 0 320px;
+	box-shadow: var(--shadow-sm);
+	background: var(--color-background-card);
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: var(--radius-base);
+	overflow: hidden;
+	text-decoration: none;
+	color: inherit;
+	transition: all var(--transition-base);
+	display: flex;
+	height: 120px;
+}
+
+.scroll-card:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-md);
+	border-color: var(--color-border);
+}
+
+.scroll-card-image {
+	flex: 0 0 120px;
+	height: 120px;
+	overflow: hidden;
+	background: var(--color-background-light);
+	position: relative;
+}
+
+.scroll-card-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform var(--transition-slow);
+}
+
+.scroll-card:hover .scroll-card-image img {
+	transform: scale(1.05);
+}
+
+.scroll-card-badge {
+	position: absolute;
+	top: var(--space-xs);
+	right: var(--space-xs);
+	background: rgba(0, 0, 0, 0.7);
+	color: white;
+	padding: 2px var(--space-xs);
+	border-radius: var(--radius-sm);
+	font-size: 10px;
+	font-weight: var(--font-weight-medium);
+}
+
+.scroll-card-content {
+	background: #E3F2FD;
+	flex: 1;
+	padding: var(--space-md);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-width: 0;
+}
+
+.scroll-card-title {
+	font-family: var(--font-family-display);
+	font-size: var(--font-size-lg);
+	font-weight: var(--font-weight-semibold);
+	color: #000;
+	line-height: var(--line-height-tight);
+	margin-bottom: var(--space-xs);
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.scroll-card-meta {
+	display: flex;
+	align-items: center;
+	gap: var(--space-xs);
+	font-size: var(--font-size-xs);
+	color: var(--color-text-medium);
+	margin-bottom: var(--space-xs);
+}
+
+.scroll-card-author {
+	display: flex;
+	align-items: center;
+	gap: var(--space-xs);
+}
+
+.scroll-card-avatar {
+	width: 16px;
+	height: 16px;
+	border-radius: var(--radius-full);
+	object-fit: cover;
+}
+
+.scroll-card-excerpt {
+	font-size: var(--font-size-xs);
+	line-height: var(--line-height-base);
+	color: var(--color-text-medium);
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	margin-bottom: var(--space-xs);
+}
+
+.scroll-card-tags {
+	display: flex;
+	gap: var(--space-xs);
+	flex-wrap: wrap;
+}
+
+.scroll-card-tag {
+	background: var(--color-border-light);
+	color: var(--color-text-medium);
+	padding: 2px var(--space-xs);
+	border-radius: var(--radius-pill);
+	font-size: 10px;
+	font-weight: var(--font-weight-medium);
+}
+
+/* ==========================================================================
+   Category Tabs - FIXED for Split Layout (no viewport spanning)
+   ========================================================================== */
+
+.category-tabs-section {
+	/* REMOVED viewport-spanning CSS - now respects container */
+	margin-bottom: var(--space-md);
+	padding: 0;
 	overflow: hidden;
 }
 
 .category-tabs-container {
-	/* Identical to horizontal-scroll-container */
+	/* REMOVED viewport constraints - now uses full container width */
 	position: relative;
 	background: var(--color-background-light);
-	max-width: 1400px;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 0 var(--space-lg);
+	border: 1px solid var(	--color-border);
+	margin: 0;
+	padding: var(--space-sm);
+	border-radius: var(--radius-base);
 }
 
 .category-tabs {
@@ -75,224 +275,6 @@
 	color: white;
 }
 
-.horizontal-scroll-section {
-	margin: var(--space-3xl) 0;
-	overflow: hidden;
-	/* Break out of normal content width constraints */
-	width: 100vw;
-	position: relative;
-	left: 50%;
-	right: 50%;
-	margin-bottom: var(--space-5xl);
-	margin-left: -50vw;
-	margin-right: -50vw;
-	padding: 0 var(--space-xl);
-	max-width: none;
-}
-
-.horizontal-scroll-header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-bottom: var(--space-xl);
-	max-width: 1400px;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 0 var(--space-lg);
-}
-
-.horizontal-scroll-title {
-	font-family: var(--font-family-display);
-	font-size: var(--font-size-xl);
-	font-weight: var(--font-weight-bold);
-	color: var(--color-text-dark);
-	margin: 0;
-}
-
-.horizontal-scroll-controls {
-	display: flex;
-	gap: var(--space-sm);
-}
-
-.scroll-btn {
-	width: 36px;
-	height: 36px;
-	border-radius: var(--radius-full);
-	background: var(--color-background-light);
-	border: 1px solid var(--color-border);
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: var(--font-size-md);
-	color: var(--color-text-medium);
-	transition: all var(--transition-base);
-	user-select: none;
-}
-
-.scroll-btn:hover {
-	background: var(--color-border-light);
-	border-color: var(--color-border-dark);
-	color: var(--color-text-dark);
-}
-
-.scroll-btn:active {
-	transform: scale(0.95);
-}
-
-.scroll-btn:disabled {
-	opacity: 0.5;
-	cursor: not-allowed;
-	pointer-events: none;
-}
-
-.horizontal-scroll-container {
-	position: relative;
-	max-width: 1400px;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 0 var(--space-lg);
-}
-
-.horizontal-scroll-track {
-	display: flex;
-	gap: var(--space-lg);
-	overflow-x: auto;
-	overflow-y: hidden;
-	scroll-behavior: smooth;
-	scrollbar-width: none;
-	-ms-overflow-style: none;
-	padding-bottom: var(--space-sm);
-}
-
-.horizontal-scroll-track::-webkit-scrollbar {
-	display: none;
-}
-
-.scroll-card {
-	flex: 0 0 350px;
-	background: var(--color-background-card);
-	border-radius: var(--radius-lg);
-	overflow: hidden;
-	transition: all var(--transition-base);
-	cursor: pointer;
-	text-decoration: none;
-	color: inherit;
-	border: 1px solid var(--color-border-light);
-	position: relative;
-	display: flex;
-	height: 120px;
-}
-
-.scroll-card:hover {
-	transform: translateY(-2px);
-	box-shadow: var(--shadow-md);
-	border-color: var(--color-border);
-}
-
-.scroll-card-image {
-	width: 160px;
-	height: 120px;
-	position: relative;
-	overflow: hidden;
-	flex-shrink: 0;
-}
-
-.scroll-card-image img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	transition: transform var(--transition-slow);
-}
-
-.scroll-card:hover .scroll-card-image img {
-	transform: scale(1.05);
-}
-
-.scroll-card-badge {
-	position: absolute;
-	top: var(--space-sm);
-	left: var(--space-sm);
-	background: rgba(0, 0, 0, 0.7);
-	color: white;
-	padding: var(--space-xs) var(--space-sm);
-	border-radius: var(--radius-pill);
-	font-size: var(--font-size-xs);
-	font-weight: var(--font-weight-medium);
-	backdrop-filter: blur(8px);
-}
-
-.scroll-card-content {
-	padding: var(--space-md);
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	min-width: 0; /* Allows flex items to shrink below content size */
-}
-
-.scroll-card-title {
-	font-family: var(--font-family-display);
-	font-size: var(--font-size-lg);
-	font-weight: var(--font-weight-semibold);
-	line-height: var(--line-height-tight);
-	margin-bottom: 0;
-	color: var(--color-text-dark);
-	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-}
-
-.scroll-card-meta {
-	display: flex;
-	align-items: center;
-	gap: var(--space-xs);
-	font-size: var(--font-size-xs);
-	color: var(--color-text-medium);
-	margin-bottom: var(--space-xs);
-	flex-wrap: wrap;
-}
-
-.scroll-card-author {
-	display: flex;
-	align-items: center;
-	gap: var(--space-xs);
-}
-
-.scroll-card-avatar {
-	width: 16px;
-	height: 16px;
-	border-radius: var(--radius-full);
-	object-fit: cover;
-}
-
-.scroll-card-excerpt {
-	font-size: var(--font-size-xs);
-	line-height: var(--line-height-base);
-	color: var(--color-text-medium);
-	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-	margin-bottom: var(--space-xs);
-}
-
-.scroll-card-tags {
-	display: flex;
-	gap: var(--space-xs);
-	flex-wrap: wrap;
-}
-
-.scroll-card-tag {
-	background: var(--color-border-light);
-	color: var(--color-text-medium);
-	padding: 2px var(--space-xs);
-	border-radius: var(--radius-pill);
-	font-size: 10px;
-	font-weight: var(--font-weight-medium);
-}
-
 /* Loading and Empty States */
 .horizontal-scroll-loading {
 	display: flex;
@@ -315,7 +297,11 @@
 	color: var(--color-text-dark);
 }
 
-/* Responsive Design */
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
+/* Tablet and Desktop */
 @media (max-width: 1199px) and (min-width: 768px) {
 	.category-tab {
 		padding: var(--space-xs) var(--space-md);
@@ -323,24 +309,12 @@
 	}
 }
 
+/* Mobile */
 @media (max-width: 767px) {
-	.category-tabs-section {
-		padding: 0 var(--space-md);
-		margin-bottom: var(--space-lg);
-	}
-
-	.category-tabs-container {
-		padding: 0 var(--space-md);
-		max-width: none;
-	}
-
-	.category-tab {
-		padding: var(--space-sm) var(--space-md);
-		font-size: var(--font-size-sm);
-	}
-
+	/* Horizontal scroll keeps viewport spanning on mobile */
 	.horizontal-scroll-section {
 		padding: 0 var(--space-md);
+		margin-bottom: var(--space-lg);
 	}
 
 	.horizontal-scroll-header {
@@ -395,22 +369,25 @@
 		width: 14px;
 		height: 14px;
 	}
-}
 
-@media (max-width: 480px) {
+	/* Category tabs - mobile styling */
 	.category-tabs-section {
-		padding: 0 var(--space-sm);
+		padding: 0;
+		margin-bottom: var(--space-lg);
 	}
 
 	.category-tabs-container {
-		padding: 0 var(--space-sm);
+		padding: var(--space-md);
 	}
 
 	.category-tab {
-		padding: var(--space-xs) var(--space-sm);
-		font-size: var(--font-size-xs);
+		padding: var(--space-sm) var(--space-md);
+		font-size: var(--font-size-sm);
 	}
+}
 
+/* Small Mobile */
+@media (max-width: 480px) {
 	.horizontal-scroll-section {
 		padding: 0 var(--space-sm);
 	}
@@ -448,11 +425,21 @@
 	}
 
 	.scroll-card-excerpt {
-		display: none; /* Hide excerpt on very small screens */
+		display: none;
 	}
 
 	.scroll-card-tags {
-		display: none; /* Hide tags on very small screens */
+		display: none;
+	}
+
+	/* Category tabs - small mobile */
+	.category-tabs-container {
+		padding: var(--space-sm);
+	}
+
+	.category-tab {
+		padding: var(--space-xs) var(--space-sm);
+		font-size: var(--font-size-xs);
 	}
 }
 

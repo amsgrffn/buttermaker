@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Layout and Responsive Design
+   Layout and Responsive Design (Fixed for Split Layout)
    ========================================================================== */
 
 /* Base Layout */
@@ -13,10 +13,8 @@
 	flex: 1;
 	margin-left: var(--sidebar-width);
 	padding: var(--space-xl);
-	max-width: var(--content-max-width);
-	/* Center the content in the remaining space */
-	margin-left: calc(var(--sidebar-width) + ((100vw - var(--sidebar-width) - var(--content-max-width)) / 2));
-	margin-right: auto;
+	/* REMOVED: max-width and centering constraints for full width */
+	width: calc(100vw - var(--sidebar-width));
 }
 
 /* Container utilities */
@@ -150,9 +148,8 @@
 /* Desktop Styles (1200px and up) */
 @media (min-width: 1200px) {
 	.main-content {
-		max-width: var(--content-max-width-wide);
-		/* Adjust centering for larger screens */
-		margin-left: calc(var(--sidebar-width) + ((100vw - var(--sidebar-width) - var(--content-max-width-wide)) / 2));
+		/* Keep full width on desktop */
+		width: calc(100vw - var(--sidebar-width));
 	}
 
 	.container {
@@ -174,8 +171,8 @@
 @media (max-width: 1199px) and (min-width: 768px) {
 	.main-content {
 		margin-left: var(--sidebar-width-tablet);
-		max-width: 640px;
-		padding-left: var(--content-left-spacing);
+		width: calc(100vw - var(--sidebar-width-tablet));
+		padding: var(--space-xl);
 	}
 
 	.container {
@@ -219,7 +216,7 @@
 	.main-content {
 		margin-left: 0;
 		padding: var(--space-md);
-		max-width: 100%;
+		width: 100%;
 	}
 
 	.container,
@@ -334,7 +331,7 @@
 
 	.main-content {
 		margin-left: 0;
-		max-width: none;
+		width: 100%;
 	}
 
 	.layout {

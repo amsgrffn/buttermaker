@@ -12,4 +12,5 @@
 @import "components/post-feed.css";
 @import "components/cta-banner.css";
 @import "components/pagination.css";
+@import "components/split-layout.css";
 @import "layout/responsive.css";

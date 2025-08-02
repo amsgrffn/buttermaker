@@ -1,0 +1,376 @@
+/* ==========================================================================
+   Split Content Layout & Aside Components (Simplified)
+   ========================================================================== */
+
+/* Split Content Wrapper - 2/3 Main + 1/3 Aside */
+.split-content-wrapper {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	gap: var(--space-4xl);
+	margin-top: var(--space-3xl);
+	align-items: start;
+	width: 100%;
+	max-width: 1400px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 2rem;
+}
+
+.main-content-area {
+	min-width: 0; /* Prevents overflow issues */
+	width: 100%; /* Ensures full width */
+}
+
+/* Ensure all sections in main content area take full width */
+.main-content-area > section {
+	width: 100%;
+	max-width: 100%;
+}
+
+.content-aside {
+	position: relative;
+}
+
+.aside-content {
+	/* Simple container - no sticky positioning */
+}
+
+/* ==========================================================================
+   Aside Widget Base Styles
+   ========================================================================== */
+
+.content-aside .widget-header {
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm);
+	margin-bottom: var(--space-lg);
+	padding-bottom: var(--space-sm);
+}
+
+.content-aside .widget-title {
+	font-size: 3rem
+}
+
+.content-aside .widget-icon {
+	font-size: var(--font-size-lg);
+}
+
+.widget-header .widget-title {
+	font-family: var(--font-family-display);
+	font-size: var(--font-size-2xl);
+	font-weight: var(--font-weight-bold);
+	color: var(--color-text-dark);
+	margin: 0;
+	padding-left: var(--space-sm);
+}
+
+.widget-header .widget-title em {
+	font-family: "abril-titling-condensed", serif;
+	font-style: italic;
+	font-weight: 400;
+}
+
+/* Common widget styling */
+.notes-widget,
+.stats-widget,
+.archive-widget,
+.tags-widget {
+	background: rgb(242, 249, 255);
+	border: 1px solid rgb(230, 241, 250);
+	border-radius: var(--radius-lg);
+	padding: var(--space-xl);
+	margin-bottom: var(--space-2xl);
+}
+
+/* ==========================================================================
+   Notes Widget
+   ========================================================================== */
+
+.notes-content {
+	space-y: var(--space-lg);
+}
+
+.note-item {
+	background: #fefefe;
+	font-family: var(--font-family-serif);
+	padding: var(--space-3xl);
+	margin-bottom: var(--space-lg);
+	border: 1px solid rgb(230, 241, 250);
+	box-shadow: 0px 4px 18px #0000000a, 0px 2.025px 7.84688px rgba(0, 0, 0, .027), 0px 0.8px 2.925px #00000005, 0px 0.175px 1.04062px rgba(0, 0, 0, .013);
+	border-radius: var(--radius-lg);
+}
+
+.note-item:last-child {
+	border-bottom: none;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.note-title {
+	font-family: "abril-titling-condensed", serif;
+	font-size: var(--font-size-sm);
+	font-style: italic;
+	font-weight: var(--font-weight-semibold);
+	color: var(--color-text-dark);
+	display: none;
+	margin-bottom: var(--space-xs);
+}
+
+.note-item p,
+.note-item ol,
+.note-item ul {
+	font-size: var(--font-size-md);
+	line-height: 1.45;
+	margin-bottom: var(--space-sm);
+}
+
+.note-body a {
+	color: var(--color-text-primary);
+	font-weight: 600;
+	text-decoration: underline;
+	text-decoration-color: var(--color-orange);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 3px;
+	transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+.note-date {
+	font-size: var(--font-size-sm);
+	color: var(--color-text-light);
+	font-weight: var(--font-weight-medium);
+}
+
+p.notes-link {
+	font-size: var(--font-size-sm);
+	color: var(--color-text-medium);
+	text-decoration: none;
+	font-weight: 400;
+	margin-top: var(--space-3xl);
+	padding-left: var(--space-sm);
+}
+
+p.notes-link a {
+	color: 	var(--color-text-dark);
+	font-weight: 700;
+}
+
+.notes-link:hover {
+	color: var(--color-primary-hover);
+}
+
+/* ==========================================================================
+   Stats Widget
+   ========================================================================== */
+
+.stats-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: var(--space-lg);
+}
+
+.stat-item {
+	text-align: center;
+	padding: var(--space-md);
+	background: var(--color-background-light);
+	border-radius: var(--radius-base);
+}
+
+.stat-number {
+	display: block;
+	font-size: var(--font-size-xl);
+	font-weight: var(--font-weight-bold);
+	color: var(--color-primary);
+	line-height: 1;
+}
+
+.stat-label {
+	display: block;
+	font-size: var(--font-size-xs);
+	color: var(--color-text-medium);
+	font-weight: var(--font-weight-medium);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	margin-top: var(--space-xs);
+}
+
+/* ==========================================================================
+   Archive Widget
+   ========================================================================== */
+
+.archive-list {
+	space-y: var(--space-sm);
+}
+
+.archive-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	padding: var(--space-sm) 0;
+	text-decoration: none;
+	color: inherit;
+	border-bottom: 1px solid var(--color-border-light);
+	transition: color var(--transition-base);
+}
+
+.archive-item:last-child {
+	border-bottom: none;
+}
+
+.archive-item:hover {
+	color: var(--color-primary);
+}
+
+.archive-title {
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-text-dark);
+	flex: 1;
+	margin-right: var(--space-sm);
+	line-height: var(--line-height-tight);
+}
+
+.archive-item:hover .archive-title {
+	color: var(--color-primary);
+}
+
+.archive-date {
+	font-size: var(--font-size-xs);
+	color: var(--color-text-light);
+	font-weight: var(--font-weight-medium);
+	white-space: nowrap;
+}
+
+.archive-link {
+	display: inline-flex;
+	align-items: center;
+	font-size: var(--font-size-sm);
+	color: var(--color-primary);
+	text-decoration: none;
+	font-weight: var(--font-weight-medium);
+	margin-top: var(--space-md);
+	transition: color var(--transition-base);
+}
+
+.archive-link:hover {
+	color: var(--color-primary-hover);
+}
+
+/* ==========================================================================
+   Tags Widget
+   ========================================================================== */
+
+.tags-cloud {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-sm);
+}
+
+.tag-item {
+	display: inline-block;
+	padding: var(--space-xs) var(--space-sm);
+	background: var(--color-background-light);
+	border: 1px solid var(--color-border-light);
+	border-radius: var(--radius-pill);
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-text-medium);
+	text-decoration: none;
+	transition: all var(--transition-base);
+	text-transform: capitalize;
+}
+
+.tag-item:hover {
+	background: var(--color-primary);
+	color: white;
+	border-color: var(--color-primary);
+	transform: translateY(-1px);
+}
+
+/* Popular tags get slightly different styling based on post count */
+.tag-item[data-count] {
+	position: relative;
+}
+
+/* Higher count tags are slightly larger */
+.tag-item[data-count="10"],
+.tag-item[data-count="9"],
+.tag-item[data-count="8"] {
+	font-size: var(--font-size-sm);
+	padding: var(--space-sm) var(--space-md);
+}
+
+/* ==========================================================================
+   Responsive Design for Split Layout
+   ========================================================================== */
+
+/* Desktop/Tablet - Stack aside below main content */
+@media (max-width: 1199px) {
+	.split-content-wrapper {
+		grid-template-columns: 1fr;
+		gap: var(--space-3xl);
+	}
+
+	.content-aside {
+		order: 2;
+	}
+
+	.main-content-area {
+		order: 1;
+	}
+
+	.aside-content {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: var(--space-xl);
+	}
+
+	.notes-widget,
+	.stats-widget,
+	.archive-widget,
+	.tags-widget {
+		margin-bottom: 0;
+	}
+}
+
+/* Tablet */
+@media (max-width: 1199px) and (min-width: 768px) {
+	.aside-content {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+	.split-content-wrapper {
+		gap: var(--space-2xl);
+		margin-top: var(--space-2xl);
+	}
+
+	.aside-content {
+		grid-template-columns: 1fr;
+		gap: var(--space-lg);
+	}
+
+	.notes-widget,
+	.stats-widget,
+	.archive-widget,
+	.tags-widget {
+		padding: var(--space-lg);
+	}
+
+	.stats-grid {
+		gap: var(--space-sm);
+	}
+
+	.stat-item {
+		padding: var(--space-sm);
+	}
+
+	.stat-number {
+		font-size: var(--font-size-lg);
+	}
+
+	.tags-cloud {
+		gap: var(--space-xs);
+	}
+}
