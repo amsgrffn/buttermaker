@@ -1,0 +1,496 @@
+/* ==========================================================================
+   Horizontal Scroll Component + Wide Category Tabs
+   ========================================================================== */
+
+/* ==========================================================================
+   Horizontal Scroll Component + Complete Category Tabs Styles
+   ========================================================================== */
+
+/* Category Tabs - Exact Same Structure as Horizontal Scroll */
+.category-tabs-section {
+	/* Identical to horizontal-scroll-section */
+	width: 100vw;
+	position: relative;
+	left: 50%;
+	right: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+	margin-bottom: var(--space-3xl);
+	padding: 0 var(--space-xl);
+	overflow: hidden;
+}
+
+.category-tabs-container {
+	/* Identical to horizontal-scroll-container */
+	position: relative;
+	background: var(--color-background-light);
+	max-width: 1400px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 var(--space-lg);
+}
+
+.category-tabs {
+	/* Simple flex layout for tabs */
+	display: flex;
+	gap: 2px;
+	background: var(--color-background-light);
+	border-radius: var(--radius-md);
+	padding: var(--space-xs);
+	overflow-x: auto;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.category-tabs::-webkit-scrollbar {
+	display: none;
+}
+
+.category-tab {
+	font-family: var(--font-family-display);
+	padding: var(--space-sm) var(--space-lg);
+	border-radius: var(--radius-base);
+	background: transparent;
+	border: none;
+	color: var(--color-text-dark);
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-semibold);
+	cursor: pointer;
+	white-space: nowrap;
+	transition: all var(--transition-base);
+	min-width: fit-content;
+}
+
+.category-tab:hover {
+	color: var(--color-text-dark);
+	background: rgba(255, 255, 255, 0.5);
+}
+
+.category-tab.active {
+	background: var(--color-text-dark);
+	color: white;
+}
+
+.category-tab.active:hover {
+	color: white;
+}
+
+.horizontal-scroll-section {
+	margin: var(--space-3xl) 0;
+	overflow: hidden;
+	/* Break out of normal content width constraints */
+	width: 100vw;
+	position: relative;
+	left: 50%;
+	right: 50%;
+	margin-bottom: var(--space-5xl);
+	margin-left: -50vw;
+	margin-right: -50vw;
+	padding: 0 var(--space-xl);
+	max-width: none;
+}
+
+.horizontal-scroll-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: var(--space-xl);
+	max-width: 1400px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 var(--space-lg);
+}
+
+.horizontal-scroll-title {
+	font-family: var(--font-family-display);
+	font-size: var(--font-size-xl);
+	font-weight: var(--font-weight-bold);
+	color: var(--color-text-dark);
+	margin: 0;
+}
+
+.horizontal-scroll-controls {
+	display: flex;
+	gap: var(--space-sm);
+}
+
+.scroll-btn {
+	width: 36px;
+	height: 36px;
+	border-radius: var(--radius-full);
+	background: var(--color-background-light);
+	border: 1px solid var(--color-border);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: var(--font-size-md);
+	color: var(--color-text-medium);
+	transition: all var(--transition-base);
+	user-select: none;
+}
+
+.scroll-btn:hover {
+	background: var(--color-border-light);
+	border-color: var(--color-border-dark);
+	color: var(--color-text-dark);
+}
+
+.scroll-btn:active {
+	transform: scale(0.95);
+}
+
+.scroll-btn:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+.horizontal-scroll-container {
+	position: relative;
+	max-width: 1400px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 var(--space-lg);
+}
+
+.horizontal-scroll-track {
+	display: flex;
+	gap: var(--space-lg);
+	overflow-x: auto;
+	overflow-y: hidden;
+	scroll-behavior: smooth;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	padding-bottom: var(--space-sm);
+}
+
+.horizontal-scroll-track::-webkit-scrollbar {
+	display: none;
+}
+
+.scroll-card {
+	flex: 0 0 350px;
+	background: var(--color-background-card);
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+	transition: all var(--transition-base);
+	cursor: pointer;
+	text-decoration: none;
+	color: inherit;
+	border: 1px solid var(--color-border-light);
+	position: relative;
+	display: flex;
+	height: 120px;
+}
+
+.scroll-card:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-md);
+	border-color: var(--color-border);
+}
+
+.scroll-card-image {
+	width: 160px;
+	height: 120px;
+	position: relative;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+.scroll-card-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform var(--transition-slow);
+}
+
+.scroll-card:hover .scroll-card-image img {
+	transform: scale(1.05);
+}
+
+.scroll-card-badge {
+	position: absolute;
+	top: var(--space-sm);
+	left: var(--space-sm);
+	background: rgba(0, 0, 0, 0.7);
+	color: white;
+	padding: var(--space-xs) var(--space-sm);
+	border-radius: var(--radius-pill);
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-medium);
+	backdrop-filter: blur(8px);
+}
+
+.scroll-card-content {
+	padding: var(--space-md);
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-width: 0; /* Allows flex items to shrink below content size */
+}
+
+.scroll-card-title {
+	font-family: var(--font-family-display);
+	font-size: var(--font-size-lg);
+	font-weight: var(--font-weight-semibold);
+	line-height: var(--line-height-tight);
+	margin-bottom: 0;
+	color: var(--color-text-dark);
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.scroll-card-meta {
+	display: flex;
+	align-items: center;
+	gap: var(--space-xs);
+	font-size: var(--font-size-xs);
+	color: var(--color-text-medium);
+	margin-bottom: var(--space-xs);
+	flex-wrap: wrap;
+}
+
+.scroll-card-author {
+	display: flex;
+	align-items: center;
+	gap: var(--space-xs);
+}
+
+.scroll-card-avatar {
+	width: 16px;
+	height: 16px;
+	border-radius: var(--radius-full);
+	object-fit: cover;
+}
+
+.scroll-card-excerpt {
+	font-size: var(--font-size-xs);
+	line-height: var(--line-height-base);
+	color: var(--color-text-medium);
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	margin-bottom: var(--space-xs);
+}
+
+.scroll-card-tags {
+	display: flex;
+	gap: var(--space-xs);
+	flex-wrap: wrap;
+}
+
+.scroll-card-tag {
+	background: var(--color-border-light);
+	color: var(--color-text-medium);
+	padding: 2px var(--space-xs);
+	border-radius: var(--radius-pill);
+	font-size: 10px;
+	font-weight: var(--font-weight-medium);
+}
+
+/* Loading and Empty States */
+.horizontal-scroll-loading {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 240px;
+	color: var(--color-text-medium);
+	font-size: var(--font-size-sm);
+}
+
+.horizontal-scroll-empty {
+	text-align: center;
+	padding: var(--space-4xl) var(--space-lg);
+	color: var(--color-text-medium);
+}
+
+.horizontal-scroll-empty h3 {
+	font-size: var(--font-size-lg);
+	margin-bottom: var(--space-sm);
+	color: var(--color-text-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 1199px) and (min-width: 768px) {
+	.category-tab {
+		padding: var(--space-xs) var(--space-md);
+		font-size: var(--font-size-sm);
+	}
+}
+
+@media (max-width: 767px) {
+	.category-tabs-section {
+		padding: 0 var(--space-md);
+		margin-bottom: var(--space-lg);
+	}
+
+	.category-tabs-container {
+		padding: 0 var(--space-md);
+		max-width: none;
+	}
+
+	.category-tab {
+		padding: var(--space-sm) var(--space-md);
+		font-size: var(--font-size-sm);
+	}
+
+	.horizontal-scroll-section {
+		padding: 0 var(--space-md);
+	}
+
+	.horizontal-scroll-header {
+		padding: 0 var(--space-md);
+		max-width: none;
+	}
+
+	.horizontal-scroll-container {
+		padding: 0 var(--space-md);
+		max-width: none;
+	}
+
+	.horizontal-scroll-track {
+		gap: var(--space-md);
+	}
+
+	.scroll-card {
+		flex: 0 0 280px;
+		height: 100px;
+	}
+
+	.scroll-card-image {
+		width: 100px;
+		height: 100px;
+	}
+
+	.scroll-card-content {
+		padding: var(--space-sm);
+	}
+
+	.horizontal-scroll-title {
+		font-size: var(--font-size-lg);
+	}
+
+	.scroll-btn {
+		width: 32px;
+		height: 32px;
+		font-size: var(--font-size-sm);
+	}
+
+	.scroll-card-title {
+		font-size: var(--font-size-sm);
+		-webkit-line-clamp: 2;
+	}
+
+	.scroll-card-excerpt {
+		font-size: 11px;
+		-webkit-line-clamp: 2;
+	}
+
+	.scroll-card-avatar {
+		width: 14px;
+		height: 14px;
+	}
+}
+
+@media (max-width: 480px) {
+	.category-tabs-section {
+		padding: 0 var(--space-sm);
+	}
+
+	.category-tabs-container {
+		padding: 0 var(--space-sm);
+	}
+
+	.category-tab {
+		padding: var(--space-xs) var(--space-sm);
+		font-size: var(--font-size-xs);
+	}
+
+	.horizontal-scroll-section {
+		padding: 0 var(--space-sm);
+	}
+
+	.horizontal-scroll-header {
+		padding: 0 var(--space-sm);
+	}
+
+	.horizontal-scroll-container {
+		padding: 0 var(--space-sm);
+	}
+
+	.scroll-card {
+		flex: 0 0 260px;
+		height: 90px;
+	}
+
+	.scroll-card-image {
+		width: 90px;
+		height: 90px;
+	}
+
+	.horizontal-scroll-controls {
+		display: none;
+	}
+
+	.scroll-card-title {
+		font-size: var(--font-size-xs);
+		margin-bottom: 2px;
+	}
+
+	.scroll-card-meta {
+		font-size: 10px;
+		margin-bottom: 2px;
+	}
+
+	.scroll-card-excerpt {
+		display: none; /* Hide excerpt on very small screens */
+	}
+
+	.scroll-card-tags {
+		display: none; /* Hide tags on very small screens */
+	}
+}
+
+/* Extra small screens */
+@media (max-width: 375px) {
+	.category-tab {
+		padding: var(--space-xs) var(--space-sm);
+		font-size: var(--font-size-xs);
+	}
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+	.horizontal-scroll-track {
+		scroll-behavior: auto;
+	}
+
+	.scroll-card,
+	.scroll-card-image img {
+		transition: none;
+	}
+
+	.scroll-card:hover {
+		transform: none;
+	}
+
+	.scroll-card:hover .scroll-card-image img {
+		transform: none;
+	}
+}
+
+/* Focus states for accessibility */
+.scroll-card:focus {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+}
+
+.scroll-btn:focus {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+}

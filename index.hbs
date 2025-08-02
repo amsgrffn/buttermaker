@@ -1,16 +1,176 @@
 {{!< default}}
+{{! Horizontal Scroll Section - Add this right after your category tabs }}
+<section class="horizontal-scroll-section">
+	<div class="horizontal-scroll-header">
+		<h2 class="horizontal-scroll-title">Trending Now</h2>
+		<div class="horizontal-scroll-controls">
+			<button class="scroll-btn scroll-btn-prev" aria-label="Scroll left">←</button>
+			<button class="scroll-btn scroll-btn-next" aria-label="Scroll right">→</button>
+		</div>
+	</div>
+
+	<div class="horizontal-scroll-container">
+		<div class="horizontal-scroll-track">
+			{{#get "posts" filter="featured:true" limit="8" as |featured_posts|}}
+				{{#if featured_posts}}
+					{{#foreach featured_posts}}
+					<a href="{{url}}" class="scroll-card" aria-label="Read {{title}}">
+						{{#if feature_image}}
+						<div class="scroll-card-image">
+							<img
+								src="{{img_url feature_image size="m"}}"
+								alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+								loading="lazy"
+							>
+						</div>
+						{{/if}}
+
+						<div class="scroll-card-content">
+							<h3 class="scroll-card-title">{{title}}</h3>
+
+							<div class="scroll-card-meta">
+								<div class="scroll-card-author">
+									<img
+										src="{{img_url primary_author.profile_image size="xs"}}"
+										alt="{{primary_author.name}}"
+										class="scroll-card-avatar"
+									>
+									<span>{{primary_author.name}}</span>
+								</div>
+								<span>•</span>
+								<time datetime="{{date published_at format="YYYY-MM-DD"}}">
+									{{date published_at format="DD MMM"}}
+								</time>
+							</div>
+
+							<!--<p class="scroll-card-excerpt">{{excerpt words="20"}}</p>-->
+
+							{{#if tags}}
+							<div class="scroll-card-tags">
+								{{#foreach tags limit="2"}}
+								<span class="scroll-card-tag">{{name}}</span>
+								{{/foreach}}
+							</div>
+							{{/if}}
+						</div>
+					</a>
+					{{/foreach}}
+				{{else}}
+					{{! Fallback: show recent posts if no featured posts }}
+					{{#foreach posts limit="8"}}
+					<a href="{{url}}" class="scroll-card" aria-label="Read {{title}}">
+						{{#if feature_image}}
+						<div class="scroll-card-image">
+							<img
+								src="{{img_url feature_image size="m"}}"
+								alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+								loading="lazy"
+							>
+							{{#if reading_time}}
+							<div class="scroll-card-badge">{{reading_time}}</div>
+							{{/if}}
+						</div>
+						{{/if}}
+
+						<div class="scroll-card-content">
+							<h3 class="scroll-card-title">{{title}}</h3>
+
+							<div class="scroll-card-meta">
+								<div class="scroll-card-author">
+									<img
+										src="{{img_url primary_author.profile_image size="xs"}}"
+										alt="{{primary_author.name}}"
+										class="scroll-card-avatar"
+									>
+									<span>{{primary_author.name}}</span>
+								</div>
+								<span>•</span>
+								<time datetime="{{date published_at format="YYYY-MM-DD"}}">
+									{{date published_at format="DD MMM"}}
+								</time>
+							</div>
+
+							<p class="scroll-card-excerpt">{{excerpt words="20"}}</p>
+
+							{{#if tags}}
+							<div class="scroll-card-tags">
+								{{#foreach tags limit="2"}}
+								<span class="scroll-card-tag">{{name}}</span>
+								{{/foreach}}
+							</div>
+							{{/if}}
+						</div>
+					</a>
+					{{/foreach}}
+				{{/if}}
+			{{/get}}
+		</div>
+	</div>
+</section>
 {{! Category Tabs }}
-<div class="category-tabs">
-	<button class="category-tab active" data-filter="all">All</button>
-	<button class="category-tab" data-filter="notes">Notes</button>
-	<button class="category-tab" data-filter="bookmarks">Bookmarks</button>
-	<button class="category-tab" data-filter="fiction">Fiction</button>
-	<button class="category-tab" data-filter="cartoon">Poetry</button>
-	<button class="category-tab" data-filter="essay">Articles</button>
-	<button class="category-tab" data-filter="journal">Sports</button>
-	<button class="category-tab" data-filter="journal">Newsletters</button>
-	<button class="category-tab" data-filter="journal">Podcasts</button>
-</div>
+<section class="category-tabs-section">
+	<div class="category-tabs-container">
+		<button class="category-tab active" data-filter="all">All</button>
+		<button class="category-tab" data-filter="notes">Notes</button>
+		<button class="category-tab" data-filter="bookmarks">Bookmarks</button>
+		<button class="category-tab" data-filter="fiction">Fiction</button>
+		<button class="category-tab" data-filter="cartoon">Poetry</button>
+		<button class="category-tab" data-filter="essay">Articles</button>
+		<button class="category-tab" data-filter="journal">Sports</button>
+		<button class="category-tab" data-filter="journal">Newsletters</button>
+		<button class="category-tab" data-filter="journal">Podcasts</button>
+	</div>
+</section>
+
+{{! Featured Masonry Section }}
+<section class="featured-masonry-section">
+	<h2 class="section-title">Featured Creative Works on poop junk</h2>
+	<div class="masonry-grid">
+		{{#foreach posts limit="12"}}
+		<article class="masonry-card {{#has tag="poetry,poem"}}tall{{/has}}{{#has tag="cartoon,drawing,art"}}wide{{/has}}{{#has tag="short-story,fiction"}}large{{/has}}" data-tags="{{tags separator=" "}}">
+			{{#if feature_image}}
+			<div class="masonry-image">
+				<img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
+				{{#has tag="cartoon,drawing,art,illustration"}}
+				<div class="content-type-badge">🎨</div>
+				{{/has}}
+				{{#has tag="poetry,poem"}}
+				<div class="content-type-badge">✍️</div>
+				{{/has}}
+				{{#has tag="story,fiction,short-story"}}
+				<div class="content-type-badge">📖</div>
+				{{/has}}
+				{{#has tag="essay,opinion,thoughts"}}
+				<div class="content-type-badge">💭</div>
+				{{/has}}
+			</div>
+			{{/if}}
+
+			<div class="masonry-content">
+				<h3 class="masonry-title">
+					<a href="{{url}}">{{title}}</a>
+				</h3>
+				{{#unless feature_image}}
+				<div class="masonry-excerpt">{{excerpt words="25"}}</div>
+				{{/unless}}
+				<div class="masonry-meta">
+					<time class="masonry-date" datetime="{{date published_at format="YYYY-MM-DD"}}">
+						{{date published_at format="DD MMM YYYY"}}
+					</time>
+					{{#if primary_tag}}
+					<span class="masonry-tag">{{primary_tag.name}}</span>
+					{{/if}}
+					{{#if reading_time}}
+					<span class="masonry-reading-time">{{reading_time}}</span>
+					{{/if}}
+				</div>
+			</div>
+
+			<a href="{{url}}" class="masonry-link" aria-label="Read {{title}}"></a>
+		</article>
+		{{/foreach}}
+	</div>
+</section>
 
 {{! CTA Banner }}
 <section class="cta-banner">
@@ -75,56 +235,6 @@
 		</div>
 	</article>
 	{{/foreach}}
-</section>
-
-{{! Featured Masonry Section }}
-<section class="featured-masonry-section">
-	<h2 class="section-title">Featured Creative Works on poop junk</h2>
-	<div class="masonry-grid">
-		{{#foreach posts limit="12"}}
-		<article class="masonry-card {{#has tag="poetry,poem"}}tall{{/has}}{{#has tag="cartoon,drawing,art"}}wide{{/has}}{{#has tag="short-story,fiction"}}large{{/has}}" data-tags="{{tags separator=" "}}">
-			{{#if feature_image}}
-			<div class="masonry-image">
-				<img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
-				{{#has tag="cartoon,drawing,art,illustration"}}
-				<div class="content-type-badge">🎨</div>
-				{{/has}}
-				{{#has tag="poetry,poem"}}
-				<div class="content-type-badge">✍️</div>
-				{{/has}}
-				{{#has tag="story,fiction,short-story"}}
-				<div class="content-type-badge">📖</div>
-				{{/has}}
-				{{#has tag="essay,opinion,thoughts"}}
-				<div class="content-type-badge">💭</div>
-				{{/has}}
-			</div>
-			{{/if}}
-
-			<div class="masonry-content">
-				<h3 class="masonry-title">
-					<a href="{{url}}">{{title}}</a>
-				</h3>
-				{{#unless feature_image}}
-				<div class="masonry-excerpt">{{excerpt words="25"}}</div>
-				{{/unless}}
-				<div class="masonry-meta">
-					<time class="masonry-date" datetime="{{date published_at format="YYYY-MM-DD"}}">
-						{{date published_at format="DD MMM YYYY"}}
-					</time>
-					{{#if primary_tag}}
-					<span class="masonry-tag">{{primary_tag.name}}</span>
-					{{/if}}
-					{{#if reading_time}}
-					<span class="masonry-reading-time">{{reading_time}}</span>
-					{{/if}}
-				</div>
-			</div>
-
-			<a href="{{url}}" class="masonry-link" aria-label="Read {{title}}"></a>
-		</article>
-		{{/foreach}}
-	</div>
 </section>
 
 {{! Pagination }}
