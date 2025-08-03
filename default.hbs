@@ -20,7 +20,7 @@
 		<div class="header-content">
 			<div class="header-left">
 				<button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
-				<a href="{{@site.url}}" class="logo"><img src="{{asset "img/nyc.png"}}" alt="{{title}}" class="post-image post-image-fallback"></a>
+				<a href="{{@site.url}}" class="logo"><img src="{{asset "img/nyc.png"}}" alt="{{title}}"></a>
 				<div class="search-bar">
 					<input type="text" class="search-input" placeholder="Search {{@site.title}}">
 					<span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg></span>
@@ -45,22 +45,36 @@
 				<p class="tagline">An optimists guide to maintaining equanimity and sanity during an age of bullshit</p>
 				<ul class="sidebar-nav">
 					<li><a href="{{@site.url}}" class="sidebar-link {{#is "home"}}active{{/is}}">
-						<svg data-v-c9f5a6e8="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg> Home
+						<span class="nav-icon">
+							<svg data-v-c9f5a6e8="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+						</span>
+						 Home
 					</a></li>
 					<li><a href="{{@site.url}}/tag/poetry/" class="sidebar-link">
+						<span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
 						Blog
 					</a></li>
 					<li><a href="{{@site.url}}/tag/fiction/" class="sidebar-link">
-						<svg data-v-c9f5a6e8="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg> Topics
+						<span class="nav-icon">
+							<svg data-v-c9f5a6e8="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+						</span>
+						 Topics
 					</a></li>
 					<li><a href="{{@site.url}}/tag/art/" class="sidebar-link">
-						<svg data-v-c9f5a6e8="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg> Pages
+						<span class="nav-icon">
+							<svg data-v-c9f5a6e8="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+						</span>
+						 Pages
 					</a></li>
 					<li><a href="{{@site.url}}/archive/" class="sidebar-link">
+						<span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
 						Archive
 					</a></li>
-					<li><a href="{{@site.url}}/about/" class="sidebar-link">
-						<svg data-v-c9f5a6e8="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg> About
+					<li><a href="{{@site.url}}/tag/art/" class="sidebar-link">
+						<span class="nav-icon">
+							<svg data-v-c9f5a6e8="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+						</span>
+						 Legal
 					</a></li>
 				</ul>
 			</nav>
@@ -69,7 +83,8 @@
 			<div class="now-reading-widget">
 
 				<ul>
-					<li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="red" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="heart"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg> Maine made <em>with</em> Ghost + Buttermaker</li>
+					<li>Made in Maine <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="red" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="heart"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg> </li>
+					<li><em>with</em> Ghost + Magic Pages + Buttermaker</li>
 					<li>Current Weather: 29 Sunny</li>
 					<li>Last Knick Title: 9900 days</li>
 				</ul>
@@ -78,10 +93,9 @@
 					<a href="#/portal/" class="widget-btn" title="Subscribe" data-portal="signup"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail-icon lucide-mail"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></a>
 					<a href="{{@site.url}}/archive/" class="widget-btn" title="Archive"></a>
 				</div>
-<div class="widget-footer">
-					<span class="copyright">© {{date format="YYYY"}} You Can't Be Serious</span>
+				<div class="widget-footer">
+					<p class="copyright">© {{date format="YYYY"}} You Can't Be Serious</p>
 				</div>
-
 			</div>
 		</aside>
 
