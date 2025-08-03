@@ -12,6 +12,8 @@ import { SearchHandler } from './modules/search';
 import { TouchImprovements } from './modules/touch-improvements';
 import { PortalIntegration } from './modules/portal-integration';
 import { HorizontalScroll } from './modules/horizontal-scroll';
+import { SidebarDropdown } from './modules/sidebar-dropdown';
+import { InfiniteScroll } from './modules/infinite-scroll';
 
 /**
  * Initialize theme when DOM is ready
@@ -33,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		const touchImprovements = new TouchImprovements();
 		const portalIntegration = new PortalIntegration();
 		const horizontalScroll = new HorizontalScroll();
+		const sidebarDropdown = new SidebarDropdown();
+		const infiniteScroll = new InfiniteScroll();
 
 		// Make mobile navigation globally available
 		window.toggleSidebar = mobileNav.toggleSidebar.bind(mobileNav);

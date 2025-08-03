@@ -13,4 +13,5 @@
 @import "components/cta-banner.css";
 @import "components/pagination.css";
 @import "components/split-layout.css";
+@import "components/infinite-scroll.css";
 @import "layout/responsive.css";

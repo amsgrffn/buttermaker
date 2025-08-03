@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Masonry Grid Component
+   True Masonry Grid Component - 2 Columns
    ========================================================================== */
 
 .featured-masonry-section {
@@ -23,63 +23,52 @@
 	font-weight: 400;
 }
 
+/* TRUE MASONRY GRID - 2 Columns with natural heights! */
 .masonry-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-	gap: var(--space-xl);
-	grid-auto-rows: minmax(200px, auto);
+	position: relative;
+	width: 100%;
+	/* JavaScript will position the cards and set the height */
 }
 
+/* Cards positioned absolutely by JavaScript */
 .masonry-card {
+	position: absolute; /* JavaScript will position these */
+	width: calc((100% - var(--space-xl)) / 2); /* 2 columns with gap */
 	background: var(--color-background-card);
 	border-radius: var(--radius-lg);
 	overflow: hidden;
 	border: 1px solid rgb(234, 219, 250);
 	transition: all var(--transition-slow);
-	position: relative;
 	cursor: pointer;
 	box-shadow: 0px 4px 18px #0000000a, 0px 2.025px 7.84688px rgba(0, 0, 0, .027), 0px 0.8px 2.925px #00000005, 0px 0.175px 1.04062px rgba(0, 0, 0, .013);
+
+	/* Initially hidden for smooth entrance animations */
+	opacity: 0;
+	transform: translateY(20px);
+}
+
+/* Show cards after JavaScript positioning */
+.masonry-card.positioned {
+	opacity: 1;
+	transform: translateY(0);
 }
 
 .masonry-card:hover {
 	transform: translateY(-4px);
 	box-shadow: var(--shadow-md);
 	border-color: var(--color-border);
+	z-index: 10; /* Ensure hovered cards appear above others */
 }
 
-/* Card Size Variants */
-.masonry-card.tall {
-	grid-row: span 2;
-}
-
-.masonry-card.wide {
-	grid-column: span 2;
-}
-
-.masonry-card.large {
-	grid-row: span 2;
-	grid-column: span 2;
-}
-
-/* Card Image */
+/* Card Image - Natural height based on content */
 .masonry-image {
 	width: 100%;
-	height: 160px;
+	height: auto; /* Natural height based on image aspect ratio */
+	min-height: 120px; /* Minimum for consistency */
+	max-height: 300px; /* Maximum to prevent too tall images */
 	overflow: hidden;
 	position: relative;
 	background: var(--color-background-light);
-}
-
-.masonry-card.tall .masonry-image {
-	height: 220px;
-}
-
-.masonry-card.wide .masonry-image {
-	height: 180px;
-}
-
-.masonry-card.large .masonry-image {
-	height: 250px;
 }
 
 .masonry-image img {
@@ -107,14 +96,9 @@
 	font-weight: var(--font-weight-medium);
 }
 
-/* Card Content */
+/* Card Content - Natural height based on text content */
 .masonry-content {
 	padding: var(--space-3xl);
-}
-
-.masonry-card.wide .masonry-content,
-.masonry-card.large .masonry-content {
-	padding: var(--space-2xl);
 }
 
 .masonry-title {
@@ -123,10 +107,7 @@
 	line-height: var(--line-height-base);
 	margin-bottom: var(--space-md);
 	color: var(--color-text-dark);
-	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
+	/* No line clamping - let titles be their natural height */
 }
 
 .masonry-title a {
@@ -139,28 +120,11 @@
 	color: var(--color-primary);
 }
 
-.masonry-card.large .masonry-title {
-	font-size: var(--font-size-xl);
-	-webkit-line-clamp: 3;
-}
-
 .masonry-excerpt {
 	font-size: var(--font-size-md);
 	line-height: var(--line-height-base);
 	margin-bottom: var(--space-2xl);
-	display: -webkit-box;
-	-webkit-line-clamp: 4;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-}
-
-.masonry-card.tall .masonry-excerpt {
-	-webkit-line-clamp: 5;
-}
-
-.masonry-card.large .masonry-excerpt {
-	font-size: var(--font-size-md);
-	-webkit-line-clamp: 4;
+	/* No line clamping - let excerpts flow naturally */
 }
 
 .masonry-meta {
@@ -186,7 +150,6 @@
 	border-radius: var(--radius-base);
 	font-style: italic;
 	font-weight: 400;
-
 }
 
 .masonry-reading-time {
@@ -203,40 +166,17 @@
 }
 
 /* Responsive Masonry */
-@media (max-width: 1199px) and (min-width: 768px) {
-	.masonry-grid {
-		grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-		gap: var(--space-lg);
-	}
-
-	.masonry-card.wide,
-	.masonry-card.large {
-		grid-column: span 1;
-	}
-
-	.section-title {
-		font-size: var(--font-size-xl);
-	}
-}
-
 @media (max-width: 767px) {
+	.masonry-card {
+		width: 100%; /* Single column on mobile */
+		position: relative !important; /* Override absolute positioning on mobile */
+		margin-bottom: var(--space-lg);
+		opacity: 1 !important; /* Show cards normally on mobile */
+		transform: none !important;
+	}
+
 	.masonry-grid {
-		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-		gap: var(--space-lg);
-	}
-
-	.masonry-card.wide,
-	.masonry-card.large {
-		grid-column: span 1;
-	}
-
-	.masonry-card.tall,
-	.masonry-card.large {
-		grid-row: span 1;
-	}
-
-	.masonry-image {
-		height: 140px !important;
+		display: block; /* Stack cards normally on mobile */
 	}
 
 	.masonry-content {
@@ -255,11 +195,4 @@
 	.featured-masonry-section {
 		margin-bottom: var(--space-3xl);
 	}
-}
-
-@media (max-width: 375px) {
-	.masonry-grid {
-		grid-template-columns: 1fr;
-	}
-
 }

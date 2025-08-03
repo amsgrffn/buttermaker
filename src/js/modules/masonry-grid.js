@@ -1,6 +1,6 @@
 /**
- * Masonry Grid Module
- * Handles masonry grid layout and card interactions
+ * True Masonry Grid Module - 2 Columns
+ * Handles true masonry layout with dynamic card positioning
  */
 
 import { debounce, isInViewport } from './theme';
@@ -10,6 +10,10 @@ export class MasonryGrid {
 		this.grid = document.querySelector('.masonry-grid');
 		this.cards = document.querySelectorAll('.masonry-card');
 		this.observer = null;
+		this.columns = [];
+		this.columnCount = 2; // Changed from 4 to 2!
+		this.gap = 24; // Default gap in pixels
+		this.isLayouting = false;
 
 		this.init();
 	}
@@ -23,11 +27,114 @@ export class MasonryGrid {
 			return;
 		}
 
+		this.calculateColumns();
 		this.bindEvents();
 		this.setupIntersectionObserver();
-		this.handleInitialLayout();
 
-		console.log('🧱 Masonry Grid initialized');
+		// Wait for images to load, then layout
+		this.waitForImages().then(() => {
+			this.layoutMasonry();
+			this.handleInitialLayout();
+		});
+
+		console.log('🧱 True Masonry Grid initialized (2 columns)');
+	}
+
+	/**
+	 * Wait for all images in cards to load
+	 */
+	waitForImages() {
+		const images = this.grid.querySelectorAll('img');
+		const imagePromises = Array.from(images).map(img => {
+			return new Promise(resolve => {
+				if (img.complete) {
+					resolve();
+				} else {
+					img.addEventListener('load', resolve);
+					img.addEventListener('error', resolve); // Resolve even on error
+				}
+			});
+		});
+
+		return Promise.all(imagePromises);
+	}
+
+	/**
+	 * Calculate number of columns based on screen size
+	 */
+	calculateColumns() {
+		const screenWidth = window.innerWidth;
+
+		if (screenWidth <= 767) {
+			this.columnCount = 1; // Single column on mobile
+			this.gap = 16;
+		} else {
+			this.columnCount = 2; // Always 2 columns on desktop/tablet
+			this.gap = 24;
+		}
+
+		// Initialize column heights
+		this.columns = new Array(this.columnCount).fill(0);
+	}
+
+	/**
+	 * Main masonry layout function
+	 */
+	layoutMasonry() {
+		if (this.isLayouting) return;
+		this.isLayouting = true;
+
+		// Reset column heights
+		this.columns = new Array(this.columnCount).fill(0);
+
+		// Calculate card width
+		const containerWidth = this.grid.offsetWidth;
+		const cardWidth = (containerWidth - (this.gap * (this.columnCount - 1))) / this.columnCount;
+
+		// Position each card
+		this.cards.forEach((card, index) => {
+			this.positionCard(card, cardWidth, index);
+		});
+
+		// Set grid container height
+		const maxColumnHeight = Math.max(...this.columns);
+		this.grid.style.height = `${maxColumnHeight}px`;
+
+		this.isLayouting = false;
+	}
+
+	/**
+	 * Position individual card in the shortest column
+	 */
+	positionCard(card, cardWidth, index) {
+		// Skip positioning on mobile (cards stack naturally)
+		if (window.innerWidth <= 767) {
+			return;
+		}
+
+		// Find shortest column
+		const shortestColumnIndex = this.columns.indexOf(Math.min(...this.columns));
+		const shortestColumnHeight = this.columns[shortestColumnIndex];
+
+		// Calculate position
+		const left = shortestColumnIndex * (cardWidth + this.gap);
+		const top = shortestColumnHeight;
+
+		// Apply positioning (but don't show yet)
+		card.style.left = `${left}px`;
+		card.style.top = `${top}px`;
+		card.style.width = `${cardWidth}px`;
+
+		// Get card height (including any content that loaded)
+		const cardHeight = card.offsetHeight;
+
+		// Update column height
+		this.columns[shortestColumnIndex] += cardHeight + this.gap;
+
+		// Add entrance animation with stagger
+		setTimeout(() => {
+			card.classList.add('positioned');
+		}, index * 100);
 	}
 
 	/**
@@ -39,19 +146,19 @@ export class MasonryGrid {
 			card.addEventListener('click', (e) => this.handleCardClick(e));
 		});
 
-		// Window resize handler
+		// Window resize handler with debounce
 		window.addEventListener('resize', debounce(() => {
 			this.handleResize();
 		}, 150));
 
-		// Custom masonry update event
+		// Custom masonry update event (for filtering)
 		window.addEventListener('masonryUpdate', (e) => {
 			this.handleMasonryUpdate(e.detail);
 		});
 
-		// Theme resize event
-		window.addEventListener('themeResize', (e) => {
-			this.handleThemeResize(e.detail);
+		// Images loaded event
+		window.addEventListener('load', () => {
+			this.layoutMasonry();
 		});
 	}
 
@@ -113,7 +220,7 @@ export class MasonryGrid {
 	}
 
 	/**
-	 * Setup intersection observer for lazy loading and animations
+	 * Setup intersection observer for lazy loading
 	 */
 	setupIntersectionObserver() {
 		if (!('IntersectionObserver' in window)) {
@@ -141,12 +248,6 @@ export class MasonryGrid {
 	 * Handle card becoming visible
 	 */
 	handleCardVisible(card) {
-		// Add entrance animation
-		if (!card.classList.contains('animated')) {
-			this.animateCardEntrance(card);
-			card.classList.add('animated');
-		}
-
 		// Lazy load images
 		this.lazyLoadImages(card);
 
@@ -154,21 +255,6 @@ export class MasonryGrid {
 		if (this.observer) {
 			this.observer.unobserve(card);
 		}
-	}
-
-	/**
-	 * Animate card entrance
-	 */
-	animateCardEntrance(card) {
-		card.style.opacity = '0';
-		card.style.transform = 'translateY(20px)';
-
-		// Trigger animation
-		requestAnimationFrame(() => {
-			card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-			card.style.opacity = '1';
-			card.style.transform = 'translateY(0)';
-		});
 	}
 
 	/**
@@ -183,6 +269,8 @@ export class MasonryGrid {
 
 			img.addEventListener('load', () => {
 				img.style.opacity = '1';
+				// Re-layout if image changes card height significantly
+				this.layoutMasonry();
 			});
 		});
 	}
@@ -191,27 +279,31 @@ export class MasonryGrid {
 	 * Handle window resize
 	 */
 	handleResize() {
-		// Re-calculate grid layout if needed
-		this.recalculateLayout();
+		const oldColumnCount = this.columnCount;
+		this.calculateColumns();
 
-		// Update card sizes based on new screen size
-		this.updateCardSizes();
+		// Re-layout if column count changed or screen size changed significantly
+		if (oldColumnCount !== this.columnCount) {
+			// Hide cards temporarily for smooth transition
+			this.cards.forEach(card => {
+				card.classList.remove('positioned');
+			});
+
+			// Re-layout after brief delay
+			setTimeout(() => {
+				this.layoutMasonry();
+			}, 100);
+		} else {
+			// Just re-layout with current settings
+			this.layoutMasonry();
+		}
 	}
 
 	/**
-	 * Handle theme resize event
+	 * Handle initial layout
 	 */
-	handleThemeResize(resizeInfo) {
-		const { isMobile, isTablet, isDesktop } = resizeInfo;
-
-		// Adjust card behavior based on screen size
-		if (isMobile) {
-			this.optimizeForMobile();
-		} else if (isTablet) {
-			this.optimizeForTablet();
-		} else if (isDesktop) {
-			this.optimizeForDesktop();
-		}
+	handleInitialLayout() {
+		console.log('🎯 2-Column Masonry layout complete');
 	}
 
 	/**
@@ -220,179 +312,23 @@ export class MasonryGrid {
 	handleMasonryUpdate(detail) {
 		const { visibleCards } = detail;
 
-		// Re-animate visible cards
-		this.reanimateVisibleCards(visibleCards);
+		// Update cards collection to only visible ones
+		this.cards = document.querySelectorAll('.masonry-card:not([style*="display: none"])');
 
-		// Update layout
-		this.recalculateLayout();
+		// Re-layout with visible cards
+		setTimeout(() => {
+			this.layoutMasonry();
+		}, 50);
 	}
 
 	/**
-	 * Re-animate visible cards after filtering
+	 * Track analytics
 	 */
-	reanimateVisibleCards(visibleCards) {
-		visibleCards.forEach((card, index) => {
-			// Stagger the animations
-			setTimeout(() => {
-				card.style.opacity = '0';
-				card.style.transform = 'translateY(20px)';
+	trackCardClick(card) {
+		const title = card.querySelector('.masonry-title');
 
-				requestAnimationFrame(() => {
-					card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-					card.style.opacity = '1';
-					card.style.transform = 'translateY(0)';
-				});
-			}, index * 50);
-		});
-	}
-
-	/**
-	 * Optimize grid for mobile
-	 */
-	optimizeForMobile() {
-		// Ensure single column layout
-		this.cards.forEach(card => {
-			card.classList.remove('wide', 'large');
-
-			// Keep tall class only for poetry/content that benefits
-			if (!card.hasAttribute('data-keep-tall')) {
-				card.classList.remove('tall');
-			}
-		});
-	}
-
-	/**
-	 * Optimize grid for tablet
-	 */
-	optimizeForTablet() {
-		// Remove wide/large classes that don't work well on tablet
-		this.cards.forEach(card => {
-			card.classList.remove('wide', 'large');
-		});
-	}
-
-	/**
-	 * Optimize grid for desktop
-	 */
-	optimizeForDesktop() {
-		// Restore original card classes
-		this.cards.forEach(card => {
-			const originalClasses = card.getAttribute('data-original-classes');
-			if (originalClasses) {
-				card.className = originalClasses;
-			}
-		});
-	}
-
-	/**
-	 * Update card sizes based on content
-	 */
-	updateCardSizes() {
-		this.cards.forEach(card => {
-			const content = card.querySelector('.masonry-content');
-			const image = card.querySelector('.masonry-image');
-
-			if (content && image) {
-				// Adjust card height based on content
-				const contentHeight = content.offsetHeight;
-				const imageHeight = image.offsetHeight;
-				const totalHeight = contentHeight + imageHeight;
-
-				// Dynamic sizing based on content amount
-				if (totalHeight > 400 && !card.classList.contains('large')) {
-					card.style.gridRowEnd = 'span 2';
-				}
-			}
-		});
-	}
-
-	/**
-	 * Recalculate grid layout
-	 */
-	recalculateLayout() {
-		// Force browser to recalculate grid layout
-		if (this.grid) {
-			const display = this.grid.style.display;
-			this.grid.style.display = 'none';
-
-			// Trigger reflow
-			this.grid.offsetHeight;
-
-			this.grid.style.display = display;
-		}
-	}
-
-	/**
-	 * Handle initial layout
-	 */
-	handleInitialLayout() {
-		// Store original classes for responsive behavior
-		this.cards.forEach(card => {
-			card.setAttribute('data-original-classes', card.className);
-		});
-
-		// Add staggered entrance animations for initially visible cards
-		this.animateInitialCards();
-	}
-
-	/**
-	 * Animate initially visible cards
-	 */
-	animateInitialCards() {
-		const visibleCards = Array.from(this.cards).filter(card =>
-			isInViewport(card, 100)
-		);
-
-		visibleCards.forEach((card, index) => {
-			setTimeout(() => {
-				this.handleCardVisible(card);
-			}, index * 100);
-		});
-	}
-
-	/**
-	 * Add new card to grid
-	 */
-	addCard(cardElement) {
-		if (this.grid && cardElement) {
-			this.grid.appendChild(cardElement);
-
-			// Setup observer for new card
-			if (this.observer) {
-				this.observer.observe(cardElement);
-			}
-
-			// Add click handler
-			cardElement.addEventListener('click', (e) => this.handleCardClick(e));
-
-			// Update cards collection
-			this.cards = document.querySelectorAll('.masonry-card');
-		}
-	}
-
-	/**
-	 * Remove card from grid
-	 */
-	removeCard(cardElement) {
-		if (cardElement) {
-			// Stop observing
-			if (this.observer) {
-				this.observer.unobserve(cardElement);
-			}
-
-			// Remove from DOM with animation
-			cardElement.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-			cardElement.style.opacity = '0';
-			cardElement.style.transform = 'scale(0.8)';
-
-			setTimeout(() => {
-				if (cardElement.parentNode) {
-					cardElement.parentNode.removeChild(cardElement);
-				}
-
-				// Update cards collection
-				this.cards = document.querySelectorAll('.masonry-card');
-			}, 300);
+		if (typeof window.trackEvent === 'function') {
+			window.trackEvent('Masonry Grid', 'Card Click', title ? title.textContent : 'Unknown');
 		}
 	}
 
@@ -405,43 +341,13 @@ export class MasonryGrid {
 			card.style.display !== 'none'
 		).length;
 
-		const cardTypes = {
-			standard: 0,
-			tall: 0,
-			wide: 0,
-			large: 0
-		};
-
-		this.cards.forEach(card => {
-			if (card.classList.contains('large')) {
-				cardTypes.large++;
-			} else if (card.classList.contains('wide')) {
-				cardTypes.wide++;
-			} else if (card.classList.contains('tall')) {
-				cardTypes.tall++;
-			} else {
-				cardTypes.standard++;
-			}
-		});
-
 		return {
 			totalCards,
 			visibleCards,
-			cardTypes,
-			gridWidth: this.grid ? this.grid.offsetWidth : 0
+			columnCount: this.columnCount,
+			gridWidth: this.grid ? this.grid.offsetWidth : 0,
+			gridHeight: this.grid ? this.grid.offsetHeight : 0
 		};
-	}
-
-	/**
-	 * Track analytics
-	 */
-	trackCardClick(card) {
-		const title = card.querySelector('.masonry-title');
-		const tags = card.getAttribute('data-tags') || '';
-
-		if (typeof window.trackEvent === 'function') {
-			window.trackEvent('Masonry Grid', 'Card Click', title ? title.textContent : 'Unknown');
-		}
 	}
 
 	/**

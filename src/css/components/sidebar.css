@@ -262,6 +262,133 @@ svg.heart {
 	margin: 0;
 }
 
+/* ==========================================================================
+   Sidebar Dropdown Styles - Add these to your sidebar.css file
+   ========================================================================== */
+
+/* Dropdown Container */
+.sidebar-nav .has-dropdown {
+	position: relative;
+}
+
+.sidebar-nav .has-dropdown .sidebar-link {
+	cursor: pointer;
+	position: relative;
+}
+
+/* Icon transition for smooth plus/minus transformation */
+.sidebar-nav .has-dropdown .nav-icon svg {
+	transition: all 0.2s ease-in-out;
+}
+
+/* Dropdown Submenu */
+.dropdown-submenu {
+	overflow: hidden;
+	max-height: 0;
+	transition: max-height 0.3s ease-in-out;
+	background: transparent;
+}
+
+.dropdown-submenu ul {
+	list-style: none;
+	padding: 0;
+	margin: var(--space-xs) 0 0 0;
+	border-left: 2px solid var(--color-border-light);
+	margin-left: calc(16px + var(--space-sm)); /* Align with icon + gap */
+}
+
+.dropdown-submenu li {
+	margin-bottom: 0;
+}
+
+.dropdown-submenu .dropdown-link {
+	display: block;
+	padding: var(--space-xs) var(--space-sm);
+	color: var(--color-text-medium);
+	text-decoration: none;
+	font-size: var(--font-size-md);
+	font-weight: 600;
+	transition: all var(--transition-base);
+	border-left: 2px solid transparent;
+	margin-left: 2px; /* Align with border */
+}
+
+.dropdown-submenu .dropdown-link:hover {
+	color: var(--color-text-dark);
+	background: var(--color-background-light);
+	border-left-color: var(--color-primary);
+}
+
+/* Animation classes */
+.dropdown-submenu.expanding,
+.dropdown-submenu.collapsing {
+	transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Open state styling */
+.sidebar-nav .has-dropdown.open > .sidebar-link {
+	background: var(--color-background-light);
+	color: var(--color-text-dark);
+}
+
+/* Hover state for dropdown parents */
+.sidebar-nav .has-dropdown > .sidebar-link:hover {
+	background: var(--color-background-light);
+	color: var(--color-text-dark);
+}
+
+/* Active dropdown parent styling - when dropdown is open */
+.sidebar-nav .has-dropdown.open > .sidebar-link .nav-icon svg {
+	opacity: 1;
+	background-color: var(--color-primary);
+	color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+	/* Slightly reduce spacing on mobile */
+	.dropdown-submenu ul {
+		margin-left: calc(14px + var(--space-sm));
+	}
+
+	.dropdown-submenu .dropdown-link {
+		padding: calc(var(--space-xs) * 0.8) var(--space-sm);
+		font-size: calc(var(--font-size-sm) * 0.95);
+	}
+}
+
+/* Accessibility improvements */
+.sidebar-nav .has-dropdown[aria-expanded="true"] > .sidebar-link {
+	background: var(--color-background-light);
+}
+
+/* Focus styles for keyboard navigation */
+.dropdown-submenu .dropdown-link:focus {
+	outline: 2px solid var(--color-primary);
+	outline-offset: -2px;
+	background: var(--color-background-light);
+	color: var(--color-text-dark);
+}
+
+/* Ensure smooth transitions even on slower devices */
+@media (prefers-reduced-motion: reduce) {
+	.dropdown-submenu,
+	.sidebar-nav .has-dropdown .nav-icon svg,
+	.dropdown-submenu.expanding,
+	.dropdown-submenu.collapsing {
+		transition: none;
+	}
+}
+
+/* Performance optimization - GPU acceleration for animations */
+.dropdown-submenu {
+	transform: translateZ(0);
+}
+
+.sidebar-nav .has-dropdown .nav-icon svg {
+	transform: translateZ(0);
+}
+
 
 /* Mobile Sidebar */
 @media (max-width: 767px) {

@@ -188,8 +188,32 @@
 			{{/foreach}}
 		</section>
 
-		{{! Pagination }}
-		{{pagination}}
+		{{! REPLACED: Infinite Scroll Load More Button instead of {{pagination}} }}
+		{{#if pagination.next}}
+		<div class="load-more">
+			<button id="load-more-btn" type="button" aria-label="Load more posts">
+				Read More
+			</button>
+		</div>
+		{{else}}
+		<div class="load-more">
+			<button id="load-more-btn" type="button" disabled class="no-more">
+				No more posts
+			</button>
+		</div>
+		{{/if}}
+
+		{{! Hidden pagination data for JavaScript }}
+		<script type="application/json" id="pagination-data">
+		{
+			"currentPage": {{pagination.page}},
+			"totalPages": {{pagination.pages}},
+			"hasNext": {{#if pagination.next}}true{{else}}false{{/if}},
+			"hasPrev": {{#if pagination.prev}}true{{else}}false{{/if}},
+			"total": {{pagination.total}},
+			"limit": {{pagination.limit}}
+		}
+		</script>
 	</div>
 
 	{{! NEW: Aside/Notes Section (1/3 width) }}
