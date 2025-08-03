@@ -72,8 +72,8 @@
 		{{! CTA Banner (RESTORED ORIGINAL) }}
 		<section class="cta-banner">
 			<div class="cta-content">
-				<h2 class="cta-title">Get Our Weekly(ish) Newsletter Having a Cow </h2>
-				<p class="cta-description">{{@site.description}}</p>
+				<h2 class="cta-title">Get the <em>Cosmo Super</em> Newsletter</h2>
+				<p class="cta-description">Like it knows it killed the world once and got a taste for murder. After the avalanche, it took us a week to climb out.</p>
 				<div class="cta-buttons">
 					{{#unless @member}}
 					<a href="#/portal/signup" class="cta-btn primary" data-portal="signup">Subscribe for free</a>
@@ -85,7 +85,7 @@
 				</div>
 			</div>
 		</section>
-<h2 class="section-title">Latest Posts <em>&amp;</em> Rants</h2>
+<h2 class="section-title">Latest Prose <em>&amp;</em> Verse</h2>
 		{{! Category Tabs Section (RESTORED ORIGINAL) }}
 		<section class="category-tabs-section">
 			<div class="category-tabs-container">
@@ -104,7 +104,8 @@
 		{{! Creative Works Masonry Section (RESTORED ORIGINAL) }}
 		<section class="featured-masonry-section">
 			<div class="masonry-grid">
-				{{#foreach posts limit="16"}}
+				{{#get "posts" include="authors,tags" filter="tag:[fiction,poem,review]" limit="12"}}
+				{{#foreach posts}}
 				<article class="masonry-card">
 					{{#if feature_image}}
 					<div class="masonry-image">
@@ -133,14 +134,15 @@
 					<a href="{{url}}" class="masonry-link" aria-label="Read {{title}}"></a>
 				</article>
 				{{/foreach}}
+				{{/get}}
 			</div>
 		</section>
 
-		{{! Latest Posts Feed (RESTORED ORIGINAL) }}
+		{{! Regular Post Feed }}
 		<section class="post-feed">
 			<h2 class="section-title">Latest Posts</h2>
 			{{#foreach posts offset="12"}}
-			<article class="post-card">
+			<article class="post-card post-card--with-image">
 				<div class="post-header">
 					<img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
 					<div class="author-info">
@@ -149,36 +151,32 @@
 							<time datetime="{{date published_at format="YYYY-MM-DD"}}">
 								{{date published_at timeago="true"}}
 							</time>
-							{{#if reading_time}}
-							• {{reading_time}}
-							{{/if}}
 						</div>
 					</div>
-					{{#unless @member}}
-					<a href="#/portal/signup" class="subscribe-btn-small" data-portal="signup">Subscribe</a>
-					{{/unless}}
 				</div>
 
-				<div class="post-content">
-					<h2 class="post-title">
-						<a href="{{url}}">{{title}}</a>
-					</h2>
-					<p class="post-excerpt">{{excerpt words="50"}}</p>
-				</div>
-
-				{{#if feature_image}}
-				<div class="post-media">
-					<a href="{{url}}">
-						<img src="{{img_url feature_image size="l"}}" alt="{{title}}" class="post-image">
-					</a>
-				</div>
-				{{/if}}
-
-				<div class="post-actions">
-					<span class="post-action" data-action="like">👍 Like</span>
-					<a href="{{url}}#comments" class="post-action">💬 Comment</a>
-					<span class="post-action" data-action="share">🔗 Share</span>
-					<span class="post-action" data-action="save">⭐ Save</span>
+				<div class="post-body-flex">
+					<div class="post-content-flex">
+						<h2 class="post-title">
+							<a href="{{url}}">{{title}}</a>
+						</h2>
+						<p class="post-excerpt">{{excerpt words="50"}}</p>
+						<div class="post-actions">
+							<span class="post-action" data-action="like">Like</span>
+							<a href="{{url}}#comments" class="post-action">Comment</a>
+							<span class="post-action" data-action="share">Share</span>
+							<span class="post-action" data-action="save">Save</span>
+						</div>
+					</div>
+					<div class="post-media-flex">
+						<a href="{{url}}">
+							{{#if feature_image}}
+							<img src="{{img_url feature_image size="m"}}" alt="{{title}}" class="post-image">
+							{{else}}
+							<img src="{{asset "img/john.jpeg"}}" alt="{{title}}" class="post-image post-image-fallback">
+							{{/if}}
+						</a>
+					</div>
 				</div>
 			</article>
 			{{/foreach}}

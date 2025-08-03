@@ -29,11 +29,12 @@
 }
 
 .logo {
-	width: 32px;
-	height: 32px;
-	background: var(--color-primary);
+	width: 60px;
+	height: 60px;
 	border-radius: var(--radius-sm);
 	display: flex;
+
+	filter: grayscale(70%);
 	align-items: center;
 	justify-content: center;
 	color: white;

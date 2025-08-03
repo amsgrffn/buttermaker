@@ -30,10 +30,15 @@
 }
 
 .cta-title {
-	font-size: var(--font-size-3xl);
-	font-weight: var(--font-weight-bold);
+	font-family: "abril-titling-condensed", serif;
+	font-size: var(--font-size-5xl);
+	font-weight: 600;
 	margin-bottom: var(--space-md);
 	color: white;
+}
+
+.cta-title em {
+	font-weight: 800
 }
 
 .cta-description {

@@ -20,15 +20,15 @@
 		<div class="header-content">
 			<div class="header-left">
 				<button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
-				<a href="{{@site.url}}" class="logo">{{@site.title.[0]}}</a>
+				<a href="{{@site.url}}" class="logo"><img src="{{asset "img/nyc.png"}}" alt="{{title}}" class="post-image post-image-fallback"></a>
 				<div class="search-bar">
 					<input type="text" class="search-input" placeholder="Search {{@site.title}}">
-					<span class="search-icon">🔍</span>
+					<span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg></span>
 				</div>
 			</div>
 			<div class="header-right">
 				{{#unless @member}}
-					<a href="#/portal/signin" class="header-btn" data-portal="signin">Sign in</a>
+					<a href="#/portal/signin" class="header-btn" data-portal="signin">Member Login</a>
 					<a href="#/portal/signup" class="header-btn primary" data-portal="signup">Subscribe</a>
 				{{else}}
 					<a href="#/portal/account" class="header-btn" data-portal="account">Account</a>
@@ -48,7 +48,7 @@
 						Home
 					</a></li>
 					<li><a href="{{@site.url}}/tag/poetry/" class="sidebar-link">
-						Poetry
+						Blog
 					</a></li>
 					<li><a href="{{@site.url}}/tag/fiction/" class="sidebar-link">
 						Fiction
