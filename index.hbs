@@ -4,14 +4,13 @@
 <section class="horizontal-scroll-section">
 	<div class="horizontal-scroll-header">
 		<h2 class="horizontal-scroll-title">Trending Now</h2>
-		<div class="horizontal-scroll-controls">
-			<button class="scroll-btn scroll-btn-prev" aria-label="Scroll left">←</button>
-			<button class="scroll-btn scroll-btn-next" aria-label="Scroll right">→</button>
-		</div>
 	</div>
 
 	<div class="horizontal-scroll-container">
+		<button class="scroll-btn scroll-btn-prev" aria-label="Scroll left"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left-icon lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg></button>
+		<button class="scroll-btn scroll-btn-next" aria-label="Scroll right"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right-icon lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg></button>
 		<div class="horizontal-scroll-track">
+
 			{{#get "posts" filter="featured:true" limit="8" as |featured_posts|}}
 				{{#if featured_posts}}
 					{{#foreach featured_posts}}
@@ -85,7 +84,7 @@
 				</div>
 			</div>
 		</section>
-<h2 class="section-title">Latest Prose <em>&amp;</em> Verse</h2>
+<h2 class="section-title"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="red" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="heart"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg>Latest Prose <em>&amp;</em> Verse</h2>
 		{{! Category Tabs Section (RESTORED ORIGINAL) }}
 		<section class="category-tabs-section">
 			<div class="category-tabs-container">
@@ -200,22 +199,34 @@
 						<div class="note-body">
 						<p>Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you. But I can't give you this case, it <a href="/">don't belong to me</a>. Besides, I've already been through too much shit this morning over this case to hand it over to your dumb ass.</p>
 						</div>
-						<time class="note-date">3 days ago</time>
+						<div class="note-meta">
+							<img src="{{asset "img/nyc.png"}}" alt="{{title}}" class="post-image post-image-fallback">
+							<time class="note-date">3 days ago</time>
+						</div>
 					</div>
 					<div class="note-item">
 						<h4 class="note-title">Art Inspiration</h4>
 						<p class="note-text">I should've known way back when... You know why, David? Because of the kids. They called me Mr Glass.</p>
-						<time class="note-date">1 week ago</time>
+						<div class="note-meta">
+							<img src="{{asset "img/nyc.png"}}" alt="{{title}}" class="post-image post-image-fallback">
+							<time class="note-date">3 days ago</time>
+						</div>
 					</div>
 					<div class="note-item">
 						<h4 class="note-title">Reader Feedback</h4>
 						<p class="note-text">You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it killed the world once and got a taste for murder. After the avalanche, it took us a week to climb out.</p>
-						<time class="note-date">2 weeks ago</time>
+						<div class="note-meta">
+							<img src="{{asset "img/nyc.png"}}" alt="{{title}}" class="post-image post-image-fallback">
+							<time class="note-date">3 days ago</time>
+						</div>
 					</div>
 					<div class="note-item">
 						<h4 class="note-title">Writing Process</h4>
 						<p class="note-text">My money's in that office, right? If she start giving me some bullshit about it ain't there, and we got to go someplace else and get it, I'm gonna shoot you in the head then and there. Then I'm gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. Hey, look at me when I'm talking to you, motherfucker.</p>
-						<time class="note-date">3 days ago</time>
+						<div class="note-meta">
+							<img src="{{asset "img/nyc.png"}}" alt="{{title}}" class="post-image post-image-fallback">
+							<time class="note-date">3 days ago</time>
+						</div>
 					</div>
 					<div class="note-item">
 						<h4 class="note-title">Writing Process</h4>

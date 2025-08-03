@@ -45,61 +45,43 @@
 				<p class="tagline">An optimists guide to maintaining equanimity and sanity during an age of bullshit</p>
 				<ul class="sidebar-nav">
 					<li><a href="{{@site.url}}" class="sidebar-link {{#is "home"}}active{{/is}}">
-						Home
+						<svg data-v-c9f5a6e8="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg> Home
 					</a></li>
 					<li><a href="{{@site.url}}/tag/poetry/" class="sidebar-link">
 						Blog
 					</a></li>
 					<li><a href="{{@site.url}}/tag/fiction/" class="sidebar-link">
-						Fiction
+						<svg data-v-c9f5a6e8="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg> Topics
 					</a></li>
 					<li><a href="{{@site.url}}/tag/art/" class="sidebar-link">
-						Art & Cartoons
+						<svg data-v-c9f5a6e8="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg> Pages
 					</a></li>
 					<li><a href="{{@site.url}}/archive/" class="sidebar-link">
 						Archive
 					</a></li>
 					<li><a href="{{@site.url}}/about/" class="sidebar-link">
-						About
+						<svg data-v-c9f5a6e8="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg> About
 					</a></li>
 				</ul>
 			</nav>
 
 			{{! Now Reading Widget }}
 			<div class="now-reading-widget">
-				<div class="widget-header">
-					<span class="widget-icon">📖</span>
-					<span class="widget-title">FEATURED</span>
-				</div>
 
-				{{#get "posts" filter="featured:true" limit="3" as |featured_posts|}}
-				{{#foreach featured_posts}}
-				<div class="widget-content">
-					<div class="widget-cover">
-						{{#if feature_image}}
-						<img src="{{img_url feature_image size="s"}}" alt="{{title}}" class="cover-image">
-						{{else}}
-						<div class="cover-image" style="background: linear-gradient(45deg, #ff6719 0%, #ff9f43 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">{{title.[0]}}</div>
-						{{/if}}
-					</div>
-
-					<div class="widget-info">
-						<div class="widget-post-title">{{title}}poop</div>
-						<div class="widget-author">by {{primary_author.name}}</div>
-					</div>
-				</div>
-				{{/foreach}}
-				{{/get}}
-
+				<ul>
+					<li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="red" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="heart"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg> Maine made <em>with</em> Ghost + Buttermaker</li>
+					<li>Current Weather: 29 Sunny</li>
+					<li>Last Knick Title: 9900 days</li>
+				</ul>
 				<div class="widget-controls">
-					<a href="{{@site.url}}/rss/" class="widget-btn" title="RSS Feed">📡</a>
-					<a href="#/portal/" class="widget-btn" title="Subscribe" data-portal="signup">📧</a>
-					<a href="{{@site.url}}/archive/" class="widget-btn" title="Archive">📚</a>
+					<a href="{{@site.url}}/rss/" class="widget-btn" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rss-icon lucide-rss"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg></a>
+					<a href="#/portal/" class="widget-btn" title="Subscribe" data-portal="signup"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail-icon lucide-mail"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></a>
+					<a href="{{@site.url}}/archive/" class="widget-btn" title="Archive"></a>
+				</div>
+<div class="widget-footer">
+					<span class="copyright">© {{date format="YYYY"}} You Can't Be Serious</span>
 				</div>
 
-				<div class="widget-footer">
-					<span class="copyright">© {{date format="YYYY"}}</span>
-				</div>
 			</div>
 		</aside>
 

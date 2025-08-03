@@ -171,6 +171,10 @@
 	color: var(--color-text-medium);
 }
 
+.masonry-meta img {
+	filter: grayscale(70%);
+}
+
 .masonry-date {
 	font-weight: var(--font-weight-medium);
 }

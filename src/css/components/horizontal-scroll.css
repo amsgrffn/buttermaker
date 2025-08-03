@@ -4,15 +4,13 @@
 
 /* Horizontal Scroll Section - KEEP viewport spanning for trending section */
 .horizontal-scroll-section {
-	width: 100vw;
-	position: relative;
-	left: 50%;
-	right: 50%;
+	/* REMOVED: All viewport-spanning CSS */
+	width: auto; /* Changed from 100vw */
+	position: static; /* Changed from relative */
+	/* REMOVED: left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; */
 	border-bottom: 1px solid var(--color-border-dark);
-	margin-left: -50vw;
-	margin-right: -50vw;
 	margin-bottom: 0;
-	padding: 0 var(--space-xl) var(--space-2xl);
+	padding: 0 0 var(--space-2xl); /* Removed horizontal padding */
 	overflow: hidden;
 }
 
@@ -20,9 +18,10 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	max-width: 1400px;
-	margin: 0 auto;
-	padding: 0 var(--space-lg);
+	width: 1228px; /* 800px + 380px + 48px gap */
+	margin: 0;
+	margin-left: 2rem; /* Match split-content-wrapper padding */
+	padding: 0;
 	margin-bottom: var(--space-lg);
 }
 
@@ -68,9 +67,30 @@
 
 .horizontal-scroll-container {
 	position: relative;
-	max-width: 1400px;
-	margin: 0 auto;
-	padding: 0 var(--space-lg);
+	width: 1228px; /* 800px + 380px + 48px gap */
+	margin: 0;
+	margin-left: 2rem; /* Match split-content-wrapper padding */
+	padding: 0;
+}
+
+.horizontal-scroll-container {
+	position: relative;
+	width: 1228px;
+	margin: 0;
+	margin-left: 2rem;
+	padding: 0;
+}
+
+.horizontal-scroll-container::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 40px;
+	height: 100%;
+	background: linear-gradient(to right, transparent, var(--color-background));
+	pointer-events: none;
+	z-index: 1;
 }
 
 .horizontal-scroll-track {
@@ -81,7 +101,12 @@
 	scrollbar-width: none;
 	-ms-overflow-style: none;
 	padding-bottom: var(--space-sm);
+	padding-left: var(--space-4xl);
+	padding-right: var(--space-4xl) !important; /* Force it with !important */
+	scroll-snap-type: x mandatory;
+	box-sizing: content-box; /* Ensure padding is added to the width */
 }
+
 
 .horizontal-scroll-track::-webkit-scrollbar {
 	display: none;
@@ -295,6 +320,57 @@
 	font-size: var(--font-size-lg);
 	margin-bottom: var(--space-sm);
 	color: var(--color-text-dark);
+}
+
+/* Position nav buttons over the scroll track */
+.horizontal-scroll-container {
+	position: relative;
+	width: 1228px;
+	margin: 0;
+	margin-left: 2rem;
+	padding: 0;
+}
+
+.scroll-btn {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 48px;
+	height: 48px;
+	border-radius: var(--radius-full);
+	border: 1px solid var(--color-border);
+	background: var(--color-background);
+	color: var(--color-text-dark);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all var(--transition-base);
+	font-size: var(--font-size-lg);
+	font-weight: var(--font-weight-bold);
+	z-index: 10;
+	box-shadow: var(--shadow-sm);
+}
+
+.scroll-btn-prev {
+	left: -24px; /* Half the button width outside the container */
+}
+
+.scroll-btn-next {
+	right: -24px; /* Half the button width outside the container */
+}
+
+.scroll-btn:hover {
+	background: var(--color-text-dark);
+	color: white;
+	border-color: var(--color-text-dark);
+	transform: translateY(-50%) scale(1.05);
+}
+
+.scroll-btn:disabled {
+	opacity: 0.3;
+	cursor: not-allowed;
+	transform: translateY(-50%);
 }
 
 /* ==========================================================================
