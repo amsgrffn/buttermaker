@@ -139,7 +139,7 @@
 
 		<section class="post-feed">
 			<h2 class="section-title">Latest Posts</h2>
-			{{#foreach posts offset="12"}}
+			{{#foreach posts offset="1"}}
 			<article class="post-card post-card--with-image">
 				<div class="post-header">
 					<img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
@@ -160,7 +160,7 @@
 						</h2>
 						<p class="post-excerpt">{{excerpt words="60"}}</p>
 						<div class="post-actions">
-							<span class="topic">{{primary_tag.name}}</span>
+							<span class="post-action">{{primary_tag.name}}</span>
 							<span class="post-action" data-action="like">Like</span>
 							<a href="{{url}}#comments" class="post-action">Comment</a>
 							<span class="post-action" data-action="share">Share</span>

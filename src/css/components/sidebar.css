@@ -3,17 +3,17 @@
    ========================================================================== */
 
 .sidebar {
-	width: var(--sidebar-width);
-	padding: var(--space-xl) var(--space-4xl) 0 var(--space-4xl);
-	border-right: 1px solid var(--color-border);
-	position: fixed;
-	top: var(--header-height);
-	left: 0;
-	bottom: 0;
-	background: var(--color-background);
-	overflow-y: auto;
-	z-index: var(--z-dropdown);
-}
+	   width: var(--sidebar-width);
+	   padding: var(--space-xl) var(--space-4xl) 0 var(--space-4xl);
+	   border-right: 1px solid var(--color-border);
+	   position: fixed;
+	   top: var(--header-height);
+	   left: calc(50vw - 700px); /* This centers the sidebar as part of the layout */
+	   bottom: 0;
+	   background: var(--color-background);
+	   overflow-y: auto;
+	   z-index: var(--z-dropdown);
+   }
 
 .sidebar h1 {
 	font-family: "abril-titling-condensed", serif;
@@ -154,6 +154,7 @@ letter-spacing: -0.03rem;
 
 .now-reading-widget ul {
 	margin: 0 0 var(--space-sm);
+	text-wrap: balance;
 }
 
 .now-reading-widget ul li {
@@ -161,8 +162,11 @@ letter-spacing: -0.03rem;
 	margin-bottom: var(--space-xs);
 }
 
-.now-reading-widget ul li em {
-	font-family: 'abril-titling-condensed', serif;
+.now-reading-widget ul li a {
+	color: var(--color-text-dark);
+	font-weight: 600;
+	opacity: .7;
+	text-decoration: underline;
 }
 
 .now-reading-widget ul li svg {
@@ -226,28 +230,20 @@ svg.heart {
 
 .widget-controls {
 	display: flex;
-	gap: var(--space-sm);
-	margin-bottom: var(--space-md);
+	gap: var(--space-md);
+	margin: var(--space-xl) 0;
 }
 
-.widget-btn {
-	background: none;
-	border: none;
-	font-size: var(--font-size-lg);
-	cursor: pointer;
-	padding: var(--space-xs);
-	border-radius: var(--radius-sm);
-	opacity: 0.6;
-	transition: all var(--transition-base);
-	text-decoration: none;
-	color: inherit;
+.widget-controls a {
+	display: block;
 }
 
-.widget-btn:hover {
-	opacity: 1;
-	background: var(--color-border-light);
+.widget-controls svg {
+	height: 16px;
+	width: 16px;
+	display: inline;
+	vertical-align: middle;
 }
-
 
 
 .widget-footer::before {

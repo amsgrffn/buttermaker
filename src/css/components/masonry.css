@@ -4,7 +4,7 @@
 
 .featured-masonry-section {
 	margin-bottom: var(--space-4xl);
-	background: rgb(248, 245, 252);
+	background: hsl(45,18%,94%);
 	padding: 2rem;
 	border-radius: var(--radius-lg);
 	border: 1px solid rgb(234, 219, 250);

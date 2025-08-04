@@ -64,6 +64,7 @@
 .post-meta {
 	font-size: var(--font-size-base);
 	color: var(--color-text-medium);
+	line-height: var(--line-height-tight);
 }
 
 /* Post Content */
@@ -119,13 +120,7 @@
 }
 
 .post-actions .topic {
-	font-family: 'abril-titling-condensed', serif;
-	background: var(--color-border-light);
-	padding: var(--space-xs) var(--space-sm);
-	border-radius: var(--radius-base);
-	font-size: var(--font-size-lg);
-	font-style: italic;
-	font-weight: 400;
+
 
 }
 

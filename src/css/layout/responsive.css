@@ -2,24 +2,23 @@
    Layout and Responsive Design (Fixed for Split Layout)
    ========================================================================== */
 
-/* Base Layout */
 .layout {
-	display: flex;
-	padding-top: var(--header-height);
-	margin: 0 auto;
-	min-height: 100vh;
-}
+	   display: flex;
+	   padding-top: var(--header-height);
+	   margin: 0 auto;
+	   min-height: 100vh;
+	   max-width: 1400px; /* Total width for entire layout */
+	   position: relative;
+	   width: 100%;
+   }
 
 .main-content {
-	flex: 1;
-	margin-left: var(--sidebar-width);
-	padding: var(--space-xl);
-	/* Center the content with max width */
-	max-width: calc(1400px + var(--sidebar-width));
-	width: 100%;
-	margin-right: auto;
-	border: 3px solid red !important;
-}
+	   flex: 1;
+	   margin-left: var(--sidebar-width);
+	   padding: var(--space-xl);
+	   max-width: calc(1400px - var(--sidebar-width)); /* Adjust for new layout */
+	   width: 100%;
+   }
 
 /* Container utilities */
 .container {

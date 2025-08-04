@@ -70,7 +70,7 @@
 .archive-widget,
 .tags-widget,
 .testimonial-widget {
-	background: rgb(242, 249, 255);
+	background: hsl(45,18%,94%);
 	border: 1px solid rgb(230, 241, 250);
 	border-radius: var(--radius-lg);
 	padding: var(--space-xl);
