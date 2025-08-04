@@ -14,6 +14,11 @@ import { PortalIntegration } from './modules/portal-integration';
 import { HorizontalScroll } from './modules/horizontal-scroll';
 import { SidebarDropdown } from './modules/sidebar-dropdown';
 import { InfiniteScroll } from './modules/infinite-scroll';
+import { initSocialSharing } from './modules/social-sharing';
+import { initTestimonials } from './modules/testimonials';
+import { initWeatherDisplay } from './modules/weather-display';
+import { initKnicksCounter } from './modules/knicks-counter';
+import { initPriceToggle } from './modules/price-toggle';
 
 /**
  * Initialize theme when DOM is ready
@@ -25,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		// Initialize core theme functionality
 		initializeTheme();
 
-		// Initialize individual modules
+		// Initialize existing modules
 		const mobileNav = new MobileNavigation();
 		const categoryTabs = new CategoryTabs();
 		const subscribeButtons = new SubscribeButtons();
@@ -37,6 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		const horizontalScroll = new HorizontalScroll();
 		const sidebarDropdown = new SidebarDropdown();
 		const infiniteScroll = new InfiniteScroll();
+
+		// Initialize your new modules
+		initSocialSharing();
+		initTestimonials();
+		initWeatherDisplay();
+		initKnicksCounter();
+		initPriceToggle();
 
 		// Make mobile navigation globally available
 		window.toggleSidebar = mobileNav.toggleSidebar.bind(mobileNav);

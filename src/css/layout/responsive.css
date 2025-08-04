@@ -6,6 +6,7 @@
 .layout {
 	display: flex;
 	padding-top: var(--header-height);
+	margin: 0 auto;
 	min-height: 100vh;
 }
 

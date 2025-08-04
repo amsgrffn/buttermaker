@@ -3,7 +3,7 @@
 {{! Horizontal Scroll Section - Trending Now (Full Width) }}
 <section class="horizontal-scroll-section">
 	<div class="horizontal-scroll-header">
-		<h2 class="horizontal-scroll-title">Trending Now</h2>
+		<h2 class="horizontal-scroll-title">Trending <em>&amp;</em> Popular</h2>
 	</div>
 
 	<div class="horizontal-scroll-container">
@@ -137,7 +137,6 @@
 			</div>
 		</section>
 
-		{{! Regular Post Feed }}
 		<section class="post-feed">
 			<h2 class="section-title">Latest Posts</h2>
 			{{#foreach posts offset="12"}}
@@ -176,7 +175,7 @@
 								<figcaption>{{feature_image_caption}}</figcaption>
 							{{/if}}
 							{{else}}
-							<img src="{{asset "img/shapes.jpg"}}" alt="{{title}}" class="post-image post-image-fallback tilt-shift">
+							<img src="{{asset "img/collage2.jpg"}}" alt="{{title}}" class="post-image post-image-fallback">
 							{{#if feature_image_caption}}
 								<figcaption>{{feature_image_caption}}</figcaption>
 							{{/if}}
@@ -188,11 +187,10 @@
 			{{/foreach}}
 		</section>
 
-		{{! REPLACED: Infinite Scroll Load More Button instead of {{pagination}} }}
 		{{#if pagination.next}}
 		<div class="load-more">
 			<button id="load-more-btn" type="button" aria-label="Load more posts">
-				Read More
+				Load more posts
 			</button>
 		</div>
 		{{else}}
@@ -203,7 +201,6 @@
 		</div>
 		{{/if}}
 
-		{{! Hidden pagination data for JavaScript }}
 		<script type="application/json" id="pagination-data">
 		{
 			"currentPage": {{pagination.page}},

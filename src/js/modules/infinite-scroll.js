@@ -149,8 +149,8 @@ export class InfiniteScroll {
 			newPostsContainer.appendChild(clonedPost);
 		});
 
-		// Insert before the load more button
-		this.loadMoreBtn.parentNode.insertBefore(newPostsContainer, this.loadMoreBtn.parentNode);
+		// Insert before the load more button's parent
+		this.loadMoreBtn.parentNode.parentNode.insertBefore(newPostsContainer, this.loadMoreBtn.parentNode);
 
 		// Animate in
 		requestAnimationFrame(() => {
@@ -201,7 +201,7 @@ export class InfiniteScroll {
 		} else {
 			this.loadMoreBtn.disabled = false;
 			this.loadMoreBtn.classList.remove('loading', 'no-more', 'error');
-			this.loadMoreBtn.innerHTML = 'Read More';
+			this.loadMoreBtn.innerHTML = 'Load more posts';
 		}
 	}
 

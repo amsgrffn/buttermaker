@@ -5,17 +5,19 @@
 /* Load More Button Styles */
 .load-more {
 	text-align: center;
-	margin: var(--space-4xl) 0;
+	margin: 6rem 0;
 }
 
 #load-more-btn {
-	background: var(--color-background-light);
+	background: var(--color-primary);
 	border: 1px solid var(--color-border);
 	border-radius: var(--radius-base);
 	padding: var(--space-lg) var(--space-3xl);
-	color: var(--color-text-dark);
-	font-size: var(--font-size-base);
-	font-weight: var(--font-weight-medium);
+	color: #fff;
+	font-family: 'abril-titling-condensed', serif;
+	font-style: italic;
+	font-size: var(--font-size-xl);
+	font-weight: var(--font-weight-bold);
 	cursor: pointer;
 	transition: all var(--transition-base);
 	text-decoration: none;

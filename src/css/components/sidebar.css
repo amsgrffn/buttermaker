@@ -45,7 +45,6 @@ letter-spacing: -0.03rem;
 }
 
 .sidebar-nav li {
-	font-family: var(--font-family-display);
 	margin-bottom: 0;
 }
 
@@ -164,17 +163,22 @@ letter-spacing: -0.03rem;
 
 .now-reading-widget ul li em {
 	font-family: 'abril-titling-condensed', serif;
-
 }
 
 .now-reading-widget ul li svg {
 	display: inline;
+	height: 16px;
+	width: 16px;
 	margin-top: -3px;
 	vertical-align: middle;
 }
 
 .now-reading-widget ul li svg.heart {
 	opacity: .7;
+}
+
+.now-reading-widget ul li .current-condition {
+	text-transform: capitalize;
 }
 
 svg.heart {
@@ -302,6 +306,7 @@ svg.heart {
 }
 
 .dropdown-submenu .dropdown-link {
+	font-family: var(--font-family-base);
 	display: block;
 	padding: var(--space-xs) var(--space-sm);
 	color: var(--color-text-medium);

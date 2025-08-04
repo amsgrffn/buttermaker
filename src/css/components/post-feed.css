@@ -322,29 +322,6 @@
 	margin-bottom: var(--space-lg);
 }
 
-.tilt-shift {
-  position: relative;
-  filter: blur(1px) saturate(1.2) contrast(1.1);
-}
-
-.tilt-shift::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  backdrop-filter: blur(2px);
-  mask: linear-gradient(
-	to bottom,
-	rgba(0,0,0,1) 0%,
-	rgba(0,0,0,0) 30%,
-	rgba(0,0,0,0) 70%,
-	rgba(0,0,0,1) 100%
-  );
-  pointer-events: none;
-}
-
 .post-media-flex figcaption {
 	color: var(--color-text-medium);
 	font-size: var(--font-size-sm);

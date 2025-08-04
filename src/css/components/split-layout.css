@@ -179,55 +179,93 @@
    Stats Widget
    ========================================================================== */
 
+
+.testimonial-widget .testimonials {
+	   background: #fff;
+	   display: flex;
+	   flex-direction: column;
+	   justify-content: center;
+	   margin-bottom: var(--space-xl);
+	   min-height: 25rem;
+	   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1), 0 0 0 1px rgb(17 24 39 / 0.1);
+	   border-radius: 0.5rem;
+	   text-wrap: balance;
+   }
+
+
+
+	.testimonial-widget cite svg {
+		  display: inline;
+		  height: 16px;
+		  width: 16px;
+		  margin-top: -var(--space-xs);
+		  vertical-align: middle;
+		  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	  }
+
+	   .testimonial-widget cite a:hover ~ svg {
+		 transform: translateX(6px);
+		 stroke: var(--color-primary-hover);
+	   }
+
    .testimonial-widget blockquote {
 	   border: none;
-	   color: var(--color-text-dark);
-	   font-family: 'abril-titling-condensed', serif;
-	   font-size: var(--font-size-2xl);
+	   color: var(--gray-dark);
+	   display: flex;
+	   flex-direction: column;
+	   font-family: "aktiv-grotesk-condensed", sans-serif;
+	   font-size: 24px;
 	   font-style: normal;
 	   font-weight: 700;
 	   line-height: 1.3;
-	   background: #fff;
-	   padding: var(--space-3xl);
-	   border: 1px solid rgb(230, 241, 250);
-	   box-shadow: 0px 4px 18px #0000000a, 0px 2.025px 7.84688px rgba(0, 0, 0, .027), 0px 0.8px 2.925px #00000005, 0px 0.175px 1.04062px rgba(0, 0, 0, .013);
-	   border-radius: var(--radius-lg);
+	   position: relative;
+	   margin:0  2rem;
+	   text-align: center;
+	   text-wrap: balance;
+
    }
 
-   .testimonial-widget .attribution {
-	   align-items: center;
-	   display: flex;
-	   gap: var(--space-sm);
-	   margin-top: var(--space-2xl);
+   .testimonial-widget blockquote cite {
+	  display: block;
+	  font-family: var(--font-family-base);
+	  font-size: var(--font-size-base);
+	  font-style: normal;
+	  font-weight: 400;
+	  margin-top: 1.5rem;
+   }
+
+   .testimonial-widget blockquote cite a {
+	   color: var(--gray-medium);
+   }
+
+   .testimonial-widget blockquote cite a:hover {
+	   color: var(--red);
+   }
+
+   .testimonial-widget blockquote cite svg {
+	   display: inline;
+	   margin-left: calc(var(--size-3) * -1);
+	   margin-top: -2px;
+	   opacity: 0.9;
+	   transition: transform 0.3s ease;
+	   vertical-align: middle;
+   }
+
+   .testimonial-widget blockquote cite:hover svg {
+	   opacity: 1;
+	   transform: translateX(3px);
    }
 
    .testimonial-widget img {
-	   border-radius: var(--radius-full);
-		 height: 50px;
-		 width: 50px;
-	  }
+	   border-radius: 50%;
+	   display: inline;
+	   height: 50px;
+	   margin-top: -3px;
+	   margin-right: 6px;
+	   vertical-align: middle;
+	   width: 50px;
+   }
 
-   .testimonial-widget cite {
-		  display: block;
-		  font-family: var(--font-family-base);
-		  font-size: var(--font-size-base);
-		  font-style: normal;
-		  font-weight: 700;
-	  }
-
-	  .testimonial-widget cite svg {
-			display: inline;
-			height: 16px;
-			width: 16px;
-			margin-top: -var(--space-xs);
-			vertical-align: middle;
-			transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-		}
-
-		.testimonial-widget cite a:hover ~ svg {
-		  transform: translateX(6px);
-		  stroke: var(--color-primary-hover);
-		}
 
 
 /* ==========================================================================

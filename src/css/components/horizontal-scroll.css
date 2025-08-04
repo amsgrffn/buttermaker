@@ -33,6 +33,12 @@
 	margin: 0;
 }
 
+.horizontal-scroll-title em {
+	font-family: 'abril-titling-condensed', serif;
+	font-style: italic;
+	font-weight: 400;
+}
+
 .horizontal-scroll-controls {
 	display: flex;
 	gap: var(--space-sm);
