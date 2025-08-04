@@ -14,8 +14,11 @@
 	flex: 1;
 	margin-left: var(--sidebar-width);
 	padding: var(--space-xl);
-	/* REMOVED: max-width and centering constraints for full width */
-	width: calc(100vw - var(--sidebar-width));
+	/* Center the content with max width */
+	max-width: calc(1400px + var(--sidebar-width));
+	width: 100%;
+	margin-right: auto;
+	border: 3px solid red !important;
 }
 
 /* Container utilities */
@@ -149,8 +152,10 @@
 /* Desktop Styles (1200px and up) */
 @media (min-width: 1200px) {
 	.main-content {
-		/* Keep full width on desktop */
-		width: calc(100vw - var(--sidebar-width));
+		/* Center content with max width */
+		max-width: calc(1400px + var(--sidebar-width));
+		width: 100%;
+		margin-right: auto;
 	}
 
 	.container {

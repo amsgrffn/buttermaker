@@ -2,7 +2,15 @@
    Horizontal Scroll Component + Category Tabs (Fixed for Split Layout)
    ========================================================================== */
 
-/* Horizontal Scroll Section - KEEP viewport spanning for trending section */
+.horizontal-scroll-container {
+	   position: relative;
+	   width: 1228px;
+	   /* ADD THESE LINES: */
+	   max-width: 1228px;
+	   margin: 0 auto; /* Center the container */
+	   padding: 0 2rem;
+   }
+
 .horizontal-scroll-section {
 	/* REMOVED: All viewport-spanning CSS */
 	width: auto; /* Changed from 100vw */
@@ -18,10 +26,11 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 1228px; /* 800px + 380px + 48px gap */
-	margin: 0;
-	margin-left: 2rem; /* Match split-content-wrapper padding */
-	padding: 0;
+	width: 1228px;
+	/* ADD THESE LINES: */
+	max-width: 1228px;
+	margin: 0 auto; /* Center the header */
+	padding: 0 2rem;
 	margin-bottom: var(--space-lg);
 }
 
@@ -76,14 +85,6 @@
 	width: 1228px; /* 800px + 380px + 48px gap */
 	margin: 0;
 	margin-left: 2rem; /* Match split-content-wrapper padding */
-	padding: 0;
-}
-
-.horizontal-scroll-container {
-	position: relative;
-	width: 1228px;
-	margin: 0;
-	margin-left: 2rem;
 	padding: 0;
 }
 

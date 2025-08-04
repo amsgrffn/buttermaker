@@ -98,7 +98,7 @@
 
 /* Card Content - Natural height based on text content */
 .masonry-content {
-	padding: var(--space-3xl);
+	padding: var(--space-xl) var(--space-3xl) var(--space-3xl) var(--space-3xl);
 }
 
 .masonry-title {
