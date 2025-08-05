@@ -96,7 +96,7 @@
 
 	/* Shadows */
 	--shadow-sm: 4px 2px 4px rgba(0, 0, 0, 0.03);
-	--shadow-base: 0 4px 12px rgba(0, 0, 0, 0.08);
+	--shadow-base: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1), 0 0 0 1px rgb(193 154 107 / 0.1);
 	--shadow-md: 0 8px 25px rgba(0, 0, 0, 0.15);
 	--shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.2);
 

@@ -19,6 +19,7 @@ import { initTestimonials } from './modules/testimonials';
 import { initWeatherDisplay } from './modules/weather-display';
 import { initKnicksCounter } from './modules/knicks-counter';
 import { initPriceToggle } from './modules/price-toggle';
+import { BreadcrumbDropdown } from './modules/breadcrumb-dropdown';
 
 /**
  * Initialize theme when DOM is ready
@@ -42,8 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		const horizontalScroll = new HorizontalScroll();
 		const sidebarDropdown = new SidebarDropdown();
 		const infiniteScroll = new InfiniteScroll();
+		const breadcrumbDropdown = new BreadcrumbDropdown();
 
-		// Initialize your new modules
 		initSocialSharing();
 		initTestimonials();
 		initWeatherDisplay();

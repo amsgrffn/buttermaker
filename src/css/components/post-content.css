@@ -2,10 +2,15 @@
    Post Content Styles - Centered Layout with Image Floating
 
    USAGE GUIDE:
-   - Full Width: Use Ghost editor's image width control (sets kg-width-full)
-   - Wide: Use Ghost editor's image width control (sets kg-width-wide)
+   - Full Width: Use Ghost editor's image width control (sets kg-width-full) - MASSIVE 300px breakout
+   - Wide: Use Ghost editor's image width control (sets kg-width-wide) - Subtle 40px breakout
    - Left Float: Add class="left" to <figure> or use alt="caption left"
    - Right Float: Add class="right" to <figure> or use alt="caption right"
+
+   DEBUGGING: If full-width images aren't breaking out:
+   1. Check that CSS variables are loaded (var(--space-xl) should equal 40px)
+   2. Ensure no parent containers have overflow:hidden
+   3. Verify the exact Ghost classes match the selectors below
    ========================================================================== */
 
 /* Post Container - Centered in main content area */
@@ -18,23 +23,15 @@
 
 /* Post Header Styling */
 .post-header {
-	text-align: center;
-	margin-bottom: var(--space-4xl);
+	margin: var(--space-sm) 0 var(--space-4xl);
 	padding-bottom: var(--space-2xl);
 	border-bottom: 1px solid var(--color-border-light);
 }
 
-.post-tag {
+.post-template .post-tag {
 	display: inline-block;
-	background: var(--color-primary);
-	color: white;
-	padding: var(--space-xs) var(--space-md);
-	border-radius: var(--radius-pill);
-	font-size: var(--font-size-xs);
+	font-size: var(--font-size-base);
 	font-weight: var(--font-weight-semibold);
-	text-decoration: none;
-	text-transform: uppercase;
-	letter-spacing: 0.5px;
 	margin-bottom: var(--space-lg);
 	transition: all var(--transition-base);
 }
@@ -46,17 +43,22 @@
 
 .post-title {
 	font-family: var(--font-family-display);
-	font-size: clamp(2rem, 5vw, 3.5rem);
+	font-size: 2.6rem;
 	font-weight: var(--font-weight-bold);
+	letter-spacing: 0.03rem;
 	line-height: var(--line-height-tight);
 	margin-bottom: var(--space-xl);
 	color: var(--color-text-dark);
+	text-wrap: pretty;
+}
+
+.role {
+	display: block;
 }
 
 .post-meta {
 	display: flex;
 	align-items: center;
-	justify-content: center;
 	gap: var(--space-lg);
 	flex-wrap: wrap;
 	margin-top: var(--space-lg);
@@ -73,7 +75,6 @@
 	height: 48px;
 	border-radius: var(--radius-full);
 	object-fit: cover;
-	border: 2px solid var(--color-border-light);
 }
 
 .author-name {
@@ -125,11 +126,21 @@
 }
 
 .post-feature-image figcaption {
-	font-size: var(--font-size-sm);
+	font-size: var(--font-size-base);
 	color: var(--color-text-medium);
-	margin-top: var(--space-md);
-	font-style: italic;
-	text-align: center;
+	margin: var(--space-lg) var(--space-md) 0 0;
+	text-align: right;
+}
+
+.post-feature-image figcaption a {
+	color: var(--color-text-dark);
+	font-weight: var(--font-weight-semibold);
+		text-decoration: underline;
+		text-decoration-color: var(--color-text-dark);
+		text-decoration-thickness: 1px;
+		text-underline-offset: 3px;
+		transition: color 0.3s ease, text-decoration-color 0.3s ease;
+		opacity: 0.8;
 }
 
 /* Post Content - The Main Content Area */
@@ -168,26 +179,24 @@
 	font-size: var(--font-size-xl);
 }
 
-.post-content p {
-	margin-bottom: var(--space-xl);
-	text-align: justify;
-}
-
-.post-content p:first-child {
+.post-content blockquote,
+.post-content ol,
+.post-content p,
+.post-content ul {
 	font-size: var(--font-size-xl);
-	font-weight: var(--font-weight-medium);
-	color: var(--color-text-dark);
-	margin-bottom: var(--space-2xl);
+	line-height: 1.55;
+	margin-bottom: var(--space-xl);
 }
 
 /* Links */
 .post-content a {
-	color: var(--color-primary);
+	color: var(--color-blue);
+	font-weight: 500;
 	text-decoration: underline;
-	text-decoration-color: var(--color-primary);
-	text-decoration-thickness: 1px;
-	text-underline-offset: 2px;
-	transition: all var(--transition-base);
+	text-decoration-color: var(--color-blue);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 3px;
+	transition: color 0.3s ease, text-decoration-color 0.3s ease;
 }
 
 .post-content a:hover {
@@ -216,25 +225,10 @@
 
 /* Blockquotes */
 .post-content blockquote {
-	border-left: 4px solid var(--color-primary);
-	padding: var(--space-xl) var(--space-2xl);
+	border-left: 2px solid var(--color-text-dark);
 	margin: var(--space-3xl) 0;
-	background: var(--color-background-light);
-	border-radius: 0 var(--radius-md) var(--radius-md) 0;
-	font-style: italic;
-	font-size: var(--font-size-xl);
-	color: var(--color-text-medium);
 	position: relative;
-}
-
-.post-content blockquote::before {
-	content: '"';
-	font-size: 4rem;
-	color: var(--color-primary);
-	position: absolute;
-	top: -10px;
-	left: var(--space-lg);
-	font-family: serif;
+		padding-left: var(--space-xl);
 }
 
 .post-content blockquote p {
@@ -300,9 +294,7 @@
 .post-content figcaption {
 	font-size: var(--font-size-sm);
 	color: var(--color-text-medium);
-	text-align: center;
 	margin-top: var(--space-sm);
-	font-style: italic;
 	line-height: var(--line-height-base);
 }
 
@@ -316,6 +308,7 @@
 	float: left;
 	margin: 0 var(--space-2xl) var(--space-lg) 0;
 	max-width: 45%;
+	margin-left: -60px;
 	clear: left;
 }
 
@@ -327,8 +320,10 @@
 
 .post-content figure.left figcaption,
 .post-content figure.kg-image-left figcaption {
+	font-size: var(--font-size-base);
+	font-style: normal;
 	text-align: left;
-	margin-top: var(--space-xs);
+	margin-top: var(--space-md);
 }
 
 /* Float Right - Figures and Images */
@@ -356,68 +351,92 @@
 
 /* FULL WIDTH IMAGES - Ghost Native Classes First */
 
-/* Full Width Images - Break out of container */
+/* Full Width Images - Break out of container - More specific selectors */
+.post-content .kg-image-card.kg-width-full,
+.post-content .kg-card.kg-width-full,
+.post-content figure.kg-width-full,
 .post-content .kg-width-full,
-.post-content .kg-image-full,
 .post-content .image-full,
 .post-content figure.full,
 .post-content img[alt*="full"] {
-	width: calc(100% + (2 * var(--space-xl)));
-	max-width: calc(100% + (2 * var(--space-xl)));
-	margin-left: calc(-1 * var(--space-xl));
-	margin-right: calc(-1 * var(--space-xl));
-	margin-top: var(--space-3xl);
-	margin-bottom: var(--space-3xl);
+	/* MASSIVE BREAKOUT: 300px total wider (150px each side) */
+	width: calc(100% + 300px) !important;
+	width: calc(100% + (7.5 * var(--space-xl, 40px))) !important;
+	max-width: calc(100% + 300px) !important;
+	max-width: calc(100% + (7.5 * var(--space-xl, 40px))) !important;
+	margin-left: -150px !important;
+	margin-left: calc(-3.75 * var(--space-xl, 40px)) !important;
+	margin-right: -150px !important;
+	margin-right: calc(-3.75 * var(--space-xl, 40px)) !important;
+	margin-top: 3rem !important;
+	margin-top: var(--space-3xl, 3rem) !important;
+	margin-bottom: 3rem !important;
+	margin-bottom: var(--space-3xl, 3rem) !important;
+}
+
+/* Ensure the image inside takes full width */
+.post-content .kg-image-card.kg-width-full img,
+.post-content .kg-card.kg-width-full img,
+.post-content figure.kg-width-full img,
+.post-content figure.full img {
+	width: 100% !important;
+	max-width: 100% !important;
+	border-radius: var(--radius-lg);
 }
 
 /* Full width figures - Ghost classes have priority */
-.post-content figure.kg-width-full,
 .post-content .kg-image-card.kg-width-full,
+.post-content figure.kg-width-full,
 .post-content figure.full {
 	text-align: center;
 }
 
-.post-content figure.kg-width-full img,
-.post-content .kg-image-card.kg-width-full img,
-.post-content figure.full img {
-	width: 100%;
-	border-radius: var(--radius-lg);
-}
-
-.post-content figure.kg-width-full figcaption,
 .post-content .kg-image-card.kg-width-full figcaption,
+.post-content figure.kg-width-full figcaption,
 .post-content figure.full figcaption {
-	margin-top: var(--space-md);
+	margin-top: var(--space-md) !important;
 	padding: 0 var(--space-xl);
 	text-align: center;
 }
 
 /* Wide Images - Slightly break out - Ghost Native Classes First */
+.post-content .kg-image-card.kg-width-wide,
+.post-content .kg-card.kg-width-wide,
+.post-content figure.kg-width-wide,
 .post-content .kg-width-wide,
-.post-content .kg-image-wide,
 .post-content .image-wide,
 .post-content figure.wide,
 .post-content img[alt*="wide"] {
-	width: calc(100% + var(--space-xl));
-	max-width: calc(100% + var(--space-xl));
-	margin-left: calc(-0.5 * var(--space-xl));
-	margin-right: calc(-0.5 * var(--space-xl));
-	margin-top: var(--space-2xl);
-	margin-bottom: var(--space-2xl);
+	/* Fallback values first, then CSS variables */
+	width: calc(100% + 40px) !important;
+	width: calc(100% + var(--space-xl, 40px)) !important;
+	max-width: calc(100% + 40px) !important;
+	max-width: calc(100% + var(--space-xl, 40px)) !important;
+	margin-left: -20px !important;
+	margin-left: calc(-0.5 * var(--space-xl, 40px)) !important;
+	margin-right: -20px !important;
+	margin-right: calc(-0.5 * var(--space-xl, 40px)) !important;
+	margin-top: 2rem !important;
+	margin-top: var(--space-2xl, 2rem) !important;
+	margin-bottom: 2rem !important;
+	margin-bottom: var(--space-2xl, 2rem) !important;
+}
+
+/* Ensure the image inside takes full width */
+.post-content .kg-image-card.kg-width-wide img,
+.post-content .kg-card.kg-width-wide img,
+.post-content figure.kg-width-wide img,
+.post-content figure.wide img {
+	width: 100% !important;
+	max-width: 100% !important;
+	border-radius: var(--radius-md);
 }
 
 /* Wide figures - Ghost classes have priority */
-.post-content figure.kg-width-wide,
 .post-content .kg-image-card.kg-width-wide,
+.post-content figure.kg-width-wide,
 .post-content figure.wide {
 	text-align: center;
-}
-
-.post-content figure.kg-width-wide img,
-.post-content .kg-image-card.kg-width-wide img,
-.post-content figure.wide img {
-	width: 100%;
-	border-radius: var(--radius-md);
 }
 
 /* Ghost card support - Enhanced for native Ghost editor */
@@ -767,10 +786,16 @@
 	.post-content img[alt*="full"],
 	.post-content img[alt*="wide"],
 	.post-content .kg-width-full,
-	.post-content .kg-width-wide {
-		width: calc(100% + (2 * var(--space-lg)));
-		margin-left: calc(-1 * var(--space-lg));
-		margin-right: calc(-1 * var(--space-lg));
+	.post-content .kg-width-wide,
+	.post-content .kg-image-card.kg-width-full,
+	.post-content .kg-image-card.kg-width-wide {
+		/* On mobile, scale back the massive breakout to fit screen */
+		width: calc(100% + 96px) !important;
+		width: calc(100% + (6 * var(--space-lg, 16px))) !important;
+		margin-left: -48px !important;
+		margin-left: calc(-3 * var(--space-lg, 16px)) !important;
+		margin-right: -48px !important;
+		margin-right: calc(-3 * var(--space-lg, 16px)) !important;
 	}
 
 	.post-author-card {

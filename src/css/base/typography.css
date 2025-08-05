@@ -80,16 +80,6 @@ pre code {
 	padding: 0;
 }
 
-/* Blockquotes */
-blockquote {
-	border-left: 4px solid var(--color-primary);
-	padding-left: var(--space-xl);
-	margin: var(--space-3xl) 0;
-	font-style: italic;
-	color: var(--color-text-medium);
-	font-size: var(--font-size-lg);
-}
-
 /* Lists in content */
 .post-content ul,
 .post-content ol {
