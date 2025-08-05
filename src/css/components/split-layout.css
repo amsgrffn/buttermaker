@@ -71,7 +71,7 @@
 .tags-widget,
 .testimonial-widget {
 	background: hsl(45,18%,94%);
-	border: 1px solid rgb(230, 241, 250);
+	border: 1px solid #E6E4DB;
 	border-radius: var(--radius-lg);
 	padding: var(--space-xl);
 	margin-bottom: var(--space-2xl);
@@ -91,8 +91,7 @@
 	font-family: var(--font-family-serif);
 	padding: var(--space-3xl);
 	margin-bottom: var(--space-lg);
-	border: 1px solid rgb(230, 241, 250);
-	box-shadow: 0px 4px 18px #0000000a, 0px 2.025px 7.84688px rgba(0, 0, 0, .027), 0px 0.8px 2.925px #00000005, 0px 0.175px 1.04062px rgba(0, 0, 0, .013);
+	box-shadow: var(--shadow-base);
 	border-radius: var(--radius-lg);
 }
 
@@ -362,6 +361,7 @@
 
 .stat-number {
 	display: block;
+	font-family: var(--font-family-display);
 	font-size: var(--font-size-xl);
 	font-weight: var(--font-weight-bold);
 	line-height: 1;
@@ -449,50 +449,6 @@
 
 .archive-link:hover {
 	color: var(--color-primary-hover);
-}
-
-/* ==========================================================================
-   Tags Widget
-   ========================================================================== */
-
-.tags-cloud {
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--space-sm);
-}
-
-.tag-item {
-	display: inline-block;
-	padding: var(--space-xs) var(--space-sm);
-	background: var(--color-background-light);
-	border: 1px solid var(--color-border-light);
-	border-radius: var(--radius-pill);
-	font-size: var(--font-size-xs);
-	font-weight: var(--font-weight-medium);
-	color: var(--color-text-medium);
-	text-decoration: none;
-	transition: all var(--transition-base);
-	text-transform: capitalize;
-}
-
-.tag-item:hover {
-	background: var(--color-primary);
-	color: white;
-	border-color: var(--color-primary);
-	transform: translateY(-1px);
-}
-
-/* Popular tags get slightly different styling based on post count */
-.tag-item[data-count] {
-	position: relative;
-}
-
-/* Higher count tags are slightly larger */
-.tag-item[data-count="10"],
-.tag-item[data-count="9"],
-.tag-item[data-count="8"] {
-	font-size: var(--font-size-sm);
-	padding: var(--space-sm) var(--space-md);
 }
 
 /* ==========================================================================

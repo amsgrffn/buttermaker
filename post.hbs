@@ -96,17 +96,24 @@
 				{{/if}}
 				<div class="author-card-actions">
 					<a href="{{primary_author.url}}" class="author-link">View Profile</a>
-					{{#unless @member}}
-					<a href="#/portal/signup" class="subscribe-btn-small" data-portal="signup">Subscribe</a>
-					{{/unless}}
+					<ul>
+						{{#if bluesky}}
+							<a class="gh-author-social-link" href="{{social_url type="twitter"}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
+						{{/if}}
+						<li>{{> "icons/location"}}{{location}}</li>
+						<li>{{> "icons/bluesky"}}</li>
+						<li>{{> "icons/mastodon"}}</li>
+						<li>{{> "icons/pixelfed"}}</li>
+						<li>{{> "icons/letterboxd"}}</li>
+						<li>{{> "icons/rss"}}</li>
+					</ul>
 				</div>
 			</div>
 		</div>
 	</footer>
 </article>
 
-{{! Related Posts }}
-{{#get "posts" filter="tag:{{primary_tag.slug}}+id:-{{id}}" limit="3" as |related_posts|}}
+{{#get "posts" include="authors,tags" filter="tag:{{primary_tag.slug}}+id:-{{id}}" limit="8" as |related_posts|}}
 {{#if related_posts}}
 <section class="related-posts">
 	<h3 class="related-title">More like this</h3>
@@ -120,14 +127,13 @@
 			{{/if}}
 			<div class="related-content">
 				<h4><a href="{{url}}">{{title}}</a></h4>
-				<p>{{excerpt words="15"}}</p>
 				<div class="related-meta">
-					<time datetime="{{date published_at format="YYYY-MM-DD"}}">
-						{{date published_at format="DD MMM"}}
-					</time>
-					{{#if reading_time}}
-					• {{reading_time}}
+					{{#if primary_tag}}
+							<a href="{{primary_tag.url}}">{{primary_tag.name}}</a> &bull;
 					{{/if}}
+					<time datetime="{{date published_at format="YYYY-MM-DD"}}">
+						{{date published_at format="MMMM Do, YYYY"}}
+					</time>
 				</div>
 			</div>
 		</article>
@@ -146,6 +152,4 @@
 	</div>
 </section>
 {{/if}}
-
-{{! CLOSE THE {{#post}} WRAPPER }}
 {{/post}}

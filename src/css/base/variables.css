@@ -28,6 +28,10 @@
 	   * SYSTEM ACCENT COLORS
 	   * ================================================================ */
 
+
+	   --border-cream: oklch(0.9179 0.0122 96.43);  /* #e6e4db */
+
+	   --color-cream: oklch(0.9539 0.0134 97.44); /* #F2F0E6 */
 	  --color-blue: oklch(0.603 0.218 257.4); /* systemBlue: #007aff */
 	  --color-green: oklch(0.73 0.194 147.5); /* systemGreen: #34c759 */
 	  --color-indigo: oklch(0.529 0.191 278.3); /* systemIndigo: #5856d6 */

@@ -7,7 +7,7 @@
 	background: hsl(45,18%,94%);
 	padding: 2rem;
 	border-radius: var(--radius-lg);
-	border: 1px solid rgb(234, 219, 250);
+	border: 1px solid #E6E4DB;
 }
 
 .section-title {
@@ -145,8 +145,9 @@
 }
 
 .masonry-tag {
-	background: var(--color-border-light);
+	background: #F2F0E6;
 	padding: var(--space-xs) var(--space-sm);
+	border: 1px solid #E6E4DB;
 	border-radius: var(--radius-base);
 	font-weight: 500;
 }

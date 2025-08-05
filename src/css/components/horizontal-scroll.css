@@ -246,7 +246,7 @@
 .category-tabs-container {
 	position: relative;
 	background: hsl(45,18%,94%);
-	border: 1px solid var(	--color-border);
+	border: 1px solid #E6E4DB;
 	margin: 0;
 	padding: var(--space-sm);
 	border-radius: var(--radius-base);
