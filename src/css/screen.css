@@ -10,6 +10,7 @@
 @import "components/sidebar.css";
 @import "components/masonry.css";
 @import "components/post-feed.css";
+@import "components/post-content.css";
 @import "components/cta-banner.css";
 @import "components/pagination.css";
 @import "components/split-layout.css";

@@ -1,0 +1,802 @@
+/* ==========================================================================
+   Post Content Styles - Centered Layout with Image Floating
+
+   USAGE GUIDE:
+   - Full Width: Use Ghost editor's image width control (sets kg-width-full)
+   - Wide: Use Ghost editor's image width control (sets kg-width-wide)
+   - Left Float: Add class="left" to <figure> or use alt="caption left"
+   - Right Float: Add class="right" to <figure> or use alt="caption right"
+   ========================================================================== */
+
+/* Post Container - Centered in main content area */
+.post-container {
+	max-width: 720px;
+	margin: 0 auto;
+	padding: 0 var(--space-xl);
+	position: relative;
+}
+
+/* Post Header Styling */
+.post-header {
+	text-align: center;
+	margin-bottom: var(--space-4xl);
+	padding-bottom: var(--space-2xl);
+	border-bottom: 1px solid var(--color-border-light);
+}
+
+.post-tag {
+	display: inline-block;
+	background: var(--color-primary);
+	color: white;
+	padding: var(--space-xs) var(--space-md);
+	border-radius: var(--radius-pill);
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-semibold);
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	margin-bottom: var(--space-lg);
+	transition: all var(--transition-base);
+}
+
+.post-tag:hover {
+	background: var(--color-primary-hover);
+	transform: translateY(-1px);
+}
+
+.post-title {
+	font-family: var(--font-family-display);
+	font-size: clamp(2rem, 5vw, 3.5rem);
+	font-weight: var(--font-weight-bold);
+	line-height: var(--line-height-tight);
+	margin-bottom: var(--space-xl);
+	color: var(--color-text-dark);
+}
+
+.post-meta {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-lg);
+	flex-wrap: wrap;
+	margin-top: var(--space-lg);
+}
+
+.post-author {
+	display: flex;
+	align-items: center;
+	gap: var(--space-md);
+}
+
+.author-avatar {
+	width: 48px;
+	height: 48px;
+	border-radius: var(--radius-full);
+	object-fit: cover;
+	border: 2px solid var(--color-border-light);
+}
+
+.author-name {
+	font-weight: var(--font-weight-semibold);
+	color: var(--color-text-dark);
+	text-decoration: none;
+	transition: color var(--transition-base);
+}
+
+.author-name:hover {
+	color: var(--color-primary);
+}
+
+.post-date {
+	font-size: var(--font-size-sm);
+	color: var(--color-text-medium);
+	margin-top: var(--space-xs);
+}
+
+.subscribe-btn {
+	background: var(--color-primary);
+	color: white;
+	padding: var(--space-sm) var(--space-lg);
+	border-radius: var(--radius-pill);
+	text-decoration: none;
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-semibold);
+	transition: all var(--transition-base);
+	border: none;
+}
+
+.subscribe-btn:hover {
+	background: var(--color-primary-hover);
+	transform: translateY(-1px);
+}
+
+/* Feature Image */
+.post-feature-image {
+	margin: var(--space-4xl) calc(-1 * var(--space-xl)) var(--space-4xl);
+	text-align: center;
+}
+
+.post-feature-image img {
+	width: 100%;
+	max-height: 500px;
+	object-fit: cover;
+	border-radius: var(--radius-lg);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.post-feature-image figcaption {
+	font-size: var(--font-size-sm);
+	color: var(--color-text-medium);
+	margin-top: var(--space-md);
+	font-style: italic;
+	text-align: center;
+}
+
+/* Post Content - The Main Content Area */
+.post-content {
+	font-size: var(--font-size-lg);
+	line-height: var(--line-height-relaxed);
+	color: var(--color-text-dark);
+	margin-bottom: var(--space-4xl);
+}
+
+/* Typography within post content */
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+	font-family: var(--font-family-display);
+	font-weight: var(--font-weight-bold);
+	color: var(--color-text-dark);
+	margin: var(--space-3xl) 0 var(--space-lg);
+	line-height: var(--line-height-tight);
+}
+
+.post-content h2 {
+	font-size: var(--font-size-3xl);
+	border-bottom: 1px solid var(--color-border-light);
+	padding-bottom: var(--space-sm);
+}
+
+.post-content h3 {
+	font-size: var(--font-size-2xl);
+}
+
+.post-content h4 {
+	font-size: var(--font-size-xl);
+}
+
+.post-content p {
+	margin-bottom: var(--space-xl);
+	text-align: justify;
+}
+
+.post-content p:first-child {
+	font-size: var(--font-size-xl);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-text-dark);
+	margin-bottom: var(--space-2xl);
+}
+
+/* Links */
+.post-content a {
+	color: var(--color-primary);
+	text-decoration: underline;
+	text-decoration-color: var(--color-primary);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 2px;
+	transition: all var(--transition-base);
+}
+
+.post-content a:hover {
+	color: var(--color-primary-hover);
+	text-decoration-thickness: 2px;
+}
+
+/* Lists */
+.post-content ul,
+.post-content ol {
+	margin: var(--space-xl) 0;
+	padding-left: var(--space-2xl);
+}
+
+.post-content li {
+	margin-bottom: var(--space-sm);
+}
+
+.post-content ul li {
+	list-style-type: disc;
+}
+
+.post-content ol li {
+	list-style-type: decimal;
+}
+
+/* Blockquotes */
+.post-content blockquote {
+	border-left: 4px solid var(--color-primary);
+	padding: var(--space-xl) var(--space-2xl);
+	margin: var(--space-3xl) 0;
+	background: var(--color-background-light);
+	border-radius: 0 var(--radius-md) var(--radius-md) 0;
+	font-style: italic;
+	font-size: var(--font-size-xl);
+	color: var(--color-text-medium);
+	position: relative;
+}
+
+.post-content blockquote::before {
+	content: '"';
+	font-size: 4rem;
+	color: var(--color-primary);
+	position: absolute;
+	top: -10px;
+	left: var(--space-lg);
+	font-family: serif;
+}
+
+.post-content blockquote p {
+	margin-bottom: var(--space-md);
+}
+
+.post-content blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* Code */
+.post-content code {
+	background: var(--color-background-light);
+	padding: 2px var(--space-xs);
+	border-radius: var(--radius-sm);
+	font-family: 'Monaco', 'Consolas', monospace;
+	font-size: 0.9em;
+	color: var(--color-primary);
+}
+
+.post-content pre {
+	background: var(--color-text-dark);
+	color: var(--color-background);
+	padding: var(--space-xl);
+	border-radius: var(--radius-md);
+	overflow-x: auto;
+	margin: var(--space-2xl) 0;
+}
+
+.post-content pre code {
+	background: none;
+	padding: 0;
+	color: inherit;
+}
+
+/* IMAGE STYLING - The Key Feature You Requested */
+
+/* Default images - centered */
+.post-content img {
+	max-width: 100%;
+	height: auto;
+	border-radius: var(--radius-md);
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+	transition: transform var(--transition-base);
+}
+
+.post-content img:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Default figure styling - centered */
+.post-content figure {
+	margin: var(--space-2xl) auto;
+	text-align: center;
+}
+
+.post-content figure img {
+	display: block;
+	margin: 0 auto;
+}
+
+.post-content figcaption {
+	font-size: var(--font-size-sm);
+	color: var(--color-text-medium);
+	text-align: center;
+	margin-top: var(--space-sm);
+	font-style: italic;
+	line-height: var(--line-height-base);
+}
+
+/* FLOATING IMAGES WITH CAPTIONS */
+
+/* Float Left - Figures and Images */
+.post-content .kg-image-left,
+.post-content .image-left,
+.post-content figure.left,
+.post-content img[alt*="left"] {
+	float: left;
+	margin: 0 var(--space-2xl) var(--space-lg) 0;
+	max-width: 45%;
+	clear: left;
+}
+
+/* When it's a figure floating left */
+.post-content figure.left,
+.post-content figure.kg-image-left {
+	text-align: left;
+}
+
+.post-content figure.left figcaption,
+.post-content figure.kg-image-left figcaption {
+	text-align: left;
+	margin-top: var(--space-xs);
+}
+
+/* Float Right - Figures and Images */
+.post-content .kg-image-right,
+.post-content .image-right,
+.post-content figure.right,
+.post-content img[alt*="right"] {
+	float: right;
+	margin: 0 0 var(--space-lg) var(--space-2xl);
+	max-width: 45%;
+	clear: right;
+}
+
+/* When it's a figure floating right */
+.post-content figure.right,
+.post-content figure.kg-image-right {
+	text-align: right;
+}
+
+.post-content figure.right figcaption,
+.post-content figure.kg-image-right figcaption {
+	text-align: right;
+	margin-top: var(--space-xs);
+}
+
+/* FULL WIDTH IMAGES - Ghost Native Classes First */
+
+/* Full Width Images - Break out of container */
+.post-content .kg-width-full,
+.post-content .kg-image-full,
+.post-content .image-full,
+.post-content figure.full,
+.post-content img[alt*="full"] {
+	width: calc(100% + (2 * var(--space-xl)));
+	max-width: calc(100% + (2 * var(--space-xl)));
+	margin-left: calc(-1 * var(--space-xl));
+	margin-right: calc(-1 * var(--space-xl));
+	margin-top: var(--space-3xl);
+	margin-bottom: var(--space-3xl);
+}
+
+/* Full width figures - Ghost classes have priority */
+.post-content figure.kg-width-full,
+.post-content .kg-image-card.kg-width-full,
+.post-content figure.full {
+	text-align: center;
+}
+
+.post-content figure.kg-width-full img,
+.post-content .kg-image-card.kg-width-full img,
+.post-content figure.full img {
+	width: 100%;
+	border-radius: var(--radius-lg);
+}
+
+.post-content figure.kg-width-full figcaption,
+.post-content .kg-image-card.kg-width-full figcaption,
+.post-content figure.full figcaption {
+	margin-top: var(--space-md);
+	padding: 0 var(--space-xl);
+	text-align: center;
+}
+
+/* Wide Images - Slightly break out - Ghost Native Classes First */
+.post-content .kg-width-wide,
+.post-content .kg-image-wide,
+.post-content .image-wide,
+.post-content figure.wide,
+.post-content img[alt*="wide"] {
+	width: calc(100% + var(--space-xl));
+	max-width: calc(100% + var(--space-xl));
+	margin-left: calc(-0.5 * var(--space-xl));
+	margin-right: calc(-0.5 * var(--space-xl));
+	margin-top: var(--space-2xl);
+	margin-bottom: var(--space-2xl);
+}
+
+/* Wide figures - Ghost classes have priority */
+.post-content figure.kg-width-wide,
+.post-content .kg-image-card.kg-width-wide,
+.post-content figure.wide {
+	text-align: center;
+}
+
+.post-content figure.kg-width-wide img,
+.post-content .kg-image-card.kg-width-wide img,
+.post-content figure.wide img {
+	width: 100%;
+	border-radius: var(--radius-md);
+}
+
+/* Ghost card support - Enhanced for native Ghost editor */
+.post-content .kg-card {
+	margin: var(--space-2xl) 0;
+}
+
+.post-content .kg-image-card {
+	margin: var(--space-2xl) 0;
+	text-align: center;
+}
+
+.post-content .kg-image-card.kg-card-hascaption {
+	margin-bottom: var(--space-xl);
+}
+
+.post-content .kg-image-card img {
+	border-radius: var(--radius-md);
+}
+
+.post-content .kg-image-card figcaption {
+	font-size: var(--font-size-sm);
+	color: var(--color-text-medium);
+	text-align: center;
+	margin-top: var(--space-sm);
+	font-style: italic;
+	line-height: var(--line-height-base);
+}
+
+/* Ghost gallery support */
+.post-content .kg-gallery-container {
+	margin: var(--space-2xl) 0;
+}
+
+.post-content .kg-gallery-row {
+	display: flex;
+	gap: var(--space-sm);
+	margin-bottom: var(--space-sm);
+}
+
+.post-content .kg-gallery-image {
+	flex: 1;
+}
+
+.post-content .kg-gallery-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Standalone images (not in figures) with alt text classes */
+.post-content img[alt*="left"]:not(figure img) {
+	float: left;
+	margin: 0 var(--space-2xl) var(--space-lg) 0;
+	max-width: 45%;
+	clear: left;
+}
+
+.post-content img[alt*="right"]:not(figure img) {
+	float: right;
+	margin: 0 0 var(--space-lg) var(--space-2xl);
+	max-width: 45%;
+	clear: right;
+}
+
+.post-content img[alt*="full"]:not(figure img) {
+	width: calc(100% + (2 * var(--space-xl)));
+	max-width: calc(100% + (2 * var(--space-xl)));
+	margin-left: calc(-1 * var(--space-xl));
+	margin-right: calc(-1 * var(--space-xl));
+	margin-top: var(--space-3xl);
+	margin-bottom: var(--space-3xl);
+	border-radius: var(--radius-lg);
+}
+
+/* Clear floats after images */
+.post-content .clear,
+.post-content .clearfix::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* Post Footer */
+.post-footer {
+	border-top: 2px solid var(--color-border);
+	padding-top: var(--space-3xl);
+	margin-top: var(--space-4xl);
+}
+
+.post-tags {
+	text-align: center;
+	margin-bottom: var(--space-3xl);
+}
+
+.tags-label {
+	font-size: var(--font-size-sm);
+	color: var(--color-text-medium);
+	font-weight: var(--font-weight-semibold);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	margin-right: var(--space-sm);
+}
+
+.tag-link {
+	display: inline-block;
+	background: var(--color-border-light);
+	color: var(--color-text-medium);
+	padding: var(--space-xs) var(--space-md);
+	border-radius: var(--radius-pill);
+	font-size: var(--font-size-sm);
+	text-decoration: none;
+	margin: 0 var(--space-xs) var(--space-sm);
+	transition: all var(--transition-base);
+}
+
+.tag-link:hover {
+	background: var(--color-primary);
+	color: white;
+	transform: translateY(-1px);
+}
+
+.post-actions {
+	display: flex;
+	justify-content: center;
+	gap: var(--space-xl);
+	margin-bottom: var(--space-3xl);
+	flex-wrap: wrap;
+}
+
+.post-action {
+	background: var(--color-background-light);
+	border: 1px solid var(--color-border);
+	padding: var(--space-sm) var(--space-lg);
+	border-radius: var(--radius-pill);
+	cursor: pointer;
+	font-size: var(--font-size-sm);
+	color: var(--color-text-medium);
+	transition: all var(--transition-base);
+	display: flex;
+	align-items: center;
+	gap: var(--space-xs);
+}
+
+.post-action:hover {
+	background: var(--color-primary);
+	color: white;
+	border-color: var(--color-primary);
+	transform: translateY(-1px);
+}
+
+/* Author Card */
+.post-author-card {
+	display: flex;
+	gap: var(--space-xl);
+	background: var(--color-background-light);
+	padding: var(--space-2xl);
+	border-radius: var(--radius-lg);
+	border: 1px solid var(--color-border);
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.author-card-avatar {
+	width: 80px;
+	height: 80px;
+	border-radius: var(--radius-full);
+	object-fit: cover;
+	flex-shrink: 0;
+	border: 3px solid var(--color-border);
+}
+
+.author-card-content h4 {
+	font-size: var(--font-size-xl);
+	margin-bottom: var(--space-sm);
+	color: var(--color-text-dark);
+}
+
+.author-card-content p {
+	color: var(--color-text-medium);
+	margin-bottom: var(--space-lg);
+	line-height: var(--line-height-relaxed);
+}
+
+.author-card-actions {
+	display: flex;
+	gap: var(--space-md);
+	align-items: center;
+}
+
+.author-link {
+	color: var(--color-primary);
+	text-decoration: none;
+	font-weight: var(--font-weight-semibold);
+	transition: color var(--transition-base);
+}
+
+.author-link:hover {
+	color: var(--color-primary-hover);
+}
+
+.subscribe-btn-small {
+	background: var(--color-primary);
+	color: white;
+	padding: var(--space-xs) var(--space-md);
+	border-radius: var(--radius-pill);
+	text-decoration: none;
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-semibold);
+	transition: all var(--transition-base);
+}
+
+.subscribe-btn-small:hover {
+	background: var(--color-primary-hover);
+	transform: translateY(-1px);
+}
+
+/* Related Posts */
+.related-posts {
+	margin-top: var(--space-4xl);
+	border-top: 1px solid var(--color-border);
+	padding-top: var(--space-3xl);
+}
+
+.related-title {
+	font-size: var(--font-size-2xl);
+	font-weight: var(--font-weight-bold);
+	text-align: center;
+	margin-bottom: var(--space-2xl);
+	color: var(--color-text-dark);
+}
+
+.related-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: var(--space-xl);
+}
+
+.related-card {
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+	transition: all var(--transition-base);
+	background: var(--color-background);
+}
+
+.related-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+	border-color: var(--color-primary);
+}
+
+.related-image img {
+	width: 100%;
+	height: 150px;
+	object-fit: cover;
+}
+
+.related-content {
+	padding: var(--space-lg);
+}
+
+.related-content h4 a {
+	color: var(--color-text-dark);
+	text-decoration: none;
+	font-size: var(--font-size-lg);
+	font-weight: var(--font-weight-semibold);
+	line-height: var(--line-height-tight);
+}
+
+.related-content h4 a:hover {
+	color: var(--color-primary);
+}
+
+.related-content p {
+	font-size: var(--font-size-sm);
+	color: var(--color-text-medium);
+	margin: var(--space-sm) 0;
+	line-height: var(--line-height-base);
+}
+
+.related-meta {
+	font-size: var(--font-size-xs);
+	color: var(--color-text-light);
+}
+
+/* Comments Section */
+.comments-section {
+	margin-top: var(--space-4xl);
+	border-top: 1px solid var(--color-border);
+	padding-top: var(--space-3xl);
+}
+
+.comments-section h3 {
+	font-size: var(--font-size-2xl);
+	font-weight: var(--font-weight-bold);
+	text-align: center;
+	margin-bottom: var(--space-2xl);
+	color: var(--color-text-dark);
+}
+
+/* Mobile Responsive */
+@media (max-width: 767px) {
+	.post-container {
+		padding: 0 var(--space-lg);
+	}
+
+	.post-title {
+		font-size: var(--font-size-3xl);
+	}
+
+	.post-meta {
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-md);
+	}
+
+	.post-content {
+		font-size: var(--font-size-md);
+	}
+
+	.post-content .image-left,
+	.post-content .image-right,
+	.post-content img[alt*="left"],
+	.post-content img[alt*="right"],
+	.post-content figure.left,
+	.post-content figure.right,
+	.post-content .kg-image-left,
+	.post-content .kg-image-right {
+		float: none;
+		max-width: 100%;
+		margin: var(--space-xl) 0;
+		display: block;
+	}
+
+	.post-content figure.left,
+	.post-content figure.right {
+		text-align: center;
+	}
+
+	.post-content figure.left figcaption,
+	.post-content figure.right figcaption {
+		text-align: center;
+	}
+
+	.post-content .image-full,
+	.post-content .image-wide,
+	.post-content img[alt*="full"],
+	.post-content img[alt*="wide"],
+	.post-content .kg-width-full,
+	.post-content .kg-width-wide {
+		width: calc(100% + (2 * var(--space-lg)));
+		margin-left: calc(-1 * var(--space-lg));
+		margin-right: calc(-1 * var(--space-lg));
+	}
+
+	.post-author-card {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.related-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.post-actions {
+		gap: var(--space-md);
+	}
+}
+
+/* Tablet */
+@media (max-width: 1024px) and (min-width: 768px) {
+	.post-content .image-left,
+	.post-content .image-right,
+	.post-content img[alt*="left"],
+	.post-content img[alt*="right"],
+	.post-content figure.left,
+	.post-content figure.right,
+	.post-content .kg-image-left,
+	.post-content .kg-image-right {
+		max-width: 50%;
+	}
+}
