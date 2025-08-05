@@ -54,7 +54,8 @@ letter-spacing: -0.03rem;
 	gap: var(--space-sm);
 	padding: var(--space-xs);
 	border-radius: var(--radius-md);
-	color: var(--color-text-medium);
+	color: var(--color-text-dark);
+	opacity: .75;
 	text-decoration: none;
 	font-size: var(--font-size-md);
 	font-weight: 600;
@@ -165,7 +166,6 @@ letter-spacing: -0.03rem;
 .now-reading-widget ul li a {
 	color: var(--color-text-dark);
 	font-weight: 600;
-	opacity: .7;
 	text-decoration: underline;
 }
 

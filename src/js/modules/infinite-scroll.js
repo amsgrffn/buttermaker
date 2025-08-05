@@ -1,6 +1,6 @@
 /**
- * Simplified Infinite Scroll Module
- * Uses page-based navigation instead of Content API (more reliable)
+ * Simple Ghost-Friendly Infinite Scroll Module
+ * Uses Ghost's built-in link[rel="next"] pagination (more reliable)
  */
 
 export class InfiniteScroll {
@@ -9,7 +9,9 @@ export class InfiniteScroll {
 		this.loadMoreBtn = null;
 		this.isLoading = false;
 		this.hasMorePosts = true;
-		this.paginationData = null;
+		this.nextDom = document; // Current document to search for next link
+		this.currentPage = 1;
+		this.totalPages = 1;
 
 		this.init();
 	}
@@ -24,8 +26,11 @@ export class InfiniteScroll {
 			return;
 		}
 
-		// Get pagination data from the JSON script tag
-		this.getPaginationData();
+		// Get initial pagination data from Ghost
+		this.readPaginationData();
+
+		// Check if we have a next page initially
+		this.checkForNextPage();
 
 		// Set up event listeners
 		this.loadMoreBtn.addEventListener('click', () => this.loadMorePosts());
@@ -33,28 +38,44 @@ export class InfiniteScroll {
 		// Initialize button state
 		this.updateButtonState();
 
-		console.log('♾️ Infinite scroll initialized (page-based)');
+		console.log('♾️ Infinite scroll initialized - Page', this.currentPage, 'of', this.totalPages);
 	}
 
-	getPaginationData() {
-		const paginationScript = document.getElementById('pagination-data');
+	readPaginationData(doc = document) {
+		const paginationScript = doc.getElementById('pagination-data');
 		if (paginationScript) {
 			try {
-				this.paginationData = JSON.parse(paginationScript.textContent);
-				this.hasMorePosts = this.paginationData.hasNext;
+				const data = JSON.parse(paginationScript.textContent);
+				this.currentPage = data.currentPage || 1;
+				this.totalPages = data.totalPages || 1;
+				this.hasMorePosts = data.hasNext || false;
+
+				console.log('📊 Pagination data:', {
+					currentPage: this.currentPage,
+					totalPages: this.totalPages,
+					hasMore: this.hasMorePosts
+				});
 			} catch (error) {
 				console.error('❌ Error parsing pagination data:', error);
 				this.hasMorePosts = false;
 			}
 		} else {
-			// Fallback: check for next page link
-			const nextLink = document.querySelector('.pagination .page-next:not(.disabled)');
-			this.hasMorePosts = !!nextLink;
+			console.warn('⚠️ No pagination data found');
 		}
+	}
+
+	checkForNextPage() {
+		// Use Ghost's built-in next page link
+		const nextLink = this.nextDom.querySelector('link[rel="next"]');
+		this.hasMorePosts = !!nextLink;
+
+		console.log('🔗 Next page link found:', nextLink?.href || 'None');
+		return nextLink;
 	}
 
 	async loadMorePosts() {
 		if (this.isLoading || !this.hasMorePosts) {
+			console.log('⏸️ Load more skipped - Loading:', this.isLoading, 'Has more:', this.hasMorePosts);
 			return;
 		}
 
@@ -62,17 +83,25 @@ export class InfiniteScroll {
 		this.updateButtonState();
 
 		try {
-			// Calculate next page URL
-			const nextPageUrl = this.getNextPageUrl();
+			// Get Ghost's next page link
+			const nextLink = this.checkForNextPage();
 
-			if (!nextPageUrl) {
+			if (!nextLink) {
+				console.log('🏁 No more pages to load');
 				this.hasMorePosts = false;
 				this.updateButtonState();
 				return;
 			}
 
+			console.log('🔄 Loading next page:', nextLink.href);
+
 			// Fetch the next page
-			const response = await fetch(nextPageUrl);
+			const response = await fetch(nextLink.href, {
+				credentials: 'same-origin',
+				headers: {
+					'X-Requested-With': 'XMLHttpRequest'
+				}
+			});
 
 			if (!response.ok) {
 				throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -84,15 +113,27 @@ export class InfiniteScroll {
 			const parser = new DOMParser();
 			const doc = parser.parseFromString(html, 'text/html');
 
-			// Extract posts from the response
-			const newPosts = doc.querySelectorAll('.post-feed .post-card');
+			// Extract posts from the response - use the same selector as your theme
+			const newPosts = doc.querySelectorAll('.post-feed article.post-card');
 
 			if (newPosts.length > 0) {
+				console.log('✅ Found', newPosts.length, 'new posts');
+
 				await this.appendPosts(Array.from(newPosts));
 
-				// Update pagination data
-				this.updatePaginationFromResponse(doc);
+				// IMPORTANT: Update the nextDom reference to the new document
+				// This ensures the next call will find the correct next page link
+				this.nextDom = doc;
+
+				// Read pagination data from the new page
+				this.readPaginationData(doc);
+
+				// Check if there are more pages after this one
+				this.checkForNextPage();
+
+				console.log('📄 Now on page', this.currentPage, 'of', this.totalPages);
 			} else {
+				console.log('🚫 No posts found in response');
 				this.hasMorePosts = false;
 			}
 
@@ -105,38 +146,10 @@ export class InfiniteScroll {
 		}
 	}
 
-	getNextPageUrl() {
-		if (this.paginationData && this.paginationData.hasNext) {
-			const nextPage = this.paginationData.currentPage + 1;
-			const currentUrl = new URL(window.location);
-			currentUrl.searchParams.set('page', nextPage);
-			return currentUrl.toString();
-		}
-
-		// Fallback: try to find next page link
-		const nextLink = document.querySelector('.pagination .page-next:not(.disabled)');
-		return nextLink ? nextLink.href : null;
-	}
-
-	updatePaginationFromResponse(doc) {
-		const paginationScript = doc.getElementById('pagination-data');
-		if (paginationScript) {
-			try {
-				this.paginationData = JSON.parse(paginationScript.textContent);
-				this.hasMorePosts = this.paginationData.hasNext;
-			} catch (error) {
-				console.error('❌ Error parsing new pagination data:', error);
-				this.hasMorePosts = false;
-			}
-		} else {
-			// Fallback: check for next page link in response
-			const nextLink = doc.querySelector('.pagination .page-next:not(.disabled)');
-			this.hasMorePosts = !!nextLink;
-		}
-	}
-
 	async appendPosts(newPosts) {
-		// Create a container for new posts
+		console.log('📝 Appending', newPosts.length, 'posts to feed');
+
+		// Create a container for new posts with animation
 		const newPostsContainer = document.createElement('div');
 		newPostsContainer.className = 'new-posts-container';
 		newPostsContainer.style.opacity = '0';
@@ -149,10 +162,11 @@ export class InfiniteScroll {
 			newPostsContainer.appendChild(clonedPost);
 		});
 
-		// Insert before the load more button's parent
-		this.loadMoreBtn.parentNode.parentNode.insertBefore(newPostsContainer, this.loadMoreBtn.parentNode);
+		// Insert new posts before the load more button
+		const loadMoreContainer = this.loadMoreBtn.closest('.load-more');
+		loadMoreContainer.parentNode.insertBefore(newPostsContainer, loadMoreContainer);
 
-		// Animate in
+		// Animate in the new posts
 		requestAnimationFrame(() => {
 			newPostsContainer.style.transition = 'all 0.6s ease-out';
 			newPostsContainer.style.opacity = '1';
@@ -179,7 +193,10 @@ export class InfiniteScroll {
 
 		// Dispatch custom event for other modules to reinitialize
 		document.dispatchEvent(new CustomEvent('newPostsLoaded', {
-			detail: { source: 'infinite-scroll' }
+			detail: {
+				source: 'infinite-scroll',
+				hasMorePosts: this.hasMorePosts
+			}
 		}));
 	}
 
@@ -189,6 +206,7 @@ export class InfiniteScroll {
 		if (this.isLoading) {
 			this.loadMoreBtn.disabled = true;
 			this.loadMoreBtn.classList.add('loading');
+			this.loadMoreBtn.classList.remove('no-more', 'error');
 			this.loadMoreBtn.innerHTML = `
 				<span class="loading-spinner"></span>
 				Loading...
@@ -197,25 +215,27 @@ export class InfiniteScroll {
 			this.loadMoreBtn.disabled = true;
 			this.loadMoreBtn.classList.add('no-more');
 			this.loadMoreBtn.classList.remove('loading', 'error');
-			this.loadMoreBtn.innerHTML = 'No more posts';
+			this.loadMoreBtn.innerHTML = `No more posts (${this.currentPage}/${this.totalPages})`;
 		} else {
 			this.loadMoreBtn.disabled = false;
 			this.loadMoreBtn.classList.remove('loading', 'no-more', 'error');
-			this.loadMoreBtn.innerHTML = 'Load more posts';
+			const nextPage = this.currentPage + 1;
+			this.loadMoreBtn.innerHTML = `Load more posts (${nextPage}/${this.totalPages})`;
 		}
 	}
 
 	showError() {
 		if (!this.loadMoreBtn) return;
 
-		this.loadMoreBtn.innerHTML = 'Failed to load posts. Try again?';
 		this.loadMoreBtn.classList.add('error');
-		this.loadMoreBtn.classList.remove('loading');
+		this.loadMoreBtn.classList.remove('loading', 'no-more');
+		this.loadMoreBtn.innerHTML = 'Failed to load posts. Try again?';
+		this.loadMoreBtn.disabled = false;
 
-		// Reset after 3 seconds
-		setTimeout(() => {
+		// Add click handler to retry
+		this.loadMoreBtn.onclick = () => {
 			this.loadMoreBtn.classList.remove('error');
-			this.updateButtonState();
-		}, 3000);
+			this.loadMorePosts();
+		};
 	}
 }

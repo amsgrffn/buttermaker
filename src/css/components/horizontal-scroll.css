@@ -174,13 +174,12 @@
 
 .scroll-card-title {
 	font-family: var(--font-family-display);
-	font-size: var(--font-size-lg);
+	font-size: var(--font-size-md);
 	font-weight: var(--font-weight-semibold);
-	color: #000;
-	line-height: var(--line-height-tight);
+	line-height: var(--line-height-base);
 	margin-bottom: var(--space-xs);
 	display: -webkit-box;
-	-webkit-line-clamp: 2;
+	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 }

@@ -24,11 +24,26 @@
 	--color-warning: #f39c12;
 	--color-error: #e74c3c;
 
+	/* ===================================================================
+	   * SYSTEM ACCENT COLORS
+	   * ================================================================ */
+
+	  --color-blue: oklch(0.603 0.218 257.4); /* systemBlue: #007aff */
+	  --color-green: oklch(0.73 0.194 147.5); /* systemGreen: #34c759 */
+	  --color-indigo: oklch(0.529 0.191 278.3); /* systemIndigo: #5856d6 */
+	  --color-orange: oklch(0.765 0.175 62.6); /* systemOrange: #ff9500 */
+	  --color-pink: oklch(0.65 0.238 17.9); /* systemPink: #ff2d55 */
+	  --color-purple: oklch(0.615 0.213 312.4); /* systemPurple: #af52de */
+	  --color-red: oklch(0.654 0.232 28.7); /* systemRed: #ff3b30 */
+	  --color-teal: oklch(0.789 0.123 230.8); /* systemTeal: #5ac8fa */
+	  --color-yellow: oklch(0.865 0.177 90.4); /* systemYellow: #ffcc00 */
+	  --color-notebook-blue: oklch(0.764, 0.058, 258); /* systemYellow: #9CB4D8 */
+
 	/* Typography */
-	--font-family-base: 'aktiv-grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+	--font-family-base: 'adelle','aktiv-grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
 	--font-family-mono: 'Monaco', 'Consolas', 'Courier New', monospace;
 	--font-family-display: "neue-haas-grotesk-display", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	--font-family-serif: 'aktiv-grotesk','new-kansas', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	--font-family-serif: 'aktiv-grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
 	--font-size-xs: 11px;
 	--font-size-sm: 12px;

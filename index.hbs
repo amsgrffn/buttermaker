@@ -3,7 +3,7 @@
 {{! Horizontal Scroll Section - Trending Now (Full Width) }}
 <section class="horizontal-scroll-section">
 	<div class="horizontal-scroll-header">
-		<h2 class="horizontal-scroll-title">Trending <em>&amp;</em> Popular</h2>
+		<h2 class="horizontal-scroll-title">Trending <em>&amp;</em> Popular Posts</h2>
 	</div>
 
 	<div class="horizontal-scroll-container">
@@ -121,12 +121,12 @@
 							{{#primary_author}}
 							   <a class="avatar wiggle" href="{{url}}"><img srcset="{{img_url profile_image size="xxs" format="webp"}} 50w, {{img_url profile_image size="xs" format="webp"}} 100w" sizes="50vw" src="{{img_url profile_image size="xs" format="webp"}}" alt="{{name}}'s Avatar" width="40" height="40" loading="lazy"></a>
 							   {{/primary_author}}
+							   {{#if primary_tag}}
+							   <span class="masonry-tag">{{primary_tag.name}}</span>
+							   {{/if}}
 							<time class="masonry-date" datetime="{{date published_at format="YYYY-MM-DD"}}">
 								{{date published_at format="DD MMM YYYY"}}
 							</time>
-							{{#if primary_tag}}
-							<span class="masonry-tag">{{primary_tag.name}}</span>
-							{{/if}}
 						</div>
 					</div>
 
@@ -139,7 +139,7 @@
 
 		<section class="post-feed">
 			<h2 class="section-title">Latest Posts</h2>
-			{{#foreach posts offset="1"}}
+			{{#foreach posts}}
 			<article class="post-card post-card--with-image">
 				<div class="post-header">
 					<img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
@@ -218,104 +218,56 @@
 		<div class="aside-content">
 			{{! Personal Notes Section }}
 			<div class="notes-widget">
-
 					<h3 class="widget-title">Notes <em>&amp;</em> Thoughts</h3>
-
+					{{#get "posts" include="authors,tags" filter="tag:[hash-note]" limit="12"}}
+					{{#foreach posts}}
 				<div class="notes-content">
 					<div class="note-item">
-						<h4 class="note-title">Writing Process</h4>
+						<h4 class="note-title"><a href="{{url}}">{{title}}</a></h4>
 						<div class="note-body">
-						<p>Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you. But I can't give you this case, it <a href="/">don't belong to me</a>. Besides, I've already been through too much shit this morning over this case to hand it over to your dumb ass.</p>
+						{{content}}
 						</div>
 						<div class="note-meta">
-							<img src="{{asset "img/nyc.png"}}" alt="{{title}}" class="post-image post-image-fallback">
-							<time class="note-date">3 days ago</time>
+							<img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
+							<time class="note-date"><a href="{{url}}">{{date published_at timeago="true"}}</a></time>
 						</div>
-					</div>
-					<div class="note-item">
-						<h4 class="note-title">Art Inspiration</h4>
-						<p class="note-text">I should've known way back when... You know why, David? Because of the kids. They called me Mr Glass.</p>
-						<div class="note-meta">
-							<img src="{{asset "img/nyc.png"}}" alt="{{title}}" class="post-image post-image-fallback">
-							<time class="note-date">3 days ago</time>
-						</div>
-					</div>
-					<div class="note-item">
-						<h4 class="note-title">Reader Feedback</h4>
-						<p class="note-text">You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it killed the world once and got a taste for murder. After the avalanche, it took us a week to climb out.</p>
-						<div class="note-meta">
-							<img src="{{asset "img/nyc.png"}}" alt="{{title}}" class="post-image post-image-fallback">
-							<time class="note-date">3 days ago</time>
-						</div>
-					</div>
-					<div class="note-item">
-						<h4 class="note-title">Writing Process</h4>
-						<p class="note-text">My money's in that office, right? If she start giving me some bullshit about it ain't there, and we got to go someplace else and get it, I'm gonna shoot you in the head then and there. Then I'm gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. Hey, look at me when I'm talking to you, motherfucker.</p>
-						<div class="note-meta">
-							<img src="{{asset "img/nyc.png"}}" alt="{{title}}" class="post-image post-image-fallback">
-							<time class="note-date">3 days ago</time>
-						</div>
-					</div>
-					<div class="note-item">
-						<h4 class="note-title">Writing Process</h4>
-						<p class="note-text">Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown.</p>
-						<time class="note-date">3 days ago</time>
-					</div>
-					<div class="note-item">
-						<h4 class="note-title">Writing Process</h4>
-						<p class="note-text">Currently exploring themes of memory and time in my latest poetry collection. Each piece builds on the last...</p>
-						<time class="note-date">3 days ago</time>
-					</div>
-					<div class="note-item">
-						<h4 class="note-title">Writing Process</h4>
-						<p class="note-text">Currently exploring themes of memory and time in my latest poetry collection. Each piece builds on the last...</p>
-						<time class="note-date">3 days ago</time>
-					</div>
-					<div class="note-item">
-						<h4 class="note-title">Writing Process</h4>
-						<p class="note-text">Currently exploring themes of memory and time in my latest poetry collection. Each piece builds on the last...</p>
-						<time class="note-date">3 days ago</time>
-					</div>
-					<div class="note-item">
-						<h4 class="note-title">Writing Process</h4>
-						<p class="note-text">Currently exploring themes of memory and time in my latest poetry collection. Each piece builds on the last...</p>
-						<time class="note-date">3 days ago</time>
-					</div>
-					<div class="note-item">
-						<h4 class="note-title">Writing Process</h4>
-						<p class="note-text">Currently exploring themes of memory and time in my latest poetry collection. Each piece builds on the last...</p>
-						<time class="note-date">3 days ago</time>
-					</div>
-					<div class="note-item">
-						<h4 class="note-title">Writing Process</h4>
-						<p class="note-text">Currently exploring themes of memory and time in my latest poetry collection. Each piece builds on the last...</p>
-						<time class="note-date">3 days ago</time>
 					</div>
 				</div>
+				{{/foreach}}
+				{{/get}}
 				<p class="small-link">there's more, <a href="/notes">check them out</a> at the note archive <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></p>
 			</div>
 
 			{{! Quick Stats Widget }}
 			<div class="stats-widget">
-				<h3 class="widget-title">At a Glance</h3>
+				<h3 class="widget-title">Site Figures <em>&amp;</em> Stats</h3>
 				<div class="stats-grid">
 					<div class="stat-item">
-						<span class="stat-number">{{@site.posts_count}}</span>
+						<span class="stat-number">{{pagination.total}}</span>
 						<span class="stat-label">Total Posts</span>
 					</div>
 					<div class="stat-item">
-						<span class="stat-number">{{@site.members_count}}</span>
+						<span class="stat-number">{{total_members}}</span>
 						<span class="stat-label">Subscribers</span>
 					</div>
 					<div class="stat-item">
-						<span class="stat-number">{{date format="YYYY"}}</span>
-						<span class="stat-label">Year Started</span>
+						<span class="stat-number">10%</span>
+						<span class="stat-label">Revenue Donated</span>
 					</div>
 					<div class="stat-item">
-						<span class="stat-number">{{@site.tags_count}}</span>
-						<span class="stat-label">Categories</span>
+						<span class="stat-number">1,000</span>
+						<span class="stat-label">Pay Views per Month</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-number">$500</span>
+						<span class="stat-label">Monthly Revenue</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-number">1,000</span>
+						<span class="stat-label">Pay Views per Month</span>
 					</div>
 				</div>
+				<p class="small-link">there's more, <a href="/notes">check them out</a> at the note archive <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></p>
 			</div>
 
 			<div class="testimonial-widget">
@@ -335,7 +287,7 @@
 
 			{{! Newsletter Archive }}
 			<div class="archive-widget">
-				<h3 class="widget-title">Recently Watched</h3>
+				<h3 class="widget-title">We {{>icons/heart}} Moving Pictures</h3>
 				<div class="movie-list">
 				<ul>
 					<li><img src="{{asset "img/happy.jpg"}}" alt="{{title}}"></li>
@@ -355,17 +307,41 @@
 				<p class="small-link">there's more, <a href="/notes">check them out</a> at the note archive <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></p>
 			</div>
 
-			{{! Tags Cloud }}
-			<div class="tags-widget">
-					<h3 class="widget-title">Popular Tags</h3>
-				<div class="tags-cloud">
-					{{#get "tags" limit="12" as |popular_tags|}}
-						{{#foreach popular_tags}}
-						<a href="{{url}}" class="tag-item" data-count="{{count}}">{{name}}</a>
-						{{/foreach}}
-					{{/get}}
+			{{! Recommendations Widget - Card Style }}
+			{{#match @site.recommendations_enabled}}
+			<div class="recommendations-widget">
+				<h3>Recommended Reading</h3>
+				{{#recommendations limit="8"}}
+				<ul class="recommendations">
+					{{#each recommendations as |rec|}}
+					<li class="recommendation">
+						<a href="{{rec.url}}" data-recommendation="{{rec.id}}" target="_blank" rel="noopener">
+							<div class="recommendation-header">
+								<div class="recommendation-favicon">
+									{{#if rec.favicon}}
+									<img src="{{rec.favicon}}" alt="{{rec.title}}" loading="lazy" onerror="this.style.display='none';">
+									{{else}}
+									<span class="recommendation-favicon-fallback"></span>
+									{{/if}}
+								</div>
+								<div class="recommendation-content">
+									<h5 class="recommendation-title">{{rec.title}}</h5>
+									<span class="recommendation-url">{{readable_url rec.url}}</span>
+								</div>
+							</div>
+							{{#if rec.description}}
+							<p class="recommendation-description">{{rec.description}}</p>
+							{{/if}}
+						</a>
+					</li>
+					{{/each}}
+				</ul>
+				{{/recommendations}}
+				<div class="recommendations-footer">
+					<p class="small-link" data-portal="recommendations">View all recommendations →</p>
 				</div>
 			</div>
+			{{/match}}
 		</div>
 	</aside>
 </div>

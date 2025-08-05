@@ -14,9 +14,7 @@
 	border-radius: var(--radius-base);
 	padding: var(--space-lg) var(--space-3xl);
 	color: #fff;
-	font-family: 'abril-titling-condensed', serif;
-	font-style: italic;
-	font-size: var(--font-size-xl);
+	font-size: var(--font-size-lg);
 	font-weight: var(--font-weight-bold);
 	cursor: pointer;
 	transition: all var(--transition-base);

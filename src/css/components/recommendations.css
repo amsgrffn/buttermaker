@@ -1,0 +1,185 @@
+/* ==========================================================================
+   Recommendations Widget - Card Style with 2-Column Layout
+   ========================================================================== */
+
+.recommendations-widget {
+	background: var(--color-bg-secondary, #f8f9fa);
+	border-radius: var(--radius-md, 8px);
+	padding: var(--space-lg, 20px);
+	margin-bottom: var(--space-xl, 24px);
+	border: 1px solid var(--color-border, #e1e5e9);
+}
+
+.recommendations-widget h3 {
+	font-size: var(--font-size-lg, 18px);
+	font-weight: var(--font-weight-semibold, 600);
+	margin: 0 0 var(--space-lg, 20px) 0;
+	color: var(--color-text-dark, #1a1a1a);
+}
+
+/* 2-Column Grid Layout */
+.recommendations {
+	column-count: 2;
+	  column-gap: 10px;
+	  column-fill: balance;
+}
+
+/* Individual Recommendation Cards */
+.recommendation {
+	margin: 0;
+}
+
+.recommendation a {
+	display: block;
+	background: var(--color-background-card, white);
+	border-radius: var(--radius-lg, 12px);
+	padding: var(--space-lg);
+	text-decoration: none;
+	color: inherit;
+	transition: all var(--transition-slow, 0.3s ease);
+	box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1), 0 0 0 1px rgb(17 24 39 / 0.1);
+	height: 100%;
+	position: relative;
+	display: inline-block;
+	  width: 100%;
+	  margin-bottom: 10px;
+	  break-inside: avoid;
+	  page-break-inside: avoid;
+}
+
+.recommendation a:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-md, 0 4px 12px rgba(0, 0, 0, 0.15));
+	border-color: var(--color-border, #e1e5e9);
+}
+
+/* Card Header with Favicon */
+.recommendation-header {
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm, 12px);
+	margin-bottom: var(--space-sm, 12px);
+}
+
+.recommendation-favicon {
+	flex-shrink: 0;
+	width: 28px;
+	height: 28px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--color-background-light, #f8f9fa);
+	margin-bottom: var(--space-md);
+}
+
+.recommendation-favicon img {
+	width: 28px;
+	height: 28px;
+	border-radius: var(--radius-full);
+}
+
+/* Fallback for missing favicons */
+.recommendation-favicon-fallback {
+	width: 18px;
+	height: 18px;
+	background: linear-gradient(45deg, #ddd 25%, transparent 25%),
+				linear-gradient(-45deg, #ddd 25%, transparent 25%),
+				linear-gradient(45deg, transparent 75%, #ddd 75%),
+				linear-gradient(-45deg, transparent 75%, #ddd 75%);
+	background-size: 4px 4px;
+	background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
+	border-radius: 2px;
+	display: block;
+}
+
+/* Card Content */
+.recommendation-title {
+	font-family: var(--font-family-display);
+	font-size: var(--font-size-md);
+	font-weight: var(--font-weight-semibold);
+	margin: 0;
+	color: var(--color-text-dark);
+	line-height: var(--line-height-tight);
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.recommendation-url {
+	font-size: var(--font-size-sm);
+	color: var(--color-text-medium, #6b6b6b);
+	display: block;
+	margin-bottom: var(--space-xs, 8px);
+	opacity: 0.8;
+	font-weight: var(--font-weight-medium, 500);
+}
+
+.recommendation-description {
+	font-size: var(--font-size-sm);
+	margin: 0;
+	line-height: var(--line-height-relaxed, 1.5);
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-wrap: pretty;
+}
+
+/* Footer with View All Button */
+.recommendations-footer {
+	margin-top: var(--space-lg, 20px);
+	padding-top: var(--space-md, 16px);
+	border-top: 1px solid var(--color-border-light, #f0f0f0);
+	text-align: center;
+}
+
+.view-all-recommendations {
+	background: none;
+	border: none;
+	font-size: var(--font-size-sm, 14px);
+	color: var(--color-primary, #ff6719);
+	text-decoration: none;
+	font-weight: var(--font-weight-medium, 500);
+	transition: color 0.2s ease;
+	cursor: pointer;
+	padding: var(--space-xs, 8px) var(--space-sm, 12px);
+	border-radius: var(--radius-sm, 4px);
+	font-family: inherit;
+}
+
+.view-all-recommendations:hover {
+	color: var(--color-primary-hover, #e55a15);
+	background: var(--color-background-light, #f8f9fa);
+}
+
+/* Mobile Responsive - Single Column */
+@media (max-width: 768px) {
+	.recommendations {
+		grid-template-columns: 1fr;
+		gap: var(--space-sm, 12px);
+	}
+
+	.recommendations-widget {
+		margin-bottom: var(--space-lg, 20px);
+		padding: var(--space-md, 16px);
+	}
+
+	.recommendation a {
+		padding: var(--space-sm, 12px);
+	}
+
+	.recommendation-title {
+		font-size: var(--font-size-base, 16px);
+	}
+}
+
+/* Tablet - Keep 2 columns but adjust spacing */
+@media (max-width: 1024px) and (min-width: 769px) {
+	.recommendations {
+		gap: var(--space-sm, 12px);
+	}
+
+	.recommendation a {
+		padding: var(--space-sm, 12px);
+	}
+}

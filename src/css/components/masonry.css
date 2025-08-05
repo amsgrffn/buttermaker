@@ -14,7 +14,7 @@
 	font-family: var(--font-family-display);
 	font-size: var(--font-size-3xl);
 	font-weight: var(--font-weight-bold);
-	margin-bottom: var(--space-3xl);
+	margin-bottom: var(--space-xl);
 	color: var(--color-text-dark);
 }
 
@@ -98,14 +98,15 @@
 
 /* Card Content - Natural height based on text content */
 .masonry-content {
-	padding: var(--space-xl) var(--space-3xl) var(--space-3xl) var(--space-3xl);
+	padding: var(--space-xl) var(--space-3xl) var(--space-xl) var(--space-3xl);
 }
 
 .masonry-title {
+	font-family: var(--font-family-display);
 	font-size: var(--font-size-xl);
 	font-weight: var(--font-weight-bold);
 	line-height: var(--line-height-base);
-	margin-bottom: var(--space-md);
+	margin-bottom: var(--space-sm);
 	color: var(--color-text-dark);
 	/* No line clamping - let titles be their natural height */
 }
@@ -144,12 +145,10 @@
 }
 
 .masonry-tag {
-	font-family: 'abril-titling-condensed', serif;
 	background: var(--color-border-light);
 	padding: var(--space-xs) var(--space-sm);
 	border-radius: var(--radius-base);
-	font-style: italic;
-	font-weight: 400;
+	font-weight: 500;
 }
 
 .masonry-reading-time {
