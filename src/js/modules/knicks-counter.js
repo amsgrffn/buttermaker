@@ -21,7 +21,7 @@ export function initKnicksCounter() {
 		const est = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
 		const diff = est - championship;
 		const daysSince = Math.floor(diff / (1000 * 60 * 60 * 24));
-		counterElement.textContent = `${daysSince.toLocaleString()} Days Ago`;
+		counterElement.textContent = `${daysSince.toLocaleString()} days`;
 	}
 
 	// Calculate initial days

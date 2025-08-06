@@ -32,7 +32,7 @@ export class HorizontalScroll {
 			track,
 			prevBtn,
 			nextBtn,
-			scrollAmount: 350 + 16, // Card width + gap
+			scrollAmount: 295 + 16, // Card width + gap
 			isScrolling: false
 		};
 

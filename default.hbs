@@ -19,9 +19,17 @@
 		<div class="header-content">
 			<div class="header-left">
 				<button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
-				<a href="{{@site.url}}" class="logo"><img src="{{asset "img/nyc.png"}}" alt="{{title}}"></a>
+				<a href="{{@site.url}}" class="logo"><img src="{{asset "img/kirk.png"}}" alt="{{title}}"></a>
 				<ul>
-					<li>{{date format="dddd, MMMM Do YYYY"}}. Currently: <a href="https://en.wikipedia.org/wiki/Maine"><span id="current-temp"></span>,<span id="current-condition"></span></a></li>
+					<li class="date-time-weather">
+						<span class="date-line">{{date format="dddd, MMMM D, YYYY"}}</span>
+						<span class="time-weather-line">
+							<span id="current-time"></span> &bull;
+							<a href="https://en.wikipedia.org/wiki/Maine">
+								<span id="current-temp"></span> <span id="current-condition"></span>
+							</a>
+						</span>
+					</li>
 				</ul>
 			</div>
 			<div class="header-center">
@@ -47,7 +55,7 @@
 		<aside class="sidebar">
 			<nav>
 				<h1><a href="{{@site.url}}">You <span>can't</span> be serious.</a></h1>
-				<p class="tagline">An optimists guide to maintaining equanimity and sanity during an age of bullshit</p>
+				<p class="tagline">An optimists guide to maintaining equanimity and sanity during an age of bullshit <em>&amp;</em> blusteration</p>
 				<ul class="sidebar-nav">
 					{{! Home - with dropdown }}
 					<li>
@@ -61,7 +69,6 @@
 							Home
 						</a>
 					</li>
-
 					{{! Blog - regular link (no dropdown) }}
 					<li>
 						<a href="{{@site.url}}/blog/" class="sidebar-link">
@@ -74,7 +81,6 @@
 							Blog
 						</a>
 					</li>
-
 					{{! Topics - with dropdown (customize with your actual tags) }}
 					<li class="has-dropdown" data-dropdown-type="topics">
 						<a href="{{@site.url}}/topics/" class="sidebar-link">
@@ -98,7 +104,6 @@
 							</ul>
 						</div>
 					</li>
-
 					{{! Pages - with dropdown (customize with your actual pages) }}
 					<li class="has-dropdown" data-dropdown-type="pages">
 						<a href="{{@site.url}}/pages/" class="sidebar-link">
@@ -161,7 +166,7 @@
 			{{! Your existing Now Reading Widget stays exactly the same }}
 			<div class="now-reading-widget">
 				<ul>
-					<li>You Can't Be Serious is built and maintained in Maine with <a href="https://ghost.org">Ghost</a> + <a href="https://www.magicpages.co/">Magic Pages</a> + <a href="https://github.com/amsgrffn/buttermaker">Buttermaker</a>. The New York Knicks won an NBA Championship <a href="https://www.nytimes.com/1973/05/11/archives/knicks-win-title-top-lakers-10293-new-york-triumphs-in-five-games.html?unlocked_article_code=1.p04.Ennw.Aq7vqriHBZPh&smid=url-share"><span id="knicks-counter"></span></a>.</li>
+					<li>You Can't Be Serious is built and maintained in Maine with <a href="https://ghost.org">Ghost</a> + <a href="https://www.magicpages.co/">Magic Pages</a> + <a href="/nerd-alert/#buttermaker-theme">Buttermaker</a>. It's been <a href="https://www.nytimes.com/1973/05/11/archives/knicks-win-title-top-lakers-10293-new-york-triumphs-in-five-games.html?unlocked_article_code=1.p04.Ennw.Aq7vqriHBZPh&smid=url-share"><span id="knicks-counter"></span></a> since the New York Knicks won an NBA Championship.</li>
 				</ul>
 				<div class="widget-controls">
 					<a href="{{@site.url}}/rss/" class="widget-btn" title="RSS Feed">{{> "icons/rss"}}</a>

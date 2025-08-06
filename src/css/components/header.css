@@ -49,8 +49,8 @@
 }
 
 .logo {
-	width: 60px;
-	height: 60px;
+	width: 65px;
+	height: 65px;
 	border-radius: var(--radius-sm);
 	display: flex;
 	filter: grayscale(70%);
@@ -63,8 +63,24 @@
 }
 
 .logo:hover {
-	background: var(--color-primary-hover);
-	color: white;
+	animation: wiggle 0.5s ease-in-out;
+}
+
+.date-time-weather {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start; /* or center/flex-end depending on your layout */
+	gap: 2px; /* Small gap between lines */
+}
+
+.date-line {
+	font-weight: 600; /* Make date slightly bolder */
+	font-size: 1em;
+}
+
+.time-weather-line {
+	font-size: 0.9em; /* Slightly smaller for secondary info */
+	color: #666; /* Slightly muted color */
 }
 
 .search-bar {

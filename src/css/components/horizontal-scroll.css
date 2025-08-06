@@ -82,21 +82,9 @@
 	padding: 0;
 }
 
-.horizontal-scroll-container::after {
-	content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 40px;
-	height: 100%;
-	background: linear-gradient(to right, transparent, var(--color-background));
-	pointer-events: none;
-	z-index: 1;
-}
-
 .horizontal-scroll-track {
 	display: flex;
-	gap: var(--space-lg);
+	gap: var(--space-lg); /* 16px gap */
 	overflow-x: auto;
 	scroll-behavior: smooth;
 	scrollbar-width: none;
@@ -107,15 +95,15 @@
 }
 
 
+
 .horizontal-scroll-track::-webkit-scrollbar {
 	display: none;
 }
 
 .scroll-card {
-	flex: 0 0 291px;
-	box-shadow: var(--shadow-sm);
-	background: var(--color-background-card);
-	border: 1px solid rgba(0, 0, 0, 0.15);
+	flex: 0 0 295px;
+border: 1px solid var(--border-cream);
+	background: var(--color-cream);
 	border-radius: var(--radius-base);
 	overflow: hidden;
 	text-decoration: none;
@@ -123,6 +111,7 @@
 	transition: all var(--transition-base);
 	display: flex;
 	height: 120px;
+	scroll-snap-align: start;
 }
 
 .scroll-card:hover {
@@ -168,7 +157,7 @@
 	padding: var(--space-md);
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: center;
 	min-width: 0;
 }
 
@@ -177,20 +166,21 @@
 	font-size: var(--font-size-md);
 	font-weight: var(--font-weight-semibold);
 	line-height: var(--line-height-base);
-	margin-bottom: var(--space-xs);
+	margin-bottom: var(--space-sm);
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
+	text-wrap: balance;
 }
 
 .scroll-card-meta {
 	display: flex;
 	align-items: center;
 	gap: var(--space-xs);
-	font-size: var(--font-size-xs);
+	font-size: var(--font-size-sm);
 	color: var(--color-text-medium);
-	margin-bottom: var(--space-xs);
+	margin-bottom: 0;
 }
 
 .scroll-card-author {
@@ -200,10 +190,11 @@
 }
 
 .scroll-card-avatar {
-	width: 16px;
-	height: 16px;
+	width: 24px;
+	height: 24px;
 	border-radius: var(--radius-full);
 	object-fit: cover;
+	filter: grayscale(70%);
 }
 
 .scroll-card-excerpt {
@@ -332,11 +323,11 @@
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-	width: 48px;
-	height: 48px;
+	width: 32px;
+	height: 32px;
 	border-radius: var(--radius-full);
 	border: 1px solid var(--color-border);
-	background: #eee;
+	background: #fff;
 	color: var(--color-text-dark);
 	cursor: pointer;
 	display: flex;
@@ -350,7 +341,7 @@
 }
 
 .scroll-btn-prev {
-	left: -24px; /* Half the button width outside the container */
+	left: -16px; /* Half the button width outside the container */
 }
 
 .scroll-btn-next {

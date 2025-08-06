@@ -20,6 +20,7 @@ import { initWeatherDisplay } from './modules/weather-display';
 import { initKnicksCounter } from './modules/knicks-counter';
 import { initPriceToggle } from './modules/price-toggle';
 import { BreadcrumbDropdown } from './modules/breadcrumb-dropdown';
+import { initCurrentTime } from './modules/current-time';
 
 /**
  * Initialize theme when DOM is ready
@@ -50,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		initWeatherDisplay();
 		initKnicksCounter();
 		initPriceToggle();
+		initCurrentTime();
 
 		// Make mobile navigation globally available
 		window.toggleSidebar = mobileNav.toggleSidebar.bind(mobileNav);

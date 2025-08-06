@@ -37,7 +37,22 @@ letter-spacing: -0.03rem;
 	color: var(--color-text-medium);
 	line-height: 1.4;
 	padding: 0 0 var(--space-xl);
-	border-bottom: 1px solid #cfcfcf;
+	position: relative;
+	/* Remove: border-bottom: 1px solid #cfcfcf; */
+}
+
+.sidebar .tagline em {
+	font-family: 'abril-titling-condensed',serif;
+}
+
+.sidebar p.tagline::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0; /* Start from the very left edge */
+	width: 60%; /* Make it as wide as the widget border (adjust this percentage) */
+	height: 1px;
+	background-color: var(--color-border-dark);
 }
 
 .sidebar-nav {

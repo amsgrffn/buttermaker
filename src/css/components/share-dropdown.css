@@ -1,0 +1,186 @@
+/*
+* Footer Styles
+* Site footer with columns, links and social icons
+*/
+
+.dropdown {
+	align-items: center;
+	display: inline-block;
+	position: relative;
+}
+
+.dropdown-content {
+	animation: dropdownBounce 0.4s ease forwards;
+	background-color: var(--color-background-primary);
+	border-radius: .3rem;
+	box-shadow: var(--shadow);
+	display: none;
+	left: 50%;
+	min-width: 250px;
+	padding: 1rem 0;
+	position: absolute;
+	text-align: left;
+	top: calc(100% + 13px);
+	transform: translateX(-50%);
+	z-index: 1000;
+}
+
+body.dark-mode .dropdown-content {
+	background-color: var(--color-background-tertiary);
+}
+
+.dropdown-content.show {
+	animation: dropdownBounce 0.4s ease forwards;
+	display: block;
+}
+
+.dropdown-active {
+	position: relative;
+	z-index: 101 !important;
+}
+
+.dropdown-content::before,
+.dropdown-content::after {
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	content: "";
+	left: 50%;
+	position: absolute;
+	transform: translateX(-50%);
+}
+
+.dropdown-content::before {
+	border-bottom: 10px solid rgba(0, 0, 0, 0.1);
+	filter: blur(1px);
+	top: -12px;
+}
+
+.dropdown-content::after {
+	border-bottom: 10px solid #fefefe;
+	top: -10px;
+}
+
+.dropdown-content a {
+	border-bottom: 1px solid var(--color-separator-opaque);
+	color: var(--gray-dark);
+	display: block;
+	font-family: var(--sans);
+	font-size: 14px;
+	font-weight: 500;
+	justify-content: space-between;
+	margin: 0 1rem .5rem;
+	padding: .25rem 0;
+	text-decoration: none;
+	transition: transform 0.3s ease;
+}
+
+.dropdown-content a:last-child {
+	border-bottom: none;
+}
+
+.dropdown-content p.title {
+	color: var(--color-text-primary);
+	font-family: var(--sans);
+	font-size: 16px;
+	font-weight: 700;
+	margin-bottom: 4px;
+	padding: 0 1rem 0;
+	text-align: left;
+}
+
+.dropdown-content p.thanks {
+	color: var(--color-text-primary);
+	font-size: 13px;
+	line-height: 1.4;
+	margin-bottom: 1rem;
+	padding: 0 1rem 0;
+	text-align: left;
+	text-wrap: pretty;
+}
+
+.dropdown-content a:hover {
+	color: var(--color-red) !important;
+	text-decoration: none;
+	transform: translateX(3px);
+}
+
+.dropdown-content a:hover:last-child {
+	border-bottom: none;
+}
+
+.dropdown .dropdown-content svg {
+	background-color: var(--color-background-primary);
+	border: 1px solid var(--color-separator-opaque);
+	border-radius: 50%;
+	display: inline-block;
+	height: 20px;
+	margin: -2px 4px 0 0;
+	padding: 3px;
+	vertical-align: middle;
+	width: 20px;
+}
+
+.dropbtn {
+	align-items: center;
+	background: none;
+	border: none;
+	color: var(--color-text-primary);
+	cursor: pointer;
+	display: flex;
+	font-family: var(--sans);
+	font-size: 14px;
+	letter-spacing: 0.15px;
+	margin: 0;
+	padding: 0;
+}
+
+.dropbtn:hover {
+	color: var(--color-red);
+}
+
+.dropbtn:hover svg {
+	transform: translateX(3px);
+}
+
+.dropbtn svg {
+	display: inline;
+	height: 16px;
+	margin: 0;
+	transition: transform 0.3s ease;
+	vertical-align: middle;
+	width: 16px;
+}
+
+.copy-alert {
+	font-family: var(--sans);
+}
+
+.alert-icon {
+	display: inline-block;
+	margin-right: 6px;
+	position: relative;
+	top: -1px;
+}
+
+.success-icon {
+	stroke: var(--color-text-primary);
+}
+
+.error-icon {
+	stroke: #ff3b30;
+}
+
+/* When in dark mode */
+body.dark-mode .success-icon {
+	stroke: #000;
+}
+
+body.dark-mode .error-icon {
+	stroke: #ff453a;
+}
+
+/* Make the alert box display as flex for better alignment */
+.copy-alert {
+	align-items: center;
+	display: flex;
+}

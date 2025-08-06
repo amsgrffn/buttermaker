@@ -56,8 +56,8 @@
 .masonry-card:hover {
 	transform: translateY(-4px);
 	box-shadow: var(--shadow-md);
-	border-color: var(--color-border);
-	z-index: 10; /* Ensure hovered cards appear above others */
+	border-color: var(--color-cream);
+	z-index: 10;
 }
 
 /* Card Image - Natural height based on content */
