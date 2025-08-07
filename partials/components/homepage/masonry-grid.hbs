@@ -1,0 +1,48 @@
+<h2 class="section-title">Latest Creative Writing</h2>
+{{! Category Tabs Section }}
+<section class="category-tabs-section">
+	<div class="category-tabs-container">
+		<button class="category-tab active" data-filter="all">All</button>
+		<button class="category-tab" data-filter="bookmarks">Bookmarks</button>
+		<button class="category-tab" data-filter="fiction">Fiction</button>
+		<button class="category-tab" data-filter="cartoon">Poetry</button>
+		<button class="category-tab" data-filter="essay">Articles</button>
+		<button class="category-tab" data-filter="journal">Sports</button>
+		<button class="category-tab" data-filter="journal">Newsletters</button>
+		<button class="category-tab" data-filter="journal">Podcasts</button>
+	</div>
+</section>
+{{! Creative Works Masonry Section }}
+<section class="featured-masonry-section">
+	<div class="masonry-grid">
+		{{#get "posts" include="authors,tags" filter="tag:[fiction,poem,review]" limit="12"}}
+			{{#foreach posts}}
+				<article class="masonry-card">
+					{{#if feature_image}}
+						<div class="masonry-image">
+							<img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
+						</div>
+					{{/if}}
+					<div class="masonry-content">
+						<h3 class="masonry-title">
+							<a href="{{url}}">{{title}}</a>
+						</h3>
+						<div class="masonry-excerpt">{{excerpt words="25"}}</div>
+						<div class="masonry-meta">
+							{{#primary_author}}
+								<a class="avatar wiggle" href="{{url}}"><img srcset="{{img_url profile_image size="xxs" format="webp"}} 50w, {{img_url profile_image size="xs" format="webp"}} 100w" sizes="50vw" src="{{img_url profile_image size="xs" format="webp"}}" alt="{{name}}'s Avatar" width="40" height="40" loading="lazy"></a>
+							{{/primary_author}}
+							{{#if primary_tag}}
+								<span class="masonry-tag">{{primary_tag.name}}</span>
+							{{/if}}
+							<time class="masonry-date" datetime="{{date published_at format="YYYY-MM-DD"}}">
+								{{date published_at format="MMMM D, YYYY"}}
+							</time>
+						</div>
+					</div>
+					<a href="{{url}}" class="masonry-link" aria-label="Read {{title}}"></a>
+				</article>
+			{{/foreach}}
+		{{/get}}
+	</div>
+</section>

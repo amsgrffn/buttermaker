@@ -1,0 +1,148 @@
+	<div class="aside-content">
+	{{! Personal Notes Section }}
+	<div class="notes-widget">
+			<h3 class="widget-title">Notes <em>&amp;</em> Thoughts</h3>
+			{{#get "posts" include="authors,tags" filter="tag:[hash-note]" limit="12"}}
+			{{#foreach posts}}
+		<div class="notes-content">
+			<div class="note-item">
+				<h4 class="note-title"><a href="{{url}}">{{title}}</a></h4>
+				<div class="note-body">
+				{{content}}
+				</div>
+				<div class="note-meta">
+					<div class="img-date">
+						<img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
+						<time class="note-date"><a href="{{url}}">{{date published_at format="MMM D, h:mm a"}}</a></time>
+					</div>
+					<div class="share-dropdown" title="Share and Support">
+						<button class="share-dropbtn" aria-label="Share this article">{{> "icons/ellipsis"}}</button>
+						<div class="share-dropdown-content">
+							<p class="title">Share and Support</p>
+							<p class="thanks">Thanks for dropping by. Use the links below to share this article and/or support this site.</p>
+							<a href="#" class="native-share" style="display: none;">{{> "icons/share"}} Share via Device</a>
+							<a href="#" class="copy-url">{{> "icons/link"}} Copy Article URL</a>
+							<a href="#" class="email-share">{{> "icons/at-sign"}} Email Article</a>
+							<a href="#" class="mastodon-share">{{> "icons/mastodon"}} Share on Mastodon</a>
+							<a href="https://bsky.app/intent/compose?text={{encode title}}{{encode (url absolute="true")}}" target="_blank" rel="noopener noreferrer">{{> "icons/bluesky"}} Share on Bluesky</a>
+							<a href="https://www.reddit.com/submit?url={{encode (url absolute="true")}}&title={{encode title}}" target="_blank" rel="noopener noreferrer">{{> "icons/reddit"}} Share on Reddit</a>
+							<a href="whatsapp://send?text={{encode (concat title ' ' (url absolute="true"))}}" class="whatsapp-share" target="_blank" rel="noopener noreferrer">{{> "icons/whatsapp"}} Share on WhatsApp</a>
+							<a href="#/portal/support">{{> "icons/thumb-up"}} Get Our Newsletter</a>
+							<a href="/memberships">{{> "icons/thumb-up"}} Subscribe</a>
+							<a href="#/portal/support">{{> "icons/beer"}} Buy Us a Pint</a>
+							<a href="/contact">{{> "icons/mail"}} Contact Us</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{/foreach}}
+		{{/get}}
+		<p class="small-link">there's more, <a href="/notes">check them out</a> at the note archive <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></p>
+	</div>
+
+	{{! Quick Stats Widget }}
+	<div class="stats-widget">
+		<h3 class="widget-title">Site Figures <em>&amp;</em> Stats</h3>
+		<div class="stats-grid">
+			<div class="stat-item">
+				<span class="stat-number">{{pagination.total}}</span>
+				<span class="stat-label">Total Posts</span>
+			</div>
+			<div class="stat-item">
+				<span class="stat-number">{{total_members}}</span>
+				<span class="stat-label">Subscribers</span>
+			</div>
+			<div class="stat-item">
+				<span class="stat-number">10%</span>
+				<span class="stat-label">Revenue Donated</span>
+			</div>
+			<div class="stat-item">
+				<span class="stat-number">1,000</span>
+				<span class="stat-label">Pay Views per Month</span>
+			</div>
+			<div class="stat-item">
+				<span class="stat-number">$500</span>
+				<span class="stat-label">Monthly Revenue</span>
+			</div>
+			<div class="stat-item">
+				<span class="stat-number">1,000</span>
+				<span class="stat-label">Pay Views per Month</span>
+			</div>
+		</div>
+		<p class="small-link">there's more, <a href="/notes">check them out</a> at the note archive <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></p>
+	</div>
+
+	<div class="testimonial-widget">
+		<h3 class="widget-title">Testimonials <em>&amp;</em> Feedback</h3>
+		<div class="testimonials">
+			<blockquote id="testimonal">
+				<div class="testimonial-content">
+					I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can't handle me at my worst, then you sure as hell don't deserve me at my best.
+					<div class="attribution">
+						<img src="{{asset "img/avatars/bender.webp"}}" alt="{{title}}">
+						<cite><a href="/">Marilyn Monroe</a> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></cite>
+					</div>
+				</div>
+			</blockquote>
+		</div>
+	</div>
+
+	{{! Newsletter Archive }}
+	<div class="archive-widget">
+		<h3 class="widget-title">We {{>icons/heart}} Moving Pictures</h3>
+		<div class="movie-list">
+		<ul>
+			<li><img src="{{asset "img/happy.jpg"}}" alt="{{title}}"></li>
+			<li><img src="{{asset "img/miller.jpg"}}" alt="{{title}}"></li>
+			<li><img src="{{asset "img/fanfour.jpg"}}" alt="{{title}}"></li>
+			<li><img src="{{asset "img/yeard.jpg"}}" alt="{{title}}"></li>
+			<li><img src="{{asset "img/happy.jpg"}}" alt="{{title}}"></li>
+			<li><img src="{{asset "img/miller.jpg"}}" alt="{{title}}"></li>
+			<li><img src="{{asset "img/fanfour.jpg"}}" alt="{{title}}"></li>
+			<li><img src="{{asset "img/yeard.jpg"}}" alt="{{title}}"></li>
+			<li><img src="{{asset "img/happy.jpg"}}" alt="{{title}}"></li>
+			<li><img src="{{asset "img/miller.jpg"}}" alt="{{title}}"></li>
+			<li><img src="{{asset "img/fanfour.jpg"}}" alt="{{title}}"></li>
+			<li><img src="{{asset "img/yeard.jpg"}}" alt="{{title}}"></li>
+		</ul>
+		</div>
+		<p class="small-link">there's more, <a href="/notes">check them out</a> at the note archive <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></p>
+	</div>
+
+	{{! Recommendations Widget - Card Style }}
+	{{#match @site.recommendations_enabled}}
+	<div class="recommendations-widget">
+		<h3>Recommended Reading</h3>
+		{{#recommendations limit="8"}}
+		<ul class="recommendations">
+			{{#each recommendations as |rec|}}
+			<li class="recommendation">
+				<a href="{{rec.url}}" data-recommendation="{{rec.id}}" target="_blank" rel="noopener">
+					<div class="recommendation-header">
+						<div class="recommendation-favicon">
+							{{#if rec.favicon}}
+							<img src="{{rec.favicon}}" alt="{{rec.title}}" loading="lazy" onerror="this.style.display='none';">
+							{{else}}
+							<span class="recommendation-favicon-fallback"></span>
+							{{/if}}
+						</div>
+						<div class="recommendation-content">
+							<h5 class="recommendation-title">{{rec.title}}</h5>
+							<span class="recommendation-url">{{readable_url rec.url}}</span>
+						</div>
+					</div>
+					{{#if rec.description}}
+					<p class="recommendation-description">{{rec.description}}</p>
+					{{/if}}
+				</a>
+			</li>
+			{{/each}}
+		</ul>
+		{{/recommendations}}
+		<div class="recommendations-footer">
+			<p class="small-link" data-portal="recommendations">View all recommendations →</p>
+		</div>
+	</div>
+	{{/match}}
+</div>

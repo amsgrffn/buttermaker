@@ -1,0 +1,47 @@
+{{! -- Horizontal Scroll Section - Trending Now -- }}
+<section class="horizontal-scroll-section">
+	<div class="horizontal-scroll-header">
+		<h2 class="horizontal-scroll-title">Trending Posts</h2>
+	</div>
+	<div class="horizontal-scroll-container">
+		<button class="scroll-btn scroll-btn-prev" aria-label="Scroll left">{{> "icons/chevron-left"}}</button>
+		<button class="scroll-btn scroll-btn-next" aria-label="Scroll right">{{> "icons/chevron-right"}}</button>
+		<div class="horizontal-scroll-track">
+			{{#get "posts" include="authors,tags" filter="featured:true" limit="8" as |featured_posts|}}
+				{{#if featured_posts}}
+					{{#foreach featured_posts}}
+						<a href="{{url}}" class="scroll-card" aria-label="Read {{title}}">
+							{{#if feature_image}}
+								<div class="scroll-card-image">
+									<img src="{{img_url feature_image size="m"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" loading="lazy">
+								</div>
+							{{/if}}
+							<div class="scroll-card-content">
+								<h3 class="scroll-card-title">{{title}}</h3>
+								<div class="scroll-card-meta">
+									<div class="scroll-card-author">
+										<img src="{{img_url primary_author.profile_image size="xs"}}" alt="{{primary_author.name}}" class="scroll-card-avatar">
+									</div>
+									<span>•</span>
+									<time datetime="{{date published_at format="YYYY-MM-DD"}}">
+										{{date published_at format="MMMM D, YYYY"}}
+									</time>
+								</div>
+								{{#if primary_tag}}
+									<div class="scroll-card-tags">
+										<span class="scroll-card-tag">{{primary_tag.name}}</span>
+									</div>
+								{{/if}}
+							</div>
+						</a>
+					{{/foreach}}
+				{{else}}
+					{{! Fallback when no featured posts }}
+					<div class="scroll-card-placeholder">
+						<p>No trending posts available</p>
+					</div>
+				{{/if}}
+			{{/get}}
+		</div>
+	</div>
+</section>
