@@ -1,19 +1,19 @@
 /*
-* Footer Styles
-* Site footer with columns, links and social icons
+* Share Dropdown Styles
+* Accessible dropdown for sharing and support links
 */
 
-.dropdown {
+.share-dropdown {
 	align-items: center;
 	display: inline-block;
 	position: relative;
 }
 
-.dropdown-content {
+.share-dropdown-content {
 	animation: dropdownBounce 0.4s ease forwards;
-	background-color: var(--color-background-primary);
+	background-color: var(--color-background);
 	border-radius: .3rem;
-	box-shadow: var(--shadow);
+	box-shadow: var(--shadow-base);
 	display: none;
 	left: 50%;
 	min-width: 250px;
@@ -25,22 +25,22 @@
 	z-index: 1000;
 }
 
-body.dark-mode .dropdown-content {
+body.dark-mode .share-dropdown-content {
 	background-color: var(--color-background-tertiary);
 }
 
-.dropdown-content.show {
+.share-dropdown-content.show {
 	animation: dropdownBounce 0.4s ease forwards;
 	display: block;
 }
 
-.dropdown-active {
+.share-dropdown.dropdown-active {
 	position: relative;
 	z-index: 101 !important;
 }
 
-.dropdown-content::before,
-.dropdown-content::after {
+.share-dropdown-content::before,
+.share-dropdown-content::after {
 	border-left: 10px solid transparent;
 	border-right: 10px solid transparent;
 	content: "";
@@ -49,36 +49,41 @@ body.dark-mode .dropdown-content {
 	transform: translateX(-50%);
 }
 
-.dropdown-content::before {
+.share-dropdown-content::before {
 	border-bottom: 10px solid rgba(0, 0, 0, 0.1);
 	filter: blur(1px);
 	top: -12px;
 }
 
-.dropdown-content::after {
+.share-dropdown-content::after {
 	border-bottom: 10px solid #fefefe;
 	top: -10px;
 }
 
-.dropdown-content a {
+body.dark-mode .share-dropdown-content::after {
+	border-bottom-color: var(--color-background-tertiary);
+}
+
+.share-dropdown-content a {
+	align-items: center;
 	border-bottom: 1px solid var(--color-separator-opaque);
 	color: var(--gray-dark);
-	display: block;
+	display: flex;
 	font-family: var(--sans);
 	font-size: 14px;
 	font-weight: 500;
-	justify-content: space-between;
+	gap: 8px;
 	margin: 0 1rem .5rem;
 	padding: .25rem 0;
 	text-decoration: none;
 	transition: transform 0.3s ease;
 }
 
-.dropdown-content a:last-child {
+.share-dropdown-content a:last-child {
 	border-bottom: none;
 }
 
-.dropdown-content p.title {
+.share-dropdown-content p.title {
 	color: var(--color-text-primary);
 	font-family: var(--sans);
 	font-size: 16px;
@@ -88,7 +93,7 @@ body.dark-mode .dropdown-content {
 	text-align: left;
 }
 
-.dropdown-content p.thanks {
+.share-dropdown-content p.thanks {
 	color: var(--color-text-primary);
 	font-size: 13px;
 	line-height: 1.4;
@@ -98,29 +103,35 @@ body.dark-mode .dropdown-content {
 	text-wrap: pretty;
 }
 
-.dropdown-content a:hover {
+.share-dropdown-content a:hover {
 	color: var(--color-red) !important;
 	text-decoration: none;
 	transform: translateX(3px);
 }
 
-.dropdown-content a:hover:last-child {
+.share-dropdown-content a:hover:last-child {
 	border-bottom: none;
 }
 
-.dropdown .dropdown-content svg {
+.share-dropdown-content a svg {
 	background-color: var(--color-background-primary);
 	border: 1px solid var(--color-separator-opaque);
 	border-radius: 50%;
 	display: inline-block;
+	flex-shrink: 0;
 	height: 20px;
 	margin: -2px 4px 0 0;
 	padding: 3px;
+	transition: transform 0.2s ease;
 	vertical-align: middle;
 	width: 20px;
 }
 
-.dropbtn {
+.share-dropdown-content a:hover svg {
+	transform: translateX(2px);
+}
+
+.share-dropbtn {
 	align-items: center;
 	background: none;
 	border: none;
@@ -132,17 +143,18 @@ body.dark-mode .dropdown-content {
 	letter-spacing: 0.15px;
 	margin: 0;
 	padding: 0;
+	transition: all 0.2s ease;
 }
 
-.dropbtn:hover {
+.share-dropbtn:hover {
 	color: var(--color-red);
 }
 
-.dropbtn:hover svg {
+.share-dropbtn:hover svg {
 	transform: translateX(3px);
 }
 
-.dropbtn svg {
+.share-dropbtn svg {
 	display: inline;
 	height: 16px;
 	margin: 0;
@@ -151,7 +163,19 @@ body.dark-mode .dropdown-content {
 	width: 16px;
 }
 
+/* Enhanced button states */
+.share-dropdown.dropdown-active .share-dropbtn {
+	color: var(--color-red);
+}
+
+.share-dropdown.dropdown-active .share-dropbtn svg {
+	transform: rotate(90deg);
+}
+
+/* Copy alert styles */
 .copy-alert {
+	align-items: center;
+	display: flex;
 	font-family: var(--sans);
 }
 
@@ -170,7 +194,6 @@ body.dark-mode .dropdown-content {
 	stroke: #ff3b30;
 }
 
-/* When in dark mode */
 body.dark-mode .success-icon {
 	stroke: #000;
 }
@@ -179,8 +202,94 @@ body.dark-mode .error-icon {
 	stroke: #ff453a;
 }
 
-/* Make the alert box display as flex for better alignment */
-.copy-alert {
-	align-items: center;
-	display: flex;
+/* Accessibility - Focus styles for keyboard navigation */
+.share-dropbtn:focus {
+	outline: 2px solid var(--color-primary, #007cba);
+	outline-offset: 2px;
+}
+
+.share-dropdown-content a:focus {
+	outline: 2px solid var(--color-primary, #007cba);
+	outline-offset: -2px;
+	background-color: rgba(0, 124, 186, 0.1);
+	color: var(--color-red) !important;
+}
+
+/* Enhanced button states for accessibility */
+.share-dropbtn[aria-expanded="true"] {
+	color: var(--color-red);
+}
+
+.share-dropbtn[aria-expanded="true"] svg {
+	transform: rotate(90deg);
+}
+
+/* Screen reader only text for better context */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* Animation keyframes */
+@keyframes dropdownBounce {
+	0% {
+		opacity: 0;
+		transform: translateX(-50%) translateY(-10px) scale(0.95);
+	}
+	50% {
+		opacity: 1;
+		transform: translateX(-50%) translateY(0) scale(1.02);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(-50%) translateY(0) scale(1);
+	}
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+	.share-dropdown-content {
+		min-width: 200px;
+		font-size: 16px; /* Prevents zoom on iOS */
+	}
+
+	.share-dropdown-content a {
+		padding: 0.5rem 0;
+		font-size: 14px;
+	}
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+	.share-dropdown-content {
+		border: 2px solid;
+	}
+
+	.share-dropdown-content a:focus {
+		outline: 3px solid;
+		background-color: highlight;
+		color: highlighttext;
+	}
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+	.share-dropbtn svg,
+	.share-dropdown-content {
+		transition: none;
+	}
+
+	@keyframes dropdownBounce {
+		0%, 100% {
+			opacity: 1;
+			transform: translateX(-50%) translateY(0) scale(1);
+		}
+	}
 }

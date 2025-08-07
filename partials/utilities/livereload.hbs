@@ -1,0 +1,49 @@
+{{!-- Add this to default.hbs right before </body> tag --}}
+{{!-- Development auto-refresh for HBS files --}}
+<script>
+	// Only run in development (when localhost)
+	if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+		console.log('🔄 Development mode: Auto-refresh enabled');
+
+		let lastModified = null;
+		let checkInterval = null;
+
+		// Function to check if page was modified
+		async function checkForChanges() {
+			try {
+				const response = await fetch(location.href, {
+					method: 'HEAD',
+					cache: 'no-cache'
+				});
+
+				const currentModified = response.headers.get('last-modified');
+				const currentEtag = response.headers.get('etag');
+
+				// Use both last-modified and etag for better detection
+				const pageSignature = currentModified + currentEtag;
+
+				if (lastModified && lastModified !== pageSignature) {
+					console.log('🔄 Page changed, refreshing...');
+					location.reload();
+				}
+
+				lastModified = pageSignature;
+			} catch (error) {
+				// Silently handle errors (might be network issues)
+			}
+		}
+
+		// Check every 2 seconds
+		checkInterval = setInterval(checkForChanges, 2000);
+
+		// Initial check after 1 second
+		setTimeout(checkForChanges, 1000);
+
+		// Cleanup when page unloads
+		window.addEventListener('beforeunload', () => {
+			if (checkInterval) {
+				clearInterval(checkInterval);
+			}
+		});
+	}
+</script>

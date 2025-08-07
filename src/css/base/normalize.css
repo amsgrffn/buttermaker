@@ -14,7 +14,7 @@ html {
 }
 
 body {
-	font-family: var(--font-family-serif);
+	font-family: var(--font-family-sans);
 	background-color: var(--color-background);
 	color: var(--color-text-dark);
 	line-height: var(--line-height-base);

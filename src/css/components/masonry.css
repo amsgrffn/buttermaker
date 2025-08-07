@@ -12,15 +12,16 @@
 
 .section-title {
 	font-family: var(--font-family-display);
-	font-size: var(--font-size-3xl);
-	font-weight: var(--font-weight-bold);
+	font-size: var(--font-size-lg);
+	font-weight: 700;
+	letter-spacing: 0.07rem;
 	margin-bottom: var(--space-xl);
 	color: var(--color-text-dark);
+	text-transform: uppercase;
 }
 
 .section-title em {
-	font-family: 'abril-titling-condensed', serif;
-	font-weight: 400;
+
 }
 
 /* TRUE MASONRY GRID - 2 Columns with natural heights! */
@@ -108,6 +109,7 @@
 	line-height: var(--line-height-base);
 	margin-bottom: var(--space-sm);
 	color: var(--color-text-dark);
+	text-wrap: pretty;
 	/* No line clamping - let titles be their natural height */
 }
 
@@ -122,7 +124,7 @@
 }
 
 .masonry-excerpt {
-	font-size: var(--font-size-md);
+	font-size: 16px;
 	line-height: var(--line-height-base);
 	margin-bottom: var(--space-2xl);
 	/* No line clamping - let excerpts flow naturally */

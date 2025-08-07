@@ -3,7 +3,7 @@
 {{! Horizontal Scroll Section - Trending Now (Full Width) }}
 <section class="horizontal-scroll-section">
 	<div class="horizontal-scroll-header">
-		<h2 class="horizontal-scroll-title">Trending <em>&amp;</em> Popular Posts</h2>
+		<h2 class="horizontal-scroll-title">Trending Posts</h2>
 	</div>
 
 	<div class="horizontal-scroll-container">
@@ -80,12 +80,11 @@
 				</div>
 			</div>
 		</section>
-<h2 class="section-title">Latest Prose <em>&amp;</em> Verse</h2>
+<h2 class="section-title">Latest Creative Writing</h2>
 		{{! Category Tabs Section (RESTORED ORIGINAL) }}
 		<section class="category-tabs-section">
 			<div class="category-tabs-container">
 				<button class="category-tab active" data-filter="all">All</button>
-				<button class="category-tab" data-filter="notes">Notes</button>
 				<button class="category-tab" data-filter="bookmarks">Bookmarks</button>
 				<button class="category-tab" data-filter="fiction">Fiction</button>
 				<button class="category-tab" data-filter="cartoon">Poetry</button>
@@ -121,7 +120,7 @@
 							   <span class="masonry-tag">{{primary_tag.name}}</span>
 							   {{/if}}
 							<time class="masonry-date" datetime="{{date published_at format="YYYY-MM-DD"}}">
-								{{date published_at format="DD MMM YYYY"}}
+								{{date published_at format="MMMM D, YYYY"}}
 							</time>
 						</div>
 					</div>
@@ -226,22 +225,22 @@
 								<img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
 								<time class="note-date"><a href="{{url}}">{{date published_at format="MMM D, h:mm a"}}</a></time>
 							</div>
-							<div class="dropdown" title="Share and Support">
-								<button class="dropbtn" aria-label="Share this article">{{> "icons/ellipsis"}}</button>
-								<div class="dropdown-content">
-								   <p class="title">Share and Support</p>
-								   <p class="thanks">Thanks for dropping by. Use the links below to share this article and/or support this site.</p>
-								   <a href="#" class="native-share" style="display: none;">{{> "icons/share"}} Share via Device</a>
-								   <a href="#" class="copy-url">{{> "icons/link"}} Copy Article URL</a>
-								   <a href="#" class="email-share">{{> "icons/at-sign"}} Email Article</a>
-								   <a href="#" class="mastodon-share">{{> "icons/mastodon"}} Share on Mastodon</a>
-								   <a href="https://bsky.app/intent/compose?text={{encode title}}{{encode (url absolute="true")}}" target="_blank" rel="noopener noreferrer">{{> "icons/bluesky"}} Share on Bluesky</a>
-								   <a href="https://www.reddit.com/submit?url={{encode (url absolute="true")}}&title={{encode title}}" target="_blank" rel="noopener noreferrer">{{> "icons/reddit"}} Share on Reddit</a>
-								   <a href="whatsapp://send?text={{encode (concat title ' ' (url absolute="true"))}}" class="whatsapp-share" target="_blank" rel="noopener noreferrer">{{> "icons/whatsapp"}} Share on WhatsApp</a>
-								   <a href="#/portal/support">{{> "icons/thumb-up"}} Get Our Newsletter</a>
-								   <a href="/memberships">{{> "icons/thumb-up"}} Subscribe</a>
-								   <a href="#/portal/support">{{> "icons/beer"}} Buy Us a Pint</a>
-								   <a href="/contact">{{> "icons/mail"}} Contact Us</a>
+							<div class="share-dropdown" title="Share and Support">
+								<button class="share-dropbtn" aria-label="Share this article">{{> "icons/ellipsis"}}</button>
+								<div class="share-dropdown-content">
+									<p class="title">Share and Support</p>
+									<p class="thanks">Thanks for dropping by. Use the links below to share this article and/or support this site.</p>
+									<a href="#" class="native-share" style="display: none;">{{> "icons/share"}} Share via Device</a>
+									<a href="#" class="copy-url">{{> "icons/link"}} Copy Article URL</a>
+									<a href="#" class="email-share">{{> "icons/at-sign"}} Email Article</a>
+									<a href="#" class="mastodon-share">{{> "icons/mastodon"}} Share on Mastodon</a>
+									<a href="https://bsky.app/intent/compose?text={{encode title}}{{encode (url absolute="true")}}" target="_blank" rel="noopener noreferrer">{{> "icons/bluesky"}} Share on Bluesky</a>
+									<a href="https://www.reddit.com/submit?url={{encode (url absolute="true")}}&title={{encode title}}" target="_blank" rel="noopener noreferrer">{{> "icons/reddit"}} Share on Reddit</a>
+									<a href="whatsapp://send?text={{encode (concat title ' ' (url absolute="true"))}}" class="whatsapp-share" target="_blank" rel="noopener noreferrer">{{> "icons/whatsapp"}} Share on WhatsApp</a>
+									<a href="#/portal/support">{{> "icons/thumb-up"}} Get Our Newsletter</a>
+									<a href="/memberships">{{> "icons/thumb-up"}} Subscribe</a>
+									<a href="#/portal/support">{{> "icons/beer"}} Buy Us a Pint</a>
+									<a href="/contact">{{> "icons/mail"}} Contact Us</a>
 								</div>
 							</div>
 						</div>

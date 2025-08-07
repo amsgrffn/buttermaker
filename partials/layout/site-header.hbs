@@ -1,0 +1,29 @@
+<header class="top-header">
+	<div class="header-content">
+		<div class="header-left">
+			<button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+			<a href="{{@site.url}}" class="logo"><img src="{{asset "img/kirk.png"}}" alt="{{title}}"></a>
+			<ul>
+				<li class="date-time-weather">
+					<span class="date-line">{{date format="dddd, MMMM D, YYYY"}}</span>
+					<span class="time-weather-line"><span id="current-time"></span> &bull; <a href="https://en.wikipedia.org/wiki/Maine"><span id="current-temp"></span> <span id="current-condition"></span></a>
+					</span>
+				</li>
+			</ul>
+		</div>
+		<div class="header-center">
+			<div class="search-bar">
+				<input type="text" class="search-input" placeholder="Search {{@site.title}}">
+				<span class="search-icon">{{> "icons/search"}}</span>
+			</div>
+		</div>
+		<div class="header-right">
+			{{#unless @member}}
+				<a href="#/portal/signin" class="header-btn" data-portal="signin">Member Login</a>
+				<a href="#/portal/signup" class="header-btn primary" data-portal="signup">Subscribe</a>
+			{{else}}
+				<a href="#/portal/account" class="header-btn" data-portal="account">Account</a>
+			{{/unless}}
+		</div>
+	</div>
+</header>
