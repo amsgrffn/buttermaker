@@ -3,18 +3,8 @@
 {{> "components/breadcrumb-nav"}}
 <article class="post-container">
 	<header class="post-header">
+		<p>THIS IS THE PAGE.HBS</p>
 		<h1 class="post-title">{{title}}</h1>
-		<div class="post-meta">
-			<div class="post-author">
-				<img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
-				<div class="author-details">
-					<a href="{{primary_author.url}}" class="author-name">{{primary_author.name}}</a>
-					<span class="role">All Star</span>
-					<div class="post-date">
-					</div>
-				</div>
-			</div>
-		</div>
 	</header>
 	{{#if feature_image}}
 	<figure class="post-feature-image">

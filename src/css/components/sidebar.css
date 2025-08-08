@@ -71,7 +71,7 @@
 	padding: var(--space-xs);
 	border-radius: var(--radius-md);
 	color: var(--color-text-dark);
-	opacity: .75;
+	opacity: .9;
 	text-decoration: none;
 	font-size: var(--font-size-md);
 	font-weight: 600;
