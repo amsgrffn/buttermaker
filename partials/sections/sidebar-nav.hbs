@@ -1,0 +1,87 @@
+<nav>
+	<h1><a href="{{@site.url}}">You Can't Be Serious</h1>
+	<p class="tagline">{{@site.description}}</p>
+	<ul class="sidebar-nav">
+		<li>
+			<a href="{{@site.url}}" class="sidebar-link">
+				<span class="nav-icon">
+					{{> "icons/arrow-right"}}
+				</span>
+				Home
+			</a>
+		</li>
+		<li>
+			<a href="{{@site.url}}/blog/" class="sidebar-link">
+				<span class="nav-icon">
+					{{> "icons/arrow-right"}}
+				</span>
+				Blog
+			</a>
+		</li>
+		{{! Topics - with dropdown (customize with your actual tags) }}
+		<li class="has-dropdown" data-dropdown-type="topics">
+			<a href="{{@site.url}}/topics/" class="sidebar-link">
+				<span class="nav-icon">
+					{{> "icons/plus"}}
+				</span>
+				Topics
+			</a>
+			<div class="dropdown-submenu">
+				<ul>
+					{{! Replace these with your actual tags/topics }}
+					<li><a href="{{@site.url}}/tag/poetry/" class="dropdown-link">Poetry</a></li>
+					<li><a href="{{@site.url}}/tag/fiction/" class="dropdown-link">Fiction</a></li>
+					<li><a href="{{@site.url}}/tag/art/" class="dropdown-link">Art</a></li>
+					<li><a href="{{@site.url}}/tag/writing/" class="dropdown-link">Writing</a></li>
+					<li><a href="{{@site.url}}/tag/photography/" class="dropdown-link">Photography</a></li>
+					<li><a href="{{@site.url}}/tag/culture/" class="dropdown-link">Culture</a></li>
+				</ul>
+			</div>
+		</li>
+		{{! Pages - with dropdown (customize with your actual pages) }}
+		<li class="has-dropdown" data-dropdown-type="pages">
+			<a href="{{@site.url}}/pages/" class="sidebar-link">
+				<span class="nav-icon">
+					{{> "icons/plus"}}
+				</span>
+				Pages
+			</a>
+			<div class="dropdown-submenu">
+				<ul>
+					{{! Replace these with your actual pages }}
+					<li><a href="{{@site.url}}/about/" class="dropdown-link">About</a></li>
+					<li><a href="{{@site.url}}/contact/" class="dropdown-link">Contact</a></li>
+					<li><a href="{{@site.url}}/portfolio/" class="dropdown-link">Portfolio</a></li>
+					<li><a href="{{@site.url}}/services/" class="dropdown-link">Services</a></li>
+					<li><a href="{{@site.url}}/faq/" class="dropdown-link">FAQ</a></li>
+				</ul>
+			</div>
+		</li>
+		{{! Archive - regular link (no dropdown) }}
+		<li>
+			<a href="{{@site.url}}/archive/" class="sidebar-link">
+				<span class="nav-icon">
+					{{> "icons/arrow-right"}}
+				</span>
+				Archive
+			</a>
+		</li>
+		{{! -- Legal - with dropdown -- }}
+		<li class="has-dropdown" data-dropdown-type="legal">
+			<a href="{{@site.url}}/legal/" class="sidebar-link">
+				<span class="nav-icon">
+					{{> "icons/plus"}}
+				</span>
+				Legal
+			</a>
+			<div class="dropdown-submenu">
+				<ul>
+					<li><a href="{{@site.url}}/privacy/" class="dropdown-link">Privacy Policy</a></li>
+					<li><a href="{{@site.url}}/terms/" class="dropdown-link">Terms of Service</a></li>
+					<li><a href="{{@site.url}}/cookies/" class="dropdown-link">Cookie Policy</a></li>
+					<li><a href="{{@site.url}}/disclaimer/" class="dropdown-link">Disclaimer</a></li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</nav>

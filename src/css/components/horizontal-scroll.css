@@ -29,17 +29,12 @@
 }
 
 .horizontal-scroll-title {
+	color: var(--color-headings);
 	font-family: var(--font-family-display);
 	font-size: var(--font-size-2xl);
 	font-weight: var(--font-weight-extrabold);
-	letter-spacing: 0.03rem;
+	letter-spacing: 0.02rem;
 	margin: 0;
-}
-
-.horizontal-scroll-title em {
-	font-family: 'abril-titling-condensed', serif;
-	font-style: italic;
-	font-weight: 400;
 }
 
 .horizontal-scroll-controls {
@@ -102,8 +97,7 @@
 
 .scroll-card {
 	flex: 0 0 295px;
-border: 1px solid var(--border-cream);
-	background: var(--color-cream);
+	border: 1px solid #E6EAEF;
 	border-radius: var(--radius-base);
 	overflow: hidden;
 	text-decoration: none;
@@ -152,7 +146,7 @@ border: 1px solid var(--border-cream);
 }
 
 .scroll-card-content {
-	background: hsl(45,18%,94%);
+	background: #F5F7FA;
 	flex: 1;
 	padding: var(--space-md);
 	display: flex;
@@ -162,11 +156,13 @@ border: 1px solid var(--border-cream);
 }
 
 .scroll-card-title {
+	color: var(--color-headings);
 	font-family: var(--font-family-display);
 	font-size: var(--font-size-md);
-	font-weight: var(--font-weight-semibold);
+	font-weight: var(--font-weight-bold);
 	line-height: var(--line-height-base);
 	margin-bottom: var(--space-sm);
+	letter-spacing: 0.01rem;
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
@@ -236,8 +232,8 @@ border: 1px solid var(--border-cream);
 
 .category-tabs-container {
 	position: relative;
-	background: hsl(45,18%,94%);
-	border: 1px solid #E6E4DB;
+	background: #F5F7FA;
+	border: 1px solid #E6EAEF;
 	margin: 0;
 	padding: var(--space-sm);
 	border-radius: var(--radius-base);
@@ -275,12 +271,12 @@ border: 1px solid var(--border-cream);
 }
 
 .category-tab:hover {
-	color: var(--color-text-dark);
-	background: rgba(255, 255, 255, 0.5);
+	color: #fff;
+	background: var(--accent-color);
 }
 
 .category-tab.active {
-	background: var(--color-text-dark);
+	background: var(--accent-color);
 	color: white;
 }
 

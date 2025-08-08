@@ -16,7 +16,7 @@
 	   flex: 1;
 	   margin-left: var(--sidebar-width);
 	   padding: var(--space-xl);
-	   max-width: calc(1400px - var(--sidebar-width)); /* Adjust for new layout */
+	   max-width: calc(1400px - var(--sidebar-width));
 	   width: 100%;
    }
 

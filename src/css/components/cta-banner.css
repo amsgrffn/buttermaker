@@ -8,7 +8,7 @@
 	padding: var(--space-3xl);
 	text-align: center;
 	color: white;
-	margin-bottom: var(--space-3xl);
+	margin-bottom: var(--space-4xl);
 	position: relative;
 	overflow: hidden;
 }
@@ -30,10 +30,10 @@
 }
 
 .cta-title {
-	font-family: "cooper*", serif;
-	font-size: var(--font-size-5xl);
+	font-family: var(--font-family-alt);
+	font-size: var(--font-size-4xl);
 	font-weight: 700;
-	letter-spacing: -0.04rem;
+	letter-spacing: -0.02rem;
 	margin-bottom: var(--space-xl);
 	color: white;
 }
@@ -62,7 +62,7 @@
 
 .cta-btn {
 	padding: var(--space-md) var(--space-2xl);
-	border-radius: var(--radius-xl);
+	border-radius: var(--radius-pill);
 	font-size: var(--font-size-base);
 	font-weight: var(--font-weight-semibold);
 	text-decoration: none;
@@ -77,9 +77,10 @@
 }
 
 .cta-btn.primary {
-	background: var(--color-primary);
+	background: var(--accent-color);
 	color: white;
-	box-shadow: 0 4px 12px rgba(255, 103, 25, 0.3);
+	border: 1px solid #455769;
+	backdrop-filter: blur(4px);
 }
 
 .cta-btn.primary:hover {

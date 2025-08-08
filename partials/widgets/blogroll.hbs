@@ -1,0 +1,34 @@
+{{#match @site.recommendations_enabled}}
+<div class="recommendations-widget">
+	<h3>Recommended Reading</h3>
+	{{#recommendations limit="8"}}
+	<ul class="recommendations">
+		{{#each recommendations as |rec|}}
+		<li class="recommendation">
+			<a href="{{rec.url}}" data-recommendation="{{rec.id}}" target="_blank" rel="noopener">
+				<div class="recommendation-header">
+					<div class="recommendation-favicon">
+						{{#if rec.favicon}}
+						<img src="{{rec.favicon}}" alt="{{rec.title}}" loading="lazy" onerror="this.style.display='none';">
+						{{else}}
+						<span class="recommendation-favicon-fallback"></span>
+						{{/if}}
+					</div>
+					<div class="recommendation-content">
+						<h5 class="recommendation-title">{{rec.title}}</h5>
+						<span class="recommendation-url">{{readable_url rec.url}}</span>
+					</div>
+				</div>
+				{{#if rec.description}}
+				<p class="recommendation-description">{{rec.description}}</p>
+				{{/if}}
+			</a>
+		</li>
+		{{/each}}
+	</ul>
+	{{/recommendations}}
+	<div class="recommendations-footer">
+		<p class="small-link" data-portal="recommendations">View all recommendations →</p>
+	</div>
+</div>
+{{/match}}

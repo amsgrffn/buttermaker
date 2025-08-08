@@ -1,29 +1,32 @@
 {{!< default}}
-	{{> "components/homepage/horizontal-scroll"}}
-	<div class="split-content-wrapper">
-	{{! Main Content Area (2/3 width) }}
+<div class="split-content-wrapper">
 	<div class="main-content-area">
-		{{> "components/homepage/cta-banner"}}
-		{{> "components/homepage/masonry-grid"}}
-		{{> "components/homepage/post-feed"}}
+		{{> "sections/post-feed"}}
+		{{#if pagination.next}}
+			<div class="load-more">
+				<button id="load-more-btn" type="button" aria-label="Load more posts">
+					Load More Posts
+				</button>
+			</div>
+		{{else}}
+			<div class="load-more">
+				<button id="load-more-btn" type="button" disabled class="no-more">
+					No more posts
+				</button>
+			</div>
+		{{/if}}
+		<script type="application/json" id="pagination-data">
+		{
+			"currentPage": {{pagination.page}},
+			"totalPages": {{pagination.pages}},
+			"hasNext": {{#if pagination.next}}true{{else}}false{{/if}},
+			"hasPrev": {{#if pagination.prev}}true{{else}}false{{/if}},
+			"total": {{pagination.total}},
+			"limit": {{pagination.limit}}
+		}
+		</script>
 	</div>
 	<aside class="content-aside">
-		{{> "components/homepage/aside-content"}}
+		{{> "layout/aside-content"}}
 	</aside>
 </div>
-{{! Search functionality }}
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-	const searchInput = document.querySelector('.search-input');
-	if (searchInput) {
-		searchInput.addEventListener('keypress', function(e) {
-			if (e.key === 'Enter') {
-				const searchTerm = this.value.trim();
-				if (searchTerm) {
-					window.location.href = `{{@site.url}}/search/?q=${encodeURIComponent(searchTerm)}`;
-				}
-			}
-		});
-	}
-});
-</script>

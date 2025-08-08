@@ -42,7 +42,8 @@ img {
 }
 
 /* Lists */
-ul, ol {
+ul,
+ol {
 	list-style: none;
 }
 
@@ -55,7 +56,9 @@ button {
 }
 
 /* Form elements */
-input, textarea, select {
+input,
+textarea,
+select {
 	font-family: inherit;
 	font-size: inherit;
 }
@@ -72,8 +75,8 @@ input, textarea, select {
 
 /* Selection */
 ::selection {
-	background-color: var(--color-primary);
-	color: white;
+	background-color: #FFFF99;
+	color: inherit;
 }
 
 /* Scrollbars */

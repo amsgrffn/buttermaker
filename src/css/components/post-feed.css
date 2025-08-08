@@ -9,9 +9,13 @@
 }
 
 .post-card {
-	padding: var(--space-xl) 0;
+	padding: 0 0 var(--space-xl);
 	border-bottom: 1px solid var(--color-border-light);
 	transition: opacity var(--transition-base);
+}
+
+.post-feed .section-title {
+	margin-bottom: 0
 }
 
 .post-card:hover {
@@ -74,11 +78,11 @@
 
 .post-feed .post-title {
 	font-family: var(--font-family-display);
-	font-size: var(--font-size-2xl);
-	font-weight: var(--font-weight-semibold);
+	font-size: var(--font-size-xl);
+	font-weight: var(--font-weight-bold);
 	line-height: var(--line-height-base);
 	margin-bottom: var(--space-sm);
-	color: var(--color-text-dark);
+	color: var(--color-headings);
 }
 
 .post-feed .post-title a {
@@ -349,10 +353,11 @@
 .post-content .post-title {
 	font-family: var(--font-family-display);
 	font-size: var(--font-size-2xl);
-	font-weight: var(--font-weight-semibold);
-	line-height: var(--line-height-normal);
+	font-weight: var(--font-weight-bold);
+	line-height: var(--line-height-tight);
 	margin-bottom: var(--space-sm);
 	color: var(--color-text-dark);
+	text-wrap: pretty;
 }
 
 .post-content-flex .post-title a,
@@ -370,7 +375,7 @@
 .post-content-flex .post-excerpt,
 .post-content .post-excerpt {
 	font-size: var(--font-size-lg);
-	line-height: var(--line-height-normal);
+	line-height: var(--line-height-base);
 	color: var(--color-text-dark);
 	margin-bottom: var(--space-xl);
 }

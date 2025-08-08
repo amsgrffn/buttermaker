@@ -16,15 +16,20 @@
    }
 
 .sidebar h1 {
-	font-family: 'Caprasimo', serif;
-	font-size: 36px;
-letter-spacing: -0.04rem;
-	font-weight: 400;
-	line-height: 1;
+	color: var(--color-headings);
+	font-family: var(--font-family-alt);
+	font-size: 35px;
+	letter-spacing: -0.02rem;
+	font-weight: 900;
+	line-height: 1.1;
 }
 
-.sidebar h1 span {
+.sidebar h1 a {
+	color: var(--color-headings);
+}
 
+.sidebar h1 a:hover {
+	color: var(--hover-color);
 }
 
 .sidebar p.tagline {
@@ -38,7 +43,7 @@ letter-spacing: -0.04rem;
 }
 
 .sidebar .tagline em {
-	font-family: 'abril-titling-condensed',serif;
+	font-family: var(--font-family-alt);
 }
 
 .sidebar p.tagline::after {
@@ -74,14 +79,14 @@ letter-spacing: -0.04rem;
 }
 
 .sidebar-link:hover {
-	background: var(--color-background-light);
-	color: var(--color-text-dark);
+	background: var(--accent-color);
+	color: var(--border-accent-color);
 }
 
 .sidebar-link.active {}
 
 .sidebar-link.active:hover {
-	color: white;
+	background: var(--accent-color);
 }
 
 .nav-icon {
@@ -104,8 +109,8 @@ letter-spacing: -0.04rem;
 	transition: color .25s,border-color .25s,background-color .25s;
 	border-color: #999;
 	color: #000;
-	background-color:#dfdfdf;
-	opacity: 0.6;
+	background: var(--color-blue-grey);
+	border: 1px solid var(--border-blue-grey);
 }
 
 .sidebar-overlay {
@@ -176,7 +181,12 @@ letter-spacing: -0.04rem;
 
 .now-reading-widget ul li a {
 	color: var(--color-text-dark);
-	font-weight: 600;
+	font-weight: 500;
+	text-decoration: underline;
+}
+
+.now-reading-widget ul li a:hover {
+	color: var(--hover-color);
 	text-decoration: underline;
 }
 
@@ -246,6 +256,10 @@ svg.heart {
 }
 
 .widget-controls a {
+	display: block;
+}
+
+.widget-controls a:hover {
 	display: block;
 }
 
@@ -327,7 +341,7 @@ svg.heart {
 
 .dropdown-submenu .dropdown-link:hover {
 	color: var(--color-text-dark);
-	background: var(--color-background-light);
+	background: var(--accent-color);
 	border-left-color: var(--color-primary);
 }
 
@@ -344,15 +358,15 @@ svg.heart {
 }
 
 /* Hover state for dropdown parents */
-.sidebar-nav .has-dropdown > .sidebar-link:hover {
-	background: var(--color-background-light);
+.sidebar-nav .sidebar-link:hover {
+	background: var(--color-cool-blue);
 	color: var(--color-text-dark);
 }
 
 /* Active dropdown parent styling - when dropdown is open */
 .sidebar-nav .has-dropdown.open > .sidebar-link .nav-icon svg {
 	opacity: 1;
-	background-color: var(--color-primary);
+	background-color: var(--hover-color);
 	color: white;
 }
 

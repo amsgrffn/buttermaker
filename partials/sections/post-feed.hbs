@@ -1,5 +1,6 @@
 <section class="post-feed">
 	<h2 class="section-title">Latest Posts</h2>
+	{{#get "posts" include="authors,tags" filter="tag:-[hash-note]" limit="15"}}
 	{{#foreach posts}}
 		<article class="post-card post-card--with-image">
 			<div class="post-header">
@@ -41,27 +42,6 @@
 			</div>
 		</article>
 	{{/foreach}}
+	{{/get}}
 </section>
-{{#if pagination.next}}
-	<div class="load-more">
-		<button id="load-more-btn" type="button" aria-label="Load more posts">
-			Load More Posts
-		</button>
-	</div>
-{{else}}
-	<div class="load-more">
-		<button id="load-more-btn" type="button" disabled class="no-more">
-			No more posts
-		</button>
-	</div>
-{{/if}}
-<script type="application/json" id="pagination-data">
-{
-	"currentPage": {{pagination.page}},
-	"totalPages": {{pagination.pages}},
-	"hasNext": {{#if pagination.next}}true{{else}}false{{/if}},
-	"hasPrev": {{#if pagination.prev}}true{{else}}false{{/if}},
-	"total": {{pagination.total}},
-	"limit": {{pagination.limit}}
-}
-</script>
+<p>more posts here!</p>

@@ -9,8 +9,10 @@
    flex-wrap: wrap;
    font-size: 14px;
    list-style: none;
-   margin: 0 0 var(--space-4xl);
-   padding: 0;
+   margin-left: 190px;
+   padding: 0 0 var(--space-3xl);
+   margin-right: auto;
+   width: 100%;
 }
 
 .breadcrumb-item {

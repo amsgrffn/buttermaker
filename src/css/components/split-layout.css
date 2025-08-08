@@ -52,17 +52,10 @@
 .content-aside .widget-title {
 	font-family: var(--font-family-display);
 	font-size: var(--font-size-xl);
-	font-weight: var(--font-weight-extrabold);
-	color: var(--color-text-dark);
-	letter-spacing: 0.02rem;
+	font-weight: var(--font-weight-bold);
 	margin: 0 0 var(--space-xl);
 	padding-left: var(--space-sm);
-}
-
-.content-aside .widget-title em {
-	font-family: "abril-titling-condensed", serif;
-	font-style: italic;
-	font-weight: 400;
+	color: var(--color-headings);
 }
 
 /* Common widget styling */
@@ -71,8 +64,8 @@
 .archive-widget,
 .tags-widget,
 .testimonial-widget {
-	background: hsl(45,18%,94%);
-	border: 1px solid #E6E4DB;
+	background: #F5F7FA;
+	border: 1px solid #E6EAEF;
 	border-radius: var(--radius-lg);
 	padding: var(--space-xl);
 	margin-bottom: var(--space-2xl);
@@ -87,9 +80,8 @@
 }
 
 .note-item {
-	background: radial-gradient(circle at center, rgba(80, 160, 210, 0.4) 0.8px, transparent 0.8px),  white;
+	background: #fff;
 	background-size: 16px 16px;
-	font-family: var(--font-family-serif);
 	padding: var(--space-3xl);
 	margin-bottom: var(--space-lg);
 	box-shadow: var(--shadow-base);
@@ -97,7 +89,6 @@
 }
 
 .note-title {
-	font-family: "abril-titling-condensed", serif;
 	font-size: var(--font-size-sm);
 	font-style: italic;
 	font-weight: var(--font-weight-semibold);
@@ -182,11 +173,11 @@
 }
 
 .note-body a {
-	color: var(--color-text-dark);
+	color: var(--link-color);
 	font-weight: 500;
 	text-decoration: underline;
-	text-decoration-color: var(--color-text-dark);
-	text-decoration-thickness: 2px;
+	text-decoration-color: var(--link-color);
+	text-decoration-thickness: 1px;
 	text-underline-offset: 3px;
 	transition: color 0.3s ease, text-decoration-color 0.3s ease;
 }
