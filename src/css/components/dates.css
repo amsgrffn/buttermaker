@@ -1,0 +1,76 @@
+/* Short Date Styling */
+time[data-timeago],
+.timeago {
+	font-size: var(--font-size-sm);
+	color: var(--color-text-medium);
+	font-weight: 500;
+	text-transform: lowercase;
+	letter-spacing: 0.5px;
+	display: inline-block;
+	min-width: 24px; /* Prevents layout shift */
+	text-align: left;
+	cursor: help; /* Indicates tooltip is available */
+	border-bottom: 1px dotted transparent; /* Subtle hint */
+	transition: all 0.2s ease;
+}
+
+/* Hover effect to show full date */
+time[data-timeago],
+.timeago {
+	cursor: help; /* Indicates tooltip is available */
+	border-bottom: 1px dotted transparent; /* Subtle hint */
+	transition: all 0.2s ease;
+}
+
+time[data-timeago]:hover,
+.timeago:hover {
+	color: var(--color-text-dark);
+	border-bottom-color: var(--color-text-medium); /* Show dotted underline on hover */
+}
+
+/* Style for post cards */
+.post-card time[data-timeago] {
+	font-size: var(--font-size-xs);
+	opacity: 0.8;
+}
+
+/* Style for post headers */
+.post-header time[data-timeago] {
+	font-size: var(--font-size-base);
+	color: var(--color-text-medium);
+}
+
+/* Style for related posts */
+.related-meta time[data-timeago] {
+	font-size: var(--font-size-xs);
+	color: var(--color-text-light);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	time[data-timeago],
+	.timeago {
+		font-size: var(--font-size-xs);
+		min-width: 20px;
+	}
+}
+
+/* Dark mode support (if you have it) */
+@media (prefers-color-scheme: dark) {
+	time[data-timeago],
+	.timeago {
+		color: var(--color-text-medium-dark, #888);
+	}
+
+	time[data-timeago]:hover,
+	.timeago:hover {
+		color: var(--color-text-light-dark, #ccc);
+		border-bottom-color: var(--color-text-medium-dark, #666);
+	}
+}
+
+/* Alternative: If you prefer no visual hint, just the cursor */
+.timeago-minimal {
+	cursor: help;
+	border-bottom: none !important;
+}

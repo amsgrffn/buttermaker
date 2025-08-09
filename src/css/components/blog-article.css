@@ -1,0 +1,99 @@
+.post-feed.article-loop .post-body-flex {
+	flex-direction: row;
+}
+
+.post-feed.article-loop .post-header {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-sm);
+	margin-bottom: var(--space-md);
+}
+
+.post-feed.article-loop .post-content-flex .post-excerpt,
+.post-feed.article-loop .post-content .post-excerpt {
+	font-size: var(--font-size-md);
+	line-height: var(--line-height-base);
+	color: var(--color-text-dark);
+	margin-bottom: var(--space-xl);
+}
+
+.note-post h2 {
+	display: none;
+}
+
+.note-post .note-body p {
+	font-size: var(--font-size-lg);
+	line-height: var(--line-height-base);
+}
+
+.note-post.post-content-flex {
+	background: var(--color-cool-blue);
+	border: var(--border-cool-blue);
+	border-radius: var(--radius-base);
+	padding: 3rem;
+}
+
+.note-post.post-media-flex {
+	background: var(--color-cool-blue);
+	border: var(--border-cool-blue);
+	padding: 2rem;
+}
+
+.post-feed.article-loop .post-body-flex {
+	align-items: center
+}
+
+.post-feed.article-loop .post-title {
+	font-size: var(--font-size-lg);
+	line-height: var(--line-height-base);
+}
+
+.post-feed.article-loop .post-title a {
+	font-weight: var(--font-weight-bold);
+}
+
+.post-feed.article-loop .post-meta {
+	display: flex
+}
+
+.post-feed.article-loop .author-name {
+	color: var(--color-text-medium);
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-normal);
+}
+
+.post-feed.article-loop .post-meta ul {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.post-feed.article-loop .post-meta ul li {
+	margin-bottom: 4px;
+}
+
+.post-feed.article-loop .author-avatar {
+	height: 30px;
+	width: 30px;
+}
+
+.post-feed.article-loop .pub-date {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-normal);
+	margin-bottom: var(--space-xl);
+}
+
+.post-feed.article-loop .pub-date {
+	filter: grayscale(70%);
+}
+
+.post-feed.article-loop .pub-date svg {
+	height: 16px;
+	width: 16px;
+	display: line;
+	vertical-align: middle;
+	margin-top: -2px;
+}

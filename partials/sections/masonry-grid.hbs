@@ -32,12 +32,14 @@
 							{{#primary_author}}
 								<a class="avatar wiggle" href="{{url}}"><img srcset="{{img_url profile_image size="xxs" format="webp"}} 50w, {{img_url profile_image size="xs" format="webp"}} 100w" sizes="50vw" src="{{img_url profile_image size="xs" format="webp"}}" alt="{{name}}'s Avatar" width="40" height="40" loading="lazy"></a>
 							{{/primary_author}}
+							&middot;
+							<time class="masonry-date" datetime="{{date published_at format="YYYY-MM-DD"}}">
+								<a href="{{url}}">{{date published_at timeago="true"}}</a>
+							</time>
+							&middot;
 							{{#if primary_tag}}
 								<span class="masonry-tag">{{primary_tag.name}}</span>
 							{{/if}}
-							<time class="masonry-date" datetime="{{date published_at format="YYYY-MM-DD"}}">
-								{{date published_at format="MMMM D, YYYY"}}
-							</time>
 						</div>
 					</div>
 					<a href="{{url}}" class="masonry-link" aria-label="Read {{title}}"></a>

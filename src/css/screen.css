@@ -5,6 +5,7 @@
 @import "base/normalize.css";
 @import "base/variables.css";
 @import "base/typography.css";
+@import "components/blog-article.css";
 @import "components/header.css";
 @import "components/horizontal-scroll.css";
 @import "components/sidebar.css";
@@ -18,4 +19,5 @@
 @import "components/breadcrumb-dropdown.css";
 @import "components/recommendations.css";
 @import "components/share-dropdown.css";
+@import "components/dates.css";
 @import "layout/responsive.css";

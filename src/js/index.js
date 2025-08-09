@@ -21,6 +21,7 @@ import { initKnicksCounter } from './modules/knicks-counter';
 import { initPriceToggle } from './modules/price-toggle';
 import { BreadcrumbDropdown } from './modules/breadcrumb-dropdown';
 import { initCurrentTime } from './modules/current-time';
+import { initShortDateFormatter, observeNewDates } from './modules/short-date-formatter';
 
 /**
  * Initialize theme when DOM is ready
@@ -52,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		initKnicksCounter();
 		initPriceToggle();
 		initCurrentTime();
+		initShortDateFormatter();
 
 		// Make mobile navigation globally available
 		window.toggleSidebar = mobileNav.toggleSidebar.bind(mobileNav);
@@ -68,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 window.addEventListener('load', function() {
 	// Add any post-load functionality here
+	observeNewDates();
 	console.log('🚀 Theme fully loaded');
 });
 

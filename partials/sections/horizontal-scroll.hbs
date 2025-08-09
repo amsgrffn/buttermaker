@@ -24,14 +24,9 @@
 									</div>
 									<span>•</span>
 									<time datetime="{{date published_at format="YYYY-MM-DD"}}">
-										{{date published_at format="MMMM D, YYYY"}}
+										{{date published_at timeago="true"}}
 									</time>
 								</div>
-								{{#if primary_tag}}
-									<div class="scroll-card-tags">
-										<span class="scroll-card-tag">{{primary_tag.name}}</span>
-									</div>
-								{{/if}}
 							</div>
 						</a>
 					{{/foreach}}

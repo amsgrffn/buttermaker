@@ -103,7 +103,7 @@
 	color: inherit;
 	transition: all var(--transition-base);
 	display: flex;
-	height: 120px;
+	height: 140px;
 	scroll-snap-align: start;
 }
 
@@ -115,7 +115,7 @@
 
 .scroll-card-image {
 	flex: 0 0 120px;
-	height: 120px;
+	height: 140px;
 	overflow: hidden;
 	background: var(--color-background-light);
 	position: relative;
@@ -160,7 +160,7 @@
 	font-size: var(--font-size-md);
 	font-weight: var(--font-weight-bold);
 	line-height: var(--line-height-base);
-	margin-bottom: var(--space-sm);
+	margin-bottom: var(--space-lg);
 	letter-spacing: 0.01rem;
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
@@ -185,9 +185,8 @@
 }
 
 .scroll-card-avatar {
-	width: 24px;
-	height: 24px;
-	border-radius: var(--radius-full);
+	width: 30px;
+	height: 30px;
 	object-fit: cover;
 	filter: grayscale(70%);
 }

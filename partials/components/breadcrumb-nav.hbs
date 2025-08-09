@@ -2,6 +2,12 @@
 	<li class="breadcrumb-item home">
 		{{> "icons/arrow-down-right"}}<a class="title" href="{{@site.url}}">Home</a>
 	</li>
+	{{#is "index"}}
+		<li class="breadcrumb-separator">{{> "icons/chevron"}}</li>
+		<li class="breadcrumb-item">Blog</a></li>
+		<li class="breadcrumb-separator">{{> "icons/chevron"}}</li>
+		<li class="breadcrumb-item current" aria-current="page">You Are Here {{> "icons/map-pin"}}</li>
+	{{/is}}
 	{{!-- FOR PAGES --}}
 	{{#is "page"}}
 	<li class="breadcrumb-separator">{{> "icons/chevron"}}</li>

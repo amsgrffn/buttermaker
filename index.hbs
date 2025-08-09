@@ -1,7 +1,9 @@
 {{!< default}}
 <div class="split-content-wrapper">
 	<div class="main-content-area">
-		{{> "sections/post-feed"}}
+{{> "components/breadcrumb-nav"}}
+
+		{{> "sections/blog-feed"}}
 		{{#if pagination.next}}
 			<div class="load-more">
 				<button id="load-more-btn" type="button" aria-label="Load more posts">

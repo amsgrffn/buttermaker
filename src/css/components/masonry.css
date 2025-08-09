@@ -130,12 +130,16 @@
 .masonry-meta {
 	display: flex;
 	align-items: center;
-	gap: var(--space-sm);
+	gap: var(--space-xs);
 	font-size: var(--font-size-base);
 	color: var(--color-text-medium);
 }
 
 .masonry-meta img {
+	height: 30px;
+	width: 30px;
+	margin: 0;
+	padding: 0;
 	filter: grayscale(70%);
 }
 
@@ -144,15 +148,7 @@
 }
 
 .masonry-tag {
-	background: var(--color-blue-grey);
-	padding: var(--space-xs) var(--space-sm);
-	border: 1px solid var(--border-blue-grey);
-	border-radius: var(--radius-base);
-	font-weight: 500;
-}
 
-.masonry-reading-time {
-	opacity: 0.8;
 }
 
 .masonry-link {
