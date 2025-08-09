@@ -13,7 +13,9 @@
 							<img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
 							&middot;
 							<time datetime="{{date published_at format="YYYY-MM-DD"}}">
-								{{date published_at timeago="true"}}
+								<a href="{{url}}" aria-label="Read post from {{date published_at format="MMMM Do, YYYY"}}">
+									{{date published_at timeago="true"}}
+								</a>
 							</time>
 						</div>
 						{{> "components/share-dropdown"}}
