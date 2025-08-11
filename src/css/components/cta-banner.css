@@ -32,8 +32,7 @@
 .cta-title {
 	font-family: var(--font-family-alt);
 	font-size: var(--font-size-4xl);
-	font-weight: 700;
-	letter-spacing: -0.02rem;
+	font-weight: 800;
 	margin-bottom: var(--space-xl);
 	color: white;
 }

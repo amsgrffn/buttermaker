@@ -12,6 +12,7 @@
    margin-left: 190px;
    padding: 0 0 var(--space-3xl);
    margin-right: auto;
+   margin-top: var(--space-lg);
    width: 100%;
 }
 

@@ -21,6 +21,7 @@ import { initKnicksCounter } from './modules/knicks-counter';
 import { initPriceToggle } from './modules/price-toggle';
 import { BreadcrumbDropdown } from './modules/breadcrumb-dropdown';
 import { initCurrentTime } from './modules/current-time';
+import { BlogPostDisplay } from './modules/blog-post-display';
 import { initShortDateFormatter, observeNewDates } from './modules/short-date-formatter';
 
 /**

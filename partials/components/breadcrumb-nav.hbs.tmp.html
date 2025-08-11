@@ -4,7 +4,7 @@
 	</li>
 	{{#is "index"}}
 		<li class="breadcrumb-separator">{{> "icons/chevron"}}</li>
-		<li class="breadcrumb-item">Blog</li>
+		<li class="breadcrumb-item">Blog</a></li>
 		<li class="breadcrumb-separator">{{> "icons/chevron"}}</li>
 		<li class="breadcrumb-item current" aria-current="page">You Are Here {{> "icons/map-pin"}}</li>
 	{{/is}}
@@ -44,7 +44,7 @@
 						{{#foreach tags}}
 							<li><a href="{{url}}">{{> "icons/folder"}} {{name}} <span>({{count.posts}})</span></a></li>
 						{{/foreach}}
-						<li><a href="/topics">{{> "icons/arrow-forward"}} View All Topics</a></li>
+						<li><a href="file:///Users/amosgriffin/Ghost/content/themes/buttermaker/partials/components/topics">{{> "icons/arrow-forward"}} View All Topics</a></li>
 					</ul>
 					{{else}}
 						<p>No other pages found</p>

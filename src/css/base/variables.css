@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CSS Custom Properties (Variables)
+   CSS Custom Properties (Variables) - Updated with rem units
 ========================================================================== */
 
 :root {
@@ -31,7 +31,6 @@
 	--color-yellow: oklch(0.865 0.177 90.4); /* systemYellow: #ffcc00 */
 	--color-notebook-blue: oklch(0.764, 0.058, 258); /* systemYellow: #9CB4D8 */
 
-
 	--color-cool-blue: oklch(0.9755 0.0045 258.32); /* #F5F7FA; */
 	--color-blue-grey: oklch(0.9354 0.008 253.86); /* #E6EAEF; */
 
@@ -39,12 +38,9 @@
 	--border-blue-grey: oklch(0.8998 0.0102 238.52); /* #D8DFE4; */
 
 	--link-color: oklch(0.45 0.06 245);
-
 	--hover-color: oklch(0.7 0.15 30);
-
 	--accent-color: #4F637C;
 	--border-accent-color: oklch(0.45 0.14 248);
-
 
 	/* Fonts */
 	--font-family-alt: 'gelica', 'Cooper*', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -53,17 +49,17 @@
 	--font-family-sans: 'Suisse Intl Trial', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
 	--font-family-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-	/* Font Sizes */
-	--font-size-xs: 11px;
-	--font-size-sm: 12px;
-	--font-size-base: 14px;
-	--font-size-md: 16px;
-	--font-size-lg: 18px;
-	--font-size-xl: 20px;
-	--font-size-2xl: 24px;
-	--font-size-3xl: 28px;
-	--font-size-4xl: 32px;
-	--font-size-5xl: 42px;
+	/* Font Sizes - Converted to rem (assuming 16px base) */
+	--font-size-xs: 0.6875rem;   /* was 11px */
+	--font-size-sm: 0.75rem;     /* was 12px */
+	--font-size-base: 0.875rem;  /* was 14px */
+	--font-size-md: 1rem;        /* was 16px */
+	--font-size-lg: 1.125rem;    /* was 18px */
+	--font-size-xl: 1.25rem;     /* was 20px */
+	--font-size-2xl: 1.5rem;     /* was 24px */
+	--font-size-3xl: 1.75rem;    /* was 28px */
+	--font-size-4xl: 2rem;       /* was 32px */
+	--font-size-5xl: 2.625rem;   /* was 42px */
 
 	/* Font Weights */
 	--font-weight-normal: 400;
@@ -78,40 +74,40 @@
 	--line-height-base: 1.4;
 	--line-height-relaxed: 1.6;
 
-	/* Spacing */
-	--space-xs: 4px;
-	--space-sm: 8px;
-	--space-md: 12px;
-	--space-lg: 16px;
-	--space-xl: 20px;
-	--space-2xl: 24px;
-	--space-3xl: 32px;
-	--space-4xl: 48px;
-	--space-5xl: 64px;
+	/* Spacing - Converted to rem */
+	--space-xs: 0.25rem;   /* was 4px */
+	--space-sm: 0.5rem;    /* was 8px */
+	--space-md: 0.75rem;   /* was 12px */
+	--space-lg: 1rem;      /* was 16px */
+	--space-xl: 1.25rem;   /* was 20px */
+	--space-2xl: 1.5rem;   /* was 24px */
+	--space-3xl: 2rem;     /* was 32px */
+	--space-4xl: 3rem;     /* was 48px */
+	--space-5xl: 4rem;     /* was 64px */
 
-	/* Layout */
-	--header-height: 100px;
-	--header-height-mobile: 56px;
-	--sidebar-width: 290px;
-	--sidebar-width-tablet: 200px;
-	--sidebar-width-mobile: 280px;
-	--content-max-width: 680px;
-	--content-max-width-wide: 760px;
+	/* Layout - Converted to rem */
+	--header-height: 6.25rem;          /* was 100px */
+	--header-height-mobile: 3.5rem;    /* was 56px */
+	--sidebar-width: 18.125rem;        /* was 290px */
+	--sidebar-width-tablet: 12.5rem;   /* was 200px */
+	--sidebar-width-mobile: 17.5rem;   /* was 280px */
+	--content-max-width: 42.5rem;      /* was 680px */
+	--content-max-width-wide: 47.5rem; /* was 760px */
 
-	/* Border Radius */
-	--radius-sm: 0.3rem;
-	--radius-base: 0.375rem;
-	--radius-md: 0.5rem;
-	--radius-lg: 0.625rem;
-	--radius-xl: 0.75rem;
-	--radius-pill: 20px;
-	--radius-full: 50%;
+	/* Border Radius - Mix of rem and pixels for specific use cases */
+	--radius-sm: 0.1875rem;    /* was 0.3rem, keeping small radius precise */
+	--radius-base: 0.25rem;    /* was 0.375rem */
+	--radius-md: 0.3125rem;    /* was 0.5rem */
+	--radius-lg: 0.4375rem;    /* was 0.625rem */
+	--radius-xl: 0.5rem;       /* was 0.75rem */
+	--radius-pill: 1.25rem;    /* was 20px - converted to rem */
+	--radius-full: 50%;        /* percentage stays the same */
 
-	/* Shadows */
-	--shadow-sm: 4px 2px 4px rgba(0, 0, 0, 0.03);
-	--shadow-base: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1), 0 0 0 1px rgb(193 154 107 / 0.1);
-	--shadow-md: 0 8px 25px rgba(0, 0, 0, 0.15);
-	--shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.2);
+	/* Shadows - keeping px for precise shadow control */
+	--shadow-sm: 0.25rem 0.125rem 0.25rem rgba(0, 0, 0, 0.03);
+	--shadow-base: 0 0.25rem 0.375rem -0.0625rem rgb(0 0 0 / 0.1), 0 0.125rem 0.25rem -0.125rem rgb(0 0 0 / 0.1), 0 0 0 0.0625rem rgb(193 154 107 / 0.1);
+	--shadow-md: 0 0.5rem 1.5625rem rgba(0, 0, 0, 0.15);
+	--shadow-lg: 0 1rem 2.5rem rgba(0, 0, 0, 0.2);
 
 	/* Transitions */
 	--transition-fast: 0.15s ease;

@@ -48,7 +48,7 @@
 
 .post-feed .author-info {
 	flex: 1;
-	margin-bottom: var(--space-sm);
+	margin-bottom: var(--space-md);
 	min-width: 0;
 }
 
@@ -133,7 +133,6 @@
 	border: none;
 	font-size: var(--font-size-base);
 	margin-top: 0;
-	min-height: 32px;
 }
 
 .post-meta:hover {

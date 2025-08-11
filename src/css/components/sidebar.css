@@ -18,14 +18,14 @@
 .sidebar h1 {
 	color: var(--color-headings);
 	font-family: var(--font-family-alt);
-	font-size: 35px;
-	letter-spacing: -0.02rem;
-	font-weight: 900;
-	line-height: 1.1;
+	font-size: 33px;
+	font-weight: 800;
+	line-height: 1;
 }
 
 .sidebar h1 a {
 	color: var(--color-headings);
+	font-weight: 800;
 }
 
 .sidebar h1 a:hover {

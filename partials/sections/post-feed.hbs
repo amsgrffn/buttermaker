@@ -21,11 +21,7 @@
 					</h2>
 					<p class="post-excerpt">{{excerpt words="60"}}</p>
 					<div class="post-actions">
-						<span class="post-action">{{primary_tag.name}}</span>
-						<span class="post-action" data-action="like">Like</span>
-						<a href="{{url}}#comments" class="post-action">Comment</a>
-						<span class="post-action" data-action="share">Share</span>
-						<span class="post-action" data-action="save">Save</span>
+						<span class="post-action">{{tags limit="3"}}</span>
 					</div>
 				</div>
 				<div class="post-media-flex">

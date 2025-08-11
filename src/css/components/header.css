@@ -93,7 +93,7 @@
 	width: 100%;
 	padding: var(--space-sm) var(--space-4xl) var(--space-sm) var(--space-lg);
 	border: 1px solid #E6EAEF;
-	border-radius: var(--radius-pill);
+	border-radius: var(--radius-base);
 	background: #F5F7FA;
 	font-size: var(--font-size-base);
 	outline: none;

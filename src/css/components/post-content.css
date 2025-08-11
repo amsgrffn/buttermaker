@@ -561,19 +561,14 @@
 
 .post-actions {
 	display: flex;
-	justify-content: center;
 	gap: var(--space-xl);
 	margin-bottom: var(--space-3xl);
 	flex-wrap: wrap;
 }
 
 .post-action {
-	background: var(--color-background-light);
-	border: 1px solid var(--color-border);
-	padding: var(--space-sm) var(--space-lg);
-	border-radius: var(--radius-pill);
 	cursor: pointer;
-	font-size: var(--font-size-sm);
+	font-size: var(--font-size-md);
 	color: var(--color-text-medium);
 	transition: all var(--transition-base);
 	display: flex;
