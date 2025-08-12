@@ -170,23 +170,33 @@ export class BlogPostDisplay {
             return;
         }
 
-        const contentElement = post.querySelector(this.options.contentSelector);
+        const contentElement = post.querySelector(this.options.contentSelector) || 
+                               post.querySelector('.post-content') ||
+                               post.querySelector('.content-body');
         const previewElement = post.querySelector(this.options.previewSelector);
         const fullElement = post.querySelector(this.options.fullSelector);
 
         // Validate required elements exist
         if (!contentElement) {
-            console.warn(`BlogPostDisplay: No content element found in post ${index}`);
+            console.warn(`BlogPostDisplay: No content element found in post ${index}. Tried selectors:`, 
+                        [this.options.contentSelector, '.post-content', '.content-body']);
             return;
         }
 
         if (!previewElement || !fullElement) {
-            console.warn(`BlogPostDisplay: Missing preview or full element in post ${index}`);
+            console.warn(`BlogPostDisplay: Missing preview or full element in post ${index}:`, {
+                hasPreview: !!previewElement,
+                hasFull: !!fullElement
+            });
             return;
         }
 
         // Count words in the content
         const wordCount = this.countWords(contentElement);
+        
+        // Debug: Log the first 100 characters of content being counted
+        const contentPreview = (contentElement.textContent || '').substring(0, 100);
+        console.log(`Post ${index} content preview: "${contentPreview}..."`);
         
         // Add word count as data attribute for debugging and to mark as processed
         post.setAttribute('data-word-count', wordCount);

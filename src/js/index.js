@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		const sidebarDropdown = new SidebarDropdown();
 		const infiniteScroll = new InfiniteScroll();
 		const breadcrumbDropdown = new BreadcrumbDropdown();
+		const blogPostDisplay = new BlogPostDisplay();
 
 		initSocialSharing();
 		initTestimonials();
