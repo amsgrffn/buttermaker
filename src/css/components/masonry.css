@@ -3,191 +3,189 @@
    ========================================================================== */
 
 .featured-masonry-section {
-	margin-bottom: var(--space-4xl);
-	background: var(--color-cool-blue);
-	padding: 2rem;
-	border-radius: var(--radius-lg);
-	border: 1px solid var(--border-cool-blue);
+  margin-bottom: var(--space-4xl);
+  background: var(--color-cool-blue);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-cool-blue);
 }
 
 .section-title {
-	font-family: var(--font-family-display);
-	font-size: var(--font-size-xl);
-	font-weight: 800;
-	margin-bottom: var(--space-xl);
-	color: var(--color-headings);
+  font-family: var(--font-family-alt);
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  margin-bottom: var(--space-xl);
+  color: var(--color-headings);
 }
 
 .section-title em {
-
 }
 
 /* TRUE MASONRY GRID - 2 Columns with natural heights! */
 .masonry-grid {
-	position: relative;
-	width: 100%;
-	/* JavaScript will position the cards and set the height */
+  position: relative;
+  width: 100%;
+  /* JavaScript will position the cards and set the height */
 }
 
 /* Cards positioned absolutely by JavaScript */
 .masonry-card {
-	position: absolute; /* JavaScript will position these */
-	width: calc((100% - var(--space-xl)) / 2); /* 2 columns with gap */
-	background: var(--color-background-card);
-	border-radius: var(--radius-lg);
-	overflow: hidden;
-	border: 1px solid rgb(234, 219, 250);
-	transition: all var(--transition-slow);
-	cursor: pointer;
-	box-shadow: var(--shadow-base);
+  position: absolute; /* JavaScript will position these */
+  width: calc((100% - var(--space-xl)) / 2); /* 2 columns with gap */
+  background: var(--color-background-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgb(234, 219, 250);
+  transition: all var(--transition-slow);
+  cursor: pointer;
+  box-shadow: var(--shadow-base);
 
-	/* Initially hidden for smooth entrance animations */
-	opacity: 0;
-	transform: translateY(20px);
+  /* Initially hidden for smooth entrance animations */
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 /* Show cards after JavaScript positioning */
 .masonry-card.positioned {
-	opacity: 1;
-	transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .masonry-card:hover {
-	box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
-	transform: translate(0, -5px) scale(1.02);
-	z-index: 10;
+  box-shadow: var(--shadow);
+  transform: translate(0, -5px) scale(1.02);
+  z-index: 10;
 }
 
 /* Card Image - Natural height based on content */
 .masonry-image {
-	width: 100%;
-	height: auto; /* Natural height based on image aspect ratio */
-	min-height: 120px; /* Minimum for consistency */
-	max-height: 300px; /* Maximum to prevent too tall images */
-	overflow: hidden;
-	position: relative;
-	background: var(--color-background-light);
+  width: 100%;
+  height: auto; /* Natural height based on image aspect ratio */
+  min-height: 120px; /* Minimum for consistency */
+  max-height: 300px; /* Maximum to prevent too tall images */
+  overflow: hidden;
+  position: relative;
+  background: var(--color-background-light);
 }
 
 .masonry-image img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	transition: transform var(--transition-slow);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
 }
 
 .masonry-card:hover .masonry-image img {
-	transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 /* Content Type Badge */
 .content-type-badge {
-	position: absolute;
-	top: var(--space-md);
-	right: var(--space-md);
-	background: rgba(0, 0, 0, 0.7);
-	color: white;
-	padding: var(--space-xs) var(--space-sm);
-	border-radius: var(--radius-pill);
-	font-size: var(--font-size-xs);
-	backdrop-filter: blur(4px);
-	font-weight: var(--font-weight-medium);
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-xs);
+  backdrop-filter: blur(4px);
+  font-weight: var(--font-weight-medium);
 }
 
 /* Card Content - Natural height based on text content */
 .masonry-content {
-	padding: var(--space-xl) var(--space-3xl) var(--space-xl) var(--space-3xl);
+  padding: var(--space-xl) var(--space-3xl) var(--space-xl) var(--space-3xl);
 }
 
 .masonry-title {
-	font-family: var(--font-family-display);
-	font-size: var(--font-size-xl);
-	font-weight: var(--font-weight-bold);
-	line-height: var(--line-height-tight);
-	margin-bottom: var(--space-sm);
-	color: var(--color-headings);
-	text-wrap: pretty;
+  font-family: var(--font-family-alt);
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: var(--space-sm);
+  color: var(--color-headings);
+  text-wrap: pretty;
 }
 
 .masonry-title a {
-	color: var(--color-headings);
-	text-decoration: none;
-	transition: color var(--transition-base);
+  color: var(--color-headings);
+  text-decoration: none;
+  transition: color var(--transition-base);
 }
 
 .masonry-title a:hover {
-	color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .masonry-excerpt {
-	font-family: var(--font-family-sans);
-	font-size: 16px;
-	line-height: var(--line-height-base);
-	margin-bottom: var(--space-2xl);
-	/* No line clamping - let excerpts flow naturally */
+  font-family: var(--font-family-sans);
+  font-size: 14px;
+  line-height: var(--line-height-base);
+  margin-bottom: var(--space-2xl);
+  /* No line clamping - let excerpts flow naturally */
 }
 
 .masonry-meta {
-	display: flex;
-	align-items: center;
-	gap: var(--space-xs);
-	font-size: var(--font-size-base);
-	color: var(--color-text-medium);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-base);
+  color: var(--color-text-medium);
 }
 
 .masonry-meta img {
-	height: 30px;
-	width: 30px;
-	margin: 0;
-	padding: 0;
-	filter: grayscale(70%);
+  height: 30px;
+  width: 30px;
+  margin: 0;
+  padding: 0;
+  filter: grayscale(70%);
 }
 
 .masonry-date {
-	font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-medium);
 }
 
 .masonry-tag {
-
 }
 
 .masonry-link {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
 }
 
 /* Responsive Masonry */
 @media (max-width: 767px) {
-	.masonry-card {
-		width: 100%; /* Single column on mobile */
-		position: relative !important; /* Override absolute positioning on mobile */
-		margin-bottom: var(--space-lg);
-		opacity: 1 !important; /* Show cards normally on mobile */
-		transform: none !important;
-	}
+  .masonry-card {
+    width: 100%; /* Single column on mobile */
+    position: relative !important; /* Override absolute positioning on mobile */
+    margin-bottom: var(--space-lg);
+    opacity: 1 !important; /* Show cards normally on mobile */
+    transform: none !important;
+  }
 
-	.masonry-grid {
-		display: block; /* Stack cards normally on mobile */
-	}
+  .masonry-grid {
+    display: block; /* Stack cards normally on mobile */
+  }
 
-	.masonry-content {
-		padding: var(--space-lg);
-	}
+  .masonry-content {
+    padding: var(--space-lg);
+  }
 
-	.masonry-title {
-		font-size: var(--font-size-md);
-	}
+  .masonry-title {
+    font-size: var(--font-size-md);
+  }
 
-	.section-title {
-		font-size: var(--font-size-xl);
-		margin-bottom: var(--space-lg);
-	}
+  .section-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-lg);
+  }
 
-	.featured-masonry-section {
-		margin-bottom: var(--space-3xl);
-	}
+  .featured-masonry-section {
+    margin-bottom: var(--space-3xl);
+  }
 }

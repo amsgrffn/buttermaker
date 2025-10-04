@@ -10,7 +10,7 @@
 
 .post-card {
 	padding: 0 0 var(--space-xl);
-	border-bottom: 1px solid var(--color-border-light);
+	border-bottom: 1px solid #cfcfcf;
 	transition: opacity var(--transition-base);
 }
 
@@ -54,7 +54,8 @@
 
 .post-feed .author-name {
 	font-size: var(--font-size-md);
-	font-weight: var(--font-weight-semibold);
+	font-family: var(--font-family-alt-script);
+	font-weight: 400;
 	color: var(--color-text-dark);
 	text-decoration: none;
 	line-height: var(--line-height-tight);
@@ -77,7 +78,7 @@
 }
 
 .post-feed .post-title {
-	font-family: var(--font-family-display);
+	font-family: var(--font-family-alt);
 	font-size: var(--font-size-xl);
 	font-weight: var(--font-weight-bold);
 	line-height: var(--line-height-base);
@@ -345,9 +346,9 @@
 /* Ensure content styles work in both layouts */
 .post-content-flex .post-title,
 .post-content .post-title {
-	font-family: var(--font-family-display);
-	font-size: var(--font-size-2xl);
-	font-weight: var(--font-weight-bold);
+	font-family: var(--font-family-alt);
+	font-size: var(--font-size-4xl);
+	font-weight: 700;
 	line-height: var(--line-height-tight);
 	margin-bottom: var(--space-sm);
 	color: var(--color-text-dark);
