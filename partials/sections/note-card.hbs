@@ -1,18 +1,24 @@
-<div class="post-body-flex">
-	<div class="post-content-flex note-post">
-		<div class="pub-date">
-			<a href="{{primary_author.url}}" class="author-name"><img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar"></a>
-			&middot;
-			<time datetime="{{date published_at format="YYYY-MM-DD"}}"><a href="{{url}}">{{date published_at timeago="true"}}</a></time>
-			&middot;
-			<span>{{primary_tag.name}}</span>
+<div class='post-body-flex'>
+  <div class='post-content-flex note-post'>
+    <h2 class='post-title'>
+      <a href='{{url}}'>{{title}}</a>
+    </h2>
+    <div class='note-body'>
+      {{content}}
+    </div>
+    <div class='pub-date'>
+      <a href='{{primary_author.url}}' class='author-name'><img
+          src='{{img_url primary_author.profile_image size='s'}}'
+          alt='{{primary_author.name}}'
+          class='author-avatar'
+        /></a>
+      &middot;
+      <time datetime='{{date published_at format='YYYY-MM-DD'}}'><a
+          href='{{url}}'
+        >{{date published_at timeago='true'}}</a></time>
+      &middot;
+      <span>{{primary_tag.name}}</span>
 
-		</div>
-		<h2 class="post-title">
-			<a href="{{url}}">{{title}}</a>
-		</h2>
-		<div class="note-body">
-			{{content}}
-		</div>
-	</div>
+    </div>
+  </div>
 </div>

@@ -183,15 +183,15 @@
 
 /* Tablet */
 @media (max-width: 768px) {
-  .post-card {
+  .post-feed .post-card {
     height: 250px;
   }
 
-  .post-card-title {
+  .post-feed .post-card-title {
     font-size: var(--font-size-lg);
   }
 
-  .post-card-excerpt {
+  .post-feed .post-card-excerpt {
     font-size: var(--font-size-sm);
   }
 }

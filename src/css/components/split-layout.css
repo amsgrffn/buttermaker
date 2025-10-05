@@ -411,10 +411,17 @@
   /* Alternative without gap: flex-basis: 33.33%; */
 }
 
+.movie-list img:hover {
+  z-index: 10;
+  filter: grayscale(20%);
+  animation: wiggle 0.5s ease-in-out;
+}
+
 .movie-list img {
   box-shadow: var(--shadow);
-  border-radius: var(--radius-base);
+  border-radius: var(--radius);
   border: 6px solid white;
+  filter: grayscale(70%);
   width: 100%;
   height: auto;
   display: block;
