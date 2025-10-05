@@ -1,34 +1,60 @@
 {{#match @site.recommendations_enabled}}
-<div class="recommendations-widget">
-	<h3>Recommended Reading</h3>
-	{{#recommendations limit="8"}}
-	<ul class="recommendations">
-		{{#each recommendations as |rec|}}
-		<li class="recommendation">
-			<a href="{{rec.url}}" data-recommendation="{{rec.id}}" target="_blank" rel="noopener">
-				<div class="recommendation-header">
-					<div class="recommendation-favicon">
-						{{#if rec.favicon}}
-						<img src="{{rec.favicon}}" alt="{{rec.title}}" loading="lazy" onerror="this.style.display='none';">
-						{{else}}
-						<span class="recommendation-favicon-fallback"></span>
-						{{/if}}
-					</div>
-					<div class="recommendation-content">
-						<h5 class="recommendation-title">{{rec.title}}</h5>
-						<span class="recommendation-url">{{readable_url rec.url}}</span>
-					</div>
-				</div>
-				{{#if rec.description}}
-				<p class="recommendation-description">{{rec.description}}</p>
-				{{/if}}
-			</a>
-		</li>
-		{{/each}}
-	</ul>
-	{{/recommendations}}
-	<div class="recommendations-footer">
-		<p class="small-link" data-portal="recommendations">View all recommendations →</p>
-	</div>
-</div>
+  <div class='recommendations-widget'>
+    <h3 class='widget-title'>Recommended Reading</h3>
+    {{#recommendations limit='8'}}
+      <ul class='recommendations'>
+        {{#each recommendations as |rec|}}
+          <li class='recommendation'>
+            <a
+              href='{{rec.url}}'
+              data-recommendation='{{rec.id}}'
+              target='_blank'
+              rel='noopener'
+            >
+              <div class='recommendation-header'>
+                <div class='recommendation-favicon'>
+                  {{#if rec.favicon}}
+                    <img
+                      src='{{rec.favicon}}'
+                      alt='{{rec.title}}'
+                      loading='lazy'
+                      onerror="this.style.display='none';"
+                    />
+                  {{else}}
+                    <span class='recommendation-favicon-fallback'></span>
+                  {{/if}}
+                </div>
+                <div class='recommendation-content'>
+                  <h5 class='recommendation-title'>{{rec.title}}</h5>
+                  <span class='recommendation-url'>{{readable_url
+                      rec.url
+                    }}</span>
+                </div>
+              </div>
+              {{#if rec.description}}
+                <p class='recommendation-description'>{{rec.description}}</p>
+              {{/if}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    {{/recommendations}}
+    <div class='recommendations-footer'>
+      <p class='small-link' data-portal='recommendations'><svg
+          xmlns='http://www.w3.org/2000/svg'
+          width='24'
+          height='24'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          class='lucide lucide-circle-arrow-right-icon lucide-circle-arrow-right'
+        ><circle cx='12' cy='12' r='10' /><path d='m12 16 4-4-4-4' /><path
+            d='M8 12h8'
+          /></svg>
+        View all recommendations →</p>
+    </div>
+  </div>
 {{/match}}

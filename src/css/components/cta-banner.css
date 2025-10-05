@@ -32,21 +32,21 @@
 }
 
 .cta-title {
-  font-family: var(--font-family-alt);
-  font-size: var(--font-size-5xl);
+  font-family: 'ZedRoundCompactVF-Heavy', sans-serif;
+  font-size: 2.2rem;
   font-weight: 800;
   margin-bottom: var(--space-xl);
   color: white;
 }
 
 .cta-description {
-  font-size: var(--font-size-lg);
-  opacity: 0.9;
+  font-size: 1.3rem;
+  font-weight: 500;
   margin-bottom: var(--space-3xl);
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  line-height: var(--line-height-normal);
+  line-height: 1.2;
 }
 
 .cta-buttons {
@@ -61,8 +61,8 @@
   padding: var(--space-md) var(--space-2xl);
   border-radius: var(--radius-pill);
   font-size: var(--font-size-lg);
-  font-family: var(--font-family-alt-script);
-  font-weight: 400;
+  font-family: var(--font-family-display);
+  font-weight: 700;
   text-decoration: none;
   transition: all var(--transition-base);
   border: none;

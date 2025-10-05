@@ -11,8 +11,8 @@
 }
 
 .section-title {
-  font-family: var(--font-family-alt);
-  font-size: var(--font-size-2xl);
+  font-family: var(--font-family-display);
+  font-size: 1.4rem;
   font-weight: 700;
   margin-bottom: var(--space-xl);
   color: var(--color-headings);
@@ -53,8 +53,8 @@
 
 .masonry-card:hover {
   box-shadow: var(--shadow);
-  transform: translate(0, -5px) scale(1.02);
   z-index: 10;
+  animation: wiggle 0.5s ease-in-out;
 }
 
 /* Card Image - Natural height based on content */
@@ -71,12 +71,14 @@
 .masonry-image img {
   width: 100%;
   height: 100%;
+  filter: grayscale(70%);
   object-fit: cover;
   transition: transform var(--transition-slow);
 }
 
 .masonry-card:hover .masonry-image img {
   transform: scale(1.05);
+  filter: grayscale(20%);
 }
 
 /* Content Type Badge */
@@ -99,8 +101,8 @@
 }
 
 .masonry-title {
-  font-family: var(--font-family-alt);
-  font-size: 1.5rem;
+  font-family: 'ZedRoundCompactVF-Bold', sans-serif;
+  font-size: 1.4rem;
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: var(--space-sm);
@@ -120,8 +122,8 @@
 
 .masonry-excerpt {
   font-family: var(--font-family-sans);
-  font-size: 14px;
-  line-height: var(--line-height-base);
+  font-size: 15px;
+  line-height: 1.3;
   margin-bottom: var(--space-2xl);
   /* No line clamping - let excerpts flow naturally */
 }

@@ -1,7 +1,7 @@
 {{! -- Horizontal Scroll Section - Trending Now -- }}
 <section class="horizontal-scroll-section">
 	<div class="horizontal-scroll-header">
-		<h2 class="horizontal-scroll-title">Trending Posts</h2>
+		<h2 class="horizontal-scroll-title">We {{>icons/heart}} These Posts. YMMV.</h2>
 	</div>
 	<div class="horizontal-scroll-container">
 		<button class="scroll-btn scroll-btn-prev" aria-label="Scroll left">{{> "icons/chevron-left"}}</button>
@@ -17,6 +17,7 @@
 								</div>
 							{{/if}}
 							<div class="scroll-card-content">
+								<p class="post-topic"><span>{{primary_tag.name}}</span></p>
 								<h3 class="scroll-card-title">{{title}}</h3>
 								<div class="scroll-card-meta">
 									<div class="scroll-card-author">

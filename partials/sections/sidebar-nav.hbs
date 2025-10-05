@@ -7,7 +7,7 @@
 				<span class="nav-icon">
 					{{> "icons/arrow-right"}}
 				</span>
-				Home
+				Homepage
 			</a>
 		</li>
 		<li>
@@ -15,7 +15,7 @@
 				<span class="nav-icon">
 					{{> "icons/arrow-right"}}
 				</span>
-				Blog
+				The Blog
 			</a>
 		</li>
 		{{! Topics - with dropdown (customize with your actual tags) }}
@@ -24,7 +24,7 @@
 				<span class="nav-icon">
 					{{> "icons/plus"}}
 				</span>
-				Topics
+				Frequent Topics
 			</a>
 			<div class="dropdown-submenu">
 				<ul>
@@ -44,16 +44,21 @@
 				<span class="nav-icon">
 					{{> "icons/plus"}}
 				</span>
-				Pages
+				All Pages
 			</a>
 			<div class="dropdown-submenu">
 				<ul>
 					{{! Replace these with your actual pages }}
 					<li><a href="{{@site.url}}/about/" class="dropdown-link">About</a></li>
+					<li><a href="{{@site.url}}/contact/" class="dropdown-link">Blogroll</a></li>
 					<li><a href="{{@site.url}}/contact/" class="dropdown-link">Contact</a></li>
-					<li><a href="{{@site.url}}/portfolio/" class="dropdown-link">Portfolio</a></li>
-					<li><a href="{{@site.url}}/services/" class="dropdown-link">Services</a></li>
-					<li><a href="{{@site.url}}/faq/" class="dropdown-link">FAQ</a></li>
+					<li><a href="{{@site.url}}/contact/" class="dropdown-link">Feeds/RSS</a></li>
+					<li><a href="{{@site.url}}/contact/" class="dropdown-link">House Rules</a></li>
+					<li><a href="{{@site.url}}/contact/" class="dropdown-link">Membership Info</a></li>
+					<li><a href="{{@site.url}}/contact/" class="dropdown-link">Moving Pictures</a></li>
+					<li><a href="{{@site.url}}/contact/" class="dropdown-link">Newsletter Info</a></li>
+					<li><a href="{{@site.url}}/contact/" class="dropdown-link">Office Hours</a></li>
+					<li><a href="{{@site.url}}/portfolio/" class="dropdown-link">Nerd Alert</a></li>
 				</ul>
 			</div>
 		</li>
@@ -63,7 +68,7 @@
 				<span class="nav-icon">
 					{{> "icons/arrow-right"}}
 				</span>
-				Archive
+				The Archive
 			</a>
 		</li>
 		{{! -- Legal - with dropdown -- }}
@@ -72,14 +77,14 @@
 				<span class="nav-icon">
 					{{> "icons/plus"}}
 				</span>
-				Legal
+				Legal Stuff
 			</a>
 			<div class="dropdown-submenu">
 				<ul>
+					<li><a href="{{@site.url}}/privacy/" class="dropdown-link">Affilate Disclaimer</a></li>
+					<li><a href="{{@site.url}}/cookies/" class="dropdown-link">Cookie Policy</a></li>
 					<li><a href="{{@site.url}}/privacy/" class="dropdown-link">Privacy Policy</a></li>
 					<li><a href="{{@site.url}}/terms/" class="dropdown-link">Terms of Service</a></li>
-					<li><a href="{{@site.url}}/cookies/" class="dropdown-link">Cookie Policy</a></li>
-					<li><a href="{{@site.url}}/disclaimer/" class="dropdown-link">Disclaimer</a></li>
 				</ul>
 			</div>
 		</li>
