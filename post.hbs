@@ -1,108 +1,127 @@
 {{!< default}}
 {{#post}}
 {{> "components/breadcrumb-nav"}}
-<article class="post-container">
-	<header class="post-header">
-		<h1 class="post-title">{{title}}</h1>
-		<div class="post-meta">
-			<div class="post-author">
-				<img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
-				<div class="author-details">
-					<a href="{{primary_author.url}}" class="author-name">{{primary_author.name}}</a>
-					<span class="role">All Star</span>
-					<div class="post-date">
+
+<div class="split-content-wrapper">
+
+	<div class="main-content-area">
+		<article class="post-container">
+
+			{{! HERO HEADER - Only if there's a featured image }}
+			{{#if feature_image}}
+			<header class="post-hero-header">
+				{{! Background Image }}
+				<div class="post-hero-image">
+					<img src="{{img_url feature_image size="xl"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+				</div>
+
+				{{! Content Card Overlay }}
+				<div class="post-hero-content">
+
+					<h1 class="post-hero-title">{{title}}</h1>
+
+					<div class="post-hero-meta">
+						<div class="post-author">
+							<img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
+							<div class="author-details">
+								<div class="post-date">
+									<time datetime="{{date published_at format="YYYY-MM-DD"}}">
+										{{date published_at timeago="true"}}
+									</time>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</header>
-	{{#if feature_image}}
-	<figure class="post-feature-image">
-		<img src="{{img_url feature_image size="xl"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
-		{{#if feature_image_caption}}
-		<figcaption>{{feature_image_caption}}</figcaption>
-		{{/if}}
-	</figure>
-	{{/if}}
-	<div class="post-content">
-		{{content}}
-	</div>
-	<footer class="post-footer">
-		{{#if tags}}
-		<div class="post-tags">
-			<span class="tags-label">Tagged in:</span>
-			{{#foreach tags}}
-			<a href="{{url}}" class="tag-link">{{name}}</a>
-			{{/foreach}}
-		</div>
-		{{/if}}
 
-		<div class="post-actions">
-			<button class="post-action" data-action="like">👍 Like</button>
-			<button class="post-action" data-action="share">🔗 Share</button>
-			<button class="post-action" data-action="save">⭐ Save</button>
-		</div>
-
-		<div class="post-author-card">
-			<img src="{{img_url primary_author.profile_image size="m"}}" alt="{{primary_author.name}}" class="author-card-avatar">
-			<div class="author-card-content">
-				<h4>{{primary_author.name}}</h4>
-				{{#if primary_author.bio}}
-				<p>{{primary_author.bio}}</p>
+				{{! Caption if exists }}
+				{{#if feature_image_caption}}
+				<div class="post-hero-caption">
+					{{feature_image_caption}}
+				</div>
 				{{/if}}
-				<div class="author-card-actions">
-					<a href="{{primary_author.url}}" class="author-link">View Profile</a>
-					<ul>
-						{{#if bluesky}}
-							<a class="gh-author-social-link" href="{{social_url type="twitter"}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
-						{{/if}}
-						<li>{{> "icons/map-pin"}}{{location}}</li>
-						<li>{{> "icons/bluesky"}}</li>
-						<li>{{> "icons/mastodon"}}</li>
-						<li>{{> "icons/letterboxd"}}</li>
-						<li>{{> "icons/rss"}}</li>
-					</ul>
+			</header>
+
+			{{else}}
+			{{! REGULAR HEADER - When there's no featured image }}
+			<header class="post-header">
+				<h1 class="post-title">{{title}}</h1>
+				<div class="post-meta">
+					<div class="post-author">
+						<img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
+						<div class="author-details">
+							<a href="{{primary_author.url}}" class="author-name">{{primary_author.name}}</a>
+							<span class="role">All Star</span>
+							<div class="post-date">
+								<time datetime="{{date published_at format="YYYY-MM-DD"}}">
+									{{date published_at format="MMMM Do, YYYY"}}
+								</time>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-	</footer>
-</article>
-{{#get "posts" include="authors,tags" filter="tag:{{primary_tag.slug}}+id:-{{id}}" limit="8" as |related_posts|}}
-{{#if related_posts}}
-<section class="related-posts">
-	<h3 class="related-title">More like this</h3>
-	<div class="related-grid">
-		{{#foreach related_posts}}
-		<article class="related-card">
-			{{#if feature_image}}
-			<a href="{{url}}" class="related-image">
-				<img src="{{img_url feature_image size="m"}}" alt="{{title}}">
-			</a>
+			</header>
 			{{/if}}
-			<div class="related-content">
-				<h4><a href="{{url}}">{{title}}</a></h4>
-				<div class="related-meta">
-					{{#if primary_tag}}
-							<a href="{{primary_tag.url}}">{{primary_tag.name}}</a> &bull;
-					{{/if}}
-					<time datetime="{{date published_at format="YYYY-MM-DD"}}">
-						{{date published_at format="MMMM Do, YYYY"}}
-					</time>
-				</div>
+
+			<div class="post-content">
+				{{content}}
 			</div>
+
+			{{! Rest of your post.hbs stays the same... }}
+			<footer class="post-footer">
+			<p>
+				{{#foreach authors}}<a href="{{url}}">{{name}}</a>{{/foreach}} published <em>{{title}}</em> on {{date format="MMMM D, YYYY"}} and filed it under {{tags separator=", "}}. You can <a href="/">share this post</a> if you'd like. {{#match updated at}}It was updated on <time class="updated" datetime="{{updated_at}}">{{date updated_at format="M/D/Y"}}</time>. <a href="/corrections-policy/">Check out our corrections policy</a> if you're curious about such things.{{/match}}
+			</p>
+			</footer>
 		</article>
-		{{/foreach}}
+
+		{{! Related Posts }}
+		{{#get "posts" include="authors,tags" filter="tag:{{primary_tag.slug}}+id:-{{id}}" limit="8" as |related_posts|}}
+		{{#if related_posts}}
+		<section class="related-posts">
+			<h3 class="related-title">More like this</h3>
+			<div class="related-grid">
+				{{#foreach related_posts}}
+				<article class="related-card">
+					{{#if feature_image}}
+					<a href="{{url}}" class="related-image">
+						<img src="{{img_url feature_image size="m"}}" alt="{{title}}">
+					</a>
+					{{/if}}
+					<div class="related-content">
+						<h4><a href="{{url}}">{{title}}</a></h4>
+						<div class="related-meta">
+							{{#if primary_tag}}
+									<a href="{{primary_tag.url}}">{{primary_tag.name}}</a> &bull;
+							{{/if}}
+							<time datetime="{{date published_at format="YYYY-MM-DD"}}">
+								{{date published_at format="MMMM Do, YYYY"}}
+							</time>
+						</div>
+					</div>
+				</article>
+				{{/foreach}}
+			</div>
+		</section>
+		{{/if}}
+		{{/get}}
+
+		{{! Comments }}
+		{{#if comments}}
+		<section class="comments-section">
+			<h3>Comments</h3>
+			<div id="comments">
+				{{comments}}
+			</div>
+		</section>
+		{{/if}}
+
 	</div>
-</section>
-{{/if}}
-{{/get}}
-{{! Comments }}
-{{#if comments}}
-<section class="comments-section">
-	<h3>Comments</h3>
-	<div id="comments">
-		{{comments}}
-	</div>
-</section>
-{{/if}}
+
+	<aside class="content-aside">
+		{{> "layout/aside-content"}}
+	</aside>
+
+</div>
+
 {{/post}}

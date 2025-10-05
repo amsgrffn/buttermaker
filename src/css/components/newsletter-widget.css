@@ -1,0 +1,194 @@
+/* ==========================================================================
+   Newsletter Signup Widget for Sidebar
+   ========================================================================== */
+
+.newsletter-widget {
+  /* Same gradient as homepage CTA banner */
+  background: linear-gradient(135deg, #4a9eff 0%, #00d4aa 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+/* Dotted pattern overlay - same as homepage */
+.newsletter-widget::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>')
+    repeat;
+  pointer-events: none;
+}
+
+.newsletter-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Title */
+.newsletter-title {
+  font-family: 'ZedRoundCompactVF-Heavy', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 var(--space-sm) 0;
+  text-align: center;
+}
+
+/* Description */
+.newsletter-description {
+  font-size: 0.95rem;
+  color: white;
+  margin: 0 0 var(--space-lg) 0;
+  text-align: center;
+  text-wrap: balance;
+  line-height: 1.3;
+  opacity: 0.95;
+}
+
+/* Form Container */
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* Email Input */
+.newsletter-input {
+  width: 100%;
+  padding: var(--space-md);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-base);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: var(--font-size-base);
+  outline: none;
+  backdrop-filter: blur(4px);
+  transition: all var(--transition-base);
+}
+
+/* Placeholder styling */
+.newsletter-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  transition: opacity 0.2s ease;
+}
+
+.newsletter-input:focus::placeholder {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* Input focus state */
+.newsletter-input:focus {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+/* Submit Button - Glassmorphic Style */
+.newsletter-button {
+  width: 100%;
+  padding: var(--space-md);
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-base);
+  font-family: 'ZedRoundCompactVF-Heavy', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.02rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  backdrop-filter: blur(10px);
+}
+
+.newsletter-button:hover {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.newsletter-button:active {
+  transform: translateY(0);
+}
+
+/* Success/Error Messages */
+.newsletter-message {
+  display: none;
+  padding: var(--space-sm);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  margin-top: var(--space-sm);
+}
+
+.newsletter-message.success {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.newsletter-message.error {
+  background: rgba(255, 100, 100, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 100, 100, 0.4);
+}
+
+/* Show messages when active */
+.newsletter-message.show {
+  display: block;
+}
+
+/* Already Subscribed State */
+.newsletter-subscribed {
+  text-align: center;
+  padding: var(--space-md) 0;
+}
+
+.newsletter-subscribed p {
+  color: white;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  margin: 0 0 var(--space-md) 0;
+}
+
+.newsletter-manage {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-lg);
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-base);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  transition: all var(--transition-base);
+}
+
+.newsletter-manage:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .newsletter-widget {
+    padding: var(--space-lg);
+  }
+
+  .newsletter-title {
+    font-size: 1.3rem;
+  }
+
+  .newsletter-description {
+    font-size: 0.875rem;
+  }
+}

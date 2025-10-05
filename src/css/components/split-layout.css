@@ -211,6 +211,16 @@
   gap: 0.25rem;
 }
 
+/* Arrow rotation effect on hover */
+.img-date a .lucide-arrow-right {
+  transition: transform 0.3s ease;
+  display: inline-block; /* Needed for transform to work on inline SVG */
+}
+
+.img-date a:hover .lucide-arrow-right {
+  transform: rotate(180deg); /* Rotates arrow to point left at the date */
+}
+
 .note-meta img {
   filter: grayscale(70%);
   height: 30px;

@@ -13,6 +13,212 @@
    3. Verify the exact Ghost classes match the selectors below
    ========================================================================== */
 
+/* Hero Header Container */
+.post-hero-header {
+  position: relative;
+  width: 100%;
+  height: 600px; /* Adjust this height as needed */
+  margin: 0 0 var(--space-4xl);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Background Image - Full coverage */
+.post-hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.post-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(70%); /* Matches your card style */
+  transition:
+    transform var(--transition-slow),
+    filter var(--transition-slow);
+}
+
+.post-hero-header:hover .post-hero-image img {
+  transform: scale(1.02);
+  filter: grayscale(30%);
+}
+
+/* Content Card - Overlaid at bottom */
+.post-hero-content {
+  position: absolute;
+  bottom: var(--space-xl); /* Distance from bottom */
+  left: 50%; /* Position at center */
+  transform: translateX(-50%); /* Center the element */
+  width: 80%; /* Set to 70% width */
+  max-width: 600px; /* Optional: prevents it from getting too wide on huge screens */
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  padding: var(--space-3xl);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+/* Tag Badge - Top right corner */
+.post-hero-tag {
+  display: inline-block;
+  background: var(--color-red);
+  color: white;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-md);
+  text-transform: capitalize;
+}
+
+/* Hero Title */
+.post-hero-title {
+  font-family: 'ZedRoundCompactVF-Heavy', sans-serif;
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: var(--space-lg);
+  color: var(--color-headings);
+  text-wrap: pretty;
+}
+
+/* Hero Meta - Author info */
+.post-hero-meta {
+  display: flex;
+  align-items: center;
+}
+
+.post-hero-meta .post-author {
+  display: flex;
+  align-items: center;
+}
+
+.post-hero-meta .author-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  filter: grayscale(70%);
+}
+
+.post-hero-meta .author-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.post-hero-meta .author-name {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-dark);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  transition: color var(--transition-base);
+}
+
+.post-hero-meta .author-name:hover {
+  color: var(--color-primary);
+}
+
+.post-hero-meta .post-date {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-medium);
+}
+
+/* Optional Caption */
+.post-hero-caption {
+  position: absolute;
+  bottom: var(--space-sm);
+  right: var(--space-md);
+  font-size: var(--font-size-xs);
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.6);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(4px);
+  z-index: 1;
+}
+
+/* ==========================================================================
+      Responsive Hero Header
+      ========================================================================== */
+
+/* Tablet */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .post-hero-header {
+    height: 450px;
+  }
+
+  .post-hero-title {
+    font-size: 2rem;
+  }
+
+  .post-hero-content {
+    padding: var(--space-2xl);
+    margin: var(--space-lg);
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .post-hero-header {
+    height: 400px;
+    margin-bottom: var(--space-3xl);
+    border-radius: var(--radius-lg);
+  }
+
+  .post-hero-content {
+    padding: var(--space-xl);
+    margin: var(--space-md);
+  }
+
+  .post-hero-title {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .post-hero-tag {
+    font-size: var(--font-size-xs);
+    padding: var(--space-xs) var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .post-hero-meta .author-avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .post-hero-meta .author-name {
+    font-size: var(--font-size-sm);
+  }
+
+  .post-hero-meta .post-date {
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .post-hero-header {
+    height: 350px;
+  }
+
+  .post-hero-content {
+    padding: var(--space-lg);
+    margin: var(--space-sm);
+  }
+
+  .post-hero-title {
+    font-size: 1.3rem;
+  }
+}
+
 /* Post Container - Centered in main content area */
 .post-container {
   max-width: 720px;
@@ -42,13 +248,12 @@
 }
 
 .post-template .post-title {
-  font-family: var(--font-family-display);
-  font-size: 3rem;
-  font-weight: var(--font-weight-extrabold);
-  line-height: 1;
+  font-family: 'ZedRoundCompactVF-Heavy', sans-serif;
+  font-size: 2.6rem;
+  line-height: 1.1;
   margin-bottom: var(--space-3xl);
   color: var(--color-headings);
-  text-wrap: pretty;
+  text-wrap: balance;
 }
 
 .post-template .role {
@@ -61,19 +266,6 @@
   gap: var(--space-lg);
   flex-wrap: wrap;
   margin-top: var(--space-lg);
-}
-
-.post-template .post-author {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-}
-
-.post-template .author-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-full);
-  object-fit: cover;
 }
 
 .post-template .author-name {
@@ -184,7 +376,7 @@
 .post-content ol,
 .post-content p,
 .post-content ul {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   line-height: 1.3;
   margin-bottom: var(--space-xl);
 }
@@ -525,35 +717,21 @@
 
 /* Post Footer */
 .post-footer {
-  border-top: 2px solid var(--color-border);
-  padding-top: var(--space-3xl);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-2xl);
   margin-top: var(--space-4xl);
 }
 
-.post-tags {
-  text-align: center;
-  margin-bottom: var(--space-3xl);
+.post-footer p {
+  color: var(--color-text-medium);
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
-.tags-label {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-medium);
-  font-weight: var(--font-weight-semibold);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-right: var(--space-sm);
-}
-
-.tag-link {
-  display: inline-block;
-  background: var(--color-border-light);
-  color: var(--color-text-medium);
-  padding: var(--space-xs) var(--space-md);
-  border-radius: var(--radius-pill);
-  font-size: var(--font-size-sm);
-  text-decoration: none;
-  margin: 0 var(--space-xs) var(--space-sm);
-  transition: all var(--transition-base);
+.post-footer p a {
+  color: var(--link-color);
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 .tag-link:hover {
@@ -663,51 +841,54 @@
   transform: translateY(-1px);
 }
 
-/* Related Posts */
+/* ==========================================================================
+   Related Posts & Comments - Cleaned Up Version
+   ========================================================================== */
 
-.related-posts,
-.comments-section {
+/* Related Posts Section */
+.related-posts {
   max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--space-xl);
-  padding-right: var(--space-xl);
+  margin: var(--space-4xl) auto 0;
+  padding: var(--space-3xl) var(--space-xl) 0;
+  border-top: 1px solid var(--color-border-light);
 }
 
-/* CSS Masonry Layout for Related Posts */
+.related-title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-2xl);
+  color: var(--color-text-dark);
+}
+
+/* Related Posts Grid - Using CSS Grid */
 .related-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
   background: #f5f7fa;
   border: 1px solid #e6eaef;
-  column-count: 2;
-  column-gap: var(--space-lg);
-  column-fill: balance;
   border-radius: var(--radius-base);
   padding: var(--space-2xl);
 }
 
 .related-card {
+  background: var(--color-background);
   box-shadow: var(--shadow-base);
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: all var(--transition-base);
-  background: var(--color-background);
-  margin-bottom: var(--space-lg);
-  break-inside: avoid;
-  page-break-inside: avoid;
-  display: inline-block;
-  width: 100%;
 }
 
 .related-card:hover {
+  transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  border-color: var(--color-primary);
-
-  /* Wiggle animation */
   animation: wiggle 0.5s ease-in-out;
 }
 
 @keyframes wiggle {
-  0% {
+  0%,
+  100% {
     transform: rotate(0deg);
   }
   25% {
@@ -716,22 +897,24 @@
   75% {
     transform: rotate(-1deg);
   }
-  100% {
-    transform: rotate(0deg);
-  }
 }
 
-/* Remove the fixed height constraint on images */
+.related-image {
+  display: block;
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+}
+
 .related-image img {
   width: 100%;
-  height: auto; /* Changed from fixed 150px */
+  height: 100%;
   object-fit: cover;
+  transition: transform var(--transition-base);
 }
 
-.related-posts {
-  margin-top: var(--space-4xl);
-  border-top: 1px solid var(--color-border);
-  padding-top: var(--space-3xl);
+.related-card:hover .related-image img {
+  transform: scale(1.05);
 }
 
 .related-content {
@@ -740,37 +923,26 @@
 
 .related-content h4 {
   font-family: var(--font-family-display);
-  color: var(--color-text-dark);
-  text-decoration: none;
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-base);
-  letter-spacing: 0.02rem;
+  line-height: var(--line-height-tight);
   margin-bottom: var(--space-md);
+  color: var(--color-text-dark);
 }
 
 .related-content h4 a {
   color: var(--color-text-dark);
   text-decoration: none;
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
+  transition: color var(--transition-base);
 }
 
 .related-content h4 a:hover {
   color: var(--color-primary);
 }
 
-.related-content p {
+.related-meta {
   font-size: var(--font-size-sm);
   color: var(--color-text-medium);
-  margin: 0;
-  line-height: var(--line-height-base);
-}
-
-.related-meta {
-  font-size: var(--font-size-base);
-  color: var(--color-text-light);
 }
 
 .related-meta a {
@@ -780,11 +952,19 @@
   border: 1px solid #e6e4db;
   border-radius: var(--radius-base);
   font-weight: 500;
+  text-decoration: none;
+}
+
+.related-meta a:hover {
+  background: var(--color-primary);
+  color: white;
 }
 
 /* Comments Section */
 .comments-section {
-  margin-top: var(--space-4xl);
+  max-width: 720px;
+  margin: var(--space-4xl) auto 0;
+  padding: 0 var(--space-xl);
   border-top: 1px solid var(--color-border);
   padding-top: var(--space-3xl);
 }
@@ -796,6 +976,33 @@
   margin-bottom: var(--space-2xl);
   color: var(--color-text-dark);
 }
+
+/* ==========================================================================
+   Post Template - Sidebar Layout (Two Column)
+   ========================================================================== */
+
+.post-template .split-content-wrapper {
+  display: grid;
+  grid-template-columns: 800px 380px;
+  gap: 48px;
+  margin-top: var(--space-2xl);
+  align-items: start;
+  justify-content: center;
+  width: 100%;
+  padding: 0 2rem;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.post-template .main-content-area {
+  min-width: 0;
+  width: 100%;
+}
+
+/* ==========================================================================
+   RESPONSIVE - Stack sidebar & adjust layout
+   ========================================================================== */
 
 /* Mobile Responsive */
 @media (max-width: 767px) {
@@ -870,6 +1077,16 @@
   .post-actions {
     gap: var(--space-md);
   }
+
+  /* Sidebar stacks */
+  .post-template .split-content-wrapper {
+    padding: 0 var(--space-lg);
+  }
+
+  .post-template .aside-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
 }
 
 /* Tablet */
@@ -883,5 +1100,28 @@
   .post-content .kg-image-left,
   .post-content .kg-image-right {
     max-width: 50%;
+  }
+}
+
+/* Tablet and below - Stack sidebar */
+@media (max-width: 1199px) {
+  .post-template .split-content-wrapper {
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+  }
+
+  .post-template .content-aside {
+    order: 2;
+  }
+
+  .post-template .main-content-area {
+    order: 1;
+  }
+
+  /* Make sidebar widgets display in a grid on tablet */
+  .post-template .aside-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
   }
 }

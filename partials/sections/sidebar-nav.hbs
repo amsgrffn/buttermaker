@@ -18,6 +18,14 @@
 				The Blog
 			</a>
 		</li>
+		<li>
+			<a href="{{@site.url}}/about/" class="sidebar-link">
+				<span class="nav-icon">
+					{{> "icons/arrow-right"}}
+				</span>
+				About Us
+			</a>
+		</li>
 		{{! Topics - with dropdown (customize with your actual tags) }}
 		<li class="has-dropdown" data-dropdown-type="topics">
 			<a href="{{@site.url}}/topics/" class="sidebar-link">
@@ -49,7 +57,6 @@
 			<div class="dropdown-submenu">
 				<ul>
 					{{! Replace these with your actual pages }}
-					<li><a href="{{@site.url}}/about/" class="dropdown-link">About</a></li>
 					<li><a href="{{@site.url}}/contact/" class="dropdown-link">Blogroll</a></li>
 					<li><a href="{{@site.url}}/contact/" class="dropdown-link">Contact</a></li>
 					<li><a href="{{@site.url}}/contact/" class="dropdown-link">Feeds/RSS</a></li>
