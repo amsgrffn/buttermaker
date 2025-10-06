@@ -4,7 +4,7 @@
 
 .sidebar {
   width: var(--sidebar-width);
-  padding: var(--space-xl) 0 0 0;
+  padding: var(--space-xl) var(--space-xl) 0 0;
   border-right: 1px solid var(--color-border);
   position: fixed;
   top: var(--header-height);
@@ -45,7 +45,7 @@
   line-height: 1.4;
   padding: 0 0 var(--space-xl);
   position: relative;
-  text-wrap: pretty;
+  text-wrap: balance;
   /* Remove: border-bottom: 1px solid #cfcfcf; */
 }
 
@@ -80,7 +80,7 @@
   color: var(--color-text-dark);
   opacity: 0.9;
   text-decoration: none;
-  font-size: var(--font-size-md);
+  font-size: 0.9rem;
   font-weight: 600;
   transition: all var(--transition-base);
 }
@@ -180,7 +180,8 @@
 }
 
 .now-reading-widget ul {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
+  line-height: 1.3;
   margin: 0 0 var(--space-sm);
 }
 
@@ -340,18 +341,18 @@ svg.heart {
   font-family: var(--font-family-base);
   display: block;
   padding: var(--space-xs) var(--space-sm);
-  color: var(--color-text-medium);
+  color: var(--color-text-dark);
   text-decoration: none;
-  font-size: var(--font-size-md);
+  font-size: 0.9rem;
   font-weight: 600;
   transition: all var(--transition-base);
-  border-left: 2px solid transparent;
   margin-left: 2px; /* Align with border */
 }
 
 .dropdown-submenu .dropdown-link:hover {
   color: #fff;
   background: var(--link-color);
+  border-radius: 5px;
 }
 
 /* Animation classes */

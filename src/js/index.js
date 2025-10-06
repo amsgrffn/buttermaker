@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const horizontalScroll = new HorizontalScroll();
     }
 
-    if (document.querySelector('.sidebar-dropdown')) {
+    if (document.querySelector('.has-dropdown')) {
       const sidebarDropdown = new SidebarDropdown();
     }
 

@@ -1,21 +1,16 @@
 {{!< default}}
 {{#post}}
-{{> "components/breadcrumb-nav"}}
-
 <div class="split-content-wrapper">
 
 	<div class="main-content-area">
 		<article class="post-container">
-
-			{{! HERO HEADER - Only if there's a featured image }}
+	{{> "components/breadcrumb-nav"}}
 			{{#if feature_image}}
 			<header class="post-hero-header">
 				{{! Background Image }}
 				<div class="post-hero-image">
 					<img src="{{img_url feature_image size="xl"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
 				</div>
-
-				{{! Content Card Overlay }}
 				<div class="post-hero-content">
 
 					<h1 class="post-hero-title">{{title}}</h1>
@@ -33,7 +28,6 @@
 						</div>
 					</div>
 				</div>
-
 				{{! Caption if exists }}
 				{{#if feature_image_caption}}
 				<div class="post-hero-caption">
@@ -41,24 +35,20 @@
 				</div>
 				{{/if}}
 			</header>
-
 			{{else}}
 			{{! REGULAR HEADER - When there's no featured image }}
 			<header class="post-header">
 				<h1 class="post-title">{{title}}</h1>
 				<div class="post-meta">
-					<div class="post-author">
-						<img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
-						<div class="author-details">
-							<a href="{{primary_author.url}}" class="author-name">{{primary_author.name}}</a>
-							<span class="role">All Star</span>
-							<div class="post-date">
-								<time datetime="{{date published_at format="YYYY-MM-DD"}}">
-									{{date published_at format="MMMM Do, YYYY"}}
-								</time>
-							</div>
-						</div>
+					<img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
+					<div class="post-date">
+						<a class="author-name" href="{{primary_author.url}}" class="author-name">{{primary_author.name}}</a>
+						<time datetime="{{date published_at format="YYYY-MM-DD"}}">
+							{{date published_at format="MMMM DD, YYYY"}}
+						</time>
 					</div>
+
+
 				</div>
 			</header>
 			{{/if}}
@@ -76,10 +66,10 @@
 		</article>
 
 		{{! Related Posts }}
-		{{#get "posts" include="authors,tags" filter="tag:{{primary_tag.slug}}+id:-{{id}}" limit="8" as |related_posts|}}
+		{{#get "posts" include="authors,tags" filter="tag:{{primary_tag.slug}}+id:-{{id}}" limit="10" as |related_posts|}}
 		{{#if related_posts}}
 		<section class="related-posts">
-			<h3 class="related-title">More like this</h3>
+			<h3 class="related-title">Further Reading</h3>
 			<div class="related-grid">
 				{{#foreach related_posts}}
 				<article class="related-card">
@@ -92,7 +82,7 @@
 						<h4><a href="{{url}}">{{title}}</a></h4>
 						<div class="related-meta">
 							{{#if primary_tag}}
-									<a href="{{primary_tag.url}}">{{primary_tag.name}}</a> &bull;
+									<a href="{{primary_tag.url}}">{{primary_tag.name}}</a>
 							{{/if}}
 							<time datetime="{{date published_at format="YYYY-MM-DD"}}">
 								{{date published_at format="MMMM Do, YYYY"}}

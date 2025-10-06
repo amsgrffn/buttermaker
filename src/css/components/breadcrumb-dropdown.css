@@ -6,13 +6,15 @@
 .breadcrumb-list {
   align-items: center;
   display: flex;
+  background: var(--color-cool-blue);
+  border: 1px solid var(--border-cool-blue);
   flex-wrap: wrap;
   font-size: 14px;
   list-style: none;
-  padding: 0 0 var(--space-xl) 0;
-  margin-left: 5rem;
-  margin-top: var(--space-lg);
-  width: 100%;
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  max-width: 720px;
+  margin-bottom: var(--space-3xl);
 }
 
 .breadcrumb-item {
@@ -21,16 +23,19 @@
   display: flex;
 }
 
+.breadcrumb-item.crumb-article-title {
+  color: var(--color-text-medium);
+}
+
 .breadcrumb-list svg {
   display: inline;
   height: 18px;
-  margin-top: -1px;
   vertical-align: middle;
   stroke: var(--color-text-dark);
   width: 18px;
 }
 
-.breadcrumb-list svg.arrow-here {
+.breadcrumb-list svg.lucide-map {
   margin-right: 3px;
   stroke: var(--color-text-dark);
 }
@@ -59,10 +64,10 @@
   text-decoration: none;
 }
 
-.post-template .breadcrumb-item.current {
-  color: var(--color-text-secondary);
+.breadcrumb-item.current {
+  color: var(--color-text-medium);
   display: inline-block;
-  max-width: 340px;
+  max-width: 440px;
   overflow: hidden;
   text-overflow: ellipsis;
   vertical-align: middle;
