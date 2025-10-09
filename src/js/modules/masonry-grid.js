@@ -6,367 +6,435 @@
 import { debounce, isInViewport } from './theme';
 
 export class MasonryGrid {
-	constructor() {
-		this.grid = document.querySelector('.masonry-grid');
-		this.cards = document.querySelectorAll('.masonry-card');
-		this.observer = null;
-		this.columns = [];
-		this.columnCount = 2; // Changed from 4 to 2!
-		this.gap = 24; // Default gap in pixels
-		this.isLayouting = false;
+  constructor() {
+    this.grid = document.querySelector('.masonry-grid');
+    this.cards = null; // Don't cache cards initially
+    this.observer = null;
+    this.columns = [];
+    this.columnCount = 2;
+    this.gap = 24;
+    this.isLayouting = false;
 
-		this.init();
-	}
+    this.init();
+  }
 
-	/**
-	 * Initialize masonry grid
-	 */
-	init() {
-		if (!this.grid) {
-			console.warn('Masonry grid not found');
-			return;
-		}
+  /**
+   * Initialize masonry grid
+   */
+  init() {
+    if (!this.grid) {
+      console.warn('Masonry grid not found');
+      return;
+    }
 
-		this.calculateColumns();
-		this.bindEvents();
-		this.setupIntersectionObserver();
+    this.refreshCards(); // Get cards dynamically
+    this.calculateColumns();
+    this.bindEvents();
+    this.setupIntersectionObserver();
 
-		// Wait for images to load, then layout
-		this.waitForImages().then(() => {
-			this.layoutMasonry();
-			this.handleInitialLayout();
-		});
+    // Wait for images to load, then layout
+    this.waitForImages().then(() => {
+      this.layoutMasonry();
+      this.handleInitialLayout();
+    });
 
-		console.log('🧱 True Masonry Grid initialized (2 columns)');
-	}
+    console.log('🧱 True Masonry Grid initialized (2 columns)');
+  }
 
-	/**
-	 * Wait for all images in cards to load
-	 */
-	waitForImages() {
-		const images = this.grid.querySelectorAll('img');
-		const imagePromises = Array.from(images).map(img => {
-			return new Promise(resolve => {
-				if (img.complete) {
-					resolve();
-				} else {
-					img.addEventListener('load', resolve);
-					img.addEventListener('error', resolve); // Resolve even on error
-				}
-			});
-		});
+  /**
+   * Refresh cards collection - get current cards from DOM
+   */
+  refreshCards() {
+    this.cards = this.grid.querySelectorAll('.masonry-card');
+    console.log(`📦 Found ${this.cards.length} cards in grid`);
+    return this.cards;
+  }
 
-		return Promise.all(imagePromises);
-	}
+  /**
+   * Reset and re-layout masonry grid (called by category tabs)
+   */
+  reset() {
+    console.log('🔄 Resetting masonry layout...');
 
-	/**
-	 * Calculate number of columns based on screen size
-	 */
-	calculateColumns() {
-		const screenWidth = window.innerWidth;
+    // Get fresh cards from DOM
+    this.refreshCards();
 
-		if (screenWidth <= 767) {
-			this.columnCount = 1; // Single column on mobile
-			this.gap = 16;
-		} else {
-			this.columnCount = 2; // Always 2 columns on desktop/tablet
-			this.gap = 24;
-		}
+    // Clear all positioning from cards
+    this.cards.forEach((card) => {
+      card.style.position = '';
+      card.style.top = '';
+      card.style.left = '';
+      card.style.width = '';
+      card.style.transform = '';
+      card.classList.remove('positioned');
+    });
 
-		// Initialize column heights
-		this.columns = new Array(this.columnCount).fill(0);
-	}
+    // Reset grid height
+    this.grid.style.height = '';
 
-	/**
-	 * Main masonry layout function
-	 */
-	layoutMasonry() {
-		if (this.isLayouting) return;
-		this.isLayouting = true;
+    // Disconnect existing observer
+    if (this.observer) {
+      this.observer.disconnect();
+    }
 
-		// Reset column heights
-		this.columns = new Array(this.columnCount).fill(0);
+    // Setup new observer for new cards
+    this.setupIntersectionObserver();
 
-		// Calculate card width
-		const containerWidth = this.grid.offsetWidth;
-		const cardWidth = (containerWidth - (this.gap * (this.columnCount - 1))) / this.columnCount;
+    // Wait for images then layout
+    this.waitForImages().then(() => {
+      this.layoutMasonry();
+    });
+  }
 
-		// Position each card
-		this.cards.forEach((card, index) => {
-			this.positionCard(card, cardWidth, index);
-		});
+  /**
+   * Wait for all images in cards to load
+   */
+  waitForImages() {
+    const images = this.grid.querySelectorAll('img');
+    const imagePromises = Array.from(images).map((img) => {
+      return new Promise((resolve) => {
+        if (img.complete) {
+          resolve();
+        } else {
+          img.addEventListener('load', resolve);
+          img.addEventListener('error', resolve);
+        }
+      });
+    });
 
-		// Set grid container height
-		const maxColumnHeight = Math.max(...this.columns);
-		this.grid.style.height = `${maxColumnHeight}px`;
+    return Promise.all(imagePromises);
+  }
 
-		this.isLayouting = false;
-	}
+  /**
+   * Calculate number of columns based on screen size
+   */
+  calculateColumns() {
+    const screenWidth = window.innerWidth;
 
-	/**
-	 * Position individual card in the shortest column
-	 */
-	positionCard(card, cardWidth, index) {
-		// Skip positioning on mobile (cards stack naturally)
-		if (window.innerWidth <= 767) {
-			return;
-		}
+    if (screenWidth <= 767) {
+      this.columnCount = 1;
+      this.gap = 16;
+    } else {
+      this.columnCount = 2;
+      this.gap = 24;
+    }
 
-		// Find shortest column
-		const shortestColumnIndex = this.columns.indexOf(Math.min(...this.columns));
-		const shortestColumnHeight = this.columns[shortestColumnIndex];
+    // Initialize column heights
+    this.columns = new Array(this.columnCount).fill(0);
+  }
 
-		// Calculate position
-		const left = shortestColumnIndex * (cardWidth + this.gap);
-		const top = shortestColumnHeight;
+  /**
+   * Main masonry layout function
+   */
+  layoutMasonry() {
+    if (this.isLayouting) return;
+    this.isLayouting = true;
 
-		// Apply positioning (but don't show yet)
-		card.style.left = `${left}px`;
-		card.style.top = `${top}px`;
-		card.style.width = `${cardWidth}px`;
+    // Refresh cards in case they changed
+    this.refreshCards();
 
-		// Get card height (including any content that loaded)
-		const cardHeight = card.offsetHeight;
+    // Reset column heights
+    this.columns = new Array(this.columnCount).fill(0);
 
-		// Update column height
-		this.columns[shortestColumnIndex] += cardHeight + this.gap;
+    // Calculate card width
+    const containerWidth = this.grid.offsetWidth;
+    const cardWidth =
+      (containerWidth - this.gap * (this.columnCount - 1)) / this.columnCount;
 
-		// Add entrance animation with stagger
-		setTimeout(() => {
-			card.classList.add('positioned');
-		}, index * 100);
-	}
+    // Position each card
+    this.cards.forEach((card, index) => {
+      this.positionCard(card, cardWidth, index);
+    });
 
-	/**
-	 * Bind event listeners
-	 */
-	bindEvents() {
-		// Card click handlers
-		this.cards.forEach(card => {
-			card.addEventListener('click', (e) => this.handleCardClick(e));
-		});
+    // Set grid container height
+    const maxColumnHeight = Math.max(...this.columns);
+    this.grid.style.height = `${maxColumnHeight}px`;
 
-		// Window resize handler with debounce
-		window.addEventListener('resize', debounce(() => {
-			this.handleResize();
-		}, 150));
+    this.isLayouting = false;
+    console.log('✅ Masonry layout complete');
+  }
 
-		// Custom masonry update event (for filtering)
-		window.addEventListener('masonryUpdate', (e) => {
-			this.handleMasonryUpdate(e.detail);
-		});
+  /**
+   * Position individual card in the shortest column
+   */
+  positionCard(card, cardWidth, index) {
+    // Skip positioning on mobile (cards stack naturally)
+    if (window.innerWidth <= 767) {
+      card.style.position = '';
+      card.style.top = '';
+      card.style.left = '';
+      card.style.width = '';
+      card.classList.add('positioned');
+      return;
+    }
 
-		// Images loaded event
-		window.addEventListener('load', () => {
-			this.layoutMasonry();
-		});
-	}
+    // Find shortest column
+    const shortestColumnIndex = this.columns.indexOf(Math.min(...this.columns));
+    const shortestColumnHeight = this.columns[shortestColumnIndex];
 
-	/**
-	 * Handle card click
-	 */
-	handleCardClick(event) {
-		const card = event.target.closest('.masonry-card');
+    // Calculate position
+    const left = shortestColumnIndex * (cardWidth + this.gap);
+    const top = shortestColumnHeight;
 
-		// Don't navigate if clicking on the overlay link
-		if (event.target.classList.contains('masonry-link')) {
-			return;
-		}
+    // Apply positioning
+    card.style.position = 'absolute';
+    card.style.left = `${left}px`;
+    card.style.top = `${top}px`;
+    card.style.width = `${cardWidth}px`;
 
-		// Don't navigate if clicking on interactive elements
-		if (this.isInteractiveElement(event.target)) {
-			return;
-		}
+    // Get card height
+    const cardHeight = card.offsetHeight;
 
-		const link = card.querySelector('.masonry-link') || card.querySelector('.masonry-title a');
-		if (link && link.href) {
-			// Add click animation
-			this.animateCardClick(card);
+    // Update column height
+    this.columns[shortestColumnIndex] += cardHeight + this.gap;
 
-			// Small delay for animation, then navigate
-			setTimeout(() => {
-				window.location.href = link.href;
-			}, 150);
+    // Add entrance animation with stagger
+    setTimeout(() => {
+      card.classList.add('positioned');
+    }, index * 50); // Reduced from 100ms for faster animation
+  }
 
-			// Track analytics
-			this.trackCardClick(card);
-		}
-	}
+  /**
+   * Bind event listeners
+   */
+  bindEvents() {
+    // Card click handlers
+    this.grid.addEventListener('click', (e) => {
+      const card = e.target.closest('.masonry-card');
+      if (card) {
+        this.handleCardClick(e);
+      }
+    });
 
-	/**
-	 * Check if element is interactive
-	 */
-	isInteractiveElement(element) {
-		const interactiveElements = ['A', 'BUTTON', 'INPUT', 'TEXTAREA', 'SELECT'];
-		const interactiveClasses = ['post-action', 'subscribe-btn', 'tag-link'];
+    // Window resize handler with debounce
+    window.addEventListener(
+      'resize',
+      debounce(() => {
+        this.handleResize();
+      }, 150),
+    );
 
-		return (
-			interactiveElements.includes(element.tagName) ||
-			interactiveClasses.some(className => element.classList.contains(className)) ||
-			element.closest('a, button, .post-action, .subscribe-btn')
-		);
-	}
+    // Custom masonry reset event (from category tabs)
+    window.addEventListener('masonryReset', () => {
+      console.log('📡 Received masonryReset event');
+      this.reset();
+    });
 
-	/**
-	 * Animate card click
-	 */
-	animateCardClick(card) {
-		card.style.transform = 'scale(0.98)';
-		card.style.transition = 'transform 0.15s ease';
+    // Custom masonry update event (for filtering)
+    window.addEventListener('masonryUpdate', (e) => {
+      this.handleMasonryUpdate(e.detail);
+    });
 
-		setTimeout(() => {
-			card.style.transform = '';
-		}, 150);
-	}
+    // Images loaded event
+    window.addEventListener('load', () => {
+      this.layoutMasonry();
+    });
+  }
 
-	/**
-	 * Setup intersection observer for lazy loading
-	 */
-	setupIntersectionObserver() {
-		if (!('IntersectionObserver' in window)) {
-			return;
-		}
+  /**
+   * Handle card click
+   */
+  handleCardClick(event) {
+    const card = event.target.closest('.masonry-card');
 
-		this.observer = new IntersectionObserver((entries) => {
-			entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					this.handleCardVisible(entry.target);
-				}
-			});
-		}, {
-			threshold: 0.1,
-			rootMargin: '50px'
-		});
+    // Don't navigate if clicking on the overlay link
+    if (event.target.classList.contains('masonry-link')) {
+      return;
+    }
 
-		// Observe all cards
-		this.cards.forEach(card => {
-			this.observer.observe(card);
-		});
-	}
+    // Don't navigate if clicking on interactive elements
+    if (this.isInteractiveElement(event.target)) {
+      return;
+    }
 
-	/**
-	 * Handle card becoming visible
-	 */
-	handleCardVisible(card) {
-		// Lazy load images
-		this.lazyLoadImages(card);
+    const link =
+      card.querySelector('.masonry-link') ||
+      card.querySelector('.masonry-title a');
+    if (link && link.href) {
+      // Add click animation
+      this.animateCardClick(card);
 
-		// Stop observing this card
-		if (this.observer) {
-			this.observer.unobserve(card);
-		}
-	}
+      // Small delay for animation, then navigate
+      setTimeout(() => {
+        window.location.href = link.href;
+      }, 150);
 
-	/**
-	 * Lazy load images in card
-	 */
-	lazyLoadImages(card) {
-		const images = card.querySelectorAll('img[data-src]');
+      // Track analytics
+      this.trackCardClick(card);
+    }
+  }
 
-		images.forEach(img => {
-			img.src = img.dataset.src;
-			img.removeAttribute('data-src');
+  /**
+   * Check if element is interactive
+   */
+  isInteractiveElement(element) {
+    const interactiveElements = ['A', 'BUTTON', 'INPUT', 'TEXTAREA', 'SELECT'];
+    const interactiveClasses = ['post-action', 'subscribe-btn', 'tag-link'];
 
-			img.addEventListener('load', () => {
-				img.style.opacity = '1';
-				// Re-layout if image changes card height significantly
-				this.layoutMasonry();
-			});
-		});
-	}
+    return (
+      interactiveElements.includes(element.tagName) ||
+      interactiveClasses.some((className) =>
+        element.classList.contains(className),
+      ) ||
+      element.closest('a, button, .post-action, .subscribe-btn')
+    );
+  }
 
-	/**
-	 * Handle window resize
-	 */
-	handleResize() {
-		const oldColumnCount = this.columnCount;
-		this.calculateColumns();
+  /**
+   * Animate card click
+   */
+  animateCardClick(card) {
+    card.style.transform = 'scale(0.98)';
+    card.style.transition = 'transform 0.15s ease';
 
-		// Re-layout if column count changed or screen size changed significantly
-		if (oldColumnCount !== this.columnCount) {
-			// Hide cards temporarily for smooth transition
-			this.cards.forEach(card => {
-				card.classList.remove('positioned');
-			});
+    setTimeout(() => {
+      card.style.transform = '';
+    }, 150);
+  }
 
-			// Re-layout after brief delay
-			setTimeout(() => {
-				this.layoutMasonry();
-			}, 100);
-		} else {
-			// Just re-layout with current settings
-			this.layoutMasonry();
-		}
-	}
+  /**
+   * Setup intersection observer for lazy loading
+   */
+  setupIntersectionObserver() {
+    if (!('IntersectionObserver' in window)) {
+      return;
+    }
 
-	/**
-	 * Handle initial layout
-	 */
-	handleInitialLayout() {
-		console.log('🎯 2-Column Masonry layout complete');
-	}
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            this.handleCardVisible(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '50px',
+      },
+    );
 
-	/**
-	 * Handle masonry update event (from category filtering)
-	 */
-	handleMasonryUpdate(detail) {
-		const { visibleCards } = detail;
+    // Observe all cards
+    this.cards.forEach((card) => {
+      this.observer.observe(card);
+    });
+  }
 
-		// Update cards collection to only visible ones
-		this.cards = document.querySelectorAll('.masonry-card:not([style*="display: none"])');
+  /**
+   * Handle card becoming visible
+   */
+  handleCardVisible(card) {
+    // Lazy load images
+    this.lazyLoadImages(card);
 
-		// Re-layout with visible cards
-		setTimeout(() => {
-			this.layoutMasonry();
-		}, 50);
-	}
+    // Stop observing this card
+    if (this.observer) {
+      this.observer.unobserve(card);
+    }
+  }
 
-	/**
-	 * Track analytics
-	 */
-	trackCardClick(card) {
-		const title = card.querySelector('.masonry-title');
+  /**
+   * Lazy load images in card
+   */
+  lazyLoadImages(card) {
+    const images = card.querySelectorAll('img[data-src]');
 
-		if (typeof window.trackEvent === 'function') {
-			window.trackEvent('Masonry Grid', 'Card Click', title ? title.textContent : 'Unknown');
-		}
-	}
+    images.forEach((img) => {
+      img.src = img.dataset.src;
+      img.removeAttribute('data-src');
 
-	/**
-	 * Get grid statistics
-	 */
-	getGridStats() {
-		const totalCards = this.cards.length;
-		const visibleCards = Array.from(this.cards).filter(card =>
-			card.style.display !== 'none'
-		).length;
+      img.addEventListener('load', () => {
+        img.style.opacity = '1';
+        this.layoutMasonry();
+      });
+    });
+  }
 
-		return {
-			totalCards,
-			visibleCards,
-			columnCount: this.columnCount,
-			gridWidth: this.grid ? this.grid.offsetWidth : 0,
-			gridHeight: this.grid ? this.grid.offsetHeight : 0
-		};
-	}
+  /**
+   * Handle window resize
+   */
+  handleResize() {
+    const oldColumnCount = this.columnCount;
+    this.calculateColumns();
 
-	/**
-	 * Destroy masonry grid
-	 */
-	destroy() {
-		// Remove event listeners
-		this.cards.forEach(card => {
-			card.removeEventListener('click', this.handleCardClick);
-		});
+    if (oldColumnCount !== this.columnCount) {
+      this.cards.forEach((card) => {
+        card.classList.remove('positioned');
+      });
 
-		// Disconnect observer
-		if (this.observer) {
-			this.observer.disconnect();
-		}
+      setTimeout(() => {
+        this.layoutMasonry();
+      }, 100);
+    } else {
+      this.layoutMasonry();
+    }
+  }
 
-		// Remove custom event listeners
-		window.removeEventListener('masonryUpdate', this.handleMasonryUpdate);
+  /**
+   * Handle initial layout
+   */
+  handleInitialLayout() {
+    console.log('🎯 2-Column Masonry layout complete');
+  }
 
-		console.log('🧱 Masonry Grid destroyed');
-	}
+  /**
+   * Handle masonry update event (from category filtering)
+   */
+  handleMasonryUpdate(detail) {
+    const { visibleCards } = detail;
+
+    // Update cards collection to only visible ones
+    this.refreshCards();
+
+    // Re-layout with visible cards
+    setTimeout(() => {
+      this.layoutMasonry();
+    }, 50);
+  }
+
+  /**
+   * Track analytics
+   */
+  trackCardClick(card) {
+    const title = card.querySelector('.masonry-title');
+
+    if (typeof window.trackEvent === 'function') {
+      window.trackEvent(
+        'Masonry Grid',
+        'Card Click',
+        title ? title.textContent : 'Unknown',
+      );
+    }
+  }
+
+  /**
+   * Get grid statistics
+   */
+  getGridStats() {
+    this.refreshCards();
+    const totalCards = this.cards.length;
+    const visibleCards = Array.from(this.cards).filter(
+      (card) => card.style.display !== 'none',
+    ).length;
+
+    return {
+      totalCards,
+      visibleCards,
+      columnCount: this.columnCount,
+      gridWidth: this.grid ? this.grid.offsetWidth : 0,
+      gridHeight: this.grid ? this.grid.offsetHeight : 0,
+    };
+  }
+
+  /**
+   * Destroy masonry grid
+   */
+  destroy() {
+    // Disconnect observer
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+
+    console.log('🧱 Masonry Grid destroyed');
+  }
 }

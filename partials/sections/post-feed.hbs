@@ -1,6 +1,6 @@
 <section class='post-feed'>
   <h2 class='section-title'>Latest Articles</h2>
-  {{#get 'posts' include='authors,tags' filter='tag:-[hash-note]' limit='15'}}
+  {{#get 'posts' include='authors,tags' filter='tag:-[hash-note]' limit='10'}}
     {{#foreach posts}}
       <article class='post-card'>
         <a href='{{url}}' class='post-card-link'>
