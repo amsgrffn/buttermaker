@@ -1,0 +1,299 @@
+{{!< default}}
+{{#page}}
+<div class="split-content-wrapper">
+    <div class="main-content-area office-hours">
+        <article class="post-container">
+        {{> "components/breadcrumb-nav"}}
+            {{#if feature_image}}
+            <header class="post-hero-header">
+                <div class="post-hero-image">
+                    <img src="{{img_url feature_image size="xl"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+                </div>
+                <div class="post-hero-content">
+                    <h1 class="post-hero-title">{{title}}</h1>
+                    <div class="post-hero-meta">
+                        <div class="post-author">
+                            <img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
+                            <div class="author-details">
+                                <div class="post-date">
+                                    <time datetime="{{date published_at format="YYYY-MM-DD"}}">
+                                        {{date published_at timeago="true"}}
+                                    </time>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{! Caption if exists }}
+                {{#if feature_image_caption}}
+                <div class="post-hero-caption">
+                    {{feature_image_caption}}
+                </div>
+                {{/if}}
+            </header>
+            {{else}}
+            <header class="post-header">
+                <h1 class="post-title">{{title}}</h1>
+               {{#if custom_excerpt}}
+                   <div class="excerpt"><p>{{custom_excerpt}}</p></div>
+               {{/if}}
+            </header>
+            {{/if}}
+            <div class="post-content">
+                <!-- Office Hours Section -->
+                <div class="office-hours-container">
+                    <div class="current-time-container">
+                        <div class="current-time">
+                            <span class="time-icon">{{> "icons/clock"}}</span>
+                            <span class="time-text" id="current-time-display">Current time: loading...</span>
+                        </div>
+                        <div class="office-status-indicator" id="office-status">
+                            <!-- Will be filled by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="office-hours-grid">
+                        <div class="office-hours-card" data-day="Monday">
+                            <div class="office-hours-card-inner">
+                                <div class="office-hours-day">Monday</div>
+                                <div class="office-hours-status">Available</div>
+                                <div class="office-hours-time">2:00 PM - 3:30 PM</div>
+                            </div>
+                        </div>
+
+                        <div class="office-hours-card unavailable" data-day="Tuesday">
+                            <div class="office-hours-card-inner">
+                                <div class="office-hours-day">Tuesday</div>
+                                <div class="office-hours-status closed">Closed</div>
+                                <div class="office-hours-time">GONE FISHIN'</div>
+                            </div>
+                        </div>
+
+                        <div class="office-hours-card" data-day="Wednesday">
+                            <div class="office-hours-card-inner">
+                                <div class="office-hours-day">Wednesday</div>
+                                <div class="office-hours-status">Available</div>
+                                <div class="office-hours-time">2:00 PM - 3:30 PM</div>
+                            </div>
+                        </div>
+
+                        <div class="office-hours-card" data-day="Thursday">
+                            <div class="office-hours-card-inner">
+                                <div class="office-hours-day">Thursday</div>
+                                <div class="office-hours-status">Available</div>
+                                <div class="office-hours-time">2:00 PM - 3:30 PM</div>
+                            </div>
+                        </div>
+
+                        <div class="office-hours-card" data-day="Friday">
+                            <div class="office-hours-card-inner">
+                                <div class="office-hours-day">Friday</div>
+                                <div class="office-hours-status">Available</div>
+                                <div class="office-hours-time">2:00 PM - 3:30 PM</div>
+                            </div>
+                        </div>
+
+                        <div class="office-hours-card unavailable" data-day="Saturday">
+                            <div class="office-hours-card-inner">
+                                <div class="office-hours-day">Saturday</div>
+                                <div class="office-hours-status closed">Closed</div>
+                                <div class="office-hours-time">GONE FISHIN'</div>
+
+                            </div>
+                        </div>
+
+                        <div class="office-hours-card unavailable" data-day="Sunday">
+                            <div class="office-hours-card-inner">
+                                <div class="office-hours-day">Sunday</div>
+                                <div class="office-hours-status closed">Closed</div>
+                                <div class="office-hours-time">GONE FISHIN'</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Holiday Schedule Section -->
+                <section class="holiday-schedule-container">
+                    <div class="office-hours-header">
+                        <h2 class="holiday-title">Holiday Schedule</h2>
+                        <p class="page-excerpt">In addition to various vacation, sick and personal time off, we do not work on the following days of the year. If you expect to reach us or anticipate a reply on these days you will be disappointed.</p>
+                    </div>
+
+                    <div class="holiday-grid">
+                        <div class="holiday-card federal">
+                            <div class="holiday-card-inner">
+                                <div class="holiday-type">
+                                    <span class="holiday-badge">US/Maine Holidays</span>
+                                </div>
+                                <ul class="holiday-list">
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">New Year's Day <a href="https://en.wikipedia.org/wiki/Patriots%27_Day">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">January 1</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Martin Luther King Jr. Day <a href="https://en.wikipedia.org/wiki/Patriots%27_Day">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">Third Monday in January</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Washington's Birthday/Presidents' Day <a href="https://en.wikipedia.org/wiki/Patriots%27_Day">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">Third Monday in February</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Patriot's Day <a href="https://en.wikipedia.org/wiki/Patriots%27_Day">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">Third Monday in April</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Memorial Day <a href="https://en.wikipedia.org/wiki/Juneteenth">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">Last Monday in May</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Juneteenth <a href="https://en.wikipedia.org/wiki/Juneteenth">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">June 19</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Independence Day <a href="https://en.wikipedia.org/wiki/Patriots%27_Day">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">July 4</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Labor Day <a href="https://en.wikipedia.org/wiki/Labor_Day">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">First Monday in September</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Columbus Day/Indigenous Peoples' Day <a href="https://en.wikipedia.org/wiki/Columbus_Day">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">Second Monday in October</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Veterans Day <a href="https://en.wikipedia.org/wiki/Veterans_Day">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">November 11</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Thanksgiving Day <a href="https://en.wikipedia.org/wiki/Patriots%27_Day">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">Fourth Thursday in November</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Thanksgiving Friday <a href="https://en.wikipedia.org/wiki/Patriots%27_Day">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">Day after Thanksgiving</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Christmas Day <a href="https://en.wikipedia.org/wiki/Patriots%27_Day">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">December 25</span>
+                                    </li>
+                                </ul>
+                                <div class="holiday-type">
+                                    <span class="holiday-badge">Personal Holidays</span>
+                                </div>
+                                <ul class="holiday-list">
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Super Bowl <a href="https://en.wikipedia.org/wiki/Juneteenth">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">The day of, obviously (date changes)</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Super Bowl Monday</span>
+                                        <span class="holiday-date">Day after the Super Bowl (date changes) cause why bother</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Valentine's Day <a href="https://en.wikipedia.org/wiki/Patriots%27_Day">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">February 14</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">March Madness <a href="https://en.wikipedia.org/wiki/Juneteenth">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">First week, Thursday through Sunday</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Mother's Day <a href="https://en.wikipedia.org/wiki/Patriots%27_Day">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">Second Sunday in May</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Father's Day <a href="https://en.wikipedia.org/wiki/Patriots%27_Day">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">Third Sunday in June</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name"><img src="{{asset 'media/img/dollyd.webp'}}" alt="Dolly D smiling"> Birthday <a href="https://en.wikipedia.org/wiki/Patriots%27_Day">{{> "icons/heart"}}</a></span>
+                                        <span class="holiday-date">August 23</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Halloween <a href="https://en.wikipedia.org/wiki/Patriots%27_Day">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">October 31</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Election Day <a href="https://en.wikipedia.org/wiki/Patriots%27_Day">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">The Tuesday after the first Monday of November</span>
+                                    </li>
+                                    <li class="holiday-item">
+                                        <span class="holiday-name">Saint Stephen's Day <a href="https://en.wikipedia.org/wiki/Patriots%27_Day">{{> "icons/info"}}</a></span>
+                                        <span class="holiday-date">December 26</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                {{content}}
+            </div>
+        </article>
+    </div>
+    <aside class="content-aside">
+        {{> "layout/aside-content"}}
+    </aside>
+</div>
+{{/page}}
+{{#contentFor "scripts"}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the current day of the week
+            const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const today = new Date();
+            const currentDay = daysOfWeek[today.getDay()];
+
+            // Highlight current day in the office hours grid
+            const dayCards = document.querySelectorAll('.office-hours-card');
+
+            dayCards.forEach(card => {
+                if (card.getAttribute('data-day') === currentDay) {
+                    card.classList.add('today');
+                }
+            });
+
+            // Update current time
+            function updateClock() {
+                const now = new Date();
+                const hours = now.getHours();
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+
+                // Format time as 12-hour with AM/PM
+                const period = hours >= 12 ? 'PM' : 'AM';
+                const formattedHours = hours % 12 || 12;
+                const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+                const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
+
+                const timeString = `Current time: ${formattedHours}:${formattedMinutes}:${formattedSeconds} ${period} EST`;
+                document.getElementById('current-time-display').textContent = timeString;
+
+                // Check if office is currently open
+                const dayOfWeek = now.getDay(); // 0 is Sunday, 1 is Monday, etc.
+                const isWeekday = dayOfWeek >= 1 && dayOfWeek <= 5; // Monday to Friday
+                const isOffDay = dayOfWeek === 2 || dayOfWeek === 6 || dayOfWeek === 0; // Tuesday, Saturday, Sunday
+
+                // Check if current time is between 2:00 PM and 3:30 PM (14:00 - 15:30)
+                const isOfficeHours =
+                    hours >= 14 && (hours < 15 || (hours === 15 && minutes <= 30));
+
+                const officeStatusElement = document.getElementById('office-status');
+
+                if (isWeekday && !isOffDay && isOfficeHours) {
+                    officeStatusElement.textContent = 'Currently Available';
+                    officeStatusElement.className = 'office-status-indicator open';
+                } else {
+                    officeStatusElement.textContent = 'Currently Offline';
+                    officeStatusElement.className = 'office-status-indicator closed';
+                }
+            }
+
+            // Initial call to set current time
+            updateClock();
+
+            // Update time every second
+            setInterval(updateClock, 1000);
+        });
+    </script>
+{{/contentFor}}

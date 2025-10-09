@@ -35,22 +35,12 @@
 				{{/if}}
 			</header>
 			{{else}}
+			{{! REGULAR HEADER - When there's no featured image }}
 			<header class="post-header">
 				<h1 class="post-title">{{title}}</h1>
-				<div class="post-meta">
-					<div class="post-author">
-						<img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
-						<div class="author-details">
-							<a href="{{primary_author.url}}" class="author-name">{{primary_author.name}}</a>
-							<span class="role">All Star</span>
-							<div class="post-date">
-								<time datetime="{{date published_at format="YYYY-MM-DD"}}">
-									{{date published_at format="MMMM DD, YYYY"}}
-								</time>
-							</div>
-						</div>
-					</div>
-				</div>
+				{{#if custom_excerpt}}
+					   <div class="excerpt"><p>{{custom_excerpt}}</p></div>
+				   {{/if}}
 			</header>
 			{{/if}}
 			<div class="post-content">

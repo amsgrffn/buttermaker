@@ -1,0 +1,377 @@
+/* Office Hours Styles */
+.office-hours-container {
+  margin: 0 0 5rem;
+  position: relative;
+}
+
+.office-hours-header {
+  margin: 0 auto 3rem;
+  max-width: 800px;
+}
+
+.office-hours .page-title {
+  color: var(--color-headlines);
+  font-family: var(--display);
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 3rem;
+  text-wrap: pretty;
+}
+
+.office-hours .page-excerpt {
+  color: var(--color-text-muted);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0 0 4rem;
+  text-wrap: pretty;
+}
+
+.office-hours-grid {
+  column-gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 3rem;
+  row-gap: 1.5rem;
+}
+
+.office-hours-card {
+  background-color: #fff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-cool-blue);
+  box-shadow: var(--shadow-sm);
+  height: 100%;
+  min-width: 215px;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  width: calc(25% - 1rem);
+}
+
+.office-hours-card:hover {
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgb(193 154 107 / 0.2);
+  transform: translateY(-5px);
+}
+
+.office-hours-card.today {
+  background-color: #fff;
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.office-hours-card.unavailable {
+  opacity: 0.8;
+}
+
+.office-hours-card-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.office-hours-day {
+  color: var(--color-headlines);
+  font-family: 'ZedRoundCompactVF-Heavy', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.today .office-hours-day {
+  color: var(--color-accent);
+}
+
+.office-hours-time {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  font-size: 0.875rem;
+  font-weight: 400;
+  justify-content: center;
+}
+
+.office-hours-status {
+  background-color: var(--color-red);
+  border-radius: 50px;
+  color: #fff;
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin: 0 auto 0.3rem;
+  padding: 4px 12px;
+}
+
+.office-hours-status.closed {
+  background-color: #000;
+  color: #fff;
+}
+
+.current-time-container {
+  align-items: center;
+  background-color: #fff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-cool-blue);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  margin: 0 auto 3rem;
+  max-width: 700px;
+  padding: 1.5rem;
+}
+
+.current-time {
+  align-items: center;
+  border-radius: var(--radius);
+  color: var(--color-headlines);
+  display: flex;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  gap: 0.5rem;
+  padding: 6px 12px;
+  text-align: center;
+}
+
+.time-icon svg {
+  color: var(--gray-dark);
+  height: 24px;
+  margin-top: -3px;
+  vertical-align: middle;
+  width: 24px;
+}
+
+.office-status-indicator {
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 4px 16px;
+}
+
+.office-status-indicator.open {
+  background-color: #e3f8df;
+  color: var(--green);
+}
+
+.office-status-indicator.closed {
+  background-color: #000;
+  color: #fefefe;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .office-hours-title {
+  color: var(--primary-color);
+}
+
+body.dark-mode .office-hours-card.today {
+  background-color: var(--accent-color, #409cff);
+}
+
+body.dark-mode .today .office-hours-day,
+body.dark-mode .today .office-hours-time {
+  color: white;
+}
+
+body.dark-mode .office-status-indicator.open {
+  background-color: rgba(52, 199, 89, 0.2);
+}
+
+body.dark-mode .office-status-indicator.closed {
+  background-color: rgba(255, 59, 48, 0.2);
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .card {
+    width: calc(33.333% - 1rem);
+    /* 3 cards per row */
+  }
+}
+
+@media (max-width: 900px) {
+  .card {
+    width: calc(50% - 1rem);
+    /* 2 cards per row */
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 100%;
+    /* 1 card per row */
+  }
+}
+
+@media (max-width: 767px) {
+  .office-hours-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .office-hours-title {
+    font-size: 2rem;
+  }
+
+  .current-time-container {
+    align-items: flex-start;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .office-status-indicator {
+    align-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .office-hours-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Holiday Schedule Styles */
+.holiday-schedule-container {
+  margin: 10rem 0 10rem;
+  position: relative;
+}
+
+.holiday-header {
+  margin-bottom: 3rem;
+}
+
+.holiday-title {
+  color: var(--color-headlines);
+  font-family: var(--display);
+  font-size: 3.8rem;
+  font-weight: 800;
+  letter-spacing: 0.03rem;
+  margin-bottom: 1.5rem;
+}
+
+.holiday-subtitle {
+  color: var(--color-text-muted);
+  font-size: 2rem;
+  line-height: 1.4;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.holiday-grid {
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.holiday-card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-muted);
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.holiday-card-inner {
+  height: 100%;
+  padding: 2rem 0;
+}
+
+#office-hours-faq {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.holiday-type {
+  margin: 1.5rem 1.5rem 3rem 1.5rem;
+}
+
+.holiday-type .holiday-badge {
+  background: var(--color-cool-blue);
+  border-radius: var(--radius);
+  color: #403e38;
+  display: inline-block;
+  font-family: var(--display);
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 1rem 2rem;
+}
+
+.special-badge {
+  background-color: var(--red, #ff6961);
+  color: white;
+}
+
+.office-hours .holiday-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.office-hours .holiday-item {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+}
+
+.office-hours .holiday-item:nth-child(even) {
+  background-color: #fafbfd;
+}
+
+.office-hours .holiday-item:last-child {
+  border-bottom: none;
+  margin-bottom: 3rem;
+}
+
+.holiday-name {
+  color: var(--color-headlines);
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.holiday-name svg {
+  display: inline;
+  height: 22px;
+  margin-top: -3px;
+  transition: transform 0.3s ease;
+  vertical-align: middle;
+  width: 22px;
+}
+
+.holiday-item .holiday-name img {
+  border-radius: 9999px;
+  display: inline;
+  height: 44px;
+  margin-right: 3px;
+  margin-top: -3px;
+  transition: transform 0.3s ease;
+  vertical-align: middle;
+  width: 44px;
+}
+
+.holiday-name svg:hover {
+  stroke: var(--red, #ff6961);
+  transform: scale(1.25);
+}
+
+.holiday-date {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+/* Extended holiday styling */
+.holiday-item.extended {
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 1.5rem 0;
+}

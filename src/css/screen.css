@@ -2,10 +2,13 @@
    Substack-Style Ghost Theme - Main Stylesheet
    ========================================================================== */
 
+/* Base Components */
 @import 'base/animations.css';
 @import 'base/normalize.css';
 @import 'base/variables.css';
 @import 'base/typography.css';
+
+/* Components */
 @import 'components/blog-article.css';
 @import 'components/header.css';
 @import 'components/horizontal-scroll.css';
@@ -22,4 +25,12 @@
 @import 'components/recommendations.css';
 @import 'components/share-dropdown.css';
 @import 'components/dates.css';
+
+/* Pages */
+@import 'pages/contact-page.css';
+@import 'pages/memberships-page.css';
+@import 'pages/office-hours.css';
+@import 'pages/watched-movies.css';
+
+/* Layout */
 @import 'layout/responsive.css';

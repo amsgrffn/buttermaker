@@ -1,0 +1,175 @@
+{{!< default}}
+{{> "layout/site-header"}}
+{{> "components/breadcrumb-nav"}}
+
+<div class="watched-movies-container">
+    <main id="main-content" class="watched-movies-page" tabindex="-1">
+        <header class="page-header">
+            <h1>Watched Movies</h1>
+            <p class="page-description">My movie diary from Letterboxd</p>
+        </header>
+
+        <div class="movies-container">
+            {{#get "posts" filter="tag:letterboxd" limit="all" order="published_at desc"}}
+                <div class="raw-movies-list">
+                    {{#foreach posts}}
+                        <article class="movie-item"
+                                 data-published="{{date published_at format="YYYY-MM-DD"}}"
+                                 data-month="{{date published_at format="YYYY-MM"}}"
+                                 data-month-label="{{date published_at format="MMMM YYYY"}}">
+                            <a href="{{url}}" class="movie-link" title="{{title}}">
+                                <div class="movie-poster">
+                                    <div class="movie-date">{{date published_at format="ddd D"}}</div>
+                                </div>
+                            </a>
+                            {{!-- Hidden content for image extraction --}}
+                            <div class="post-content" style="display: none;">{{{content}}}</div>
+                        </article>
+                    {{else}}
+                        <p class="no-movies">No movies found with the "letterboxd" tag.</p>
+                    {{/foreach}}
+                </div>
+            {{/get}}
+        </div>
+    </main>
+</div>
+{{> "layout/site-footer"}}
+<!-- Replace the entire <script> section in your page-watched-movies.hbs with this -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Starting image extraction...');
+
+    const movieItems = document.querySelectorAll('.movie-item');
+    console.log('Found movie items:', movieItems.length);
+
+    movieItems.forEach(function(item, index) {
+        const contentDiv = item.querySelector('.post-content');
+        const posterDiv = item.querySelector('.movie-poster');
+        const title = item.querySelector('.movie-link').getAttribute('title');
+
+        console.log('Processing item ' + (index + 1) + ':', title);
+
+        if (contentDiv) {
+            console.log('Content found, looking for images...');
+            const firstImg = contentDiv.querySelector('img');
+
+            if (firstImg) {
+                console.log('Image found! Src:', firstImg.src);
+
+                // Use background-image instead of img element - NO FOUC POSSIBLE
+                const tempImg = new Image();
+
+                tempImg.addEventListener('load', function() {
+                    // Apply background image only after it's fully loaded
+                    posterDiv.style.backgroundImage = `url("${firstImg.src}")`;
+                    posterDiv.style.backgroundSize = 'cover';
+                    posterDiv.style.backgroundPosition = 'center top';
+                    posterDiv.style.backgroundRepeat = 'no-repeat';
+                    posterDiv.classList.add('image-loaded');
+                    console.log('Background image applied successfully');
+                });
+
+                tempImg.addEventListener('error', function() {
+                    console.log('Image failed to load, showing placeholder');
+                    showPlaceholder(posterDiv);
+                });
+
+                // Start loading (this doesn't add anything to DOM yet)
+                tempImg.src = firstImg.src;
+
+                console.log('Image loading started');
+            } else {
+                console.log('No image found in content');
+                showPlaceholder(posterDiv);
+            }
+        } else {
+            console.log('No content div found');
+            showPlaceholder(posterDiv);
+        }
+    });
+
+    // Helper function for placeholders
+    function showPlaceholder(posterDiv) {
+        // Store the original date element
+        const movieDate = posterDiv.querySelector('.movie-date');
+        const dateText = movieDate.textContent;
+
+        // Add placeholder background
+        posterDiv.style.background = 'var(--background-secondary)';
+        posterDiv.innerHTML = `
+            <div style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 3rem;
+                opacity: 0.5;
+            ">🎬</div>
+            <div class="movie-date">${dateText}</div>
+        `;
+        posterDiv.classList.add('placeholder-shown');
+    }
+
+    // Group by month after images are processed
+    setTimeout(function() {
+        groupByMonth();
+    }, 150); // Slightly longer delay to ensure background images are applied
+});
+
+function groupByMonth() {
+    console.log('Starting month grouping...');
+
+    const container = document.querySelector('.movies-container');
+    const rawList = document.querySelector('.raw-movies-list');
+    const movieItems = Array.from(rawList.querySelectorAll('.movie-item'));
+
+    if (movieItems.length === 0) return;
+
+    // Group by month from data attributes
+    const moviesByMonth = {};
+
+    movieItems.forEach(function(item) {
+        const month = item.getAttribute('data-month');
+        const monthLabel = item.getAttribute('data-month-label');
+
+        if (!moviesByMonth[month]) {
+            moviesByMonth[month] = {
+                label: monthLabel,
+                items: []
+            };
+        }
+        moviesByMonth[month].items.push(item);
+    });
+
+    console.log('Groups created:', Object.keys(moviesByMonth));
+
+    // Sort months in descending order (newest first)
+    const sortedMonths = Object.keys(moviesByMonth).sort().reverse();
+
+    // Create new structure
+    const newHTML = sortedMonths.map(function(month) {
+        const data = moviesByMonth[month];
+        const itemsHTML = data.items.map(function(item) {
+            return item.outerHTML;
+        }).join('');
+
+        return `
+            <section class="month-section">
+                <h2 class="month-title">${data.label}</h2>
+                <div class="movies-grid">
+                    ${itemsHTML}
+                </div>
+            </section>
+        `;
+    }).join('');
+
+    // Replace the raw list with grouped structure
+    container.innerHTML = newHTML;
+
+    console.log('Month grouping complete');
+}
+</script>

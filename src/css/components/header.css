@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-lg);
-  justify-self: start; /* Stick to left */
+  justify-self: center; /* Stick to left */
 }
 
 .header-center {
@@ -38,14 +38,22 @@
   display: flex;
   align-items: center;
   gap: var(--space-lg);
-  justify-self: end; /* Stick to right */
+  justify-self: center; /* Stick to right */
 }
 
 .header-extra {
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
-  justify-self: end; /* or start/center */
+
+  justify-self: center; /* or start/center */
+}
+
+.header-extra p {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: #f5f7fa;
+  margin: 0;
+  padding: var(--space-sm) var(--space-lg);
 }
 
 .header-left svg {
@@ -211,9 +219,9 @@
   color: white;
 }
 
-.header-btn.primary:hover {
-  background: var(--color-primary-hover);
-  border-color: var(--color-primary-hover);
+.header-btn:hover {
+  background: var(--strong-blue);
+  border-color: var(--strong-blue);
   color: white;
 }
 
@@ -271,7 +279,6 @@
   }
 
   .header-content {
-    /* Switch to flexbox on mobile - grid is too complex */
     display: flex;
     justify-content: space-between;
     grid-template-columns: none; /* Remove grid */

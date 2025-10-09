@@ -63,9 +63,9 @@
 }
 
 .scroll-btn:hover {
-  background: var(--color-text-dark);
+  background: var(--color-pumpkin);
   color: white;
-  border-color: var(--color-text-dark);
+  border-color: var(--color-pumpkin);
 }
 
 .scroll-btn:disabled {
@@ -362,9 +362,9 @@
 }
 
 .scroll-btn:hover {
-  background: var(--color-text-dark);
+  background: var(--link-color);
   color: white;
-  border-color: var(--color-text-dark);
+  border-color: var(--link-color);
   transform: translateY(-50%) scale(1.05);
 }
 

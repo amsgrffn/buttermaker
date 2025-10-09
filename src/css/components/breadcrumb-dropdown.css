@@ -14,7 +14,7 @@
   padding: var(--space-md);
   border-radius: var(--radius-lg);
   max-width: 720px;
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-4xl);
 }
 
 .breadcrumb-item {
@@ -30,17 +30,18 @@
 .breadcrumb-list svg {
   display: inline;
   height: 18px;
+  stroke: var(--color-text-muted);
   vertical-align: middle;
-  stroke: var(--color-text-dark);
   width: 18px;
 }
 
 .breadcrumb-list svg.lucide-map {
-  margin-right: 3px;
-  stroke: var(--color-text-dark);
+  margin: 0 3px 0 0;
+  stroke: var(--color-text-muted);
 }
 
-.breadcrumb-list svg.lucide-map {
+.breadcrumb-list svg.lucide-locate-fixed {
+  margin: -2px 0 0 0;
 }
 
 .breadcrumb-item a {
@@ -67,7 +68,7 @@
 .breadcrumb-item.current {
   color: var(--color-text-medium);
   display: inline-block;
-  max-width: 440px;
+  max-width: 400px;
   overflow: hidden;
   text-overflow: ellipsis;
   vertical-align: middle;

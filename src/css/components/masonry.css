@@ -18,17 +18,11 @@
   color: var(--color-headings);
 }
 
-.section-title em {
-}
-
-/* TRUE MASONRY GRID - 2 Columns with natural heights! */
 .masonry-grid {
   position: relative;
   width: 100%;
-  /* JavaScript will position the cards and set the height */
 }
 
-/* Cards positioned absolutely by JavaScript */
 .masonry-card {
   position: absolute; /* JavaScript will position these */
   width: calc((100% - var(--space-xl)) / 2); /* 2 columns with gap */
@@ -39,8 +33,6 @@
   transition: all var(--transition-slow);
   cursor: pointer;
   box-shadow: var(--shadow-base);
-
-  /* Initially hidden for smooth entrance animations */
   opacity: 0;
   transform: translateY(20px);
 }

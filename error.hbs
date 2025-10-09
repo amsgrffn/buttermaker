@@ -1,0 +1,66 @@
+{{!< default}}
+<div class="split-content-wrapper error-page">
+	<div class="main-content-area">
+		<article class="post-container">
+		<ul class="breadcrumb-list">
+			<li class="breadcrumb-item home">{{> "icons/map-pin"}} <a class="title" href="{{@site.url}}">Home</a></li>
+			<li class="breadcrumb-separator">{{> "icons/chevron"}}</li>
+			<li class="breadcrumb-item pages-dropdown">
+				<a href="javascript:void(0)" class="dropdown-trigger">Pages</a>
+				<div class="breadcrumb-dropdown">
+					<div class="dropdown-inner">
+						{{#get "pages" limit="all" order="title asc"}}
+								<ul>
+									{{#foreach pages}}
+										<li><a href="{{url}}">
+												{{> "icons/file"}}
+											{{title}}
+										</a></li>
+									{{/foreach}}
+								</ul>
+							{{else}}
+								<p>No other pages found</p>
+						{{/get}}
+					</div>
+				</div>
+			</li>
+			<li class="breadcrumb-separator">{{> "icons/chevron"}}</li>
+			<li class="breadcrumb-item current">{{statusCode}} Error ¯\_(ツ)_/¯</li>
+		</ul>
+			<header class="error-page-header">
+				{{! Background Image }}
+				<div class="">
+					<img
+					  src='{{asset "gifs/404.gif"}}'
+					  alt='{{title}}'
+					/>
+				</div>
+
+				{{! Caption if exists }}
+				{{#if feature_image_caption}}
+				<div class="post-hero-caption">
+					{{feature_image_caption}}
+				</div>
+				{{/if}}
+			</header>
+			<div class="post-content">
+			<h2>That's not happenin' Hoss</h2>
+				<p>Seems the URL you requested does not currently exist:</p>
+				<p class="oops"><span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#f05230" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm-8,56a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm8,104a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z"></path></svg> {{url}}</span></p>
+				<p>Why did this happen? Honestly, it's hard tellin' not knowin'. Suppose you could give a proper click, or tap, depending on the current rig you're rocking, to that little menu icon up top there. You'll then find a search icon and can commence with all sorts of search shenanigans. Perhaps you'll uncover whatever it was you were hoping to find.</p>
+
+				<p>Or you could watch this video of a Golden Retriever becoming best buds with a bunch of kittens.</p>
+
+				<div class="ltube">
+					<lite-youtube videoid="7ogG_NWGvj8" class="wide-video"></lite-youtube>
+				</div>
+
+				<p>I wager those options &mdash; to recap: search or kitten video &mdash; are essentially your two best choices at this point.</p>
+				<p>We appreciate your attention. Carpe diem friend.</p>
+			</div>
+		</article>
+	</div>
+	<aside class="content-aside">
+		{{> "layout/aside-content"}}
+	</aside>
+</div>

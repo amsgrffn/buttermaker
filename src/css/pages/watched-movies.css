@@ -1,0 +1,330 @@
+/* ////////////////////////////////////////////////////////////////////////
+
+   Watched Movies Page Styles
+   Custom page for displaying Letterboxd movie diary entries
+   page-watched-movies.hbs
+
+////////////////////////////////////////////////////////////////////////// */
+
+/* Custom wide container for watched movies page */
+.watched-movies-container {
+  max-width: 140rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 3rem;
+  position: relative;
+}
+
+/* Responsive container padding */
+@media (max-width: 768px) {
+  .watched-movies-container {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .watched-movies-container {
+    padding: 0 1rem;
+  }
+}
+
+/* Page Header */
+.watched-movies-page .page-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 2rem 0;
+}
+
+.watched-movies-page .page-header h1 {
+  font-family: var(--display);
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--color-headlines);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.watched-movies-page .page-description {
+  font-family: var(--sans);
+  font-size: 1.6rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Movies Container */
+.movies-container {
+  max-width: var(--main-width);
+  margin: 0 auto;
+  padding: 0 var(--gap);
+}
+
+/* Loading State */
+.loading-spinner {
+  text-align: center;
+  padding: 4rem 0;
+  font-family: var(--sans);
+  color: var(--color-text-muted);
+  font-size: 1.6rem;
+}
+
+.no-movies {
+  text-align: center;
+  padding: 4rem 0;
+  font-family: var(--sans);
+  color: var(--color-text-muted);
+  font-size: 1.6rem;
+}
+
+/* Month Sections */
+.month-section {
+  margin-bottom: 5rem;
+}
+
+.month-section:last-child {
+  margin-bottom: 2rem;
+}
+
+.month-title {
+  font-family: var(--sans);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--color-headlines);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border-primary);
+}
+
+/* Movies Grid */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+  align-items: start;
+  max-width: 100%;
+}
+
+/* Ensure 4 columns on larger screens */
+@media (min-width: 1200px) {
+  .movies-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+/* 3 columns on medium screens */
+@media (max-width: 1199px) and (min-width: 900px) {
+  .movies-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Individual Movie Item */
+.movie-item {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.movie-item:hover {
+  transform: translateY(-2px);
+}
+
+/* Movie Link */
+.movie-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Movie Poster Container */
+.movie-poster {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-muted);
+  transition: all 0.3s ease;
+  background: var(--background-secondary);
+
+  /* Performance optimization */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.movie-poster:hover {
+  box-shadow: var(--shadow);
+  transform: translateZ(0) scale(1.02);
+}
+
+/* Movie Poster Image */
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: opacity 0.3s ease;
+  background: var(--background-secondary);
+}
+
+.movie-poster img[loading="lazy"] {
+  opacity: 0;
+}
+
+.movie-poster img.loaded,
+.movie-poster img:not([loading="lazy"]) {
+  opacity: 1;
+}
+
+/* Handle broken images */
+.movie-poster.image-error {
+  background: var(--background-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-poster.image-error::before {
+  content: "🎬";
+  font-size: 3rem;
+  opacity: 0.5;
+}
+
+.movie-poster.image-error img {
+  display: none;
+}
+
+/* Date Overlay */
+.movie-date {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.3rem 0.6rem;
+  border-radius: calc(var(--radius) * 0.5);
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.2px;
+
+  /* Smooth transition */
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.movie-poster:hover .movie-date {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .watched-movies-page .page-header h1 {
+    font-size: 2.8rem;
+  }
+
+  .watched-movies-page .page-description {
+    font-size: 1.4rem;
+  }
+
+  .movies-container {
+    padding: 0 1.5rem;
+  }
+
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .month-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .month-section {
+    margin-bottom: 3.5rem;
+  }
+
+  .movie-date {
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+    bottom: 0.4rem;
+    right: 0.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .movies-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .movies-container {
+    padding: 0 1rem;
+  }
+
+  .watched-movies-page .page-header {
+    margin-bottom: 3rem;
+  }
+}
+
+/* Large screens - show more columns */
+@media (min-width: 1200px) {
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2.5rem;
+  }
+}
+
+/* Extra large screens */
+@media (min-width: 1600px) {
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 3rem;
+  }
+}
+
+/* Dark mode support (if you implement it later) */
+@media (prefers-color-scheme: dark) {
+  .movie-date {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .movie-item,
+  .movie-poster,
+  .movie-poster img,
+  .movie-date {
+    transition: none;
+  }
+
+  .movie-item:hover {
+    transform: none;
+  }
+
+  .movie-poster:hover {
+    transform: translateZ(0);
+  }
+}
+
+/* Print styles */
+@media print {
+  .watched-movies-page {
+    break-inside: avoid;
+  }
+
+  .movie-poster {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+
+  .movie-date {
+    background: #666;
+    color: white;
+  }
+}
