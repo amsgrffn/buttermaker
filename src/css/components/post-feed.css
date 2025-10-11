@@ -54,8 +54,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70%;
-  max-width: 600px;
+  width: 85%;
+  max-width: 700px;
   padding: var(--space-3xl);
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
@@ -88,16 +88,15 @@
 }
 
 .post-card-excerpt {
-  font-size: 18px;
-  line-height: 1.3;
+  font-size: 20px;
+  line-height: 1.35;
   color: var(--color-text-dark);
   margin: 0 0 1.5rem;
 }
 
 .post-card-title {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 400;
+  font-size: 1.8rem;
+  font-weight: 800;
   color: var(--color-headings);
   line-height: 1.1;
   margin: 0 0 var(--space-sm) 0;

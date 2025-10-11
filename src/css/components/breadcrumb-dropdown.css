@@ -66,7 +66,7 @@
 }
 
 .breadcrumb-item.current {
-  color: var(--color-text-medium);
+  color: var(--color-text-muted);
   display: inline-block;
   max-width: 400px;
   overflow: hidden;
@@ -153,10 +153,10 @@ body.dark-mode .dropdown-inner {
 
 .breadcrumb-dropdown ul li a {
   border-radius: var(--radius-base);
-  color: var(--color-text-dark);
+  color: var(--color-text);
   display: block;
   overflow: hidden;
-  padding: 6px var(--space-sm);
+  padding: 4px var(--space-sm);
   text-decoration: none;
   text-overflow: ellipsis;
   transition: background-color 0.2s ease;
@@ -172,8 +172,8 @@ body.dark-mode .dropdown-inner {
 }
 
 .breadcrumb-dropdown ul li a:hover {
-  background-color: #f9f9f9;
-  color: var(--color-orange);
+  background-color: #f5f5f5;
+  color: var(--link-color);
   text-decoration: none;
 }
 

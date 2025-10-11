@@ -111,10 +111,10 @@
 
 /* Hero Title */
 .post-hero-title {
-  font-family: 'ZedRoundCompactVF-Heavy', sans-serif;
+  font-family: 'Apex Rounded Trial', sans-serif;
   font-size: 2.1rem;
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.2;
   margin-bottom: var(--space-sm);
   color: var(--color-headings);
   text-wrap: pretty;
@@ -266,9 +266,9 @@
   border-bottom: 1px solid var(--color-border-light);
 }
 
-.page-template .excerpt p,
-.post-template .excerpt p {
-  font-size: 1.3rem;
+.page-template .excerpt,
+.post-template .excerpt {
+  font-size: 1.1rem;
   line-height: 1.4;
 }
 
@@ -296,9 +296,9 @@
 
 .page-template .post-title,
 .post-template .post-title {
-  font-family: 'ZedRoundCompactVF-Heavy', sans-serif;
-  font-size: 3.2rem;
-  line-height: 1.1;
+  font-family: 'Apex Rounded Trial', sans-serif;
+  font-size: 3rem;
+  line-height: 1.15;
   margin-bottom: var(--space-md);
   color: var(--color-headings);
   text-wrap: pretty;
@@ -409,7 +409,7 @@
 .post-content h4,
 .post-content h5,
 .post-content h6 {
-  font-family: var(--font-display);
+  font-family: 'Apex Rounded Trial', sans-serif;
   font-weight: var(--font-weight-bold);
   color: var(--color-text-dark);
   margin: var(--space-3xl) 0 var(--space-lg);
@@ -417,29 +417,25 @@
 }
 
 .post-content h2 {
-  font-family: 'ZedRoundCompactVF-Heavy', sans-serif;
-  font-size: 2.8rem;
+  font-size: 2.4rem;
   font-weight: 800;
   margin-bottom: 1rem;
 }
 
 .post-content h3 {
-  font-family: 'ZedRoundCompactVF-Heavy', sans-serif;
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
 }
 
 .post-content h4 {
-  font-family: var(--font-family-sans);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 .post-content h5,
 .post-content h6 {
-  font-family: 'SuisseIntlTrial-Black', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 800;
+  font-size: 1.6rem;
+  font-weight: var(--font-weight-bold);
   margin-bottom: 0.5rem;
 }
 

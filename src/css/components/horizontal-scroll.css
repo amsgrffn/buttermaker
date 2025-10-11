@@ -30,7 +30,7 @@
 
 .horizontal-scroll-title {
   color: var(--color-headings);
-  font-family: 'ZedRoundCompactVF-Heavy', sans-serif;
+  font-family: 'Apex Rounded Trial', sans-serif;
   font-size: 1.4rem;
   font-weight: 800;
   margin: 0;
@@ -91,6 +91,8 @@
   padding-bottom: var(--space-sm);
   scroll-snap-type: x mandatory;
   box-sizing: content-box;
+  cursor: grab;
+  user-select: none;
 }
 
 .horizontal-scroll-track::-webkit-scrollbar {
@@ -109,6 +111,7 @@
   display: flex;
   scroll-snap-align: start;
   position: relative;
+  cursor: grab;
 }
 
 .scroll-card:hover {
@@ -161,11 +164,11 @@
 }
 
 .scroll-card-title {
-  font-family: 'ZedRoundCompactVF-Bold', sans-serif;
+  font-family: 'Apex Rounded Trial', sans-serif;
   font-size: 1.2rem;
-  font-weight: var(--font-weight-bold);
+  font-weight: 800;
   color: var(--color-headings);
-  line-height: 1.1;
+  line-height: 1.2;
   margin: 0 0 var(--space-xs) 0;
   display: -webkit-box;
   -webkit-box-orient: vertical;

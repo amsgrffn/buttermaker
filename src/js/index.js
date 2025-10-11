@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const portalIntegration = new PortalIntegration();
     }
 
-    if (document.querySelector('.horizontal-scroll')) {
+    if (document.querySelector('.horizontal-scroll-section')) {
       const horizontalScroll = new HorizontalScroll();
     }
 

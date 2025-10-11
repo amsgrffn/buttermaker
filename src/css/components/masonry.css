@@ -11,7 +11,7 @@
 }
 
 .section-title {
-  font-family: 'ZedRoundCompactVF-Heavy', sans-serif;
+  font-family: 'Apex Rounded Trial', sans-serif;
   font-size: 1.4rem;
   font-weight: 800;
   margin-bottom: var(--space-xl);
@@ -92,10 +92,10 @@
 }
 
 .masonry-title {
-  font-family: 'ZedRoundCompactVF-Bold', sans-serif;
+  font-family: 'Apex Rounded Trial', sans-serif;
   font-size: 1.4rem;
-  font-weight: 800;
-  line-height: 1.1;
+  font-weight: 900;
+  line-height: 1.2;
   margin-bottom: var(--space-sm);
   color: var(--color-headings);
   text-wrap: pretty;
@@ -104,6 +104,7 @@
 .masonry-title a {
   color: var(--color-headings);
   text-decoration: none;
+  font-weight: 900;
   transition: color var(--transition-base);
 }
 

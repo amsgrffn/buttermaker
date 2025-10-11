@@ -7,7 +7,7 @@
 		<button class="scroll-btn scroll-btn-prev" aria-label="Scroll left">{{> "icons/chevron-left"}}</button>
 		<button class="scroll-btn scroll-btn-next" aria-label="Scroll right">{{> "icons/chevron-right"}}</button>
 		<div class="horizontal-scroll-track">
-			{{#get "posts" include="authors,tags" filter="featured:true" limit="8" as |featured_posts|}}
+			{{#get "posts" include="authors,tags" filter="featured:true" limit="10" as |featured_posts|}}
 				{{#if featured_posts}}
 					{{#foreach featured_posts}}
 						<a href="{{url}}" class="scroll-card" aria-label="Read {{title}}">
