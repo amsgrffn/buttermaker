@@ -11,9 +11,9 @@
 }
 
 .section-title {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 800;
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-2xl);
   color: var(--color-headings);
 }
 
@@ -91,9 +91,8 @@
 }
 
 .masonry-title {
-  font-size: 1.5rem;
-  font-weight: 900;
-  line-height: 1.1;
+  font-size: 1.4rem;
+  line-height: 1.15;
   margin-bottom: var(--space-sm);
   color: var(--color-headings);
   text-wrap: pretty;
@@ -102,7 +101,7 @@
 .masonry-title a {
   color: var(--color-headings);
   text-decoration: none;
-  font-weight: 900;
+  font-weight: 800;
   transition: color var(--transition-base);
 }
 

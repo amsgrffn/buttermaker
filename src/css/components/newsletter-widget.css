@@ -33,7 +33,6 @@
 
 /* Title */
 .newsletter-title {
-  font-family: 'ZedRoundCompactVF-Heavy', sans-serif;
   font-size: 1.6rem;
   font-weight: 800;
   color: white;
@@ -99,7 +98,7 @@
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius-base);
-  font-family: 'ZedRoundCompactVF-Heavy', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.1rem;
   letter-spacing: 0.02rem;
   font-weight: 800;

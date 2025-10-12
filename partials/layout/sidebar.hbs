@@ -2,7 +2,7 @@
 	{{! Title Section - separate from nav }}
 	<div class="sidebar-header">
 		<h1><a href="{{@site.url}}">You Can't Be Serious</a></h1>
-		<p class="tagline">{{@site.description}}</p>
+		<p class="tagline">From John Gruber at Daring Fireball, Mike Masnick has a great piece at TechDirt running down just how stupid everything about Trump’s tariff trade war is:</p>
 	</div>
 
 	{{! Navigation Section - now separate }}
@@ -13,7 +13,7 @@
 					<span class="nav-icon">
 						{{> "icons/arrow-right"}}
 					</span>
-					Homepage
+					Home
 				</a>
 			</li>
 			<li>
@@ -21,7 +21,7 @@
 					<span class="nav-icon">
 						{{> "icons/arrow-right"}}
 					</span>
-					The Blog
+					Blog
 				</a>
 			</li>
 			<li>
@@ -29,9 +29,23 @@
 					<span class="nav-icon">
 						{{> "icons/arrow-right"}}
 					</span>
-					About Us
+					About
 				</a>
 			</li>
+			<li>
+				<a href="{{@site.url}}/archive/" class="sidebar-link">
+					<span class="nav-icon">
+						{{> "icons/arrow-right"}}
+					</span>
+					Archive
+				</a>
+			</li>
+		</ul>
+	</nav>
+
+	{{! Navigation Section - now separate }}
+	<nav class="sidebar-navigation">
+		<ul class="sidebar-nav">
 			{{! Topics - with dropdown (customize with your actual tags) }}
 			<li class="has-dropdown" data-dropdown-type="topics">
 				<a href="{{@site.url}}/topics/" class="sidebar-link">
@@ -75,15 +89,6 @@
 					</ul>
 				</div>
 			</li>
-			{{! Archive - regular link (no dropdown) }}
-			<li>
-				<a href="{{@site.url}}/archive/" class="sidebar-link">
-					<span class="nav-icon">
-						{{> "icons/arrow-right"}}
-					</span>
-					The Archive
-				</a>
-			</li>
 			{{! Legal - with dropdown }}
 			<li class="has-dropdown" data-dropdown-type="legal">
 				<a href="{{@site.url}}/legal/" class="sidebar-link">
@@ -103,15 +108,47 @@
 			</li>
 		</ul>
 	</nav>
+
+	<nav class="sidebar-navigation">
+		<ul class="sidebar-nav">
+		<li>
+			<a href="{{@site.url}}" class="sidebar-link">
+				<span class="nav-icon">
+					{{> "icons/mail"}}
+				</span>
+				Contact
+			</a>
+		</li>
+			<li>
+				<a href="{{@site.url}}" class="sidebar-link">
+					<span class="nav-icon">
+						{{> "icons/bluesky"}}
+					</span>
+					Bluesky
+				</a>
+			</li>
+			<li>
+				<a href="{{@site.url}}/blog/" class="sidebar-link">
+					<span class="nav-icon">
+						{{> "icons/mastodon"}}
+					</span>
+					Mastodon
+				</a>
+			</li>
+			<li>
+				<a href="{{@site.url}}/about/" class="sidebar-link">
+					<span class="nav-icon">
+						{{> "icons/letterboxd"}}
+					</span>
+					Letterboxd
+				</a>
+			</li>
+		</ul>
+	</nav>
+
 	<div class="now-reading-widget">
 		<p>You Can't Be Serious is built and maintained in the lovely state of Maine. It runs on <a href="https://ghost.org">Ghost</a>, <a href="https://www.magicpages.co/">Magic Pages</a> and <a href="/nerd-alert/#buttermaker-theme">Riggs</a>. It's been <a href="https://www.nytimes.com/1973/05/11/archives/knicks-win-title-top-lakers-10293-new-york-triumphs-in-five-games.html?unlocked_article_code=1.p04.Ennw.Aq7vqriHBZPh&smid=url-share"><span id="knicks-counter"></span></a> since the New York Knicks won an NBA Championship.
 		</p>
-		<div class="widget-controls">
-			<a href="{{@site.url}}/rss/" class="widget-btn" title="RSS Feed">{{> "icons/rss"}}</a>
-			<a href="#/portal/" class="widget-btn" title="Subscribe" data-portal="signup">{{> "icons/mail"}}</a>
-			<a href="#/portal/" class="widget-btn" title="Subscribe" data-portal="signup">{{> "icons/bluesky"}}</a>
-			<a href="#/portal/" class="widget-btn" title="Subscribe" data-portal="signup">{{> "icons/letterboxd"}}</a>
-		</div>
 		<div class="widget-footer">
 			<p class="copyright">© {{date format="YYYY"}} {{@site.title}}</p>
 		</div>

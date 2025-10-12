@@ -1,6 +1,6 @@
 <div class="notes-widget">
 	<h3 class="widget-title">Latest Notes</h3>
-	{{#get "posts" include="authors,tags" filter="tag:[hash-note, hash-watched]" limit="12"}}
+	{{#get "posts" include="authors,tags" filter="tag:[hash-note, hash-watched]" limit="8"}}
 		{{#foreach posts}}
 			<div class="notes-content">
 				<div class="note-item">

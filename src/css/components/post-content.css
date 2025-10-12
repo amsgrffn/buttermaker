@@ -88,7 +88,7 @@
   transform: translateX(-50%); /* Center the element */
   width: 80%; /* Set to 70% width */
   max-width: 600px; /* Optional: prevents it from getting too wide on huge screens */
-  background: rgba(255, 255, 255, 0.98);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   padding: var(--space-3xl);
   border-radius: var(--radius-lg);
@@ -260,9 +260,7 @@
 /* Post Header Styling */
 .page-template .post-header,
 .post-template .post-header {
-  margin: 0 0 var(--space-2xl);
-  padding-bottom: var(--space-2xl);
-  border-bottom: 1px solid var(--color-border-light);
+  margin: 0 0 var(--space-4xl);
 }
 
 .page-template .excerpt,
@@ -295,12 +293,11 @@
 
 .page-template .post-title,
 .post-template .post-title {
-  font-family: 'Apex Rounded Trial', sans-serif;
-  font-size: 3rem;
-  line-height: 1.15;
-  margin-bottom: var(--space-md);
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: var(--space-2xl);
   color: var(--color-headings);
-  text-wrap: pretty;
 }
 
 .post-template .role {
@@ -761,7 +758,7 @@
 .post-footer {
   border-top: 1px solid var(--color-border);
   padding-top: var(--space-lg);
-  margin: var(--space-4xl) 0 5rem;
+  margin: var(--space-5xl) 0 7rem;
 }
 
 .post-footer p {
@@ -859,7 +856,7 @@
 }
 
 .related-posts .related-title {
-  font-family: 'ZedRoundCompactVF-Bold', sans-serif;
+  font-weight: 800;
   margin-left: 2rem;
 }
 
@@ -879,10 +876,9 @@
 }
 
 .related-content h4 {
-  font-family: var(--font-display);
   font-size: 1.4rem;
   font-weight: var(--font-weight-bold);
-  line-height: 1.1;
+  line-height: 1.15;
   margin-bottom: var(--space-xl);
   color: var(--color-text-dark);
 }

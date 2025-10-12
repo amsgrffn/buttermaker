@@ -1,11 +1,6 @@
-{{! Title Section - separate from nav }}
-<div class="sidebar-header">
-	<h1><a href="{{@site.url}}">You Can't Be Serious</a></h1>
+<nav>
+	<h1><a href="{{@site.url}}">You Can't Be Serious</h1>
 	<p class="tagline">{{@site.description}}</p>
-</div>
-
-{{! Navigation Section - now separate }}
-<nav class="sidebar-navigation">
 	<ul class="sidebar-nav">
 		<li>
 			<a href="{{@site.url}}" class="sidebar-link">
@@ -70,7 +65,7 @@
 					<li><a href="{{@site.url}}/contact/" class="dropdown-link">Moving Pictures</a></li>
 					<li><a href="{{@site.url}}/contact/" class="dropdown-link">Newsletter Info</a></li>
 					<li><a href="{{@site.url}}/office-hours/" class="dropdown-link">Office Hours</a></li>
-					<li><a href="{{@site.url}}/nerd-alert/" class="dropdown-link">Nerd Alert</a></li>
+					<li><a href="{{@site.url}}/portfolio/" class="dropdown-link">Nerd Alert</a></li>
 				</ul>
 			</div>
 		</li>
@@ -83,7 +78,7 @@
 				The Archive
 			</a>
 		</li>
-		{{! Legal - with dropdown }}
+		{{! -- Legal - with dropdown -- }}
 		<li class="has-dropdown" data-dropdown-type="legal">
 			<a href="{{@site.url}}/legal/" class="sidebar-link">
 				<span class="nav-icon">

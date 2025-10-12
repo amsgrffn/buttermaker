@@ -27,7 +27,6 @@
 .note-post .note-body ol,
 .note-post .note-body p,
 .note-post .note-body ul {
-  font-family: var(--font-mono);
   font-size: 1rem;
   line-height: var(--line-height-base);
   margin-bottom: var(--space-lg);
@@ -96,6 +95,7 @@
   padding-bottom: 3rem;
   background: #fff;
   padding: 3rem;
+  border-radius: var(--radius-xl);
   box-shadow: var(--shadow);
 }
 
@@ -122,19 +122,9 @@
   color: var(--color-primary);
 }
 
-/* Excerpts and content */
-.article-loop .post-excerpt,
-.article-loop .post-content,
-.article-loop .content-body {
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-base);
-  color: var(--color-text-dark);
-  margin-bottom: var(--space-xl);
-}
-
 .article-loop .post-content p,
 .article-loop .content-body blockquote {
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: var(--line-height-base);
   color: var(--color-text-dark);
   margin-bottom: var(--space-xl);
@@ -142,7 +132,7 @@
 
 /* Tags */
 .article-loop .post-tags {
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-3xl);
 }
 
 .article-loop .post-topic {
@@ -151,7 +141,7 @@
   color: #fff;
   padding: 0.25rem 0.75rem;
   background: var(--link-color);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-lg);
 }
 
 /* Read more button */

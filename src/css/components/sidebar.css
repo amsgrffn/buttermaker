@@ -4,12 +4,12 @@
 
 .sidebar {
   width: var(--sidebar-width);
-  padding: 0 var(--space-xl) 0 0;
+  padding: var(--space-3xl) var(--space-3xl) 0 0;
   border-right: 1px solid var(--color-border);
   position: fixed;
   top: var(--header-height);
   left: calc(50vw - 700px);
-  bottom: 0;
+  bottom: 20px;
   background: var(--color-background);
   z-index: var(--z-dropdown);
   display: flex;
@@ -17,23 +17,27 @@
   justify-content: space-between;
 }
 
-.sidebar-navigation {
-  flex: 1; /* Makes nav grow to fill space */
-  overflow-y: auto; /* Allows scrolling if nav gets too long */
+.sidebar-header {
+  flex: 0 0 auto;
+}
+
+.now-reading-widget {
+  flex: 0 0 auto;
 }
 
 .sidebar h1 {
   color: var(--color-headings);
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.3;
-  margin-bottom: 0;
-  text-wrap: pretty;
+
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-wrap: balance;
 }
 
 .sidebar h1 a {
   color: var(--color-headings);
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .sidebar h1 a:hover {
@@ -44,7 +48,8 @@
   font-size: 15px;
   color: var(--color-text);
   line-height: 1.4;
-  padding: 0 0 var(--space-xl);
+  margin: 0;
+  padding: 0;
   position: relative;
   text-wrap: balance;
   /* Remove: border-bottom: 1px solid #cfcfcf; */
@@ -58,16 +63,6 @@
 
 .sidebar .tagline em {
   font-family: var(--font-family-alt);
-}
-
-.sidebar p.tagline::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0; /* Start from the very left edge */
-  width: 60%; /* Make it as wide as the widget border (adjust this percentage) */
-  height: 1px;
-  background-color: var(--color-border-dark);
 }
 
 .sidebar-nav {
@@ -145,9 +140,8 @@
 
 /* Now Reading Widget */
 .now-reading-widget {
-  border-radius: var(--radius-lg);
-  padding: var(--space-3xl) var(--space-lg) 0 var(--space-lg);
-  margin-top: auto; /* This pushes it to the bottom within flexbox */
+  padding: 0;
+  text-wrap: pretty;
 }
 
 .widget-header {
@@ -168,27 +162,13 @@
 }
 
 .widget-content {
-  display: flex;
-  gap: var(--space-md);
-  margin-bottom: var(--space-md);
-}
-
-.now-reading-widget ul::before {
-  content: '';
-  position: absolute;
-  top: 0; /* For top border */
-  left: 6%; /* Centers the 50% border */
-  width: 50%;
-  height: 1px; /* Border thickness */
-  background-color: var(--color-border-dark);
 }
 
 .now-reading-widget p {
   color: var(--color-text-dark);
   font-size: 0.85rem;
   line-height: 1.35;
-  margin: 0 0 var(--space-sm);
-  text-wrap: balance;
+  margin: 0;
 }
 
 .now-reading-widget p a {
@@ -266,7 +246,6 @@ svg.heart {
 }
 
 .widget-footer {
-  border-top: 1px solid var(--color-border-dark);
   padding-top: var(--space-md);
 }
 

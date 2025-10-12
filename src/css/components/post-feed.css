@@ -4,18 +4,19 @@
 
 .post-feed {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-xl);
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 3em;
 }
 
 .post-feed .section-title {
-  grid-column: 1 / -1; /* Spans from column 1 to the end */
+  grid-column: 1 / -1;
   margin-bottom: 0;
 }
 
 .post-card {
   position: relative;
-  height: 550px; /* Adjust this for your preferred height */
+  height: 550px;
   border-radius: var(--radius-xl);
   overflow: hidden;
   transition: all var(--transition-base);
@@ -52,16 +53,16 @@
 
 .post-card-content {
   position: absolute;
-  bottom: 20px; /* Distance from the bottom - adjust this value */
+  bottom: 20px;
   left: 50%;
-  transform: translateX(-50%); /* Only center horizontally */
+  transform: translateX(-50%);
   width: 85%;
   max-width: 700px;
   padding: var(--space-3xl);
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
   border-radius: 12px;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow);
 }
 
 /* Tag above title */
@@ -96,8 +97,8 @@
 
 .post-card-title {
   font-size: 1.4rem;
-  font-weight: 900;
-  line-height: 1.2;
+  font-weight: 700;
+  line-height: 1.15;
   margin-bottom: var(--space-sm);
   color: var(--color-headings);
   text-wrap: pretty;
@@ -151,11 +152,11 @@
 
 .go-to-blog {
   grid-column: 1 / -1; /* Spans from column 1 to the end */
-  border-top: 1px solid #cfcfcf;
+  border-bottom: 1px solid #cfcfcf;
   font-size: 0.875rem;
   font-weight: 600;
-  margin-top: 2rem;
-  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .go-to-blog span {
