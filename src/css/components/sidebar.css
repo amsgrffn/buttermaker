@@ -9,14 +9,21 @@
   border-right: 1px solid var(--color-border);
   position: fixed;
   top: var(--header-height);
-  left: calc(50vw - 700px); /* This centers the sidebar as part of the layout */
+  left: calc(50vw - 700px);
   bottom: 0;
   background: var(--color-background);
   overflow-y: auto;
   z-index: var(--z-dropdown);
+
+  /* ADD THESE THREE LINES */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.sidebar-navigation {
+  flex: 1; /* Makes nav grow to fill space */
+  overflow-y: auto; /* Allows scrolling if nav gets too long */
 }
 
 .sidebar h1 {
@@ -69,7 +76,6 @@
 
 .sidebar-nav {
   list-style: none;
-  flex: 1;
 }
 
 .sidebar-nav li {
