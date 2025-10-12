@@ -9,8 +9,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Apex Rounded Trial', 'SF Pro Rounded', sans-serif;
-  font-weight: 700;
+  font-family: 'HvDTrial_BrandonGrotesque-Black', 'SF Pro Rounded', sans-serif;
+  font-weight: 900;
   line-height: var(--line-height-tight);
   color: var(--color-text-dark);
   margin-bottom: var(--space-lg);

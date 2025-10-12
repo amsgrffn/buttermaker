@@ -1,8 +1,9 @@
+<ul class="breadcrumb-list">
+<li class="breadcrumb-item home">{{> "icons/map-pin"}} <a class="title" href="{{@site.url}}">Home</a></li>
+  <li class="breadcrumb-separator">{{> "icons/chevron"}}</li>
+  <li class="breadcrumb-item">The Blog</li>
+</ul>
 <section class="article-loop">
-<div class="blog-feed-header">
-  <h4>The Blog</h4>
-  <p>Everything we've published in a chronological stream</p>
-</div>
 {{#foreach posts}}
 <div class="post-container" data-post-id="{{id}}">
 <article class="post-card--with-image">
@@ -19,8 +20,9 @@
       <div class="post-meta-sidebar">
         <img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
         <time class="post-date" datetime="{{date published_at format="YYYY-MM-DD"}}">
-          {{date published_at timeago="true"}}
+       {{date published_at timeago="true"}}
         </time>
+
       </div>
 
       <!-- CONTENT - Now comes second -->

@@ -5,12 +5,8 @@
 .top-header {
   background: var(--color-background);
   border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--space-2xl);
   padding: var(--space-2xl) 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: var(--z-sticky);
   height: var(--header-height);
 }
 

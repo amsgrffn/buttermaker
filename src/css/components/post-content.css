@@ -111,10 +111,9 @@
 
 /* Hero Title */
 .post-hero-title {
-  font-family: 'Apex Rounded Trial', sans-serif;
   font-size: 2.1rem;
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.1;
   margin-bottom: var(--space-sm);
   color: var(--color-headings);
   text-wrap: pretty;

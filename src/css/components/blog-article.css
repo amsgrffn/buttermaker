@@ -1,8 +1,9 @@
-.blog-feed-header {
-  margin: 0 0 4rem 4rem;
-}
+/* ==========================================================================
+   Blog Feed Header
+   ========================================================================== */
 
-.article-loop {
+.blog-feed-header {
+  margin: 0 0 4rem 3rem;
 }
 
 .blog-feed-header h4 {
@@ -11,45 +12,23 @@
   margin-bottom: 0;
 }
 
-.post-feed.article-loop .post-body-flex {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start; /* Align items to the top */
-  gap: 2rem; /* Space between sidebar and content */
-  margin-bottom: 4rem; /* Space between articles */
-}
-
-/* Left sidebar - Fixed 200px width */
-.post-feed.article-loop .post-meta-sidebar {
-  width: 200px;
-  flex-shrink: 0; /* Prevent sidebar from shrinking */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  padding-top: 0.5rem; /* Slight padding to align with title */
-}
-
-.post-feed.article-loop .post-header {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-lg);
-}
+/* ==========================================================================
+   Note Posts
+   ========================================================================== */
 
 .note-post {
-  margin-bottom: 3rem;
 }
 
 .note-post h2 {
   display: none;
 }
 
-.blog-item blockquote,
-.blog-item ol,
-.blog-item p,
-.blog-item ul {
-  font-size: 1.2rem;
+.note-post .note-body blockquote,
+.note-post .note-body ol,
+.note-post .note-body p,
+.note-post .note-body ul {
+  font-family: var(--font-mono);
+  font-size: 1rem;
   line-height: var(--line-height-base);
   margin-bottom: var(--space-lg);
 }
@@ -59,169 +38,124 @@
   padding-left: 1.5rem;
 }
 
-.post-feed.article-loop .post-title {
-  font-size: var(--font-size-2xl);
-  line-height: var(--line-height-tight);
-  letter-spacing: -0.01rem;
-  margin-bottom: var(--space-xl);
-}
-
-.post-feed.article-loop .post-title a {
-  font-weight: var(--font-weight-bold);
-}
-
-.post-feed.article-loop .post-meta {
-  display: flex;
-  gap: 4px;
-}
-
-.post-feed.article-loop .author-name {
-  color: var(--color-text-medium);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
-}
-
-.article-loop .post-meta ul {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.article-loop .post-meta ul li {
-  margin-bottom: 4px;
-}
-
-.article-loop .author-avatar {
-  height: 30px;
-  width: 30px;
-}
-
-.article-loop .pub-date {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
-  margin-bottom: var(--space-xl);
-}
-
-.article-loop .pub-date {
-  filter: grayscale(70%);
-}
-
-.article-loop .pub-date svg {
-  height: 16px;
-  width: 16px;
-  display: line;
-  vertical-align: middle;
-  margin-top: -2px;
-}
-
-.post-preview,
-.post-full {
-  transition: opacity 0.3s ease;
-}
-
-.read-more-btn {
-  display: inline-block;
-  margin-top: var(--space-md);
-  color: var(--color-primary);
-  text-decoration: none;
-  font-weight: var(--font-weight-medium);
-}
-
 /* ==========================================================================
-   Blog Article Feed Layout - Two Column Structure
+   Two-Column Layout - Sidebar + Content
    ========================================================================== */
 
-/* Main flex container for each article */
-.post-feed.article-loop .post-body-flex {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start; /* Align items to the top */
-  gap: 2rem; /* Space between sidebar and content */
-  margin-bottom: 4rem; /* Space between articles */
+.article-loop {
+  background: #f5f7fa;
+  border: 1px solid #e6eaef;
+  padding: 3rem 0;
+}
+.article-loop .post-container {
+  padding: 0;
+  margin: 0 0 3rem;
 }
 
-/* Left sidebar - Fixed 200px width */
-.post-feed.article-loop .post-meta-sidebar {
-  width: 200px;
-  flex-shrink: 0; /* Prevent sidebar from shrinking */
+/* Main container for each article */
+.article-loop .post-body-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 0;
+}
+
+/* Left sidebar - Fixed width */
+.article-loop .post-meta-sidebar {
+  width: 110px;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  padding-top: 0.5rem; /* Slight padding to align with title */
+  padding-top: 3rem;
 }
 
-/* Author avatar in sidebar */
-.post-feed.article-loop .post-meta-sidebar .author-avatar {
-  height: 60px;
-  width: 60px;
+/* Author avatar */
+.article-loop .post-meta-sidebar .author-avatar {
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
   object-fit: cover;
   filter: grayscale(70%);
+  display: none;
 }
 
-/* Date in sidebar */
-.post-feed.article-loop .post-meta-sidebar .post-date {
-  font-size: var(--font-size-sm);
+/* Date display */
+.article-loop .post-meta-sidebar .post-date {
+  font-size: var(--font-size-md);
   color: var(--color-text-medium);
   text-align: center;
   line-height: 1.4;
 }
 
-/* Content area - Takes up remaining space */
-.post-feed.article-loop .post-content-flex {
-  flex: 1; /* Grows to fill remaining space */
-  min-width: 0; /* Allows content to shrink if needed */
+/* Content area - Flexible width */
+.article-loop .post-content-flex {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 3rem;
+  background: #fff;
+  padding: 3rem;
+  box-shadow: var(--shadow);
 }
 
-/* Title styling */
-.post-feed.article-loop .post-title {
-  font-size: var(--font-size-2xl);
+/* ==========================================================================
+   Article Content Styling
+   ========================================================================== */
+
+/* Title */
+.article-loop .post-title {
+  font-size: var(--font-size-3xl);
   line-height: var(--line-height-tight);
-  letter-spacing: -0.01rem;
   margin-bottom: var(--space-lg);
   margin-top: 0;
 }
 
-.post-feed.article-loop .post-title a {
+.article-loop .post-title a {
   font-weight: var(--font-weight-bold);
   color: var(--color-headings);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.post-feed.article-loop .post-title a:hover {
+.article-loop .post-title a:hover {
   color: var(--color-primary);
 }
 
-/* Excerpt and content styling */
-.post-feed.article-loop .post-excerpt,
-.post-feed.article-loop .post-content {
+/* Excerpts and content */
+.article-loop .post-excerpt,
+.article-loop .post-content,
+.article-loop .content-body {
   font-size: var(--font-size-lg);
   line-height: var(--line-height-base);
   color: var(--color-text-dark);
   margin-bottom: var(--space-xl);
 }
 
-/* Tags at the bottom */
-.post-feed.article-loop .post-tags {
-  margin-top: var(--space-lg);
+.article-loop .post-content p,
+.article-loop .content-body blockquote {
+  font-size: 1.2rem;
+  line-height: var(--line-height-base);
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-xl);
 }
 
-.post-feed.article-loop .post-topic {
+/* Tags */
+.article-loop .post-tags {
+  margin-top: var(--space-2xl);
+}
+
+.article-loop .post-topic {
   display: inline-block;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-medium);
+  font-size: 0.875rem;
+  color: #fff;
   padding: 0.25rem 0.75rem;
-  background: var(--color-bg-light, #f5f5f5);
+  background: var(--link-color);
   border-radius: var(--radius-sm);
 }
 
 /* Read more button */
-.post-feed.article-loop .read-more-btn {
+.article-loop .read-more-btn {
   display: inline-block;
   margin-top: var(--space-md);
   color: var(--color-primary);
@@ -230,34 +164,44 @@
   transition: color 0.2s ease;
 }
 
-.post-feed.article-loop .read-more-btn:hover {
+.article-loop .read-more-btn:hover {
   text-decoration: underline;
 }
 
+/* Transitions */
+.post-preview,
+.post-full {
+  transition: opacity 0.3s ease;
+}
+
 /* ==========================================================================
-   Responsive Design - Mobile Adjustments
+   Responsive Design
    ========================================================================== */
 
-/* Tablet and below - Stack the layout */
+/* Tablet and below */
 @media (max-width: 768px) {
-  .post-feed.article-loop .post-body-flex {
+  .article-loop .post-body-flex {
     flex-direction: column;
     gap: 1.5rem;
   }
 
-  .post-feed.article-loop .post-meta-sidebar {
+  .article-loop .post-meta-sidebar {
     width: 100%;
     flex-direction: row;
     justify-content: flex-start;
     padding-top: 0;
   }
 
-  .post-feed.article-loop .post-meta-sidebar .author-avatar {
+  .article-loop .post-meta-sidebar .author-avatar {
     height: 40px;
     width: 40px;
   }
 
-  .post-feed.article-loop .post-meta-sidebar .post-date {
+  .article-loop .post-meta-sidebar .post-date {
     text-align: left;
+  }
+
+  .blog-feed-header {
+    margin: 0 0 2rem 1rem;
   }
 }
