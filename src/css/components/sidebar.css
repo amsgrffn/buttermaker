@@ -14,6 +14,9 @@
   background: var(--color-background);
   overflow-y: auto;
   z-index: var(--z-dropdown);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .sidebar h1 {
@@ -66,6 +69,7 @@
 
 .sidebar-nav {
   list-style: none;
+  flex: 1;
 }
 
 .sidebar-nav li {
