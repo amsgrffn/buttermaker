@@ -367,19 +367,6 @@ svg.heart {
   color: white;
 }
 
-/* Responsive adjustments */
-@media (max-width: 767px) {
-  /* Slightly reduce spacing on mobile */
-  .dropdown-submenu ul {
-    margin-left: calc(14px + var(--space-sm));
-  }
-
-  .dropdown-submenu .dropdown-link {
-    padding: calc(var(--space-xs) * 0.8) var(--space-sm);
-    font-size: calc(var(--font-size-sm) * 0.95);
-  }
-}
-
 /* Accessibility improvements */
 .sidebar-nav .has-dropdown[aria-expanded='true'] > .sidebar-link {
   background: var(--color-background-light);
@@ -431,9 +418,7 @@ svg.heart {
   }
 
   .now-reading-widget {
-    bottom: var(--space-lg);
-    left: var(--space-lg);
-    right: var(--space-lg);
+    /* Remove bottom, left, right - keep only these: */
     padding: var(--space-md);
     text-wrap: pretty;
   }
@@ -459,9 +444,7 @@ svg.heart {
   }
 
   .now-reading-widget {
-    left: var(--space-lg);
-    right: var(--space-lg);
-    bottom: var(--space-lg);
+    /* Remove left, right, bottom - keep only this: */
     padding: var(--space-base);
   }
 
