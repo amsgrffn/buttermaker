@@ -1,24 +1,35 @@
 <div class='post-body-flex'>
+
+  <!-- META SIDEBAR - Same as regular posts -->
+  <div class='post-meta-sidebar'>
+    <a href='{{primary_author.url}}'>
+      <img
+        src='{{img_url primary_author.profile_image size='s'}}'
+        alt='{{primary_author.name}}'
+        class='author-avatar'
+      />
+    </a>
+    <time
+      class='post-date'
+      datetime='{{date published_at format='YYYY-MM-DD'}}'
+    >
+      {{date published_at timeago='true'}}
+    </time>
+  </div>
+
+  <!-- CONTENT - Takes up remaining space -->
   <div class='post-content-flex note-post'>
     <h2 class='post-title'>
       <a href='{{url}}'>{{title}}</a>
     </h2>
+
     <div class='note-body'>
       {{content}}
     </div>
-    <div class='pub-date'>
-      <a href='{{primary_author.url}}' class='author-name'><img
-          src='{{img_url primary_author.profile_image size='s'}}'
-          alt='{{primary_author.name}}'
-          class='author-avatar'
-        /></a>
-      &middot;
-      <time datetime='{{date published_at format='YYYY-MM-DD'}}'><a
-          href='{{url}}'
-        >{{date published_at timeago='true'}}</a></time>
-      &middot;
-      <span>{{primary_tag.name}}</span>
 
+    <div class='post-tags'>
+      <span class='post-topic'>{{primary_tag.name}}</span>
     </div>
   </div>
+
 </div>

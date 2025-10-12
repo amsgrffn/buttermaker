@@ -2,6 +2,9 @@
   margin: 0 0 4rem 4rem;
 }
 
+.article-loop {
+}
+
 .blog-feed-header h4 {
   font-family: 'Apex Rounded Trial', sans-serif;
   font-size: 2rem;
@@ -9,7 +12,22 @@
 }
 
 .post-feed.article-loop .post-body-flex {
+  display: flex;
   flex-direction: row;
+  align-items: flex-start; /* Align items to the top */
+  gap: 2rem; /* Space between sidebar and content */
+  margin-bottom: 4rem; /* Space between articles */
+}
+
+/* Left sidebar - Fixed 200px width */
+.post-feed.article-loop .post-meta-sidebar {
+  width: 200px;
+  flex-shrink: 0; /* Prevent sidebar from shrinking */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 0.5rem; /* Slight padding to align with title */
 }
 
 .post-feed.article-loop .post-header {
@@ -19,37 +37,18 @@
   margin-bottom: var(--space-lg);
 }
 
-.post-feed.article-loop .post-content-flex .post-excerpt,
-.post-feed.article-loop .post-content .post-excerpt,
-.post-feed.article-loop .post-content .content-body {
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-base);
-  color: var(--color-text-dark);
-  margin-bottom: var(--space-xl);
-}
-
-.post-feed.article-loop .content-body p,
-.post-feed.article-loop .content-body blockquote {
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-base);
-  color: var(--color-text-dark);
-  margin-bottom: var(--space-xl);
-}
-
 .note-post {
-  box-shadow: var(--shadow);
   margin-bottom: 3rem;
-  padding: 2rem;
 }
 
 .note-post h2 {
   display: none;
 }
 
-.note-post .note-body blockquote,
-.note-post .note-body ol,
-.note-post .note-body p,
-.note-post .note-body ul {
+.blog-item blockquote,
+.blog-item ol,
+.blog-item p,
+.blog-item ul {
   font-size: 1.2rem;
   line-height: var(--line-height-base);
   margin-bottom: var(--space-lg);
@@ -58,10 +57,6 @@
 .note-post .note-body blockquote {
   border-left: 1px solid #000;
   padding-left: 1.5rem;
-}
-
-.post-feed.article-loop .post-body-flex {
-  align-items: center;
 }
 
 .post-feed.article-loop .post-title {
@@ -133,4 +128,136 @@
   color: var(--color-primary);
   text-decoration: none;
   font-weight: var(--font-weight-medium);
+}
+
+/* ==========================================================================
+   Blog Article Feed Layout - Two Column Structure
+   ========================================================================== */
+
+/* Main flex container for each article */
+.post-feed.article-loop .post-body-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; /* Align items to the top */
+  gap: 2rem; /* Space between sidebar and content */
+  margin-bottom: 4rem; /* Space between articles */
+}
+
+/* Left sidebar - Fixed 200px width */
+.post-feed.article-loop .post-meta-sidebar {
+  width: 200px;
+  flex-shrink: 0; /* Prevent sidebar from shrinking */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 0.5rem; /* Slight padding to align with title */
+}
+
+/* Author avatar in sidebar */
+.post-feed.article-loop .post-meta-sidebar .author-avatar {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: grayscale(70%);
+}
+
+/* Date in sidebar */
+.post-feed.article-loop .post-meta-sidebar .post-date {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-medium);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Content area - Takes up remaining space */
+.post-feed.article-loop .post-content-flex {
+  flex: 1; /* Grows to fill remaining space */
+  min-width: 0; /* Allows content to shrink if needed */
+}
+
+/* Title styling */
+.post-feed.article-loop .post-title {
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.01rem;
+  margin-bottom: var(--space-lg);
+  margin-top: 0;
+}
+
+.post-feed.article-loop .post-title a {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-headings);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.post-feed.article-loop .post-title a:hover {
+  color: var(--color-primary);
+}
+
+/* Excerpt and content styling */
+.post-feed.article-loop .post-excerpt,
+.post-feed.article-loop .post-content {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-base);
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-xl);
+}
+
+/* Tags at the bottom */
+.post-feed.article-loop .post-tags {
+  margin-top: var(--space-lg);
+}
+
+.post-feed.article-loop .post-topic {
+  display: inline-block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-medium);
+  padding: 0.25rem 0.75rem;
+  background: var(--color-bg-light, #f5f5f5);
+  border-radius: var(--radius-sm);
+}
+
+/* Read more button */
+.post-feed.article-loop .read-more-btn {
+  display: inline-block;
+  margin-top: var(--space-md);
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: color 0.2s ease;
+}
+
+.post-feed.article-loop .read-more-btn:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Responsive Design - Mobile Adjustments
+   ========================================================================== */
+
+/* Tablet and below - Stack the layout */
+@media (max-width: 768px) {
+  .post-feed.article-loop .post-body-flex {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .post-feed.article-loop .post-meta-sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-top: 0;
+  }
+
+  .post-feed.article-loop .post-meta-sidebar .author-avatar {
+    height: 40px;
+    width: 40px;
+  }
+
+  .post-feed.article-loop .post-meta-sidebar .post-date {
+    text-align: left;
+  }
 }

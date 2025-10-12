@@ -30,7 +30,6 @@
 
 .horizontal-scroll-title {
   color: var(--color-headings);
-  font-family: 'Apex Rounded Trial', sans-serif;
   font-size: 1.4rem;
   font-weight: 800;
   margin: 0;
@@ -164,7 +163,6 @@
 }
 
 .scroll-card-title {
-  font-family: 'Apex Rounded Trial', sans-serif;
   font-size: 1.2rem;
   font-weight: 800;
   color: var(--color-headings);
