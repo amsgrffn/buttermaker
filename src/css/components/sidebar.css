@@ -149,12 +149,9 @@
 
 /* Now Reading Widget */
 .now-reading-widget {
-  position: absolute;
-  bottom: var(--space-xl);
-  left: var(--space-xl);
-  right: var(--space-xl);
   border-radius: var(--radius-lg);
   padding: var(--space-3xl) var(--space-lg) 0 var(--space-lg);
+  margin-top: auto; /* This pushes it to the bottom within flexbox */
 }
 
 .widget-header {
