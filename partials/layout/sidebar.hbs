@@ -1,5 +1,120 @@
 <aside class="sidebar">
-	{{> "sections/sidebar-nav"}}
-	{{> "sections/sidebar-footer"}}
+	{{! Title Section - separate from nav }}
+	<div class="sidebar-header">
+		<h1><a href="{{@site.url}}">You Can't Be Serious</a></h1>
+		<p class="tagline">{{@site.description}}</p>
+	</div>
+
+	{{! Navigation Section - now separate }}
+	<nav class="sidebar-navigation">
+		<ul class="sidebar-nav">
+			<li>
+				<a href="{{@site.url}}" class="sidebar-link">
+					<span class="nav-icon">
+						{{> "icons/arrow-right"}}
+					</span>
+					Homepage
+				</a>
+			</li>
+			<li>
+				<a href="{{@site.url}}/blog/" class="sidebar-link">
+					<span class="nav-icon">
+						{{> "icons/arrow-right"}}
+					</span>
+					The Blog
+				</a>
+			</li>
+			<li>
+				<a href="{{@site.url}}/about/" class="sidebar-link">
+					<span class="nav-icon">
+						{{> "icons/arrow-right"}}
+					</span>
+					About Us
+				</a>
+			</li>
+			{{! Topics - with dropdown (customize with your actual tags) }}
+			<li class="has-dropdown" data-dropdown-type="topics">
+				<a href="{{@site.url}}/topics/" class="sidebar-link">
+					<span class="nav-icon">
+						{{> "icons/plus"}}
+					</span>
+					Frequent Topics
+				</a>
+				<div class="dropdown-submenu">
+					<ul>
+						{{! Replace these with your actual tags/topics }}
+						<li><a href="{{@site.url}}/tag/poetry/" class="dropdown-link">Poetry</a></li>
+						<li><a href="{{@site.url}}/tag/fiction/" class="dropdown-link">Fiction</a></li>
+						<li><a href="{{@site.url}}/tag/art/" class="dropdown-link">Art</a></li>
+						<li><a href="{{@site.url}}/tag/writing/" class="dropdown-link">Writing</a></li>
+						<li><a href="{{@site.url}}/tag/photography/" class="dropdown-link">Photography</a></li>
+						<li><a href="{{@site.url}}/tag/culture/" class="dropdown-link">Culture</a></li>
+					</ul>
+				</div>
+			</li>
+			{{! Pages - with dropdown (customize with your actual pages) }}
+			<li class="has-dropdown" data-dropdown-type="pages">
+				<a href="{{@site.url}}/pages/" class="sidebar-link">
+					<span class="nav-icon">
+						{{> "icons/plus"}}
+					</span>
+					All Pages
+				</a>
+				<div class="dropdown-submenu">
+					<ul>
+						{{! Replace these with your actual pages }}
+						<li><a href="{{@site.url}}/blogroll/" class="dropdown-link">Blogroll</a></li>
+						<li><a href="{{@site.url}}/contact/" class="dropdown-link">Contact</a></li>
+						<li><a href="{{@site.url}}/feeds/" class="dropdown-link">Feeds/RSS</a></li>
+						<li><a href="{{@site.url}}/house-rules/" class="dropdown-link">House Rules</a></li>
+						<li><a href="{{@site.url}}/memberships/" class="dropdown-link">Membership Info</a></li>
+						<li><a href="{{@site.url}}/contact/" class="dropdown-link">Moving Pictures</a></li>
+						<li><a href="{{@site.url}}/contact/" class="dropdown-link">Newsletter Info</a></li>
+						<li><a href="{{@site.url}}/office-hours/" class="dropdown-link">Office Hours</a></li>
+						<li><a href="{{@site.url}}/nerd-alert/" class="dropdown-link">Nerd Alert</a></li>
+					</ul>
+				</div>
+			</li>
+			{{! Archive - regular link (no dropdown) }}
+			<li>
+				<a href="{{@site.url}}/archive/" class="sidebar-link">
+					<span class="nav-icon">
+						{{> "icons/arrow-right"}}
+					</span>
+					The Archive
+				</a>
+			</li>
+			{{! Legal - with dropdown }}
+			<li class="has-dropdown" data-dropdown-type="legal">
+				<a href="{{@site.url}}/legal/" class="sidebar-link">
+					<span class="nav-icon">
+						{{> "icons/plus"}}
+					</span>
+					Legal Stuff
+				</a>
+				<div class="dropdown-submenu">
+					<ul>
+						<li><a href="{{@site.url}}/privacy/" class="dropdown-link">Affilate Disclaimer</a></li>
+						<li><a href="{{@site.url}}/cookies/" class="dropdown-link">Cookie Policy</a></li>
+						<li><a href="{{@site.url}}/privacy/" class="dropdown-link">Privacy Policy</a></li>
+						<li><a href="{{@site.url}}/terms/" class="dropdown-link">Terms of Service</a></li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</nav>
+	<div class="now-reading-widget">
+		<p>You Can't Be Serious is built and maintained in the lovely state of Maine. It runs on <a href="https://ghost.org">Ghost</a>, <a href="https://www.magicpages.co/">Magic Pages</a> and <a href="/nerd-alert/#buttermaker-theme">Riggs</a>. It's been <a href="https://www.nytimes.com/1973/05/11/archives/knicks-win-title-top-lakers-10293-new-york-triumphs-in-five-games.html?unlocked_article_code=1.p04.Ennw.Aq7vqriHBZPh&smid=url-share"><span id="knicks-counter"></span></a> since the New York Knicks won an NBA Championship.
+		</p>
+		<div class="widget-controls">
+			<a href="{{@site.url}}/rss/" class="widget-btn" title="RSS Feed">{{> "icons/rss"}}</a>
+			<a href="#/portal/" class="widget-btn" title="Subscribe" data-portal="signup">{{> "icons/mail"}}</a>
+			<a href="#/portal/" class="widget-btn" title="Subscribe" data-portal="signup">{{> "icons/bluesky"}}</a>
+			<a href="#/portal/" class="widget-btn" title="Subscribe" data-portal="signup">{{> "icons/letterboxd"}}</a>
+		</div>
+		<div class="widget-footer">
+			<p class="copyright">© {{date format="YYYY"}} {{@site.title}}</p>
+		</div>
+	</div>
 </aside>
 <div class="sidebar-overlay" onclick="toggleSidebar()"></div>

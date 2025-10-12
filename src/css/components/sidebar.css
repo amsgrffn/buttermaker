@@ -12,10 +12,7 @@
   left: calc(50vw - 700px);
   bottom: 0;
   background: var(--color-background);
-  overflow-y: auto;
   z-index: var(--z-dropdown);
-
-  /* ADD THESE THREE LINES */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -269,14 +266,9 @@ svg.heart {
   vertical-align: middle;
 }
 
-.widget-footer::before {
-  content: '';
-  position: absolute;
-  top: 0; /* For top border */
-  left: 6%; /* Centers the 50% border */
-  width: 50%;
-  height: 1px; /* Border thickness */
-  background-color: var(--color-border-dark);
+.widget-footer {
+  border-top: 1px solid var(--color-border-dark);
+  padding-top: var(--space-md);
 }
 
 .copyright {
