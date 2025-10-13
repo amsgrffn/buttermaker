@@ -191,22 +191,44 @@
 }
 
 .scroll-card-meta {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  right: var(--space-md); /* Add right positioning to span full width */
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--space-xs);
   font-size: var(--font-size-xs);
-  color: var(--color-text-medium);
+  padding: 0 var(--space-sm);
+  color: white;
+  z-index: 2;
 }
 
-.scroll-card-author {
+.scroll-card-meta time {
+  font-size: 14px;
+  font-weight: var(--font-weight-medium); /* Optional: makes it a bit bolder */
+  margin: -4px 0 0 0;
+}
+
+.post-feed .post-card-meta {
+  position: absolute;
+  top: var(--space-lg);
+  left: var(--space-lg);
+  right: var(--space-lg);
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: white;
+  padding: var(--space-xs) var(--space-sm);
+  z-index: 3;
 }
 
 .scroll-card-avatar {
   width: 30px;
   height: 30px;
+  border-radius: var(--radius-full);
   object-fit: cover;
   filter: grayscale(70%);
 }

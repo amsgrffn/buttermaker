@@ -22,24 +22,25 @@
             </div>
           {{/if}}
 
+          {{! Meta moved OUTSIDE and positioned at TOP }}
+          <div class='post-card-meta'>
+            <div class='post-card-author'>
+              <img
+                src='{{img_url primary_author.profile_image size='s'}}'
+                alt='{{primary_author.name}}'
+                class='post-card-avatar'
+              />
+            </div>
+            <time datetime='{{date published_at format='YYYY-MM-DD'}}'>
+              {{date published_at timeago='true'}}
+            </time>
+          </div>
+
+          {{! Content container with just tag, title, and excerpt }}
           <div class='post-card-content'>
             <p class='post-topic'><span>{{primary_tag.name}}</span></p>
             <h2 class='post-card-title'>{{title}}</h2>
             <p class='post-card-excerpt'>{{excerpt words='40'}}</p>
-
-            <div class='post-card-meta'>
-              <div class='post-card-author'>
-                <img
-                  src='{{img_url primary_author.profile_image size='s'}}'
-                  alt='{{primary_author.name}}'
-                  class='post-card-avatar'
-                />
-              </div>
-              <span>•</span>
-              <time datetime='{{date published_at format='YYYY-MM-DD'}}'>
-                {{date published_at timeago='true'}}
-              </time>
-            </div>
           </div>
         </a>
       </article>

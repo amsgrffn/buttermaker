@@ -16,18 +16,20 @@
 									<img src="{{img_url feature_image size="m"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" loading="lazy">
 								</div>
 							{{/if}}
+
+							{{! Meta info moved OUTSIDE and positioned at TOP }}
+							<div class="scroll-card-meta">
+								<div class="scroll-card-author">
+									<img src="{{img_url primary_author.profile_image size="xs"}}" alt="{{primary_author.name}}" class="scroll-card-avatar">
+								</div>
+								<time datetime="{{date published_at format="YYYY-MM-DD"}}">
+									{{date published_at format="M/D/YYYY"}}
+								</time>
+							</div>
+							{{! Content container with just title and tag }}
 							<div class="scroll-card-content">
 								<p class="post-topic"><span>{{primary_tag.name}}</span></p>
 								<h3 class="scroll-card-title">{{title}}</h3>
-								<div class="scroll-card-meta">
-									<div class="scroll-card-author">
-										<img src="{{img_url primary_author.profile_image size="xs"}}" alt="{{primary_author.name}}" class="scroll-card-avatar">
-									</div>
-									<span>•</span>
-									<time datetime="{{date published_at format="YYYY-MM-DD"}}">
-										{{date published_at timeago="true"}}
-									</time>
-								</div>
 							</div>
 						</a>
 					{{/foreach}}
