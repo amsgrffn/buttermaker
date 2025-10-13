@@ -5,8 +5,8 @@
 .newsletter-widget {
   /* Same gradient as homepage CTA banner */
   background: linear-gradient(135deg, #4a9eff 0%, #00d4aa 100%);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl);
+  border-radius: 22px;
+  padding: var(--space-2xl);
   margin-bottom: var(--space-2xl);
   position: relative;
   overflow: hidden;

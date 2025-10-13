@@ -82,9 +82,9 @@
   background: #fff;
   background-size: 16px 16px;
   padding: var(--space-3xl);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-xl);
   box-shadow: var(--shadow);
-  border-radius: var(--radius-lg);
+  border-radius: 22px;
 }
 
 .note-title {

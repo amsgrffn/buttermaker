@@ -26,7 +26,8 @@
   position: absolute; /* JavaScript will position these */
   width: calc((100% - var(--space-xl)) / 2); /* 2 columns with gap */
   background: var(--color-background-card);
-  border-radius: var(--radius-lg);
+  border-radius: 22px;
+  padding: 1rem;
   overflow: hidden;
   border: 1px solid rgb(234, 219, 250);
   transition: all var(--transition-slow);
@@ -63,6 +64,7 @@
   height: 100%;
   filter: grayscale(70%);
   object-fit: cover;
+  border-radius: 12px;
   transition: transform var(--transition-slow);
 }
 
@@ -146,6 +148,14 @@
   right: 0;
   bottom: 0;
   z-index: 1;
+}
+
+.end-credits {
+  border-top: 1px solid #dfdfdf;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  margin: 0 1.5rem;
+  padding-top: 1rem;
 }
 
 /* Responsive Masonry */

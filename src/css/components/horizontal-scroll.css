@@ -101,8 +101,7 @@
 .scroll-card {
   flex: 0 0 295px;
   height: 295px;
-
-  border-radius: var(--radius-xl);
+  border-radius: 22px;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
@@ -155,10 +154,10 @@
   bottom: 0; /* Anchor to bottom of card */
   left: 0;
   right: 0;
-  padding: var(--space-lg);
-  background: rgba(255, 255, 255, 0.8);
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.95);
   margin: var(--space-md);
-  border-radius: var(--radius-lg);
+  border-radius: 22px;
   box-shadow: var(--shadow);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -186,7 +185,7 @@
 
 .scroll-card-content .post-topic span {
   background: var(--color-red);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-xl);
   color: #fefefe;
   padding: 6px 12px;
 }

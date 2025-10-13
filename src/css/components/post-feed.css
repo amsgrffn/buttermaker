@@ -17,7 +17,7 @@
 .post-card {
   position: relative;
   height: 550px;
-  border-radius: var(--radius-xl);
+  border-radius: 22px;
   overflow: hidden;
   transition: all var(--transition-base);
   box-shadow: var(--shadow);
@@ -28,6 +28,10 @@
   animation: wiggle 0.5s ease-in-out;
 }
 
+.post-card:hover .post-card-excerpt {
+  color: var(--color-headings);
+}
+
 /* Featured image fills the entire card as background */
 .post-card-image {
   position: absolute;
@@ -36,6 +40,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  z-index: 1;
 }
 
 .post-card-image img {
@@ -45,6 +50,8 @@
   filter: grayscale(30%);
   object-position: top center;
   transition: transform var(--transition-base);
+  filter: blur(3px);
+  transform: scale(1.1);
 }
 
 .post-card:hover .post-card-image img {
@@ -53,16 +60,19 @@
 
 .post-card-content {
   position: absolute;
-  bottom: 20px;
+
   left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+
+  transform: translate(-50%, -50%);
   width: 85%;
   max-width: 700px;
   padding: var(--space-3xl);
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  border-radius: 12px;
+  border-radius: 22px;
   box-shadow: var(--shadow);
+  z-index: 2;
 }
 
 /* Tag above title */
