@@ -12,43 +12,65 @@
   {{> "sections/note-card"}}
 {{else}}
 
-  <!-- PREVIEW VERSION (for long posts) -->
+  {{! PREVIEW VERSION (for long posts) }}
   <div class="post-preview" style="display: none;">
     <div class="post-body-flex">
 
-      <!-- META SIDEBAR - Now comes first -->
+      {{! Left: Author Avatar Sidebar (matches full posts) }}
       <div class="post-meta-sidebar">
         <img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
       </div>
 
-      <!-- CONTENT - Now comes second -->
-      <div class="post-content-flex">
-        <h2 class="post-title">
-          <a href="{{url}}">{{title}}</a>
-        </h2>
-
-        {{#if custom_excerpt}}
-          <p class="post-excerpt">{{custom_excerpt}}</p>
-        {{else}}
-          <p class="post-excerpt">{{excerpt words="50"}}</p>
-        {{/if}}
-
-        <div class="post-tags">
-          <span class="post-topic">{{tags limit="3"}}</span>
-        </div>
-
-        <a href="{{url}}" class="read-more-btn">Read full post →</a>
-      </div>
-
-      <div class="post-media-flex">
+      {{! Right: Preview Card }}
+      <div class="post-preview-card">
+        {{! Featured Image with Overlay }}
         {{#if feature_image}}
-          <img src="{{img_url feature_image size="m"}}" alt="{{title}}" class="post-image">
+          <div class="post-preview-image">
+            <a href="{{url}}">
+              <img src="{{img_url feature_image size="m"}}" alt="{{title}}">
+            </a>
+            <div class="post-preview-overlay">
+              <span class="post-topic-overlay">{{primary_tag.name}}</span>
+              <time datetime="{{date published_at format="YYYY-MM-DD"}}">
+                {{date published_at timeago="true"}}
+              </time>
+            </div>
+          </div>
         {{else}}
-          <img src="{{asset "img/collage2.jpg"}}" alt="{{title}}" class="post-image post-image-fallback">
+          <div class="post-preview-image">
+            <a href="{{url}}">
+              <img src="{{asset "img/collage2.jpg"}}" alt="{{title}}" class="post-image-fallback">
+            </a>
+            <div class="post-preview-overlay">
+              <time datetime="{{date published_at format="YYYY-MM-DD"}}">
+                {{date published_at timeago="true"}}
+              </time>
+              <span class="post-topic-overlay">{{primary_tag.name}}</span>
+            </div>
+          </div>
         {{/if}}
+
+        {{! Content Below Image }}
+        <div class="post-preview-content">
+          <h2 class="post-title">
+            <a href="{{url}}">{{title}}</a>
+          </h2>
+
+          {{#if custom_excerpt}}
+            <p class="post-excerpt">{{custom_excerpt}}</p>
+          {{else}}
+            <p class="post-excerpt">{{excerpt words="50"}}</p>
+          {{/if}}
+
+         <a href="{{url}}" class="read-more-btn">
+           Read full post
+           <svg class="read-more-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+             <line x1="5" y1="12" x2="19" y2="12"></line>
+             <polyline points="12 5 19 12 12 19"></polyline>
+           </svg>
+         </a>
+        </div>
       </div>
-    </div>
-  </div>
 
   <!-- FULL VERSION (for short posts) - SHOWS BY DEFAULT -->
   <div class="post-full">

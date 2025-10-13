@@ -114,14 +114,6 @@
   text-wrap: pretty;
 }
 
-.post-card-meta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  font-size: 0.875rem;
-  color: var(--color-text-medium);
-}
-
 .post-card-author {
   display: flex;
   align-items: center;
@@ -129,11 +121,16 @@
 }
 
 .post-card-avatar {
-  width: 24px;
-  height: 24px;
+  width: 34px;
+  height: 34px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 3px;
   border-radius: var(--radius-full);
   object-fit: cover;
   filter: grayscale(70%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .author-name {
@@ -151,6 +148,20 @@
   color: inherit;
   display: block;
   height: 100%;
+}
+
+.post-feed .post-card-meta {
+  position: absolute;
+  top: var(--space-lg);
+  left: var(--space-lg);
+  right: var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: white;
+  padding: var(--space-xs) var(--space-xl);
+  z-index: 3;
 }
 
 /* Accessibility - Focus state */

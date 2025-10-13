@@ -22,9 +22,9 @@
 								<div class="scroll-card-author">
 									<img src="{{img_url primary_author.profile_image size="xs"}}" alt="{{primary_author.name}}" class="scroll-card-avatar">
 								</div>
-								<time datetime="{{date published_at format="YYYY-MM-DD"}}">
-									{{date published_at format="M/D/YYYY"}}
-								</time>
+								<time datetime='{{date published_at format='YYYY-MM-DD'}}'>
+									{{date published_at timeago='true'}}
+								  </time>
 							</div>
 							{{! Content container with just title and tag }}
 							<div class="scroll-card-content">

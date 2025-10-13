@@ -211,26 +211,17 @@
   margin: -4px 0 0 0;
 }
 
-.post-feed .post-card-meta {
-  position: absolute;
-  top: var(--space-lg);
-  left: var(--space-lg);
-  right: var(--space-lg);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.875rem;
-  color: white;
-  padding: var(--space-xs) var(--space-sm);
-  z-index: 3;
-}
-
 .scroll-card-avatar {
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 3px;
   border-radius: var(--radius-full);
   object-fit: cover;
   filter: grayscale(70%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .scroll-card-excerpt {

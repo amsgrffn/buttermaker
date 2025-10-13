@@ -70,7 +70,7 @@
   ],
   "config": {
     "card_assets": true,
-    "posts_per_page": 20,
+    "posts_per_page": 30,
     "image_sizes": {
       "xxs": {
         "width": 30
