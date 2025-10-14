@@ -16,7 +16,8 @@
    Note Posts
    ========================================================================== */
 
-.note-post {
+.note-body {
+  margin-bottom: 2rem;
 }
 
 .note-post h2 {
@@ -252,6 +253,10 @@
 .post-preview,
 .post-full {
   transition: opacity 0.3s ease;
+}
+
+.post-footer-tags a {
+  color: var(--color-text-muted);
 }
 
 /* ==========================================================================

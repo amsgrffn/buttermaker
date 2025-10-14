@@ -1,7 +1,6 @@
 {{!< default}}
 {{#post}}
 <div class="split-content-wrapper">
-
 	<div class="main-content-area">
 		<article class="post-container">
 	{{> "components/breadcrumb-nav"}}
@@ -11,24 +10,22 @@
 				<div class="post-hero-image">
 					<img src="{{img_url feature_image size="xl"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
 				</div>
+
+				{{! NEW: Top Meta Bar }}
+				<div class="post-hero-top-meta">
+					<img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar-top">
+					<time datetime="{{date published_at format="YYYY-MM-DD"}}">
+						{{date published_at timeago="true"}}
+					</time>
+				</div>
+
 				<div class="post-hero-content">
 					<h1 class="post-hero-title">{{title}}</h1>
 					{{#if custom_excerpt}}
 						<p class="excerpt">{{custom_excerpt}}</p>
 					{{/if}}
-					<div class="post-hero-meta">
-						<div class="post-author">
-							<img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
-							<div class="author-details">
-								<div class="post-date">
-									<time datetime="{{date published_at format="YYYY-MM-DD"}}">
-										{{date published_at timeago="true"}}
-									</time>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
+
 				{{! Caption if exists }}
 				{{#if feature_image_caption}}
 				<div class="post-hero-caption">
@@ -48,8 +45,6 @@
 							{{date published_at format="MMMM DD, YYYY"}}
 						</time>
 					</div>
-
-
 				</div>
 			</header>
 			{{/if}}
@@ -106,13 +101,10 @@
 			</div>
 		</section>
 		{{/if}}
-
 	</div>
 
 	<aside class="content-aside">
 		{{> "layout/aside-content"}}
 	</aside>
-
 </div>
-
 {{/post}}
