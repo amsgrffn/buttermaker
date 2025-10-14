@@ -833,69 +833,6 @@
   position: relative;
 }
 
-.post-footer .share-dropdown {
-  position: absolute;
-  left: 0;
-  top: 0;
-  pointer-events: none; /* Don't block clicks */
-}
-
-.post-footer .share-dropdown-content {
-  position: fixed; /* Use fixed instead of absolute */
-  z-index: 1000;
-  pointer-events: auto; /* Re-enable clicks on the dropdown */
-  display: none; /* Hidden by default */
-}
-
-.post-footer .share-dropdown.active .share-dropdown-content {
-  display: block;
-}
-
-/* Optional: Add a small arrow pointing to the link */
-.post-footer .share-dropdown-content::before {
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 8px solid var(--dropdown-background, #fff);
-}
-
-.post-footer .share-dropdown {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: fit-content;
-  top: 0;
-}
-
-.post-footer .share-dropdown-content {
-  position: absolute;
-  top: 2rem; /* Adjust this to control how far below the link it appears */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-}
-
-/* Optional: Add a small arrow pointing to the link */
-.post-footer .share-dropdown-content::before {
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 8px solid var(--dropdown-background, #fff);
-}
-
 .post-footer p {
   color: var(--color-text-medium);
   font-size: 0.9rem;

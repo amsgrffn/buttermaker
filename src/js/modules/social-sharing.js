@@ -469,38 +469,6 @@ export function initSocialSharing() {
       return;
     }
 
-    // Check if footer share trigger was clicked
-    if (e.target.closest('.trigger-share-footer')) {
-      e.preventDefault();
-
-      const triggerLink = e.target.closest('.trigger-share-footer');
-      const postFooter = triggerLink.closest('.post-footer');
-
-      if (postFooter) {
-        const dropdown = postFooter.querySelector('.share-dropdown');
-        const dropdownContent = postFooter.querySelector(
-          '.share-dropdown-content',
-        );
-
-        if (dropdown && dropdownContent) {
-          // Close other dropdowns first
-          hideAllDropdowns();
-
-          // Get the position of the trigger link
-          const linkRect = triggerLink.getBoundingClientRect();
-
-          // Position the dropdown centered below the link
-          dropdownContent.style.left = `${linkRect.left + linkRect.width / 2}px`;
-          dropdownContent.style.top = `${linkRect.bottom + 10}px`; // 10px gap below link
-          dropdownContent.style.transform = 'translateX(-50%)'; // Center it
-
-          // Toggle the dropdown
-          dropdown.classList.toggle('active');
-        }
-      }
-      return;
-    }
-
     // Check for sharing buttons
     const copyUrlButton = e.target.closest('.copy-url');
     const emailShareButton = e.target.closest('.email-share');
