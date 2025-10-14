@@ -108,9 +108,10 @@
           {{content}}
         </div>
 
-       <div class="post-footer-tags">
-         <span>{{tags limit="3"}}</span>
-       </div>
+      <div class="post-footer-tags">
+        <span class="tags-list">{{tags limit="3" from="2" separator=""}}</span>
+        {{> "components/share-dropdown"}}
+      </div>
       </div>
     </div>
   </div>

@@ -1,8 +1,12 @@
 <div class="aside-content">
+{{#is "post, page, tag, author"}}
 	{{> "widgets/newsletter-signup"}}
+	{{/is}}
 	{{> "widgets/recent-notes"}}
+	{{#is "home"}}
 	{{> "widgets/site-stats"}}
 	{{> "widgets/testimonials"}}
 	{{> "widgets/movies-watched"}}
+	{{/is}}
 	{{> "widgets/blogroll"}}
 </div>

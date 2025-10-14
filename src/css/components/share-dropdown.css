@@ -203,14 +203,11 @@ body.dark-mode .error-icon {
 
 /* Accessibility - Focus styles for keyboard navigation */
 .share-dropbtn:focus {
-  outline: 2px solid var(--color-primary, #007cba);
-  outline-offset: 2px;
 }
 
 .share-dropdown-content a:focus {
-  outline: 2px solid var(--color-primary, #007cba);
   outline-offset: -2px;
-  background-color: rgba(0, 124, 186, 0.1);
+
   color: var(--color-red) !important;
 }
 

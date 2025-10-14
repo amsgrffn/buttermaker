@@ -55,9 +55,27 @@
 
 			{{! Rest of your post.hbs stays the same... }}
 			<footer class="post-footer">
-			<p>
-				<a href="/">You can share this post</a> if you'd like. Members can leave a comment below. Anyone can use our contact page to <a href="/contact">reach out to us</a> via the various channels we offer. {{#match updated at}}This post was updated on <time class="updated" datetime="{{updated_at}}">{{date updated_at format="M/D/Y"}}</time>. <a href="/corrections-policy/">Check out our corrections policy</a> if you're curious about such things. Cheers!{{/match}}
-			</p>
+				<div class="share-dropdown footer-share-hidden">
+					<button class="share-dropbtn" aria-label="Share this article" style="display: none;">{{> "icons/ellipsis"}}</button>
+					<div class="share-dropdown-content">
+						<p class="title">Share and Support</p>
+						<p class="thanks">Thanks for dropping by. Use the links below to share this article and/or support this site.</p>
+						<a href="#" class="native-share" style="display: none;">{{> "icons/share"}} Share via Device</a>
+						<a href="#" class="copy-url">{{> "icons/link"}} Copy Article URL</a>
+						<a href="#" class="email-share">{{> "icons/at-sign"}} Email Article</a>
+						<a href="#" class="mastodon-share">{{> "icons/mastodon"}} Share on Mastodon</a>
+						<a href="https://bsky.app/intent/compose?text={{encode title}}{{encode (url absolute="true")}}" target="_blank" rel="noopener noreferrer">{{> "icons/bluesky"}} Share on Bluesky</a>
+						<a href="https://www.reddit.com/submit?url={{encode (url absolute="true")}}&title={{encode title}}" target="_blank" rel="noopener noreferrer">{{> "icons/reddit"}} Share on Reddit</a>
+						<a href="whatsapp://send?text={{encode (concat title ' ' (url absolute="true"))}}" class="whatsapp-share" target="_blank" rel="noopener noreferrer">{{> "icons/whatsapp"}} Share on WhatsApp</a>
+						<a href="#/portal/support">{{> "icons/thumb-up"}} Get Our Newsletter</a>
+						<a href="/memberships">{{> "icons/thumb-up"}} Subscribe</a>
+						<a href="#/portal/support">{{> "icons/beer"}} Buy Us a Pint</a>
+						<a href="/contact">{{> "icons/mail"}} Contact Us</a>
+					</div>
+				</div>
+				<p>
+					<a href="#" class="trigger-share-footer">You can share this post</a> if you'd like. Members can leave a comment below. Anyone can use our contact page to <a href="/contact">reach out to us</a> via the various channels we offer. {{#match updated at}}This post was updated on <time class="updated" datetime="{{updated_at}}">{{date updated_at format="M/D/Y"}}</time>. <a href="/corrections-policy/">Check out our corrections policy</a> if you're curious about such things. Cheers!{{/match}}
+				</p>
 			</footer>
 		</article>
 

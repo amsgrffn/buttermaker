@@ -421,24 +421,44 @@
 }
 
 .post-content .kg-image-card figcaption {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--color-text-medium);
-  margin: var(--space-lg) 0 var(--space-3xl);
+  margin: var(--space-md) var(--space-md) var(--space-3xl) 0;
   padding-right: var(--space-sm);
-  text-align: right;
+  display: flex;
+  align-items: flex-start;
+  gap: 3px;
+}
+
+.post-content .kg-image-card figcaption::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-top: 0.12rem; /* Slight adjustment to align with first line of text */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='18' height='18' x='3' y='3' rx='2' ry='2'/%3E%3Ccircle cx='9' cy='9' r='2'/%3E%3Cpath d='m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-shrink: 0;
 }
 
 .post-content .kg-image-card figcaption a {
-  color: var(--color-text-dark);
-  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  font-weight: 600;
   text-decoration: underline;
-  text-decoration-color: var(--color-text-dark);
+  text-decoration-color: var(--color-text);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
   transition:
     color 0.3s ease,
     text-decoration-color 0.3s ease;
   opacity: 0.8;
+}
+
+.post-content .kg-image-card figcaption a:hover {
+  color: var(--link-color);
+  text-decoration: none;
 }
 
 /* Post Content - The Main Content Area */
@@ -513,8 +533,8 @@
 }
 
 .post-content a:hover {
-  color: var(--color-primary-hover);
-  text-decoration-thickness: 2px;
+  color: var(--link-color);
+  text-decoration: none;
 }
 
 /* Lists */
@@ -810,6 +830,70 @@
   border-top: 1px solid var(--color-border);
   padding-top: var(--space-lg);
   margin: var(--space-5xl) 0 7rem;
+  position: relative;
+}
+
+.post-footer .share-dropdown {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none; /* Don't block clicks */
+}
+
+.post-footer .share-dropdown-content {
+  position: fixed; /* Use fixed instead of absolute */
+  z-index: 1000;
+  pointer-events: auto; /* Re-enable clicks on the dropdown */
+  display: none; /* Hidden by default */
+}
+
+.post-footer .share-dropdown.active .share-dropdown-content {
+  display: block;
+}
+
+/* Optional: Add a small arrow pointing to the link */
+.post-footer .share-dropdown-content::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid var(--dropdown-background, #fff);
+}
+
+.post-footer .share-dropdown {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: fit-content;
+  top: 0;
+}
+
+.post-footer .share-dropdown-content {
+  position: absolute;
+  top: 2rem; /* Adjust this to control how far below the link it appears */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+/* Optional: Add a small arrow pointing to the link */
+.post-footer .share-dropdown-content::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid var(--dropdown-background, #fff);
 }
 
 .post-footer p {
