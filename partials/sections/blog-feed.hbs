@@ -80,7 +80,9 @@
 
       {{! META SIDEBAR }}
       <div class="post-meta-sidebar">
-        <img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
+        <a href="{{primary_author.url}}" class="author-link">
+            <img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
+        </a>
       </div>
 
       {{! CONTENT }}

@@ -9,8 +9,6 @@
   --color-text-muted: oklch(0.5101 0.0089 61.32); /* #6a6561 */
   --color-display: oklch(0.2109 0.0037 48.54); /* #1a1817 */
   --color-text-on-dark: oklch(0.9479 0.0042 56.37); /* #F0EDEB */
-  --link-color: oklch(0.5439 0.2052 30.28); /* #cc2211 */
-
   --color-primary: #ff9f43;
   --strong-blue: #069; /* Strong blue */
   --color-pumpkin: #ff7400; /* Orange accent */
@@ -21,6 +19,9 @@
   --color-notebook-blue: oklch(0.764, 0.058, 258); /* #9CB4D8 */
   --color-cool-blue: oklch(0.9755 0.0045 258.32); /* #F5F7FA; */
   --color-blue-grey: oklch(0.9354 0.008 253.86); /* #E6EAEF; */
+
+  --link-color: oklch(0.5439 0.2052 30.28); /* #cc2211 */
+  --link-color-muted: #ffede7;
 
   --color-text-dark: oklch(0.3083 0.0078 59.38); /* #332f2c - Standard text */
   --color-headings: #2e2e31;

@@ -123,6 +123,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  border-radius: 22px;
 }
 
 .scroll-card-image img {
@@ -186,7 +187,7 @@
 .scroll-card-content .post-topic span {
   background: var(--color-red);
   border-radius: var(--radius-xl);
-  color: #fefefe;
+  color: #fff2ee;
   padding: 6px 12px;
 }
 
@@ -212,16 +213,16 @@
 }
 
 .scroll-card-avatar {
-  width: 34px;
-  height: 34px;
-  background: rgba(255, 255, 255, 0.4);
+  width: 38px;
+  height: 38px;
+  background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 3px;
   border-radius: var(--radius-full);
   object-fit: cover;
   filter: grayscale(70%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
 .scroll-card-excerpt {
@@ -255,7 +256,6 @@
    ========================================================================== */
 
 .category-tabs-section {
-  /* REMOVED viewport-spanning CSS - now respects container */
   margin-bottom: var(--space-md);
   padding: 0;
   overflow: hidden;
@@ -302,18 +302,14 @@
   min-width: fit-content;
 }
 
+.category-tab.active,
 .category-tab:hover {
-  color: #fff;
   background: var(--link-color);
-}
-
-.category-tab.active {
-  background: var(--link-color);
-  color: white;
+  color: var(--link-color-muted);
 }
 
 .category-tab.active:hover {
-  color: white;
+  color: var(--link-color-muted);
 }
 
 /* Loading and Empty States */

@@ -212,7 +212,7 @@
 
 .header-btn.primary {
   background: var(--link-color);
-  color: white;
+  color: #fff2ee;
 }
 
 .header-btn:hover {
