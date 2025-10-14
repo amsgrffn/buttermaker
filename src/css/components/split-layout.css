@@ -284,7 +284,7 @@
   margin-bottom: var(--space-xl);
   min-height: 25rem;
   box-shadow: var(--shadow);
-  border-radius: 0.5rem;
+  border-radius: 22px;
   text-wrap: balance;
 }
 
@@ -312,7 +312,7 @@
   font-style: normal;
   font-weight: 800;
   letter-spacing: 0.01rem;
-  line-height: 1.2;
+  line-height: 1.25;
   position: relative;
   margin: 0 2rem;
   text-align: center;
@@ -321,7 +321,7 @@
 
 .testimonial-widget blockquote cite {
   display: block;
-  font-family: var(--font-family-sans);
+  font-family: var(--font-sans);
   font-size: var(--font-size-base);
   font-style: normal;
   font-weight: 400;

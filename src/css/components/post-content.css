@@ -365,7 +365,7 @@
   width: 100%;
   max-height: 500px;
   object-fit: cover;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
@@ -674,7 +674,7 @@
 .post-content figure.wide img {
   width: 100% !important;
   max-width: 100% !important;
-  border-radius: var(--radius-md);
+  border-radius: 22px;
 }
 
 /* Wide figures - Ghost classes have priority */
@@ -697,7 +697,7 @@
 }
 
 .post-content .kg-image-card img {
-  border-radius: var(--radius-md);
+  border-radius: 22px;
 }
 
 /* Ghost gallery support */
@@ -831,7 +831,6 @@
 }
 
 .related-card:hover {
-  transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   animation: wiggle 0.5s ease-in-out;
 }

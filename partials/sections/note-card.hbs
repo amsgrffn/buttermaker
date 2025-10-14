@@ -16,12 +16,10 @@
             href='{{url}}'
           >{{name}}</a>{{/primary_tag}}</span>
       <span class='post-item'>
-        <time
-          class='post-date'
-          datetime='{{date published_at format='YYYY-MM-DD'}}'
-        >
-          {{date published_at timeago='true'}}
-        </time>
+
+		  <a href="{{url}}" aria-label="Read post from {{date published_at format="MMMM Do, YYYY"}}"><time class='post-date' datetime="{{date published_at format="YYYY-MM-DD"}}">
+				  {{date published_at timeago="true"}}
+		  </time> {{> "icons/arrow-right"}}</a>
       </span>
     </div>
     <h2 class='post-title'>

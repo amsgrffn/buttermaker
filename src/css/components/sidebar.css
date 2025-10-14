@@ -144,6 +144,68 @@
   text-wrap: pretty;
 }
 
+.now-reading-widget svg {
+  height: 16px;
+  width: 16px;
+  vertical-align: middle;
+  opacity: 0.7;
+  margin-top: -1px;
+}
+
+.affiliate-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 1px;
+  color: #f59e0b; /* amber color */
+  text-decoration: none;
+  transition: opacity 0.2s;
+  vertical-align: middle;
+}
+
+.affiliate-link:hover {
+  opacity: 0.7;
+}
+
+/* Tooltip styling */
+.affiliate-link[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 12px;
+  background: #000;
+  color: white;
+  font-size: 13px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 1000;
+}
+
+/* Tooltip arrow */
+.affiliate-link[data-tooltip]::after {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 1000;
+}
+
+.affiliate-link[data-tooltip]:hover::before,
+.affiliate-link[data-tooltip]:hover::after {
+  opacity: 1;
+}
+
 .widget-header {
   display: flex;
   align-items: center;

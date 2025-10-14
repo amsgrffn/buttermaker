@@ -35,7 +35,7 @@
             <header class="post-header">
                 <h1 class="post-title">{{title}}</h1>
                {{#if custom_excerpt}}
-                   <div class="excerpt"><p>{{custom_excerpt}}</p></div>
+                   <p class="page-excerpt">{{custom_excerpt}}</p>
                {{/if}}
             </header>
             {{/if}}
@@ -95,18 +95,10 @@
 
                         <div class="office-hours-card unavailable" data-day="Saturday">
                             <div class="office-hours-card-inner">
-                                <div class="office-hours-day">Saturday</div>
+                                <div class="office-hours-day">Sat/Sun</div>
                                 <div class="office-hours-status closed">Closed</div>
                                 <div class="office-hours-time">GONE FISHIN'</div>
 
-                            </div>
-                        </div>
-
-                        <div class="office-hours-card unavailable" data-day="Sunday">
-                            <div class="office-hours-card-inner">
-                                <div class="office-hours-day">Sunday</div>
-                                <div class="office-hours-status closed">Closed</div>
-                                <div class="office-hours-time">GONE FISHIN'</div>
                             </div>
                         </div>
                     </div>
@@ -115,7 +107,7 @@
                 <section class="holiday-schedule-container">
                     <div class="office-hours-header">
                         <h2 class="holiday-title">Holiday Schedule</h2>
-                        <p class="page-excerpt">In addition to various vacation, sick and personal time off, we do not work on the following days of the year. If you expect to reach us or anticipate a reply on these days you will be disappointed.</p>
+                        <p class="page-excerpt">In addition to vacations, sick days, and personal time off, we do not work on the following days of the year. You will be disappointed if you expect to reach us, or anticipate a reply from us, on any of these days.</p>
                     </div>
 
                     <div class="holiday-grid">
@@ -179,7 +171,7 @@
                                     </li>
                                 </ul>
                                 <div class="holiday-type">
-                                    <span class="holiday-badge">Personal Holidays</span>
+                                    <span class="holiday-badge">Additional Holidays</span>
                                 </div>
                                 <ul class="holiday-list">
                                     <li class="holiday-item">
@@ -207,7 +199,7 @@
                                         <span class="holiday-date">Third Sunday in June</span>
                                     </li>
                                     <li class="holiday-item">
-                                        <span class="holiday-name"><img src="{{asset 'media/img/dollyd.webp'}}" alt="Dolly D smiling"> Birthday <a href="https://en.wikipedia.org/wiki/Patriots%27_Day">{{> "icons/heart"}}</a></span>
+                                        <span class="holiday-name"><img src="{{asset 'img/dolly-1.png'}}" alt="Dolly D smiling"> Birthday <a href="https://en.wikipedia.org/wiki/Patriots%27_Day">{{> "icons/heart"}}</a></span>
                                         <span class="holiday-date">August 23</span>
                                     </li>
                                     <li class="holiday-item">
