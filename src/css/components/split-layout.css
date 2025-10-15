@@ -3,19 +3,19 @@
    ========================================================================== */
 
 .split-content-wrapper {
-  display: grid;
-  grid-template-columns: 800px 380px;
-  gap: 48px;
-  margin-top: var(--space-3xl);
   align-items: start;
+  display: grid;
+  gap: 48px;
+  grid-template-columns: 800px 380px;
   /* CHANGE THIS LINE: */
   justify-content: center;
-  width: 100%;
-  padding: 0 2rem;
-  /* ADD THIS LINE for extra centering control */
-  max-width: 1280px; /* 800 + 380 + 48 + padding */
   margin-left: auto;
   margin-right: auto;
+  margin-top: var(--space-3xl);
+  /* ADD THIS LINE for extra centering control */
+  max-width: 1280px; /* 800 + 380 + 48 + padding */
+  padding: 0 2rem;
+  width: 100%;
 }
 
 .main-content-area {
@@ -25,8 +25,8 @@
 
 /* Ensure all sections in main content area take full width */
 .main-content-area > section {
-  width: 100%;
   max-width: 100%;
+  width: 100%;
 }
 
 .content-aside {
@@ -42,19 +42,19 @@
    ========================================================================== */
 
 .content-aside .widget-header {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: var(--space-sm);
   margin-bottom: var(--space-lg);
   padding-bottom: var(--space-sm);
 }
 
 .content-aside .widget-title {
+  color: var(--color-headings);
   font-size: 1.5rem;
   font-weight: 900;
   margin: 0 0 var(--space-xl);
   padding-left: var(--space-sm);
-  color: var(--color-headings);
 }
 
 /* Common widget styling */
@@ -66,8 +66,8 @@
   background: #f5f7fa;
   border: 1px solid #e6eaef;
   border-radius: var(--radius-lg);
-  padding: var(--space-xl);
   margin-bottom: var(--space-2xl);
+  padding: var(--space-xl);
 }
 
 /* ==========================================================================
@@ -81,19 +81,27 @@
 .note-item {
   background: #fff;
   background-size: 16px 16px;
-  padding: var(--space-3xl);
-  margin-bottom: var(--space-xl);
-  box-shadow: var(--shadow);
   border-radius: 22px;
+  box-shadow: var(--shadow);
+  margin-bottom: var(--space-xl);
+  padding: var(--space-3xl);
 }
 
 .note-title {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  color: var(--color-text-dark);
   font-size: var(--font-size-sm);
   font-style: italic;
   font-weight: var(--font-weight-semibold);
-  color: var(--color-text-dark);
-  display: none;
+  height: 1px;
+  margin: -1px;
   margin-bottom: var(--space-xs);
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 .note-item blockquote,
@@ -202,10 +210,10 @@
 }
 
 .note-meta svg {
-  width: 16px;
-  height: 16px;
   display: inline;
+  height: 16px;
   vertical-align: middle;
+  width: 16px;
 }
 
 .img-date {
@@ -216,8 +224,9 @@
 
 /* Arrow rotation effect on hover */
 .img-date a .lucide-arrow-right {
-  transition: transform 0.3s ease;
   display: inline-block; /* Needed for transform to work on inline SVG */
+  transition: transform 0.3s ease;
+  will-change: transform;
 }
 
 .img-date a:hover {
@@ -242,12 +251,12 @@
 }
 
 .small-link {
-  font-size: var(--font-size-sm);
   color: var(--color-text-medium);
-  text-decoration: none;
+  font-size: var(--font-size-sm);
   font-weight: 400;
   margin-top: var(--space-3xl);
   text-align: center;
+  text-decoration: none;
 }
 
 .small-link a {
@@ -267,17 +276,17 @@
 }
 
 .small-link a:hover ~ svg {
-  transform: translateX(6px);
   stroke: var(--color-primary-hover);
+  transform: translateX(6px);
 }
 
 .small-link svg {
   display: inline;
   height: 14px;
-  width: 14px;
   margin-top: -1px;
-  vertical-align: middle;
   transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  vertical-align: middle;
+  width: 14px;
 }
 
 /* ==========================================================================
@@ -286,28 +295,28 @@
 
 .testimonial-widget .testimonials {
   background: #fff;
+  border-radius: 22px;
+  box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-bottom: var(--space-xl);
   min-height: 25rem;
-  box-shadow: var(--shadow);
-  border-radius: 22px;
   text-wrap: balance;
 }
 
 .testimonial-widget cite svg {
   display: inline;
   height: 16px;
-  width: 16px;
   margin-top: -var(--space-xs);
-  vertical-align: middle;
   transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  vertical-align: middle;
+  width: 16px;
 }
 
 .testimonial-widget cite a:hover ~ svg {
-  transform: translateX(10px);
   stroke: var(--link-color);
+  transform: translateX(10px);
 }
 
 .testimonial-widget blockquote {
@@ -320,8 +329,8 @@
   font-style: normal;
   font-weight: 900;
   line-height: 1.2;
-  position: relative;
   margin: 0 2rem;
+  position: relative;
   text-align: center;
   text-wrap: balance;
 }
@@ -363,8 +372,8 @@
   border-radius: 50%;
   display: inline;
   height: 50px;
-  margin-top: -3px;
   margin-right: 6px;
+  margin-top: -3px;
   vertical-align: middle;
   width: 50px;
 }
@@ -375,16 +384,16 @@
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-lg);
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .stat-item {
-  text-align: center;
-  padding: var(--space-md);
   background: #fff;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow);
+  padding: var(--space-md);
+  text-align: center;
 }
 
 .stat-number {
@@ -397,12 +406,12 @@
 }
 
 .stat-label {
+  color: var(--color-text-muted);
   display: block;
   font-size: 0.6rem;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-top: var(--space-xs);
+  text-transform: uppercase;
 }
 
 /* ==========================================================================
@@ -416,10 +425,10 @@
 .movie-list ul {
   display: flex;
   flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-  margin: 0;
   gap: 10px; /* Optional: adds space between items */
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .movie-list li {
@@ -428,19 +437,19 @@
 }
 
 .movie-list img:hover {
-  z-index: 10;
-  filter: grayscale(20%);
   animation: wiggle 0.5s ease-in-out;
+  filter: grayscale(20%);
+  z-index: 10;
 }
 
 .movie-list img {
-  box-shadow: var(--shadow);
-  border-radius: var(--radius-lg);
   border: 8px solid white;
-  filter: grayscale(70%);
-  width: 100%;
-  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
   display: block;
+  filter: grayscale(70%);
+  height: auto;
+  width: 100%;
 }
 
 .archive-item:last-child {
@@ -452,12 +461,12 @@
 }
 
 .archive-title {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
   color: var(--color-text-dark);
   flex: 1;
-  margin-right: var(--space-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
   line-height: var(--line-height-tight);
+  margin-right: var(--space-sm);
 }
 
 .archive-item:hover .archive-title {
@@ -465,20 +474,20 @@
 }
 
 .archive-date {
-  font-size: var(--font-size-xs);
   color: var(--color-text-light);
+  font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
   white-space: nowrap;
 }
 
 .archive-link {
-  display: inline-flex;
   align-items: center;
-  font-size: var(--font-size-sm);
   color: var(--color-primary);
-  text-decoration: none;
+  display: inline-flex;
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   margin-top: var(--space-md);
+  text-decoration: none;
   transition: color var(--transition-base);
 }
 
@@ -493,8 +502,8 @@
 /* Desktop/Tablet - Stack aside below main content */
 @media (max-width: 1199px) {
   .split-content-wrapper {
-    grid-template-columns: 1fr;
     gap: var(--space-3xl);
+    grid-template-columns: 1fr;
   }
 
   .content-aside {
@@ -507,8 +516,8 @@
 
   .aside-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--space-xl);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 
   .notes-widget,
@@ -534,8 +543,8 @@
   }
 
   .aside-content {
-    grid-template-columns: 1fr;
     gap: var(--space-lg);
+    grid-template-columns: 1fr;
   }
 
   .notes-widget,

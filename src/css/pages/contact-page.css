@@ -9,10 +9,6 @@
   z-index: -1;
 }
 
-/* Fix: Override container constraints for contact page grid */
-.nested-wide-container {
-}
-
 /* Two-column layout for contact cards - Enhanced */
 #contactCards {
   display: grid;
@@ -40,6 +36,7 @@
     transform 0.3s ease,
     box-shadow 0.3s ease;
   width: 100%;
+  will-change: transform;
 }
 
 .contact-card:hover {
@@ -51,8 +48,8 @@ h3.contact-title {
   color: var(--color-headings);
   font-size: 1.5rem;
   font-weight: 700;
-  margin: 0 0 1rem 0;
   line-height: 1.3;
+  margin: 0 0 1rem 0;
 }
 
 .contact-card:hover h3 {
@@ -70,15 +67,14 @@ h3.contact-title {
 .contact-email-container {
   align-items: center;
   display: flex;
-  justify-content: space-between;
-
   gap: 1rem;
+  justify-content: space-between;
 }
 
 .contact-email {
   color: var(--color-text-muted);
-  font-size: 0.875rem;
   flex-grow: 1;
+  font-size: 0.875rem;
 }
 
 .contact-email a {
@@ -130,9 +126,9 @@ h3.contact-title {
 
 .reveal-button:hover {
   background-color: var(--red, #ff6961);
+  box-shadow: 0 4px 12px rgba(255, 105, 97, 0.3);
   color: #fff;
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(255, 105, 97, 0.3);
 }
 
 .reveal-button:active {
@@ -171,8 +167,8 @@ body.dark-mode .page-feature-image figcaption {
 /* Responsive styles - Enhanced */
 @media (max-width: 960px) {
   #contactCards {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     padding: 0 1rem;
   }
 }
@@ -181,23 +177,23 @@ body.dark-mode .page-feature-image figcaption {
   .nested-wide-container {
     /* Reset the full-width breakout on mobile */
     left: auto;
-    right: auto;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
     padding: 0 1rem;
+    right: auto;
+    width: 100%;
   }
 
   #contactCards {
-    grid-template-columns: 1fr;
     gap: 1.5rem;
+    grid-template-columns: 1fr;
     margin: 2rem auto;
     max-width: none;
   }
 
   .contact-card {
-    padding: 1.5rem;
     min-height: auto;
+    padding: 1.5rem;
   }
 
   h3.contact-title {

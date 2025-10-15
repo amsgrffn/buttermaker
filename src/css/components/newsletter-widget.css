@@ -3,27 +3,39 @@
    ========================================================================== */
 
 .newsletter-widget {
-  /* Same gradient as homepage CTA banner */
   background: linear-gradient(135deg, #4a9eff 0%, #00d4aa 100%);
   border-radius: 22px;
-  padding: var(--space-2xl);
-  margin-bottom: var(--space-2xl);
-  position: relative;
-  overflow: hidden;
   box-shadow: var(--shadow);
+  margin-bottom: var(--space-2xl);
+  overflow: hidden;
+  padding: var(--space-2xl);
+  position: relative;
 }
 
 /* Dotted pattern overlay - same as homepage */
 .newsletter-widget::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>')
     repeat;
+  bottom: 0;
+  content: '';
+  left: 0;
   pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* Visually hidden but accessible to screen readers */
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 .newsletter-content {
@@ -33,22 +45,40 @@
 
 /* Title */
 .newsletter-title {
+  color: white;
   font-size: 1.6rem;
   font-weight: 800;
-  color: white;
   margin: 0 0 var(--space-sm) 0;
   text-align: center;
 }
 
 /* Description */
 .newsletter-description {
-  font-size: 0.95rem;
   color: white;
+  font-size: 0.95rem;
+  line-height: 1.3;
   margin: 0 0 var(--space-lg) 0;
+  opacity: 0.95;
   text-align: center;
   text-wrap: balance;
-  line-height: 1.3;
-  opacity: 0.95;
+}
+
+.newsletter-description a {
+  color: white;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: opacity var(--transition-base);
+}
+
+.newsletter-description a:hover {
+  opacity: 0.8;
+}
+
+.newsletter-description a:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+  text-decoration: none;
 }
 
 /* Form Container */
@@ -60,16 +90,16 @@
 
 /* Email Input */
 .newsletter-input {
-  width: 100%;
-  padding: var(--space-md) var(--space-lg);
+  backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.1);
   color: white;
   font-size: var(--font-size-base);
   outline: none;
-  backdrop-filter: blur(4px);
+  padding: var(--space-md) var(--space-lg);
   transition: all var(--transition-base);
+  width: 100%;
 }
 
 /* Placeholder styling */
@@ -85,70 +115,104 @@
 
 /* Input focus state */
 .newsletter-input:focus {
-  border-color: rgba(255, 255, 255, 0.6);
   background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced keyboard focus */
+.newsletter-input:focus-visible {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+  outline: 2px solid white;
+  outline-offset: 2px;
 }
 
 /* Submit Button - Glassmorphic Style */
 .newsletter-button {
-  width: 100%;
-  padding: var(--space-md);
+  backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.25);
-  color: white;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 22px;
+  color: white;
+  cursor: pointer;
   font-family: var(--font-display);
   font-size: 1.1rem;
-  letter-spacing: 0.02rem;
   font-weight: 800;
-  cursor: pointer;
+  letter-spacing: 0.02rem;
+  padding: var(--space-md);
   transition: all var(--transition-base);
-  backdrop-filter: blur(10px);
+  width: 100%;
 }
 
 .newsletter-button:hover {
   background: rgba(255, 255, 255, 0.35);
   border-color: rgba(255, 255, 255, 0.6);
-  transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 .newsletter-button:active {
   transform: translateY(0);
 }
 
+/* Enhanced keyboard focus */
+.newsletter-button:focus-visible {
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    0 0 0 3px rgba(255, 255, 255, 0.5);
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Disabled state (if Ghost adds this) */
+.newsletter-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
 /* Success/Error Messages */
 .newsletter-message {
-  display: none;
-  padding: var(--space-sm);
   border-radius: var(--radius-base);
+  display: none;
   font-size: var(--font-size-sm);
-  text-align: center;
   margin-top: var(--space-sm);
+  padding: var(--space-sm);
+  text-align: center;
 }
 
 .newsletter-message.success {
   background: rgba(255, 255, 255, 0.2);
-  color: white;
   border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
 }
 
 .newsletter-message.error {
   background: rgba(255, 100, 100, 0.2);
-  color: white;
   border: 1px solid rgba(255, 100, 100, 0.4);
+  color: white;
 }
 
-/* Show messages when active */
+/* Show messages when active - Ghost adds this class */
 .newsletter-message.show {
+  animation: slideDown 0.3s ease-out;
   display: block;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Already Subscribed State */
 .newsletter-subscribed {
-  text-align: center;
   padding: var(--space-md) 0;
+  text-align: center;
 }
 
 .newsletter-subscribed p {
@@ -159,15 +223,15 @@
 }
 
 .newsletter-manage {
-  display: inline-block;
-  padding: var(--space-sm) var(--space-lg);
   background: rgba(255, 255, 255, 0.2);
-  color: white;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius-base);
-  text-decoration: none;
+  color: white;
+  display: inline-block;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
+  padding: var(--space-sm) var(--space-lg);
+  text-decoration: none;
   transition: all var(--transition-base);
 }
 
@@ -175,6 +239,13 @@
   background: rgba(255, 255, 255, 0.3);
   border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-1px);
+}
+
+/* Enhanced keyboard focus */
+.newsletter-manage:focus-visible {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+  outline: 2px solid white;
+  outline-offset: 2px;
 }
 
 /* Responsive adjustments */

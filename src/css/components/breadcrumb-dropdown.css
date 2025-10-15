@@ -5,16 +5,16 @@
 
 .breadcrumb-list {
   align-items: center;
-  display: flex;
   background: var(--color-cool-blue);
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border-cool-blue);
+  display: flex;
   flex-wrap: wrap;
   font-size: 14px;
   list-style: none;
-  padding: var(--space-md);
-  border-radius: var(--radius-lg);
-  max-width: 720px;
   margin-bottom: var(--space-4xl);
+  max-width: 720px;
+  padding: var(--space-md);
 }
 
 .breadcrumb-item {
@@ -47,9 +47,9 @@
 .breadcrumb-item a {
   color: var(--color-text-dark);
   font-weight: 500;
-  text-decoration: underline;
   text-decoration-color: var(--color-text-dark);
   text-decoration-thickness: 1px;
+  text-decoration: underline;
   text-underline-offset: 3px;
   transition: var(--transition);
 }
@@ -105,7 +105,11 @@
   position: absolute;
   top: 100%;
   transform: translateX(-50%) translateY(-10px);
-  transition: all 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s ease;
+  transition-delay: 0s;
   visibility: hidden;
   z-index: 100;
 }
@@ -114,15 +118,8 @@
   opacity: 1;
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
-  visibility: visible;
-}
-
-.breadcrumb-dropdown {
-  transition-delay: 0s;
-}
-
-.pages-dropdown:hover .breadcrumb-dropdown {
   transition-delay: 0.1s;
+  visibility: visible;
 }
 
 .dropdown-inner {
@@ -172,7 +169,7 @@ body.dark-mode .dropdown-inner {
 }
 
 .breadcrumb-dropdown ul li a:hover {
-  background-color: #f5f5f5;
+  background-color: var(--color-background-secondary);
   color: var(--link-color);
   text-decoration: none;
 }
@@ -196,6 +193,10 @@ body.dark-mode .dropdown-inner {
 .dropdown-inner:after {
   border-bottom: 10px solid #fefefe;
   top: -10px;
+}
+
+body.dark-mode .dropdown-inner:after {
+  border-bottom: 10px solid var(--color-background-tertiary);
 }
 
 .breadcrumb-dropdown ul li a.current-page {
@@ -222,11 +223,11 @@ body.dark-mode .dropdown-inner {
   .breadcrumbs {
     font-size: var(--text-xs);
   }
+}
 
-  /* Hide site title on very small screens */
-  @media (max-width: 480px) {
-    .breadcrumb-item.home {
-      display: none;
-    }
+/* Hide site title on very small screens */
+@media (max-width: 480px) {
+  .breadcrumb-item.home {
+    display: none;
   }
 }

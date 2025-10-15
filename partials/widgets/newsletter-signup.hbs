@@ -1,48 +1,77 @@
-{{! Newsletter Signup Widget for Sidebar }}
-<div class='newsletter-widget'>
+{{! Newsletter Signup Widget for Sidebar - Enhanced Accessibility }}
+<aside class='newsletter-widget' aria-labelledby='newsletter-title'>
   <div class='newsletter-content'>
     {{! Widget Title }}
-    <h3 class='newsletter-title'>Get the Newsletter</h3>
+    <h3 class='newsletter-title' id='newsletter-title'>Get the Newsletter</h3>
 
     {{! Short Description }}
-    <p class='newsletter-description'>Join our weekly(ish) newsletter for
-      smarter, more joyful insights. Read about our newsletter here.</p>
+    <p class='newsletter-description'>
+      Join our weekly(ish) newsletter for smarter, more joyful insights.
+      <a href='/newsletter'>Read about our newsletter here</a>.
+    </p>
 
     {{! Check if user is already subscribed }}
     {{#unless @member}}
       {{! Newsletter Form for Non-Members }}
-      <form class='newsletter-form' data-members-form='subscribe'>
+      <form
+        class='newsletter-form'
+        data-members-form='subscribe'
+        aria-label='Newsletter subscription form'
+      >
+        {{! Visually hidden label for screen readers }}
+        <label for='newsletter-email' class='sr-only'>Email address</label>
+
         <input
           type='email'
+          id='newsletter-email'
           class='newsletter-input'
           placeholder='jules@badmotherfucker.com'
           required
+          autocomplete='email'
+          aria-required='true'
           data-members-email
         />
-        <button type='submit' class='newsletter-button'>
+
+        <button
+          type='submit'
+          class='newsletter-button'
+          aria-label='Subscribe to newsletter'
+        >
           Subscribe
         </button>
 
-        {{! Success/Error Messages }}
-        <div class='newsletter-message success' data-members-success>
+        {{! Success/Error Messages - Ghost Portal manages these }}
+        <div
+          class='newsletter-message success'
+          data-members-success
+          role='status'
+          aria-live='polite'
+        >
           <p>✓ Success! Check your email for confirmation.</p>
         </div>
-        <div class='newsletter-message error' data-members-error>
+
+        <div
+          class='newsletter-message error'
+          data-members-error
+          role='alert'
+          aria-live='assertive'
+        >
           <p>Oops! Something went wrong. Please try again.</p>
         </div>
       </form>
     {{else}}
       {{! Already Subscribed Message }}
-      <div class='newsletter-subscribed'>
+      <div class='newsletter-subscribed' role='status' aria-live='polite'>
         <p>✓ You're subscribed!</p>
         <a
           href='#/portal/account'
           class='newsletter-manage'
           data-portal='account'
+          aria-label='Manage your newsletter subscription'
         >
           Manage subscription
         </a>
       </div>
     {{/unless}}
   </div>
-</div>
+</aside>
