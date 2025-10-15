@@ -2,26 +2,28 @@
    Header Component - Full Width with Centered Search
    ========================================================================== */
 
+/* Main Header Container */
 .top-header {
   background: var(--color-background);
   border-bottom: 1px solid var(--color-border);
+  height: var(--header-height);
   margin-bottom: var(--space-2xl);
   padding: var(--space-2xl) 0;
-  height: var(--header-height);
 }
 
 .header-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
   align-items: center;
-  width: 100%;
-  padding: 0 var(--space-3xl);
+  display: grid;
   gap: var(--space-xl);
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 0 var(--space-3xl);
+  width: 100%;
 }
 
+/* Header Sections */
 .header-left {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: var(--space-lg);
   justify-self: center; /* Stick to left */
 }
@@ -31,89 +33,91 @@
 }
 
 .header-right {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: var(--space-lg);
   justify-self: center; /* Stick to right */
 }
 
 .header-extra {
-  display: flex;
   align-items: center;
-
+  display: flex;
   justify-self: center; /* or start/center */
 }
 
 .header-extra p {
+  background: #f5f7fa;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: #f5f7fa;
   margin: 0;
   padding: var(--space-sm) var(--space-lg);
 }
 
+/* Logo and Icons */
 .header-left svg {
-  height: 16px;
-  width: 16px;
   display: inline;
+  height: 16px;
   vertical-align: middle;
+  width: 16px;
 }
 
 .logo {
-  width: 65px;
-  height: 65px;
+  align-items: center;
   border-radius: var(--radius-sm);
+  color: white;
   display: flex;
   filter: grayscale(70%);
-  align-items: center;
-  justify-content: center;
-  color: white;
   font-weight: var(--font-weight-bold);
+  height: 65px;
+  justify-content: center;
   text-decoration: none;
   transition: background-color var(--transition-base);
+  width: 65px;
 }
 
 .logo:hover {
   animation: wiggle 0.5s ease-in-out;
 }
 
+/* Date Time Weather Section */
 .date-time-weather {
+  align-items: flex-start; /* or center/flex-end depending on your layout */
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* or center/flex-end depending on your layout */
   gap: 2px; /* Small gap between lines */
 }
 
 .date-line {
-  font-weight: 600; /* Make date slightly bolder */
   font-size: 1em;
+  font-weight: 600; /* Make date slightly bolder */
 }
 
 .time-weather-line {
-  font-size: 0.9em; /* Slightly smaller for secondary info */
   color: #666; /* Slightly muted color */
+  font-size: 0.9em; /* Slightly smaller for secondary info */
 }
 
+/* Search Bar */
 .search-bar {
+  max-width: 500px;
   position: relative;
   width: 500px;
-  max-width: 500px;
 }
 
 .search-input {
-  width: 100%;
-  padding: var(--space-sm) var(--space-4xl) var(--space-sm) var(--space-lg);
+  background: #f5f7fa;
   border: 1px solid #e6eaef;
   border-radius: var(--radius-base);
-  background: #f5f7fa;
   font-size: var(--font-size-base);
   outline: none;
+  padding: var(--space-sm) var(--space-4xl) var(--space-sm) var(--space-lg);
   transition: all var(--transition-base);
+  width: 100%;
 }
 
 .search-input:focus {
-  border-color: var(--color-primary);
   background: var(--color-background);
+  border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(255, 103, 25, 0.1);
 }
 
@@ -122,12 +126,12 @@
 }
 
 .search-icon {
+  color: var(--color-text-medium);
+  cursor: pointer;
   position: absolute;
   right: var(--space-md);
   top: 50%;
   transform: translateY(-50%);
-  color: var(--color-text-medium);
-  cursor: pointer;
   transition: color var(--transition-base);
 }
 
@@ -137,33 +141,33 @@
 
 /* Keyboard shortcut indicator */
 .search-kbd {
+  display: flex;
+  gap: 4px;
+  pointer-events: none; /* Allows clicking through to input */
   position: absolute;
   right: var(--space-md);
   top: 50%;
   transform: translateY(-50%);
-  display: flex;
-  gap: 4px;
-  pointer-events: none; /* Allows clicking through to input */
 }
 
 .search-kbd kbd {
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-width: 20px;
-  height: 20px;
-  padding: 2px 6px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  color: var(--color-text-medium);
+  display: inline-flex;
   font-family:
     ui-monospace, 'SF Mono', Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', monospace;
   font-size: 11px;
   font-weight: 600;
+  height: 20px;
+  justify-content: center;
   line-height: 1;
-  color: var(--color-text-medium);
-  background: var(--color-background);
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  min-width: 20px;
+  padding: 2px 6px;
 }
 
 /* Hide when search has focus or content */
@@ -180,22 +184,16 @@
     visibility 0.2s ease;
 }
 
-/* Hide on tablet and mobile */
-@media (max-width: 1024px) {
-  .search-kbd {
-    display: none;
-  }
-}
-
+/* Header Buttons */
 .header-btn {
-  padding: var(--space-sm) var(--space-lg);
+  background: #f5f7fa;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
-  background: #f5f7fa;
   color: var(--color-text-dark);
-  text-decoration: none;
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
+  padding: var(--space-sm) var(--space-lg);
+  text-decoration: none;
   transition: all var(--transition-base);
   white-space: nowrap;
 }
@@ -221,14 +219,15 @@
   color: white;
 }
 
+/* Mobile Menu Button */
 .mobile-menu-btn {
-  display: none;
   background: none;
   border: none;
-  font-size: var(--font-size-xl);
-  cursor: pointer;
-  padding: var(--space-xs);
   color: var(--color-text-dark);
+  cursor: pointer;
+  display: none;
+  font-size: var(--font-size-xl);
+  padding: var(--space-xs);
   transition: color var(--transition-base);
 }
 
@@ -238,17 +237,28 @@
 
 /* Optional: Mobile search toggle button */
 .mobile-search-btn {
-  display: none;
   background: none;
   border: none;
-  font-size: var(--font-size-lg);
-  cursor: pointer;
   color: var(--color-text-dark);
+  cursor: pointer;
+  display: none;
+  font-size: var(--font-size-lg);
   transition: color var(--transition-base);
 }
 
 .mobile-search-btn:hover {
   color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Responsive Styles
+   ========================================================================== */
+
+/* Hide on tablet and mobile */
+@media (max-width: 1024px) {
+  .search-kbd {
+    display: none;
+  }
 }
 
 /* Tablet Styles */
@@ -262,29 +272,29 @@
   }
 
   .header-btn {
-    padding: var(--space-sm) var(--space-md);
     font-size: var(--font-size-sm);
+    padding: var(--space-sm) var(--space-md);
   }
 }
 
 /* Mobile Styles */
 @media (max-width: 767px) {
   .top-header {
-    padding: var(--space-sm) 0;
     height: var(--header-height-mobile);
+    padding: var(--space-sm) 0;
   }
 
   .header-content {
     display: flex;
-    justify-content: space-between;
-    grid-template-columns: none; /* Remove grid */
-    padding: 0 var(--space-lg);
     gap: var(--space-sm);
+    grid-template-columns: none; /* Remove grid */
+    justify-content: space-between;
+    padding: 0 var(--space-lg);
   }
 
   .header-left {
-    justify-self: auto; /* Reset grid properties */
     gap: var(--space-md);
+    justify-self: auto; /* Reset grid properties */
   }
 
   .header-center {
@@ -293,8 +303,8 @@
   }
 
   .header-right {
-    justify-self: auto; /* Reset grid properties */
     gap: var(--space-sm);
+    justify-self: auto; /* Reset grid properties */
   }
 
   .mobile-menu-btn {
@@ -310,13 +320,13 @@
   }
 
   .header-btn {
-    padding: var(--space-xs) var(--space-md);
     font-size: var(--font-size-sm);
+    padding: var(--space-xs) var(--space-md);
   }
 
   .logo {
-    width: 50px;
     height: 50px;
+    width: 50px;
   }
 }
 
@@ -327,12 +337,12 @@
   }
 
   .header-btn {
-    padding: var(--space-xs) var(--space-sm);
     font-size: var(--font-size-xs);
+    padding: var(--space-xs) var(--space-sm);
   }
 
   .logo {
-    width: 45px;
     height: 45px;
+    width: 45px;
   }
 }
