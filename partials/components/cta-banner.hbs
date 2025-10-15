@@ -1,16 +1,29 @@
-<h2 class='section-title'>Explore by Category</h2>
-<section class="cta-banner">
-	<div class="cta-content">
-		<h2 class="cta-title">Get Our Weekly Newsletter</h2>
-		<p class="cta-description">Why sign up for this one?</strong> Because it'll make you <span class="shimmer">smarter</span>, more <span class="shimmer">joyful</span> and <span class="shimmer">wiser</span> than all your family, friends, and co-workers. And, really, that's the great American desire these days, poisoning others with envy. You can read more about the newsletter.</p>
-		<div class="cta-buttons">
-			{{#unless @member}}
-				<a href="#/portal/signup" class="cta-btn primary" data-portal="signup">Subscribe for free</a>
-				<a href="{{@site.url}}/about/" class="cta-btn secondary">Learn more</a>
-			{{else}}
-				<a href="#/portal/account" class="cta-btn primary" data-portal="account">Manage subscription</a>
-				<a href="{{@site.url}}/archive/" class="cta-btn secondary">Browse archive</a>
-			{{/unless}}
-		</div>
-	</div>
+<h2 class='section-title'>Get Our Newsletter</h2>
+<section class='cta-banner'>
+  <div class='cta-content'>
+    <h2 class='cta-title'>No longer give two f*#$s?</h2>
+    <p class='cta-description'>Everyone thinks they're a fucking pop star and
+      all you want is to not be hassled again. We understand. Which is why we
+      write this newsletter. Cause wading through all the bullshit for a little
+      equanimity is only worth it if you're doing something you enjoy. Read more
+      about the newsletter here.</p>
+    <div class='cta-buttons'>
+      {{#unless @member}}
+        <a
+          href='#/portal/signup'
+          class='cta-btn primary'
+          data-portal='signup'
+        >Subscribe for free</a>
+        <a href='{{@site.url}}/about/' class='cta-btn secondary'>Learn more</a>
+      {{else}}
+        <a
+          href='#/portal/account'
+          class='cta-btn primary'
+          data-portal='account'
+        >Manage subscription</a>
+        <a href='{{@site.url}}/archive/' class='cta-btn secondary'>Browse
+          archive</a>
+      {{/unless}}
+    </div>
+  </div>
 </section>

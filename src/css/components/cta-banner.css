@@ -4,26 +4,26 @@
 
 .cta-banner {
   background: linear-gradient(135deg, #4a9eff 0%, #00d4aa 100%);
-  box-shadow: var(--shadow);
   border-radius: 0.75rem;
-  padding: var(--space-3xl);
-  text-align: center;
+  box-shadow: var(--shadow);
   color: white;
   margin-bottom: var(--space-4xl);
-  position: relative;
   overflow: hidden;
+  padding: var(--space-3xl);
+  position: relative;
+  text-align: center;
 }
 
 .cta-banner::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>')
     repeat;
+  bottom: 0;
+  content: '';
+  left: 0;
   pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .cta-content {
@@ -32,88 +32,88 @@
 }
 
 .cta-title {
-  font-size: 2.3rem;
-  line-height: 1.1;
-  font-weight: 900;
-  margin-bottom: var(--space-lg);
   color: white;
+  font-size: 2.3rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: var(--space-lg);
 }
 
 .cta-description {
   font-size: 1.3rem;
   font-weight: 500;
+  line-height: 1.2;
   margin-bottom: var(--space-3xl);
-  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  line-height: 1.2;
+  max-width: 600px;
 }
 
 .cta-buttons {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-md);
   justify-content: center;
   margin-top: var(--space-xl);
-  flex-wrap: wrap;
 }
 
 .cta-btn {
-  padding: var(--space-md) var(--space-2xl);
+  align-items: center;
   border-radius: var(--radius-pill);
-  font-size: var(--font-size-lg);
-  font-family: 'Apex Rounded Trial', sans-serif;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all var(--transition-base);
   border: none;
   cursor: pointer;
-  white-space: nowrap;
-  min-width: 140px;
   display: inline-flex;
-  align-items: center;
+  font-family: 'Apex Rounded Trial', sans-serif;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
   justify-content: center;
+  min-width: 140px;
+  padding: var(--space-md) var(--space-2xl);
+  text-decoration: none;
+  transition: all var(--transition-base);
+  white-space: nowrap;
 }
 
 .cta-btn.primary {
-  background: var(--accent-color);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(4px);
+  background: var(--accent-color);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
 }
 
 .cta-btn.secondary {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
 }
 
 .cta-btn:hover {
   background: var(--link-color);
   border-color: var(--link-color);
-  transform: translateY(-2px);
   color: white;
+  transform: translateY(-2px);
 }
 
 /* Newsletter Signup Form */
 .cta-form {
-  max-width: 400px;
-  margin: 0 auto;
   display: flex;
   gap: var(--space-sm);
   margin-top: var(--space-xl);
+  margin: 0 auto;
+  max-width: 400px;
 }
 
 .cta-email-input {
-  flex: 1;
-  padding: var(--space-md) var(--space-lg);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-base);
+  backdrop-filter: blur(4px);
   background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-base);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
+  flex: 1;
   font-size: var(--font-size-base);
   outline: none;
-  backdrop-filter: blur(4px);
+  padding: var(--space-md) var(--space-lg);
   transition: all var(--transition-base);
 }
 
@@ -122,20 +122,20 @@
 }
 
 .cta-email-input:focus {
-  border-color: rgba(255, 255, 255, 0.6);
   background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
 }
 
 .cta-submit-btn {
-  padding: var(--space-md) var(--space-xl);
   background: var(--color-primary);
-  color: white;
-  border: none;
   border-radius: var(--radius-base);
+  border: none;
+  color: white;
+  cursor: pointer;
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
-  cursor: pointer;
+  padding: var(--space-md) var(--space-xl);
   transition: all var(--transition-base);
   white-space: nowrap;
 }
@@ -147,15 +147,15 @@
 
 .cta-note {
   font-size: var(--font-size-sm);
-  opacity: 0.8;
   margin-top: var(--space-md);
+  opacity: 0.8;
 }
 
 /* Variant Styles */
 .cta-banner.minimal {
   background: var(--color-background-light);
-  color: var(--color-text-dark);
   border: 1px solid var(--color-border);
+  color: var(--color-text-dark);
 }
 
 .cta-banner.minimal::before {
@@ -178,8 +178,8 @@
 /* Responsive CTA Banner */
 @media (max-width: 767px) {
   .cta-banner {
-    padding: var(--space-2xl) var(--space-lg);
     margin-bottom: var(--space-2xl);
+    padding: var(--space-2xl) var(--space-lg);
   }
 
   .cta-title {
@@ -199,10 +199,10 @@
   }
 
   .cta-btn {
+    margin: 0 auto;
+    max-width: 200px;
     padding: var(--space-md) var(--space-xl);
     width: 100%;
-    max-width: 200px;
-    margin: 0 auto;
   }
 
   .cta-form {

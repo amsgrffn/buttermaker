@@ -3,35 +3,35 @@
    ========================================================================== */
 
 .horizontal-scroll-container {
+  margin: 0 auto;
+  max-width: 1228px;
   position: relative;
   width: 1228px;
-  max-width: 1228px;
-  margin: 0 auto;
 }
 
 .horizontal-scroll-section {
-  width: auto; /* Changed from 100vw */
-  position: static; /* Changed from relative */
   border-bottom: 1px solid var(--color-border-dark);
   margin: var(--space-lg) 0 0 0;
-  padding: 0 0 var(--space-2xl); /* Removed horizontal padding */
   overflow: hidden;
+  padding: 0 0 var(--space-2xl); /* Removed horizontal padding */
+  position: static; /* Changed from relative */
+  width: auto; /* Changed from 100vw */
 }
 
 .horizontal-scroll-header {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  width: 1228px;
-  max-width: 1228px;
   margin: 0 auto; /* Center the header */
   margin-bottom: var(--space-lg);
+  max-width: 1228px;
+  width: 1228px;
 }
 
 .horizontal-scroll-title {
   color: var(--color-headings);
-  font-size: 1.4rem;
-  font-weight: 800;
+  font-size: 1.5rem;
+  font-weight: 900;
   margin: 0;
 }
 
@@ -46,51 +46,51 @@
 }
 
 .scroll-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--color-border);
+  align-items: center;
   background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
   color: var(--color-text-dark);
   cursor: pointer;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition-base);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-bold);
+  height: 40px;
+  justify-content: center;
+  transition: all var(--transition-base);
+  width: 40px;
 }
 
 .scroll-btn:hover {
   background: var(--color-pumpkin);
-  color: white;
   border-color: var(--color-pumpkin);
+  color: white;
 }
 
 .scroll-btn:disabled {
-  opacity: 0.5;
   cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .horizontal-scroll-container {
-  position: relative;
-  width: 1228px; /* 800px + 380px + 48px gap */
   margin: 0;
   margin-left: 2rem; /* Match split-content-wrapper padding */
   padding: 0;
+  position: relative;
+  width: 1228px; /* 800px + 380px + 48px gap */
 }
 
 .horizontal-scroll-track {
+  -ms-overflow-style: none;
+  box-sizing: content-box;
+  cursor: grab;
   display: flex;
   gap: var(--space-lg); /* 16px gap */
   overflow-x: auto;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
   padding-bottom: var(--space-sm);
+  scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-  box-sizing: content-box;
-  cursor: grab;
+  scrollbar-width: none;
   user-select: none;
 }
 
@@ -99,17 +99,17 @@
 }
 
 .scroll-card {
+  border-radius: 22px;
+  color: inherit;
+  cursor: grab;
+  display: flex;
   flex: 0 0 295px;
   height: 295px;
-  border-radius: 22px;
   overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  transition: all var(--transition-base);
-  display: flex;
-  scroll-snap-align: start;
   position: relative;
-  cursor: grab;
+  scroll-snap-align: start;
+  text-decoration: none;
+  transition: all var(--transition-base);
 }
 
 .scroll-card:hover {
@@ -117,62 +117,63 @@
 }
 
 .scroll-card-image {
+  border-radius: 22px;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
   position: absolute; /* Position image to fill entire card */
   top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 22px;
 }
 
 .scroll-card-image img {
-  width: 100%;
   filter: grayscale(70%);
   height: 100%;
   object-fit: cover;
   transition: transform var(--transition-base);
+  width: 100%;
 }
+
 .scroll-card:hover .scroll-card-image img {
-  transform: scale(1.05);
   filter: grayscale(30%);
+  transform: scale(1.05);
 }
 
 .scroll-card-badge {
-  position: absolute;
-  top: var(--space-xs);
-  right: var(--space-xs);
   background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 2px var(--space-xs);
   border-radius: var(--radius-sm);
+  color: white;
   font-size: 10px;
   font-weight: var(--font-weight-medium);
+  padding: 2px var(--space-xs);
+  position: absolute;
+  right: var(--space-xs);
+  top: var(--space-xs);
 }
 
 .scroll-card-content {
-  position: absolute; /* Position content over the image */
-  bottom: 0; /* Anchor to bottom of card */
-  left: 0;
-  right: 0;
-  padding: 1.25rem;
-  background: rgba(255, 255, 255, 0.95);
-  margin: var(--space-md);
-  border-radius: 22px;
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 22px;
+  bottom: 0; /* Anchor to bottom of card */
+  box-shadow: var(--shadow);
+  left: 0;
+  margin: var(--space-md);
+  padding: 1.25rem;
+  position: absolute; /* Position content over the image */
+  right: 0;
 }
 
 .scroll-card-title {
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--color-headings);
-  line-height: 1.15;
-  margin: 0 0 var(--space-xs) 0;
-  display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+  color: var(--color-headings);
+  display: -webkit-box;
+  font-size: 1.3rem;
+  font-weight: 900;
+  line-height: 1.15;
+  margin: 0 0 var(--space-xs) 0;
   overflow: hidden;
   text-overflow: ellipsis;
   text-wrap: pretty;
@@ -192,17 +193,17 @@
 }
 
 .scroll-card-meta {
-  position: absolute;
-  top: var(--space-md);
-  left: var(--space-md);
-  right: var(--space-md); /* Add right positioning to span full width */
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-xs);
-  font-size: var(--font-size-xs);
-  padding: 0 var(--space-sm);
   color: white;
+  display: flex;
+  font-size: var(--font-size-xs);
+  gap: var(--space-xs);
+  justify-content: space-between;
+  left: var(--space-md);
+  padding: 0 var(--space-sm);
+  position: absolute;
+  right: var(--space-md); /* Add right positioning to span full width */
+  top: var(--space-md);
   z-index: 2;
 }
 
@@ -213,42 +214,42 @@
 }
 
 .scroll-card-avatar {
-  width: 38px;
-  height: 38px;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  padding: 3px;
-  border-radius: var(--radius-full);
-  object-fit: cover;
-  filter: grayscale(70%);
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: var(--radius-full);
+  filter: grayscale(70%);
+  height: 38px;
+  object-fit: cover;
+  padding: 3px;
+  width: 38px;
 }
 
 .scroll-card-excerpt {
-  font-size: var(--font-size-xs);
-  line-height: var(--line-height-base);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   color: var(--color-text-medium);
   display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-base);
   margin-bottom: var(--space-xs);
+  overflow: hidden;
 }
 
 .scroll-card-tags {
   display: flex;
-  gap: var(--space-xs);
   flex-wrap: wrap;
+  gap: var(--space-xs);
 }
 
 .scroll-card-tag {
   background: var(--color-border-light);
-  color: var(--color-text-medium);
-  padding: 2px var(--space-xs);
   border-radius: var(--radius-pill);
+  color: var(--color-text-medium);
   font-size: 10px;
   font-weight: var(--font-weight-medium);
+  padding: 2px var(--space-xs);
 }
 
 /* ==========================================================================
@@ -257,30 +258,30 @@
 
 .category-tabs-section {
   margin-bottom: var(--space-md);
-  padding: 0;
   overflow: hidden;
+  padding: 0;
 }
 
 .category-tabs-container {
-  font-family: var(--font-family-sans);
-  position: relative;
   background: #f5f7fa;
   border: 1px solid #e6eaef;
+  border-radius: var(--radius-base);
+  font-family: var(--font-family-sans);
   margin: 0;
   padding: var(--space-sm);
-  border-radius: var(--radius-base);
+  position: relative;
 }
 
 .category-tabs {
   /* Simple flex layout for tabs */
-  display: flex;
-  gap: 2px;
+  -ms-overflow-style: none;
   background: var(--color-background-light);
   border-radius: var(--radius-md);
-  padding: var(--space-xs);
+  display: flex;
+  gap: 2px;
   overflow-x: auto;
+  padding: var(--space-xs);
   scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
 .category-tabs::-webkit-scrollbar {
@@ -288,18 +289,18 @@
 }
 
 .category-tab {
-  font-family: var(--font-family-sans);
-  padding: var(--space-sm) var(--space-lg);
-  border-radius: var(--radius-base);
   background: transparent;
   border: none;
+  border-radius: var(--radius-base);
   color: var(--color-text-dark);
+  cursor: pointer;
+  font-family: var(--font-family-sans);
   font-size: 13px;
   font-weight: 700;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all var(--transition-base);
   min-width: fit-content;
+  padding: var(--space-sm) var(--space-lg);
+  transition: all var(--transition-base);
+  white-space: nowrap;
 }
 
 .category-tab.active,
@@ -314,54 +315,54 @@
 
 /* Loading and Empty States */
 .horizontal-scroll-loading {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  height: 240px;
   color: var(--color-text-medium);
+  display: flex;
   font-size: var(--font-size-sm);
+  height: 240px;
+  justify-content: center;
 }
 
 .horizontal-scroll-empty {
-  text-align: center;
-  padding: var(--space-4xl) var(--space-lg);
   color: var(--color-text-medium);
+  padding: var(--space-4xl) var(--space-lg);
+  text-align: center;
 }
 
 .horizontal-scroll-empty h3 {
+  color: var(--color-text-dark);
   font-size: var(--font-size-lg);
   margin-bottom: var(--space-sm);
-  color: var(--color-text-dark);
 }
 
 /* Position nav buttons over the scroll track */
 .horizontal-scroll-container {
-  position: relative;
-  width: 1228px;
   margin: 0;
   margin-left: 2rem;
   padding: 0;
+  position: relative;
+  width: 1228px;
 }
 
 .scroll-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--color-border);
+  align-items: center;
   background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
   color: var(--color-text-dark);
   cursor: pointer;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition-base);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
+  height: 32px;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all var(--transition-base);
+  width: 32px;
   z-index: 10;
-  box-shadow: var(--shadow-sm);
 }
 
 .scroll-btn-prev {
@@ -374,14 +375,14 @@
 
 .scroll-btn:hover {
   background: var(--link-color);
-  color: white;
   border-color: var(--link-color);
+  color: white;
   transform: translateY(-50%) scale(1.05);
 }
 
 .scroll-btn:disabled {
-  opacity: 0.3;
   cursor: not-allowed;
+  opacity: 0.3;
   transform: translateY(-50%);
 }
 
@@ -392,8 +393,8 @@
 /* Tablet and Desktop */
 @media (max-width: 1199px) and (min-width: 768px) {
   .category-tab {
-    padding: var(--space-xs) var(--space-md);
     font-size: var(--font-size-sm);
+    padding: var(--space-xs) var(--space-md);
   }
 }
 
@@ -401,18 +402,18 @@
 @media (max-width: 767px) {
   /* Horizontal scroll keeps viewport spanning on mobile */
   .horizontal-scroll-section {
-    padding: 0 var(--space-md);
     margin-bottom: var(--space-lg);
+    padding: 0 var(--space-md);
   }
 
   .horizontal-scroll-header {
-    padding: 0 var(--space-md);
     max-width: none;
+    padding: 0 var(--space-md);
   }
 
   .horizontal-scroll-container {
-    padding: 0 var(--space-md);
     max-width: none;
+    padding: 0 var(--space-md);
   }
 
   .horizontal-scroll-track {
@@ -420,14 +421,14 @@
   }
 
   .scroll-card {
-    position: relative;
     flex: 0 0 280px;
     height: 100px;
+    position: relative;
   }
 
   .scroll-card-image {
-    width: 100px;
     height: 100px;
+    width: 100px;
   }
 
   .scroll-card-content {
@@ -439,30 +440,30 @@
   }
 
   .scroll-btn {
-    width: 32px;
-    height: 32px;
     font-size: var(--font-size-sm);
+    height: 32px;
+    width: 32px;
   }
 
   .scroll-card-title {
-    font-size: var(--font-size-sm);
     -webkit-line-clamp: 2;
+    font-size: var(--font-size-sm);
   }
 
   .scroll-card-excerpt {
-    font-size: 11px;
     -webkit-line-clamp: 2;
+    font-size: 11px;
   }
 
   .scroll-card-avatar {
-    width: 14px;
     height: 14px;
+    width: 14px;
   }
 
   /* Category tabs - mobile styling */
   .category-tabs-section {
-    padding: 0;
     margin-bottom: var(--space-lg);
+    padding: 0;
   }
 
   .category-tabs-container {
@@ -470,8 +471,8 @@
   }
 
   .category-tab {
-    padding: var(--space-sm) var(--space-md);
     font-size: var(--font-size-sm);
+    padding: var(--space-sm) var(--space-md);
   }
 }
 
@@ -495,8 +496,8 @@
   }
 
   .scroll-card-image {
-    width: 90px;
     height: 90px;
+    width: 90px;
   }
 
   .horizontal-scroll-controls {
@@ -527,16 +528,16 @@
   }
 
   .category-tab {
-    padding: var(--space-xs) var(--space-sm);
     font-size: var(--font-size-xs);
+    padding: var(--space-xs) var(--space-sm);
   }
 }
 
 /* Extra small screens */
 @media (max-width: 375px) {
   .category-tab {
-    padding: var(--space-xs) var(--space-sm);
     font-size: var(--font-size-xs);
+    padding: var(--space-xs) var(--space-sm);
   }
 }
 
