@@ -2,20 +2,67 @@
 <section class='cta-banner'>
   <div class='cta-content'>
     <h2 class='cta-title'>No longer give two f*#$s?</h2>
-    <p class='cta-description'>Everyone thinks they're a fucking pop star and
-      all you want is to not be hassled again. We understand. Which is why we
-      write this newsletter. Cause wading through all the bullshit for a little
-      equanimity is only worth it if you're doing something you enjoy. Read more
-      about the newsletter here.</p>
-    <div class='cta-buttons'>
-      {{#unless @member}}
-        <a
-          href='#/portal/signup'
-          class='cta-btn primary'
-          data-portal='signup'
-        >Subscribe for free</a>
+    <p class='cta-description'>Can feel like everyone is an entitled pop star
+      chasing the spotlight, and all you want is to not be hassled. We get it.
+      That's why we write this newsletter - to cut through the bullshit and
+      indignity for a little equanimity and relief.
+    </p>
+
+    {{#unless @member}}
+      {{! Newsletter signup section for non-members }}
+      <div class='cta-actions'>
+        {{! Email form with contained submit button }}
+        <form
+          class='cta-newsletter-form'
+          data-members-form='subscribe'
+          aria-label='Newsletter subscription form'
+        >
+          <label for='cta-email' class='sr-only'>Email address</label>
+          <div class='cta-input-wrapper'>
+            <input
+              type='email'
+              id='cta-email'
+              class='cta-email-input'
+              placeholder='jules@badmotherfucker.com'
+              required
+              autocomplete='email'
+              aria-required='true'
+              data-members-email
+            />
+            <button
+              type='submit'
+              class='cta-submit-btn'
+              aria-label='Subscribe to newsletter'
+            >
+              Subscribe
+            </button>
+          </div>
+
+          {{! Success/Error Messages }}
+          <div
+            class='cta-message success'
+            data-members-success
+            role='status'
+            aria-live='polite'
+          >
+            ✓ Success! Check your email for confirmation.
+          </div>
+          <div
+            class='cta-message error'
+            data-members-error
+            role='alert'
+            aria-live='assertive'
+          >
+            Oops! Something went wrong. Please try again.
+          </div>
+        </form>
+
+        {{! Learn more button }}
         <a href='{{@site.url}}/about/' class='cta-btn secondary'>Learn more</a>
-      {{else}}
+      </div>
+    {{else}}
+      {{! Member actions }}
+      <div class='cta-buttons'>
         <a
           href='#/portal/account'
           class='cta-btn primary'
@@ -23,7 +70,7 @@
         >Manage subscription</a>
         <a href='{{@site.url}}/archive/' class='cta-btn secondary'>Browse
           archive</a>
-      {{/unless}}
-    </div>
+      </div>
+    {{/unless}}
   </div>
 </section>
