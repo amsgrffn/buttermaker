@@ -1,0 +1,183 @@
+/* ==========================================================================
+   SITE-WIDE LAYOUT CONSISTENCY
+   This file defines the main layout structure for your entire Ghost theme
+   ========================================================================== */
+
+/* ==========================================================================
+   1. CSS Variables for Layout
+   ========================================================================== */
+
+:root {
+  /* Main content area (inside sidebar) */
+  --main-content-max-width: 1400px;
+
+  /* Split layout (two-column) dimensions */
+  --split-main-width: 800px; /* Left column */
+  --split-aside-width: 380px; /* Right column */
+  --split-gap: 48px; /* Gap between columns */
+
+  /* Total split layout width */
+  --split-total-width: calc(
+    var(--split-main-width) + var(--split-gap) + var(--split-aside-width)
+  ); /* = 1228px */
+
+  /* Content padding (outside spacing) */
+  --content-padding: 2rem;
+}
+
+/* ==========================================================================
+   2. Main Content Area (right of left sidebar)
+   ========================================================================== */
+
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-width); /* Push away from left sidebar */
+  max-width: calc(var(--main-content-max-width) - var(--sidebar-width));
+  width: 100%;
+  padding: 0; /* Let children handle their own padding */
+}
+
+/* ==========================================================================
+   3. Split Content Wrapper (Two-Column Layout)
+   This is the main two-column layout used on most pages
+   ========================================================================== */
+
+.split-content-wrapper {
+  display: grid;
+  grid-template-columns: var(--split-main-width) var(--split-aside-width);
+  gap: var(--split-gap);
+  align-items: start;
+
+  /* Centering */
+  max-width: calc(var(--split-total-width) + (2 * var(--content-padding)));
+  margin: var(--space-3xl) auto 0 auto;
+  padding: 0 var(--content-padding);
+  width: 100%;
+}
+
+/* Left column - main content */
+.main-content-area {
+  width: 100%;
+  min-width: 0; /* Prevents overflow */
+}
+
+/* Right column - sidebar/aside */
+.content-aside {
+  width: 100%;
+  position: relative;
+}
+
+/* ==========================================================================
+   4. Content Sections (Consistent Width Across Site)
+   All these sections should align with the split-content-wrapper
+   ========================================================================== */
+
+/* Horizontal scroll sections */
+.horizontal-scroll-section {
+  max-width: calc(var(--split-total-width) + (2 * var(--content-padding)));
+  margin: 0 auto;
+  padding: 0 var(--content-padding) var(--space-2xl) var(--content-padding);
+  width: 100%;
+}
+
+/* Article/blog post loops */
+.article-loop {
+  max-width: calc(var(--split-total-width) + (2 * var(--content-padding)));
+  margin: 0 auto;
+  padding: 3rem var(--content-padding);
+  width: 100%;
+}
+
+/* CTA banners */
+.cta-banner {
+  max-width: calc(var(--split-total-width) + (2 * var(--content-padding)));
+  margin: 0 auto var(--space-4xl) auto;
+  width: 100%;
+}
+
+/* ==========================================================================
+   5. Responsive Breakpoints
+   ========================================================================== */
+
+/* Large Screens - When viewport is smaller than layout */
+@media (max-width: 1320px) {
+  .split-content-wrapper,
+  .horizontal-scroll-section,
+  .article-loop,
+  .cta-banner {
+    max-width: 100%;
+  }
+}
+
+/* Tablet (768px - 1199px) - Stack layout vertically */
+@media (max-width: 1199px) {
+  /* Switch to single column */
+  .split-content-wrapper {
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+    padding: 0 var(--space-xl);
+    margin-top: var(--space-3xl);
+  }
+
+  /* Reorder: content first, aside second */
+  .main-content-area {
+    order: 1;
+  }
+
+  .content-aside {
+    order: 2;
+  }
+
+  /* Make aside widgets display in a grid */
+  .aside-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+
+  /* Other sections */
+  .horizontal-scroll-section {
+    padding: 0 var(--space-xl) var(--space-2xl) var(--space-xl);
+  }
+
+  .article-loop {
+    padding: 3rem var(--space-xl);
+  }
+}
+
+/* Mobile (below 768px) - Tighter spacing */
+@media (max-width: 767px) {
+  /* Update padding variable */
+  :root {
+    --content-padding: var(--space-lg);
+  }
+
+  /* Tighter spacing for split layout */
+  .split-content-wrapper {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    margin-top: var(--space-2xl);
+    padding: 0 var(--space-lg);
+  }
+
+  /* Single column for aside widgets */
+  .aside-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  /* Other sections */
+  .horizontal-scroll-section {
+    padding: 0 var(--space-lg) var(--space-2xl) var(--space-lg);
+  }
+
+  .article-loop {
+    padding: 2rem var(--space-lg);
+  }
+
+  /* Main content no longer offset */
+  .main-content {
+    margin-left: 0;
+    padding: 0;
+  }
+}

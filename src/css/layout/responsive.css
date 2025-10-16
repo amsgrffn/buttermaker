@@ -1,26 +1,26 @@
 /* ==========================================================================
-   Layout and Responsive Design (Fixed for Split Layout)
+   Responsive Utilities and Breakpoint-Specific Styles
+   NOTE: Main layout structure is handled in layout-consistency.css
+   ========================================================================== */
+
+/* ==========================================================================
+   Base Layout Container (Not .main-content)
    ========================================================================== */
 
 .layout {
   display: flex;
-  padding-top: 0;
-  margin: 0 auto;
   min-height: 100vh;
   max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 0;
   position: relative;
   width: 100%;
 }
 
-.main-content {
-  flex: 1;
-  margin-left: var(--sidebar-width);
-  padding: 0 var(--space-xl) var(--space-xl) var(--space-xl);
-  max-width: calc(1400px - var(--sidebar-width));
-  width: 100%;
-}
+/* ==========================================================================
+   Container Utilities (Generic wrappers, not split-layout specific)
+   ========================================================================== */
 
-/* Container utilities */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -39,7 +39,10 @@
   padding: 0 var(--space-xl);
 }
 
-/* Spacing utilities */
+/* ==========================================================================
+   Spacing Utilities
+   ========================================================================== */
+
 .section-spacing {
   margin-bottom: var(--space-4xl);
 }
@@ -52,7 +55,10 @@
   margin-bottom: var(--space-5xl);
 }
 
-/* Grid utilities */
+/* ==========================================================================
+   Grid Utilities
+   ========================================================================== */
+
 .grid {
   display: grid;
   gap: var(--space-xl);
@@ -74,7 +80,10 @@
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
-/* Flex utilities */
+/* ==========================================================================
+   Flex Utilities
+   ========================================================================== */
+
 .flex {
   display: flex;
 }
@@ -131,7 +140,10 @@
   gap: var(--space-xl);
 }
 
-/* Visibility utilities */
+/* ==========================================================================
+   Visibility Utilities
+   ========================================================================== */
+
 .hidden {
   display: none;
 }
@@ -148,20 +160,16 @@
   border: 0;
 }
 
-/* Desktop Styles (1200px and up) */
-@media (min-width: 1200px) {
-  .main-content {
-    /* Center content with max width */
-    max-width: calc(1400px + var(--sidebar-width));
-    width: 100%;
-    margin-right: auto;
-  }
+/* ==========================================================================
+   Desktop Breakpoint (1200px and up)
+   ========================================================================== */
 
+@media (min-width: 1200px) {
   .container {
     padding: 0 var(--space-2xl);
   }
 
-  /* Show desktop-only elements */
+  /* Show/hide elements by breakpoint */
   .desktop-only {
     display: block;
   }
@@ -172,18 +180,16 @@
   }
 }
 
-/* Tablet Styles (768px to 1199px) */
-@media (max-width: 1199px) and (min-width: 768px) {
-  .main-content {
-    margin-left: var(--sidebar-width-tablet);
-    width: calc(100vw - var(--sidebar-width-tablet));
-    padding: var(--space-xl);
-  }
+/* ==========================================================================
+   Tablet Breakpoint (768px to 1199px)
+   ========================================================================== */
 
+@media (max-width: 1199px) and (min-width: 768px) {
   .container {
     padding: 0 var(--space-xl);
   }
 
+  /* Grid adjustments */
   .grid-4 {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -192,7 +198,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Show tablet-only elements */
+  /* Show/hide elements */
   .tablet-only {
     display: block;
   }
@@ -202,7 +208,7 @@
     display: none;
   }
 
-  /* Tablet-specific grid */
+  /* Tablet-specific grid utilities */
   .grid-tablet-2 {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -212,16 +218,13 @@
   }
 }
 
-/* Mobile Styles (767px and below) */
+/* ==========================================================================
+   Mobile Breakpoint (767px and below)
+   ========================================================================== */
+
 @media (max-width: 767px) {
   .layout {
     padding-top: var(--header-height-mobile);
-  }
-
-  .main-content {
-    margin-left: 0;
-    padding: var(--space-md);
-    width: 100%;
   }
 
   .container,
@@ -238,7 +241,7 @@
     margin-bottom: var(--space-4xl);
   }
 
-  /* Simplify grid on mobile */
+  /* Simplify grids on mobile */
   .grid-4,
   .grid-3,
   .grid-2 {
@@ -249,7 +252,7 @@
     gap: var(--space-lg);
   }
 
-  /* Show mobile-only elements */
+  /* Show/hide elements */
   .mobile-only {
     display: block;
   }
@@ -272,7 +275,7 @@
     gap: var(--space-sm);
   }
 
-  /* Touch target improvements */
+  /* Touch target improvements for accessibility */
   .touch-target {
     min-height: 44px;
     min-width: 44px;
@@ -287,12 +290,11 @@
   }
 }
 
-/* Small Mobile Styles (375px and below) */
-@media (max-width: 375px) {
-  .main-content {
-    padding: var(--space-sm);
-  }
+/* ==========================================================================
+   Small Mobile (375px and below)
+   ========================================================================== */
 
+@media (max-width: 375px) {
   .container,
   .container-narrow,
   .container-wide {
@@ -308,23 +310,24 @@
   }
 }
 
-/* Landscape orientation on mobile */
-@media (max-width: 767px) and (orientation: landscape) {
-  .main-content {
-    padding: var(--space-sm) var(--space-lg);
-  }
+/* ==========================================================================
+   Landscape Orientation on Mobile
+   ========================================================================== */
 
+@media (max-width: 767px) and (orientation: landscape) {
   .section-spacing {
     margin-bottom: var(--space-2xl);
   }
 
-  /* Compact layout for landscape */
   .landscape-compact {
     padding: var(--space-sm);
   }
 }
 
-/* Print styles */
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
 @media print {
   .sidebar,
   .mobile-menu-btn,
@@ -332,11 +335,6 @@
   .post-actions,
   .pagination {
     display: none !important;
-  }
-
-  .main-content {
-    margin-left: 0;
-    width: 100%;
   }
 
   .layout {
@@ -363,7 +361,10 @@
   }
 }
 
-/* High contrast mode support */
+/* ==========================================================================
+   Accessibility - High Contrast Mode
+   ========================================================================== */
+
 @media (prefers-contrast: high) {
   :root {
     --color-border: #000000;
@@ -380,7 +381,10 @@
   }
 }
 
-/* Reduced motion support */
+/* ==========================================================================
+   Accessibility - Reduced Motion
+   ========================================================================== */
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -404,17 +408,20 @@
   }
 }
 
-/* Dark mode support (if implementing) */
+/* ==========================================================================
+   Dark Mode Support (Optional - Currently Disabled)
+   ========================================================================== */
+
 @media (prefers-color-scheme: dark) {
   /*
-	Uncomment and customize if you want automatic dark mode support
+  Uncomment and customize if you want automatic dark mode:
 
-	:root {
-		--color-background: #1a1a1a;
-		--color-text-dark: #ffffff;
-		--color-text-medium: #a0a0a0;
-		--color-background-light: #2d2d2d;
-		--color-border: #404040;
-	}
-	*/
+  :root {
+    --color-background: #1a1a1a;
+    --color-text-dark: #ffffff;
+    --color-text-medium: #a0a0a0;
+    --color-background-light: #2d2d2d;
+    --color-border: #404040;
+  }
+  */
 }
