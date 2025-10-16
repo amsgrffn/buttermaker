@@ -183,6 +183,10 @@
   gap: 0.25rem;
 }
 
+.img-date a {
+  color: var(--color-text-muted);
+}
+
 /* Arrow rotation effect on hover */
 .img-date a .lucide-arrow-right {
   display: inline-block; /* Needed for transform to work on inline SVG */

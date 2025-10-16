@@ -9,7 +9,7 @@
 
 :root {
   /* Main content area (inside sidebar) */
-  --main-content-max-width: 1400px;
+  --main-content-max-width: 1292px;
 
   /* Split layout (two-column) dimensions */
   --split-main-width: 800px; /* Left column */
@@ -32,7 +32,9 @@
 .main-content {
   flex: 1;
   margin-left: var(--sidebar-width); /* Push away from left sidebar */
-  max-width: calc(var(--main-content-max-width) - var(--sidebar-width));
+  max-width: var(
+    --main-content-max-width
+  ); /* Now this IS the content max-width */
   width: 100%;
   padding: 0; /* Let children handle their own padding */
 }
