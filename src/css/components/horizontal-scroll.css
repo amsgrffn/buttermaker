@@ -2,32 +2,12 @@
    Horizontal Scroll Component + Category Tabs (Fixed for Split Layout)
    ========================================================================== */
 
-.horizontal-scroll-container {
-  margin: 0;
-  max-width: 100%;
-  padding: 0;
-  position: relative;
-  width: 100%;
-}
-
 .horizontal-scroll-section {
   border-bottom: 1px solid var(--color-border-dark);
-  margin: var(--space-lg) auto 0 auto;
-  max-width: 1280px; /* Same as split-content-wrapper */
-  overflow: visible; /* So buttons can hang outside */
-  padding: 0 2rem var(--space-2xl) 2rem; /* Same as split-content */
-  position: relative;
-  width: 100%;
 }
 
 .horizontal-scroll-header {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
   margin: 0 0 var(--space-lg) 0;
-  max-width: 100%;
-  padding: 0;
-  width: 100%;
 }
 
 .horizontal-scroll-title {
