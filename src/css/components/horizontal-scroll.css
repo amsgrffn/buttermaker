@@ -3,29 +3,31 @@
    ========================================================================== */
 
 .horizontal-scroll-container {
-  margin: 0 auto;
-  max-width: 1228px;
+  margin: 0;
+  max-width: 100%;
+  padding: 0;
   position: relative;
-  width: 1228px;
+  width: 100%;
 }
 
 .horizontal-scroll-section {
   border-bottom: 1px solid var(--color-border-dark);
-  margin: var(--space-lg) 0 0 0;
-  overflow: hidden;
-  padding: 0 0 var(--space-2xl); /* Removed horizontal padding */
-  position: static; /* Changed from relative */
-  width: auto; /* Changed from 100vw */
+  margin: var(--space-lg) auto 0 auto;
+  max-width: 1280px; /* Same as split-content-wrapper */
+  overflow: visible; /* So buttons can hang outside */
+  padding: 0 2rem var(--space-2xl) 2rem; /* Same as split-content */
+  position: relative;
+  width: 100%;
 }
 
 .horizontal-scroll-header {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin: 0 auto; /* Center the header */
-  margin-bottom: var(--space-lg);
-  max-width: 1228px;
-  width: 1228px;
+  margin: 0 0 var(--space-lg) 0;
+  max-width: 100%;
+  padding: 0;
+  width: 100%;
 }
 
 .horizontal-scroll-title {
@@ -72,14 +74,6 @@
   opacity: 0.5;
 }
 
-.horizontal-scroll-container {
-  margin: 0;
-  margin-left: 2rem; /* Match split-content-wrapper padding */
-  padding: 0;
-  position: relative;
-  width: 1228px; /* 800px + 380px + 48px gap */
-}
-
 .horizontal-scroll-track {
   -ms-overflow-style: none;
   box-sizing: content-box;
@@ -103,8 +97,8 @@
   color: inherit;
   cursor: grab;
   display: flex;
-  flex: 0 0 295px;
-  height: 295px;
+  flex: 0 0 292px;
+  height: 292px;
   overflow: hidden;
   position: relative;
   scroll-snap-align: start;
@@ -335,15 +329,6 @@
   margin-bottom: var(--space-sm);
 }
 
-/* Position nav buttons over the scroll track */
-.horizontal-scroll-container {
-  margin: 0;
-  margin-left: 2rem;
-  padding: 0;
-  position: relative;
-  width: 1228px;
-}
-
 .scroll-btn {
   align-items: center;
   background: #fff;
@@ -401,20 +386,6 @@
 /* Mobile */
 @media (max-width: 767px) {
   /* Horizontal scroll keeps viewport spanning on mobile */
-  .horizontal-scroll-section {
-    margin-bottom: var(--space-lg);
-    padding: 0 var(--space-md);
-  }
-
-  .horizontal-scroll-header {
-    max-width: none;
-    padding: 0 var(--space-md);
-  }
-
-  .horizontal-scroll-container {
-    max-width: none;
-    padding: 0 var(--space-md);
-  }
 
   .horizontal-scroll-track {
     gap: var(--space-md);
@@ -478,18 +449,6 @@
 
 /* Small Mobile */
 @media (max-width: 480px) {
-  .horizontal-scroll-section {
-    padding: 0 var(--space-sm);
-  }
-
-  .horizontal-scroll-header {
-    padding: 0 var(--space-sm);
-  }
-
-  .horizontal-scroll-container {
-    padding: 0 var(--space-sm);
-  }
-
   .scroll-card {
     flex: 0 0 260px;
     height: 90px;

@@ -7,14 +7,12 @@
   display: grid;
   gap: 48px;
   grid-template-columns: 800px 380px;
-  /* CHANGE THIS LINE: */
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: var(--space-3xl);
-  /* ADD THIS LINE for extra centering control */
-  max-width: 1280px; /* 800 + 380 + 48 + padding */
-  padding: 0;
+  margin-top: var(--space-3xl); /* Keep this consistent */
+  max-width: 1280px;
+  padding: 0 2rem; /* Added from previous fix */
   width: 100%;
 }
 
