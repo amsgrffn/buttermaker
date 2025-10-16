@@ -1,41 +1,4 @@
 /* ==========================================================================
-   Split Content Layout & Aside Components (Simplified)
-   ========================================================================== */
-
-.split-content-wrapper {
-  align-items: start;
-  display: grid;
-  gap: 48px;
-  grid-template-columns: 800px 380px;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: var(--space-3xl); /* Keep this consistent */
-  max-width: 1280px;
-  padding: 0 2rem; /* Added from previous fix */
-  width: 100%;
-}
-
-.main-content-area {
-  min-width: 0; /* Prevents overflow issues */
-  width: 100%; /* Ensures full width */
-}
-
-/* Ensure all sections in main content area take full width */
-.main-content-area > section {
-  max-width: 100%;
-  width: 100%;
-}
-
-.content-aside {
-  position: relative;
-}
-
-.aside-content {
-  /* Simple container - no sticky positioning */
-}
-
-/* ==========================================================================
    Aside Widget Base Styles
    ========================================================================== */
 
