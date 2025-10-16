@@ -4,6 +4,8 @@
 
 .horizontal-scroll-section {
   border-bottom: 1px solid var(--color-border-dark);
+  overflow: visible; /* So buttons can hang outside */
+  position: relative;
 }
 
 .horizontal-scroll-header {
