@@ -161,6 +161,7 @@
 /* Hero Title */
 .post-hero-title {
   color: var(--color-headings);
+  font-family: 'ApexRoundedTrial-Heavy', sans-serif;
   font-size: 2rem;
   font-weight: 800;
   line-height: 1.15;
@@ -303,7 +304,7 @@
 .post-container {
   margin: 0 auto;
   max-width: 720px;
-  padding: 0 var(--space-xl);
+  padding: 0;
   position: relative;
 }
 
@@ -1203,7 +1204,6 @@ lite-youtube {
 
 lite-youtube:hover {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  transform: translateY(-4px);
 }
 
 lite-youtube::part(playButton) {
@@ -1261,4 +1261,16 @@ lite-youtube:hover::part(playButton)::before {
   lite-youtube::part(playButton)::before {
     border-width: 12px 0 12px 20px;
   }
+}
+
+.post-content .kg-toggle-content {
+  padding: 0 2rem 2rem;
+}
+
+.post-content .kg-toggle-card h4.kg-toggle-heading-text {
+  font-size: 1.4rem;
+}
+
+.post-content .kg-toggle-content p {
+  font-size: 1.2rem;
 }

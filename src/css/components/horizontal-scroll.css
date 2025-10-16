@@ -30,8 +30,8 @@
 
 .horizontal-scroll-title {
   color: var(--color-headings);
-  font-size: 1.5rem;
-  font-weight: 900;
+  font-size: 1.4rem;
+  font-weight: 700;
   margin: 0;
 }
 
@@ -170,9 +170,9 @@
   -webkit-line-clamp: 3;
   color: var(--color-headings);
   display: -webkit-box;
-  font-size: 1.3rem;
-  font-weight: 800;
-  line-height: 1.15;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.2;
   margin: 0 0 var(--space-xs) 0;
   overflow: hidden;
   text-overflow: ellipsis;

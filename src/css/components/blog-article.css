@@ -21,7 +21,20 @@
 }
 
 .note-post h2 {
-  display: none;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  color: var(--color-text-dark);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+  font-weight: var(--font-weight-semibold);
+  height: 1px;
+  margin: -1px;
+  margin-bottom: var(--space-xs);
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 .note-post .note-body blockquote,
@@ -126,14 +139,15 @@
 /* Title */
 .article-loop .post-title {
   font-size: var(--font-size-3xl);
-  line-height: var(--line-height-tight);
+  font-weight: 700;
+  line-height: 1.2;
   margin-bottom: var(--space-lg);
   margin-top: 0;
 }
 
 .article-loop .post-title a {
   color: var(--color-headings);
-  font-weight: var(--font-weight-bold);
+  font-weight: 700;
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -434,14 +448,14 @@
 
 .article-loop .post-preview .post-title {
   font-size: var(--font-size-3xl);
-  line-height: var(--line-height-tight);
+  line-height: 1.2;
   margin-bottom: var(--space-md);
   margin-top: 0;
 }
 
 .article-loop .post-preview .post-title a {
   color: var(--color-headings);
-  font-weight: var(--font-weight-bold);
+  font-weight: 700;
   text-decoration: none;
   transition: color 0.2s ease;
 }

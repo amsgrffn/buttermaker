@@ -5,26 +5,25 @@
 
 .breadcrumb-list {
   align-items: center;
-  background: var(--color-cool-blue);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-cool-blue);
+
+  border-bottom: 1px solid var(--color-border-dark);
   display: flex;
   flex-wrap: wrap;
   font-size: 14px;
   list-style: none;
-  margin-bottom: var(--space-4xl);
+  margin-bottom: var(--space-3xl);
   max-width: 720px;
-  padding: var(--space-md);
+  padding: 0 0 var(--space-sm);
 }
 
 .breadcrumb-item {
   align-items: center;
-  color: var(--color-text-dark);
+  color: var(--color-headlines);
   display: flex;
 }
 
 .breadcrumb-item.crumb-article-title {
-  color: var(--color-text-medium);
+  color: var(--color-text-muted);
 }
 
 .breadcrumb-list svg {
@@ -45,8 +44,8 @@
 }
 
 .breadcrumb-item a {
-  color: var(--color-text-dark);
-  font-weight: 500;
+  color: var(--color-headings);
+  font-weight: 600;
   text-decoration-color: var(--color-text-dark);
   text-decoration-thickness: 1px;
   text-decoration: underline;

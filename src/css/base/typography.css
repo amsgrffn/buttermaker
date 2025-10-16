@@ -9,10 +9,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family:
-    'HvDTrial Brandon Grotesque', 'Apex Rounded Trial', 'SF Pro Rounded',
-    sans-serif;
-  font-weight: 900;
+  font-family: 'ApexRoundedTrial-Bold', 'SF Pro Rounded', sans-serif;
+  font-weight: 700;
   line-height: var(--line-height-tight);
   color: var(--color-headings);
   margin-bottom: var(--space-lg);
