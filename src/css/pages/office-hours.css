@@ -45,7 +45,7 @@
   border: 1px solid var(--border-cool-blue);
   box-shadow: var(--shadow-sm);
   height: 100%;
-  min-width: 215px;
+  min-width: 200px;
   overflow: hidden;
   transition:
     transform 0.3s ease,

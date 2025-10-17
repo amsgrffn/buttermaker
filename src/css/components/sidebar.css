@@ -10,7 +10,9 @@
   contain: layout style;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* REMOVE: justify-content: space-between; */
+  /* ADD THESE INSTEAD: */
+  gap: var(--space-2xl); /* Consistent spacing between sections */
   left: calc(50vw - 700px);
   padding: var(--space-3xl) 20px 0 0;
   position: fixed;
@@ -21,6 +23,13 @@
 
 .sidebar-header {
   flex: 0 0 auto;
+  margin-bottom: var(--space-3xl); /* Fixed spacing after header */
+}
+
+/* Add this new rule for the navigation sections */
+.sidebar-navigation {
+  flex: 0 0 auto;
+  margin-bottom: var(--space-3xl); /* Fixed spacing between nav sections */
 }
 
 .sidebar-overlay {
@@ -142,11 +151,9 @@
   width: 16px;
 }
 
-/* Now Reading Widget */
 .now-reading-widget {
   flex: 0 0 auto;
-  padding: 0;
-  text-wrap: pretty;
+  margin-top: auto; /* Push to bottom */
 }
 
 .now-reading-widget svg {
