@@ -81,8 +81,8 @@
   color: inherit;
   cursor: grab;
   display: flex;
-  flex: 0 0 290px;
-  height: 290px;
+  flex: 0 0 295px; /* Exactly 4 cards fit in the container */
+  height: 295px; /* Keep it square */
   overflow: hidden;
   position: relative;
   scroll-snap-align: start;
