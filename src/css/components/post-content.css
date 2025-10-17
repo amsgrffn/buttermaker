@@ -13,6 +13,12 @@
    3. Verify the exact Ghost classes match the selectors below
    ========================================================================== */
 
+.page-template .main-content-area,
+.post-template .main-content-area {
+  width: 80%;
+  margin: 0 auto;
+}
+
 /* Hero Header Container */
 .post-hero-header {
   border-radius: 22px;
@@ -162,7 +168,7 @@
 .post-hero-title {
   color: var(--color-headings);
   font-family: 'ApexRoundedTrial-Heavy', sans-serif;
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-weight: 800;
   line-height: 1.15;
   margin-bottom: var(--space-sm);
@@ -300,13 +306,7 @@
   }
 }
 
-/* Post Container - Centered in main content area */
-.post-container {
-  margin: 0 auto;
-  max-width: 720px;
-  padding: 0;
-  position: relative;
-}
+/* Post Container - Centered in main content area *
 
 /* Post Header Styling */
 .page-template .post-header,
@@ -345,7 +345,7 @@
 .page-template .post-title,
 .post-template .post-title {
   color: var(--color-headings);
-  font-size: 2.8rem;
+  font-size: 3.2rem;
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: var(--space-2xl);
@@ -1051,21 +1051,12 @@
    Post Template - Sidebar Layout (Two Column)
    ========================================================================== */
 
-.post-template .main-content-area {
-  min-width: 0;
-  width: 100%;
-}
-
 /* ==========================================================================
    RESPONSIVE - Stack sidebar & adjust layout
    ========================================================================== */
 
 /* Mobile Responsive */
 @media (max-width: 767px) {
-  .post-container {
-    padding: 0 var(--space-lg);
-  }
-
   .post-title {
     font-size: var(--font-size-3xl);
   }
