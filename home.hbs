@@ -1,16 +1,21 @@
 {{!< default}}
-{{> "sections/horizontal-scroll"}}
-<div class="split-content-wrapper">
+
+<div class="homepage-container">
+  {{> "sections/horizontal-scroll"}}
+
+  <div class="split-content-wrapper">
 	<div class="main-content-area">
-		{{> "components/cta-banner"}}
-		{{> "sections/post-feed"}}
-		{{> "sections/masonry-grid"}}
+	  {{> "components/cta-banner"}}
+	  {{> "sections/post-feed"}}
+	  {{> "sections/masonry-grid"}}
 	</div>
 	<aside class="content-aside">
-		{{> "layout/aside-content"}}
+	  {{> "layout/aside-content"}}
 	</aside>
+  </div>
 </div>
-	<p class="end-credits">"I am putting myself to the fullest possible use which is all, I think,
+
+<p class="end-credits">"I am putting myself to the fullest possible use which is all, I think,
   that any conscious entity can ever hope to do." &mdash;
   <a href='https://en.wikipedia.org/wiki/HAL_9000'>A Heuristically
-	Programmed Algorithmic Computer</a> &bull; &copy; {{date format="YYYY"}} {{@site.title}}</p>
+  Programmed Algorithmic Computer</a> &bull; &copy; {{date format="YYYY"}} {{@site.title}}</p>

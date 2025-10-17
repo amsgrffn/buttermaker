@@ -42,6 +42,17 @@
 }
 
 /* ==========================================================================
+   Homepage Container - Wraps horizontal scroll + split layout
+   ========================================================================== */
+
+.homepage-container {
+  /* Match the split-content-wrapper's total width */
+  max-width: calc(var(--split-total-width) + (2 * var(--content-padding)));
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ==========================================================================
    3. Split Content Wrapper (Two-Column Layout)
    This is the main two-column layout used on most pages
    ========================================================================== */
