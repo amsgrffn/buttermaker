@@ -1239,12 +1239,8 @@ lite-youtube:hover::part(playButton)::before {
   }
 }
 
-.post-content .kg-toggle-content {
-  padding: 0 2rem 2rem;
-}
-
 .post-content .kg-toggle-card h4.kg-toggle-heading-text {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 
 .post-content .kg-toggle-content p {

@@ -13,7 +13,7 @@
 #contactCards {
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   margin: 60px auto;
   max-width: 80rem;
   width: 100%;
@@ -114,14 +114,14 @@ h3.contact-title {
   cursor: pointer;
   display: flex;
   flex-shrink: 0;
-  height: 3rem;
+  height: 2rem;
   justify-content: center;
   padding: 0;
   transition:
     background-color 0.2s ease,
     transform 0.2s ease,
     box-shadow 0.2s ease;
-  width: 3rem;
+  width: 2rem;
 }
 
 .reveal-button:hover {

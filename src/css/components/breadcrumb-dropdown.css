@@ -6,7 +6,7 @@
 .breadcrumb-list {
   align-items: center;
 
-  border-bottom: 1px solid var(--color-border-dark);
+  border-bottom: 1px solid var(--color-border);
   display: flex;
   flex-wrap: wrap;
   font-size: 14px;
