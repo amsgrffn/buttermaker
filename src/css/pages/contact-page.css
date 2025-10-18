@@ -19,6 +19,11 @@
   width: 100%;
 }
 
+/* Make the third card span all columns */
+#contactCards > :nth-child(3) {
+  grid-column: 1 / -1;
+}
+
 .contact-cards-wrap {
   /* Container for the grid */
   width: 100%;

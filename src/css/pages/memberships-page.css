@@ -13,21 +13,21 @@
 
 .page-title {
   color: var(--color-headlines);
-  font-family: var(--display);
-  font-size: 3rem;
+  font-family: var(--font-display);
+  font-size: 2.6rem;
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 1rem;
 }
 
 .page-excerpt {
-  color: var(--color-text-muted);
-  font-size: 1.5rem;
-  font-weight: 600;
+  color: var(--color-text);
+  font-size: 1.3rem;
+  font-weight: 400;
   line-height: 1.4;
   margin: 0 auto;
   max-width: 800px;
-  text-wrap: pretty;
+  text-wrap: balance;
 }
 
 /* Membership Section */
@@ -132,8 +132,8 @@
 .membership-card-title {
   color: var(--color-headings);
   font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 900;
+  font-size: 1.4rem;
+  font-weight: 700;
   margin-bottom: 0;
 }
 
@@ -149,7 +149,6 @@
   font-family: 'ApexRoundedTrial-Ultra', sans-serif;
   font-size: 2.8rem;
   font-weight: 900;
-  letter-spacing: 0.03rem;
   margin: 0 0 1rem 1.5rem;
   transition: all 0.3s ease;
 }
@@ -200,9 +199,8 @@
   font-family: var(--sans);
   font-size: 0.875rem;
   font-weight: 600;
-  letter-spacing: 0.02rem;
   margin: 0 1.5rem 1.5rem;
-  padding: 0.875rem 1.5rem;
+  padding: 0.75rem 1rem;
   text-align: center;
   text-decoration: none;
   transition:
@@ -212,8 +210,8 @@
 }
 
 .membership-card-button:hover {
-  background-color: var(--red, #ff6961);
-  color: #ffe680;
+  background-color: var(--link-color);
+  color: var(--link-color-muted);
   transform: translateY(-2px);
 }
 
