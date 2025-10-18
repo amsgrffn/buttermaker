@@ -46,7 +46,7 @@
 }
 
 .header-extra p {
-  background: #f5f7fa;
+  background: var(--color-background-secondary);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   margin: 0;
@@ -105,8 +105,8 @@
 }
 
 .search-input {
-  background: #f5f7fa;
-  border: 1px solid #e6eaef;
+  background: var(--color-background-secondary);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-base);
   font-size: var(--font-size-base);
   outline: none;
@@ -186,7 +186,7 @@
 
 /* Header Buttons */
 .header-btn {
-  background: #f5f7fa;
+  background: var(--color-background-secondary);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
   color: var(--color-text-dark);
@@ -210,7 +210,7 @@
 
 .header-btn.primary {
   background: var(--link-color);
-  color: #fff2ee;
+  color: white;
 }
 
 .header-btn:hover {

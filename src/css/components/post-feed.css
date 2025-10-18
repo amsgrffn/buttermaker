@@ -61,7 +61,7 @@
 
 .post-card-content {
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--color-background-card);
   border-radius: 22px;
   box-shadow: var(--shadow);
   left: 50%;
@@ -77,7 +77,7 @@
 /* Fallback for browsers without backdrop-filter support */
 @supports not (backdrop-filter: blur(10px)) {
   .post-card-content {
-    background: rgba(255, 255, 255, 0.98);
+    background: var(--color-background-card);
   }
 }
 

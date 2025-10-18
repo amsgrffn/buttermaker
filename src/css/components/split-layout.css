@@ -24,8 +24,8 @@
 .archive-widget,
 .tags-widget,
 .testimonial-widget {
-  background: #f5f7fa;
-  border: 1px solid #e6eaef;
+  background: var(--color-background-secondary);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   margin-bottom: var(--space-2xl);
   padding: var(--space-xl);
@@ -40,7 +40,7 @@
 }
 
 .note-item {
-  background: #fff;
+  background: var(--color-background-card);
   background-size: 16px 16px;
   border-radius: 22px;
   box-shadow: var(--shadow);
@@ -75,7 +75,7 @@
 }
 
 .note-item blockquote {
-  border-left: 1px solid #000;
+  border-left: 1px solid var(--color-border-dark);
   padding-left: 1rem;
 }
 
@@ -101,7 +101,11 @@
 }
 
 .note-item ul li:before {
-  background: linear-gradient(135deg, #000000 0%, #444444 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-text-dark) 0%,
+    var(--color-text-medium) 100%
+  );
   border-radius: 50%;
   content: '';
   height: 8px;
@@ -259,7 +263,7 @@
    ========================================================================== */
 
 .testimonial-widget .testimonials {
-  background: #fff;
+  background: var(--color-background-card);
   border-radius: 22px;
   box-shadow: var(--shadow);
   display: flex;
@@ -354,7 +358,7 @@
 }
 
 .stat-item {
-  background: #fff;
+  background: var(--color-background-card);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow);
   padding: var(--space-md);
@@ -408,7 +412,7 @@
 }
 
 .movie-list img {
-  border: 8px solid white;
+  border: 8px solid var(--color-background);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
   display: block;

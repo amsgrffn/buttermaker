@@ -117,7 +117,7 @@
 
 .current-time-container {
   align-items: center;
-  background-color: #fdfdfd;
+  background-color: var(--color-background-card);
   border-radius: 22px;
   border: 1px solid var(--border-cool-blue);
   box-shadow: var(--shadow);
@@ -161,13 +161,13 @@
 }
 
 .office-status-indicator.open {
-  background-color: #e3f8df;
-  color: var(--green);
+  background-color: var(--color-success);
+  color: white;
 }
 
 .office-status-indicator.closed {
-  background-color: #000;
-  color: #fefefe;
+  background-color: var(--color-text-dark);
+  color: white;
 }
 
 /* Dark mode adjustments */

@@ -30,7 +30,7 @@
 }
 
 .contact-card {
-  background: #fff;
+  background: var(--color-background-card);
   border-radius: 22px;
   box-shadow: var(--shadow);
   display: flex;

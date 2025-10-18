@@ -3,6 +3,7 @@
  */
 
 import { initializeTheme } from './modules/theme';
+import { DarkMode } from './modules/dark-mode';
 import { MobileNavigation } from './modules/mobile-navigation';
 import { CategoryTabs } from './modules/category-tabs';
 import { SubscribeButtons } from './modules/subscribe-buttons';
@@ -36,6 +37,9 @@ document.addEventListener('DOMContentLoaded', function () {
   try {
     // Initialize core theme functionality
     initializeTheme();
+
+    // Initialize dark mode (should be early in the initialization)
+    const darkMode = new DarkMode();
 
     // Initialize mobile navigation (needed on all pages)
     const mobileNav = new MobileNavigation();

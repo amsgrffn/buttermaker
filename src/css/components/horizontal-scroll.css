@@ -70,6 +70,7 @@
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   user-select: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .horizontal-scroll-track::-webkit-scrollbar {
@@ -88,10 +89,26 @@
   scroll-snap-align: start;
   text-decoration: none;
   transition: all var(--transition-base);
+  will-change: transform;
 }
 
 .scroll-card:hover {
   animation: wiggle 0.5s ease-in-out;
+}
+
+.scroll-card.loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .scroll-card-image {
@@ -132,7 +149,7 @@
 .scroll-card-content {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--color-background-card);
   border-radius: 22px;
   bottom: 0; /* Anchor to bottom of card */
   box-shadow: var(--shadow);
@@ -241,8 +258,8 @@
 }
 
 .category-tabs-container {
-  background: #f5f7fa;
-  border: 1px solid #e6eaef;
+  background: var(--color-background-secondary);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-base);
   font-family: var(--font-family-sans);
   margin: 0;

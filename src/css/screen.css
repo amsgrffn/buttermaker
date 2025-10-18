@@ -10,21 +10,22 @@
 
 /* Components */
 @import 'components/blog-article.css';
+@import 'components/breadcrumb-dropdown.css';
+@import 'components/cta-banner.css';
+@import 'components/dark-mode-toggle.css';
+@import 'components/dates.css';
 @import 'components/header.css';
 @import 'components/horizontal-scroll.css';
-@import 'components/sidebar.css';
+@import 'components/infinite-scroll.css';
 @import 'components/masonry.css';
 @import 'components/newsletter-widget.css';
-@import 'components/post-feed.css';
-@import 'components/post-content.css';
-@import 'components/cta-banner.css';
 @import 'components/pagination.css';
-@import 'components/split-layout.css';
-@import 'components/infinite-scroll.css';
-@import 'components/breadcrumb-dropdown.css';
+@import 'components/post-content.css';
+@import 'components/post-feed.css';
 @import 'components/recommendations.css';
+@import 'components/sidebar.css';
+@import 'components/split-layout.css';
 @import 'components/share-dropdown.css';
-@import 'components/dates.css';
 
 /* Pages */
 @import 'pages/contact-page.css';

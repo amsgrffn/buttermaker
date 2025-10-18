@@ -136,9 +136,9 @@
 .nav-icon svg {
   background: var(--color-blue-grey);
   border: 1px solid var(--border-blue-grey);
-  border-color: #999; /* Consider using var(--color-grey-border) */
+  border-color: var(--color-border-dark);
+  color: var(--color-text-dark);
   border-radius: 3px;
-  color: #000; /* Consider using var(--color-black) */
   display: block;
   font-weight: 500;
   height: 16px;

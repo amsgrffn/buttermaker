@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .recommendations-widget {
-  background: var(--color-bg-secondary, #f8f9fa);
+  background: var(--color-background-secondary);
   border-radius: var(--radius-md, 8px);
   padding: var(--space-lg, 20px);
   margin-bottom: var(--space-xl, 24px);
