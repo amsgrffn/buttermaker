@@ -23,6 +23,8 @@ import { initPriceToggle } from './modules/price-toggle';
 import { BreadcrumbDropdown } from './modules/breadcrumb-dropdown';
 import { initCurrentTime } from './modules/current-time';
 import { BlogPostDisplay } from './modules/blog-post-display';
+import { initRotatingQuotes } from './modules/rotating-quotes';
+
 import {
   initShortDateFormatter,
   observeNewDates,
@@ -86,6 +88,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (document.querySelector('.breadcrumb-dropdown')) {
       const breadcrumbDropdown = new BreadcrumbDropdown();
+    }
+    // Initialize rotating quotes if element exists
+    if (document.querySelector('.end-credits')) {
+      initRotatingQuotes();
     }
 
     const blogPostDisplay = new BlogPostDisplay();

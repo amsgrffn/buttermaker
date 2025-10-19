@@ -344,10 +344,12 @@
   margin: 0 0 var(--space-4xl);
 }
 
-.page-template .excerpt,
-.post-template .excerpt {
-  font-size: 1.1rem;
-  line-height: 1.4;
+.page-template .excerpt p,
+.post-template .excerpt p {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.35;
+  margin: 0;
 }
 
 .page-template .excerpt a,
@@ -378,7 +380,7 @@
   font-size: 3.2rem;
   font-weight: 800;
   line-height: 1.1;
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-lg);
 }
 
 .post-template .role {
@@ -542,6 +544,7 @@
   font-size: 1.3rem;
   line-height: 1.35;
   margin-bottom: var(--space-xl);
+  text-wrap: pretty;
 }
 
 .post-content hr {
@@ -574,15 +577,18 @@
 }
 
 .post-content li {
-  margin-bottom: var(--space-xxs);
+  line-height: 1.35;
+  margin-bottom: var(--space-sm);
 }
 
 .post-content ul li {
   list-style-type: disc;
+  text-wrap: pretty;
 }
 
 .post-content ol li {
   list-style-type: decimal;
+  text-wrap: pretty;
 }
 
 /* Blockquotes */
