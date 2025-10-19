@@ -113,7 +113,7 @@
 
 .post-card-title {
   color: var(--color-headings);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: var(--space-sm);
@@ -178,7 +178,7 @@
 }
 
 .go-to-blog {
-  border-bottom: 1px solid #cfcfcf;
+  border-bottom: 1px solid var(--color-blue-grey);
   font-size: 0.875rem;
   font-weight: 600;
   grid-column: 1 / -1; /* Spans from column 1 to the end */
@@ -187,10 +187,10 @@
 }
 
 .go-to-blog span {
-  background: #f5f5f5;
+  background: var(--color-cool-blue);
   border: 1px solid #eee;
-  border-radius: var(--radius-xl);
-  padding: 6px 12px;
+  border-radius: 22px;
+  padding: 8px 12px;
 }
 
 .go-to-blog a {

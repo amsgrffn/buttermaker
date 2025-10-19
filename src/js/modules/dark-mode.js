@@ -1,12 +1,14 @@
 /**
- * Dark Mode Toggle Module
- * Handles dark mode toggle with system preference detection and localStorage persistence
+ * Pill-Style Dark Mode Toggle Module
+ * Handles dark mode with smooth sliding animation
  */
 
 export class DarkMode {
   constructor() {
     this.storageKey = 'theme-preference';
-    this.toggleButton = null;
+    this.toggleContainer = null;
+    this.lightButton = null;
+    this.darkButton = null;
     this.init();
   }
 
@@ -25,6 +27,8 @@ export class DarkMode {
       this.applyTheme(savedTheme);
     } else if (systemPrefersDark) {
       this.applyTheme('dark');
+    } else {
+      this.applyTheme('light');
     }
 
     // Listen for system theme changes
@@ -37,8 +41,8 @@ export class DarkMode {
         }
       });
 
-    // Set up toggle button
-    this.setupToggleButton();
+    // Set up toggle buttons
+    this.setupToggleButtons();
   }
 
   /**
@@ -51,81 +55,74 @@ export class DarkMode {
       document.body.classList.remove('dark-mode');
     }
 
-    // Update toggle button if it exists
-    this.updateToggleButton();
+    // Update toggle button states
+    this.updateToggleButtons(theme);
   }
 
   /**
-   * Toggle between light and dark mode
+   * Set up the toggle buttons
    */
-  toggleTheme() {
-    const isDark = document.body.classList.contains('dark-mode');
-    const newTheme = isDark ? 'light' : 'dark';
+  setupToggleButtons() {
+    this.toggleContainer = document.getElementById('dark-mode-toggle');
 
-    this.applyTheme(newTheme);
-    localStorage.setItem(this.storageKey, newTheme);
-  }
+    if (!this.toggleContainer) return;
 
-  /**
-   * Set up the toggle button
-   */
-  setupToggleButton() {
-    this.toggleButton = document.getElementById('dark-mode-toggle');
+    this.lightButton = this.toggleContainer.querySelector(
+      '[data-theme="light"]',
+    );
+    this.darkButton = this.toggleContainer.querySelector('[data-theme="dark"]');
 
-    if (this.toggleButton) {
-      this.toggleButton.addEventListener('click', () => {
-        this.toggleTheme();
+    if (this.lightButton && this.darkButton) {
+      // Add click handlers
+      this.lightButton.addEventListener('click', () => {
+        this.setTheme('light');
       });
 
-      // Update button state
-      this.updateToggleButton();
+      this.darkButton.addEventListener('click', () => {
+        this.setTheme('dark');
+      });
+
+      // Keyboard support
+      this.lightButton.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.setTheme('light');
+        }
+      });
+
+      this.darkButton.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.setTheme('dark');
+        }
+      });
     }
   }
 
   /**
-   * Update toggle button appearance
+   * Set theme and save preference
    */
-  updateToggleButton() {
-    if (!this.toggleButton) return;
+  setTheme(theme) {
+    this.applyTheme(theme);
+    localStorage.setItem(this.storageKey, theme);
+  }
 
-    const isDark = document.body.classList.contains('dark-mode');
-    const icon = this.toggleButton.querySelector('.theme-icon');
+  /**
+   * Update toggle button states
+   */
+  updateToggleButtons(theme) {
+    if (!this.toggleContainer || !this.lightButton || !this.darkButton) return;
 
-    if (icon) {
-      // Update aria-label for accessibility
-      this.toggleButton.setAttribute(
-        'aria-label',
-        isDark ? 'Switch to light mode' : 'Switch to dark mode',
-      );
+    // Update data attribute for CSS slider positioning
+    this.toggleContainer.setAttribute('data-active-theme', theme);
 
-      // Update icon (you'll add SVG icons in the next step)
-      icon.innerHTML = isDark ? this.getSunIcon() : this.getMoonIcon();
+    // Update aria-checked states
+    if (theme === 'dark') {
+      this.lightButton.setAttribute('aria-checked', 'false');
+      this.darkButton.setAttribute('aria-checked', 'true');
+    } else {
+      this.lightButton.setAttribute('aria-checked', 'true');
+      this.darkButton.setAttribute('aria-checked', 'false');
     }
-  }
-
-  /**
-   * Get moon icon SVG (for light mode - clicking will enable dark)
-   */
-  getMoonIcon() {
-    return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-	  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-	</svg>`;
-  }
-
-  /**
-   * Get sun icon SVG (for dark mode - clicking will enable light)
-   */
-  getSunIcon() {
-    return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-	  <circle cx="12" cy="12" r="5"></circle>
-	  <line x1="12" y1="1" x2="12" y2="3"></line>
-	  <line x1="12" y1="21" x2="12" y2="23"></line>
-	  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-	  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-	  <line x1="1" y1="12" x2="3" y2="12"></line>
-	  <line x1="21" y1="12" x2="23" y2="12"></line>
-	  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-	  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-	</svg>`;
   }
 }

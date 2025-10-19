@@ -42,6 +42,7 @@
 .header-extra {
   align-items: center;
   display: flex;
+  gap: 1rem;
   justify-self: center; /* or start/center */
 }
 
@@ -105,9 +106,9 @@
 }
 
 .search-input {
-  background: var(--color-background-secondary);
+  background: var(--color-cool-blue);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-base);
+  border-radius: var(--radius-pill);
   font-size: var(--font-size-base);
   outline: none;
   padding: var(--space-sm) var(--space-4xl) var(--space-sm) var(--space-lg);
@@ -186,7 +187,7 @@
 
 /* Header Buttons */
 .header-btn {
-  background: var(--color-background-secondary);
+  background: var(--color-cool-blue);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
   color: var(--color-text-dark);

@@ -36,6 +36,7 @@
   background: var(--color-background);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
   color: var(--color-text-dark);
   cursor: pointer;
   display: flex;
@@ -48,9 +49,10 @@
 }
 
 .scroll-btn:hover {
-  background: var(--color-pumpkin);
-  border-color: var(--color-pumpkin);
-  color: white;
+  background: var(--link-color);
+  border-color: var(--link-color);
+  color: var(--color-background);
+  transform: scale(1.05);
 }
 
 .scroll-btn:disabled {
@@ -258,9 +260,9 @@
 }
 
 .category-tabs-container {
-  background: var(--color-background-secondary);
+  background: var(--color-cool-blue);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-base);
+  border-radius: var(--radius-xl);
   font-family: var(--font-family-sans);
   margin: 0;
   padding: var(--space-sm);
@@ -286,7 +288,7 @@
 .category-tab {
   background: transparent;
   border: none;
-  border-radius: var(--radius-base);
+  border-radius: var(--radius-pill);
   color: var(--color-text-dark);
   cursor: pointer;
   font-family: var(--font-family-sans);
@@ -332,7 +334,7 @@
 
 .scroll-btn {
   align-items: center;
-  background: #fff;
+  background: var(--color-background);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
   box-shadow: var(--shadow-sm);

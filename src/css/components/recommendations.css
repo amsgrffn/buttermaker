@@ -3,11 +3,11 @@
    ========================================================================== */
 
 .recommendations-widget {
-  background: var(--color-background-secondary);
-  border-radius: var(--radius-md, 8px);
+  background: var(--color-cool-blue);
+  border-radius: var(--radius-xl);
   padding: var(--space-lg, 20px);
   margin-bottom: var(--space-xl, 24px);
-  border: 1px solid var(--color-border, #e1e5e9);
+  border: 1px solid var(--border-blue-grey);
 }
 
 /* 2-Column Grid Layout */

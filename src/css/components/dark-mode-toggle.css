@@ -1,69 +1,130 @@
 /* ==========================================================================
-   Dark Mode Toggle Button
+   Pill-Style Theme Toggle
    ========================================================================== */
 
-.dark-mode-toggle {
+.theme-toggle-pill {
+  background: var(--color-cool-blue);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  position: relative;
+  transition: all var(--transition-base);
+}
+
+.theme-toggle-pill:hover {
+  border-color: var(--color-border-dark);
+}
+
+/* Individual theme option buttons */
+.theme-option {
   align-items: center;
   background: transparent;
-  border: 1px solid var(--color-border);
+  border: none;
   border-radius: var(--radius-md);
-  color: var(--color-text);
+  color: var(--color-text-muted);
   cursor: pointer;
   display: flex;
-  height: 36px;
+  height: 32px;
   justify-content: center;
   padding: 0;
+  position: relative;
   transition: all var(--transition-base);
-  width: 36px;
+  width: 32px;
+  z-index: 2;
 }
 
-.dark-mode-toggle:hover {
-  background: var(--color-background-secondary);
-  border-color: var(--color-border-dark);
-  transform: scale(1.05);
+/* Active state - icon color changes */
+.theme-option[aria-checked='true'] {
+  color: var(--color-text-dark);
 }
 
-.dark-mode-toggle:active {
-  transform: scale(0.95);
-}
-
-.dark-mode-toggle .theme-icon {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
-.dark-mode-toggle svg {
+/* Hover effect */
+.theme-option:hover {
   color: var(--color-text);
-  height: 20px;
-  width: 20px;
 }
 
-/* Animation for icon change */
-.dark-mode-toggle .theme-icon svg {
-  animation: iconFadeIn 0.3s ease;
+/* SVG icon styling */
+.theme-option svg {
+  height: 18px;
+  transition: transform var(--transition-fast);
+  width: 18px;
 }
 
-@keyframes iconFadeIn {
-  from {
-    opacity: 0;
-    transform: rotate(-30deg) scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-  }
+.theme-option:active svg {
+  transform: scale(0.9);
+}
+
+/* Sliding background indicator */
+.theme-slider {
+  background: var(--color-background);
+  border-radius: 50%;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    0 0 0 1px var(--color-border-light);
+  height: 32px;
+  left: 4px;
+  position: absolute;
+  top: 4px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 32px;
+  z-index: 1;
+}
+
+/* Slider position for dark mode */
+.theme-toggle-pill[data-active-theme='dark'] .theme-slider {
+  transform: translateX(36px);
+}
+
+/* Dark mode specific styles */
+body.dark-mode .theme-toggle-pill {
+  background: var(--color-background-secondary);
+  border-color: var(--color-border);
+}
+
+body.dark-mode .theme-slider {
+  background: var(--color-background-light);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .theme-option[aria-checked='true'] {
+  color: var(--color-text);
 }
 
 /* Responsive adjustments */
 @media (max-width: 767px) {
-  .dark-mode-toggle {
-    height: 32px;
-    width: 32px;
+  .theme-toggle-pill {
+    gap: 3px;
+    padding: 3px;
   }
 
-  .dark-mode-toggle svg {
-    height: 18px;
-    width: 18px;
+  .theme-option {
+    height: 28px;
+    width: 28px;
   }
+
+  .theme-option svg {
+    height: 16px;
+    width: 16px;
+  }
+
+  .theme-slider {
+    height: 28px;
+    left: 3px;
+    top: 3px;
+    width: 28px;
+  }
+
+  .theme-toggle-pill[data-active-theme='dark'] .theme-slider {
+    transform: translateX(31px);
+  }
+}
+
+/* Focus visible for keyboard navigation */
+.theme-option:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
 }

@@ -1,9 +1,7 @@
 /* Office Hours Styles */
 .office-hours-container {
-  margin: 0 0 4rem;
-  padding-bottom: 3rem;
+  margin: 0 0 6rem;
   position: relative;
-  border-bottom: 2px solid #cfcfcf;
 }
 
 .office-hours-header {
@@ -40,7 +38,7 @@
 }
 
 .office-hours-card {
-  background-color: #fdfdfd;
+  background-color: var(--color-background-card);
   border-radius: 22px;
   border: 1px solid var(--border-cool-blue);
   box-shadow: var(--shadow-sm);
@@ -273,7 +271,6 @@ body.dark-mode .office-status-indicator.closed {
 }
 
 .holiday-card {
-  background: #fff;
   border-radius: var(--radius);
   box-shadow: var(--shadow-muted);
   overflow: hidden;
@@ -328,13 +325,13 @@ body.dark-mode .office-status-indicator.closed {
 }
 
 .office-hours .holiday-item:nth-child(odd) {
-  background-color: #edeef0;
-  border: 1px solid #e0e1e3;
+  background-color: var(--color-background-card);
+  border: 1px solid var(--border-cool-blue);
 }
 
 .office-hours .holiday-item:nth-child(even) {
-  background-color: #fafbfd;
-  border: 1px solid #edeef0;
+  background-color: var(--color-background-secondary);
+  border: 1px solid var(--border-cool-blue);
 }
 
 .office-hours .holiday-item:last-child {

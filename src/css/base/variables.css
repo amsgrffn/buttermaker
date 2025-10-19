@@ -95,12 +95,12 @@
   --link-color-muted: #ffede7;
 
   --radius-base: 0.25rem; /* 4px */
-  --radius-full: 50%; /* percentage stays the same */
-  --radius-lg: 0.4375rem; /* 7px */
-  --radius-md: 0.3125rem; /* 5px */
-  --radius-pill: 1.25rem; /* 20px */
   --radius-sm: 0.1875rem; /* 3px */
+  --radius-md: 0.3125rem; /* 5px */
+  --radius-lg: 0.4375rem; /* 7px */
   --radius-xl: 0.5rem; /* 8px */
+  --radius-pill: 1.25rem; /* 20px */
+  --radius-full: 50%; /* percentage stays the same */
 
   --shadow:
     0 3px 4px -1px rgb(0 0 0 / 0.06), 0 1px 3px -1px rgb(0 0 0 / 0.06),
@@ -163,7 +163,7 @@ body.dark-mode {
 
   /* Accent colors - keep some vibrant, adjust others */
   --color-blue-grey: #2a2a2a;
-  --color-cool-blue: #1a1a1a;
+  --color-cool-blue: #0f0f0f;
   --color-notebook-blue: #4a5a7a;
   --color-yellow: #3a3a00;
 

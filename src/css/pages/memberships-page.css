@@ -1,5 +1,5 @@
 /* ============================================
-   MEMBERSHIP PAGE STYLES
+   MEMBERSHIP PAGE STYLES - Dark Mode Compatible
    ============================================ */
 
 .page-memberships .breadcrumb-list {
@@ -12,7 +12,7 @@
 }
 
 .page-title {
-  color: var(--color-headlines);
+  color: var(--color-headings);
   font-family: var(--font-display);
   font-size: 2.6rem;
   font-weight: 800;
@@ -32,8 +32,8 @@
 
 /* Membership Section */
 .membership-section {
-  background: #f5f7fa;
-  border: 1px solid #e6eaef;
+  background: var(--color-cool-blue);
+  border: 1px solid var(--border-cool-blue);
   border-radius: 22px;
   box-shadow: var(--shadow);
   margin: 3rem 0;
@@ -48,11 +48,13 @@
 }
 
 .membership-toggle {
-  background: #fff;
+  background: var(--color-background-secondary);
+  border: 1px solid var(--color-border);
   border-radius: 9999px;
   box-shadow: var(--shadow);
   display: flex;
-  padding: 0.25rem;
+  gap: 4px;
+  padding: 4px;
   position: relative;
 }
 
@@ -60,27 +62,39 @@
   background: transparent;
   border: none;
   border-radius: var(--radius-pill);
+  color: var(--color-text-medium);
   cursor: pointer;
   font-size: var(--text-sm);
   font-weight: 700;
   letter-spacing: 0.02rem;
   padding: 0.75rem 1.5rem;
+  position: relative;
   transition: all 0.3s ease;
+  white-space: nowrap;
+  z-index: 2;
 }
 
 .membership-toggle button span {
   color: var(--link-color);
-  font-weight: 400;
-  opacity: 0.7;
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-left: 4px;
+  opacity: 0.8;
 }
 
 .membership-toggle button.active {
   background-color: var(--link-color);
-  color: #fff;
+  color: white;
+}
+
+.membership-toggle button.active span {
+  color: white;
+  opacity: 0.9;
 }
 
 .membership-toggle button:hover:not(.active) {
-  color: var(--gray-dark);
+  color: var(--color-text-dark);
 }
 
 /* Membership Cards Grid */
@@ -93,7 +107,7 @@
 
 /* Individual Card */
 .membership-card {
-  background: #fff;
+  background: var(--color-background);
   border-radius: 22px;
   box-shadow: var(--shadow);
   display: flex;
@@ -113,11 +127,16 @@
 /* Card Header */
 .membership-card-header {
   background: var(--link-color-muted);
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--color-border-dark);
   border-top-left-radius: 22px;
   border-top-right-radius: 22px;
   margin-bottom: 1.5rem;
   padding: 2rem 1.5rem 1rem;
+}
+
+body.dark-mode .membership-card-header {
+  background: #000;
+  border-bottom: 1px solid #1f1f1f;
 }
 
 .tier-icon {
@@ -145,7 +164,7 @@
 
 /* Card Price */
 .membership-card-price {
-  color: #000;
+  color: var(--color-text-dark);
   font-family: 'ApexRoundedTrial-Ultra', sans-serif;
   font-size: 2.8rem;
   font-weight: 900;
@@ -162,7 +181,7 @@
 
 /* Card Description */
 .membership-card-description {
-  color: var(--gray-dark);
+  color: var(--color-text-dark);
   font-family: var(--sans);
   font-size: var(--text-sm);
   line-height: 1.5;
@@ -180,8 +199,9 @@
 }
 
 .membership-features-list li {
-  background: #f5f7fa;
+  background: var(--color-background-light);
   border-radius: var(--radius-pill);
+  color: var(--color-text);
   font-size: 0.875rem;
   line-height: 1.3;
   margin-bottom: 0.5rem;
@@ -192,9 +212,9 @@
 
 /* Card Button */
 .membership-card-button {
-  background: #000;
+  background: var(--color-headings);
   border-radius: var(--radius-pill);
-  color: #fff;
+  color: var(--color-background);
   display: block;
   font-family: var(--sans);
   font-size: 0.875rem;
@@ -211,7 +231,7 @@
 
 .membership-card-button:hover {
   background-color: var(--link-color);
-  color: var(--link-color-muted);
+  color: var(--color-background);
   transform: translateY(-2px);
 }
 
@@ -230,12 +250,12 @@
 }
 
 .membership-footnote a {
-  color: var(--gray-dark);
+  color: var(--color-text-dark);
   text-decoration: underline;
 }
 
 .membership-footnote a:hover {
-  color: var(--accent-color);
+  color: var(--link-color);
 }
 
 /* Page Content Section */
@@ -264,8 +284,8 @@
 }
 
 .slider-card {
-  background: #fff;
-  border: 1px solid #e6eaef;
+  background: var(--color-background);
+  border: 1px solid var(--border-cool-blue);
   border-radius: 22px;
   box-shadow: var(--shadow);
   padding: 2rem;
@@ -277,7 +297,7 @@
 }
 
 .slider-header h2 {
-  color: var(--gray-dark);
+  color: var(--color-headings);
   font-family: var(--font-display);
   font-size: 1.6rem;
   font-weight: 700;
@@ -285,7 +305,7 @@
 }
 
 .slider-header p {
-  color: var(--gray-medium);
+  color: var(--color-text-medium);
   font-size: 18px;
 }
 
@@ -306,7 +326,7 @@
 .income-slider {
   -webkit-appearance: none;
   appearance: none;
-  background: #e5e5e7;
+  background: var(--color-border);
   border-radius: 4px;
   height: 8px;
   outline: none;
@@ -316,8 +336,8 @@
 .income-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  background: var(--gray-dark, #1d1d1f);
-  border: 2px solid #e3f0fd;
+  background: var(--link-color);
+  border: 2px solid var(--color-blue-grey);
   border-radius: 50%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -326,8 +346,8 @@
 }
 
 .income-slider::-moz-range-thumb {
-  background: #ffe680;
-  border: 2px solid var(--accent-color, #409cff);
+  background: var(--color-yellow);
+  border: 2px solid var(--color-blue-grey);
   border-radius: 50%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -338,126 +358,34 @@
 .recommended-badge {
   background: var(--color-headings);
   border-radius: var(--radius-pill);
-  color: white;
-  font-family: var(--sans);
+  color: var(--color-background);
   font-size: 12px;
   font-weight: 500;
   left: 50%;
   letter-spacing: 0.02rem;
   padding: 0.5rem 1.5rem;
   position: absolute;
-  top: -1.2rem;
+  top: -1rem;
   transform: translateX(-50%);
   z-index: 1;
 }
 
 .highlight-tier {
-  border: 3px solid var(--gray-dark, #1d1d1f);
-}
-
-/* Page Content Section */
-.page-content {
-  margin: 3rem 0;
-  max-width: 800px;
-}
-
-/* Page Footer */
-.page-footer {
-  border-top: 2px solid var(--color-border);
-  margin-top: 4rem;
-  padding-top: 2rem;
-}
-
-.page-footer p {
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
-  margin-bottom: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 /* Dark Mode Adjustments */
-body.dark-mode .page-title {
-  color: var(--gray-light);
-}
-
-body.dark-mode .page-excerpt {
-  color: var(--gray-light);
-}
-
 body.dark-mode .membership-section {
-  background: linear-gradient(
-    120deg,
-    rgba(255, 214, 231, 0.1) 0%,
-    rgba(255, 239, 209, 0.1) 25%,
-    rgba(193, 240, 193, 0.1) 50%,
-    rgba(193, 240, 240, 0.1) 75%,
-    rgba(212, 193, 240, 0.1) 100%
-  );
+  background: var(--color-background-secondary);
+  border-color: var(--color-border);
 }
 
-body.dark-mode .membership-toggle {
-  background-color: var(--gray-dark);
-}
-
-body.dark-mode .membership-toggle button.active {
-  background-color: var(--accent-color, #409cff);
-  color: var(--secondary-color);
-}
-
-body.dark-mode .membership-toggle button:hover:not(.active) {
-  color: var(--gray-light);
-}
-
-body.dark-mode .membership-card {
-  background-color: var(--gray-dark);
-  border-color: var(--gray-medium);
-}
-
-body.dark-mode .membership-card-title,
-body.dark-mode .membership-card-description,
-body.dark-mode .membership-card-price {
-  color: var(--gray-light);
-}
-
-body.dark-mode .membership-card-tag {
-  color: var(--gray-light);
-}
-
-body.dark-mode .membership-features-list li {
-  color: var(--gray-light);
-}
-
-body.dark-mode .membership-footnote p {
-  color: var(--gray-light);
-}
-
-body.dark-mode .membership-footnote a {
-  color: var(--accent-color);
-}
-
-body.dark-mode .slider-card {
-  background-color: rgba(30, 30, 30, 0.9);
-  border-color: var(--gray-medium);
-}
-
-body.dark-mode .slider-header h2 {
-  color: var(--gray-light);
-}
-
-body.dark-mode .slider-header p {
-  color: var(--gray-light);
-}
-
-body.dark-mode .income-display {
-  color: var(--gray-light);
-}
-
-body.dark-mode .income-slider {
-  background-color: var(--gray-dark);
+body.dark-mode .membership-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 body.dark-mode .highlight-tier {
-  border-color: var(--accent-color, #409cff);
-  box-shadow: 0 10px 25px rgba(64, 156, 255, 0.2);
+  box-shadow: 0 10px 25px rgba(255, 107, 107, 0.2);
 }
 
 /* Responsive Design */

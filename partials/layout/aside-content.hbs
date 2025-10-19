@@ -1,5 +1,5 @@
 <div class="aside-content">
-{{#is "post, page, tag, author, index"}}
+	{{^is "home"}}
 	{{> "widgets/newsletter-signup"}}
 	{{/is}}
 	{{> "widgets/recent-notes"}}
