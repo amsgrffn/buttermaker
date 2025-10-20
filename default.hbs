@@ -15,7 +15,11 @@
 	<link rel="preload" href="{{asset "built/script.js"}}" as="script" crossorigin>
 
 	<title>{{meta_title}}</title>
-	{{ghost_head}}
+	{{#is "home, index, tag, author"}}
+	   {{ghost_head exclude="card_assets"}}
+	{{else}}
+	   {{ghost_head}}
+	{{/is}}
 
 	{{!-- Critical CSS --}}
 	<link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}">
