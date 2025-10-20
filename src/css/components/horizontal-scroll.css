@@ -6,7 +6,8 @@
   border-bottom: 1px solid var(--color-border-dark);
   overflow: visible;
   position: relative;
-  margin-bottom: var(--space-3xl); /* Add spacing before split content */
+  margin-bottom: var(--space-xl); /* Add spacing before split content */
+  padding-bottom: var(--space-xl);
   width: 100%; /* Takes full width of parent (homepage-container) */
 }
 

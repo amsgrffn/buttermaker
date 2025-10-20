@@ -1,29 +1,12 @@
 /**
  * Substack-Style Ghost Theme JavaScript Entry Point
+ * Optimized with dynamic imports for better performance
  */
 
 import { initializeTheme } from './modules/theme';
 import { DarkMode } from './modules/dark-mode';
 import { MobileNavigation } from './modules/mobile-navigation';
-import { CategoryTabs } from './modules/category-tabs';
-import { SubscribeButtons } from './modules/subscribe-buttons';
-import { PostActions } from './modules/post-actions';
-import { MasonryGrid } from './modules/masonry-grid';
-import { SearchHandler } from './modules/search';
 import { TouchImprovements } from './modules/touch-improvements';
-import { PortalIntegration } from './modules/portal-integration';
-import { HorizontalScroll } from './modules/horizontal-scroll';
-import { SidebarDropdown } from './modules/sidebar-dropdown';
-import { InfiniteScroll } from './modules/infinite-scroll';
-import { initSocialSharing } from './modules/social-sharing';
-import { initTestimonials } from './modules/testimonials';
-import { initWeatherDisplay } from './modules/weather-display';
-import { initKnicksCounter } from './modules/knicks-counter';
-import { initPriceToggle } from './modules/price-toggle';
-import { BreadcrumbDropdown } from './modules/breadcrumb-dropdown';
-import { initCurrentTime } from './modules/current-time';
-import { BlogPostDisplay } from './modules/blog-post-display';
-import { initRotatingQuotes } from './modules/rotating-quotes';
 
 import {
   initShortDateFormatter,
@@ -33,98 +16,189 @@ import {
 /**
  * Initialize theme when DOM is ready
  */
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
+  const startTime = performance.now();
   console.log('🎨 Substack-Style Theme Loading...');
 
   try {
-    // Initialize core theme functionality
+    // ============================================
+    // CRITICAL: Load these immediately (always needed)
+    // ============================================
+
     initializeTheme();
-
-    // Initialize dark mode (should be early in the initialization)
     const darkMode = new DarkMode();
-
-    // Initialize mobile navigation (needed on all pages)
     const mobileNav = new MobileNavigation();
-
-    // Only initialize if elements exist on the page
-    if (document.querySelector('.category-tab')) {
-      const categoryTabs = new CategoryTabs();
-    }
-
-    if (document.querySelector('.subscribe-btn, [data-portal]')) {
-      const subscribeButtons = new SubscribeButtons();
-    }
-
-    if (document.querySelector('.post-action')) {
-      const postActions = new PostActions();
-    }
-
-    if (document.querySelector('.masonry-grid')) {
-      const masonryGrid = new MasonryGrid();
-    }
-
-    if (document.querySelector('.search-trigger, .search-container')) {
-      const searchHandler = new SearchHandler();
-    }
-
-    // Initialize touch improvements (needed on all pages)
     const touchImprovements = new TouchImprovements();
-
-    if (document.querySelector('[data-portal]')) {
-      const portalIntegration = new PortalIntegration();
-    }
-
-    if (document.querySelector('.horizontal-scroll-section')) {
-      const horizontalScroll = new HorizontalScroll();
-    }
-
-    if (document.querySelector('.has-dropdown')) {
-      const sidebarDropdown = new SidebarDropdown();
-    }
-
-    if (document.querySelector('#load-more-btn')) {
-      const infiniteScroll = new InfiniteScroll();
-    }
-
-    if (document.querySelector('.breadcrumb-dropdown')) {
-      const breadcrumbDropdown = new BreadcrumbDropdown();
-    }
-    // Initialize rotating quotes if element exists
-    if (document.querySelector('.end-credits')) {
-      initRotatingQuotes();
-    }
-
-    const blogPostDisplay = new BlogPostDisplay();
-
-    // Initialize utility functions
-    initSocialSharing();
-    initTestimonials();
-    initWeatherDisplay();
-    initKnicksCounter();
-    initPriceToggle();
-    initCurrentTime();
     initShortDateFormatter();
 
     // Make mobile navigation globally available
     window.toggleSidebar = mobileNav.toggleSidebar.bind(mobileNav);
 
-    console.log('✅ Substack-Style Theme Loaded Successfully');
+    // ============================================
+    // DYNAMIC: Load only when DOM elements exist
+    // ============================================
+
+    // Category Tabs
+    if (document.querySelector('.category-tab')) {
+      import('./modules/category-tabs').then(({ CategoryTabs }) => {
+        new CategoryTabs();
+        console.log('📊 Category Tabs loaded');
+      });
+    }
+
+    // Subscribe & Portal
+    if (document.querySelector('.subscribe-btn, [data-portal]')) {
+      Promise.all([
+        import('./modules/subscribe-buttons'),
+        import('./modules/portal-integration'),
+      ]).then(([{ SubscribeButtons }, { PortalIntegration }]) => {
+        new SubscribeButtons();
+        new PortalIntegration();
+        console.log('💌 Subscribe & Portal loaded');
+      });
+    }
+
+    // Post Actions
+    if (document.querySelector('.post-action')) {
+      import('./modules/post-actions').then(({ PostActions }) => {
+        new PostActions();
+        console.log('👍 Post Actions loaded');
+      });
+    }
+
+    // Masonry Grid
+    if (document.querySelector('.masonry-grid')) {
+      import('./modules/masonry-grid').then(({ MasonryGrid }) => {
+        new MasonryGrid();
+        console.log('🧱 Masonry Grid loaded');
+      });
+    }
+
+    // Search Handler
+    if (document.querySelector('.search-trigger, .search-container')) {
+      import('./modules/search').then(({ SearchHandler }) => {
+        new SearchHandler();
+        console.log('🔍 Search loaded');
+      });
+    }
+
+    // Horizontal Scroll
+    if (document.querySelector('.horizontal-scroll-section')) {
+      import('./modules/horizontal-scroll').then(({ HorizontalScroll }) => {
+        new HorizontalScroll();
+        console.log('↔️ Horizontal Scroll loaded');
+      });
+    }
+
+    // Sidebar Dropdown
+    if (document.querySelector('.has-dropdown')) {
+      import('./modules/sidebar-dropdown').then(({ SidebarDropdown }) => {
+        new SidebarDropdown();
+        console.log('📂 Sidebar Dropdown loaded');
+      });
+    }
+
+    // Infinite Scroll
+    if (document.querySelector('#load-more-btn')) {
+      import('./modules/infinite-scroll').then(({ InfiniteScroll }) => {
+        new InfiniteScroll();
+        console.log('♾️ Infinite Scroll loaded');
+      });
+    }
+
+    // Breadcrumb Dropdown
+    if (document.querySelector('.breadcrumb-dropdown')) {
+      import('./modules/breadcrumb-dropdown').then(({ BreadcrumbDropdown }) => {
+        new BreadcrumbDropdown();
+        console.log('🍞 Breadcrumb Dropdown loaded');
+      });
+    }
+
+    // Blog Post Display
+    if (document.querySelector('.post-container, .blog-post')) {
+      import('./modules/blog-post-display').then(({ BlogPostDisplay }) => {
+        new BlogPostDisplay();
+        console.log('📝 Blog Post Display loaded');
+      });
+    }
+
+    // ============================================
+    // DEFERRED: Load after page is idle (not critical)
+    // ============================================
+
+    const loadNonCritical = () => {
+      // Social Sharing
+      import('./modules/social-sharing').then(({ initSocialSharing }) => {
+        initSocialSharing();
+      });
+
+      // Testimonials
+      if (document.querySelector('.testimonials, .testimonial-widget')) {
+        import('./modules/testimonials').then(({ initTestimonials }) => {
+          initTestimonials();
+        });
+      }
+
+      // Weather Display
+      if (document.querySelector('[data-weather]')) {
+        import('./modules/weather-display').then(({ initWeatherDisplay }) => {
+          initWeatherDisplay();
+        });
+      }
+
+      // Knicks Counter
+      if (document.querySelector('[data-knicks-counter]')) {
+        import('./modules/knicks-counter').then(({ initKnicksCounter }) => {
+          initKnicksCounter();
+        });
+      }
+
+      // Price Toggle
+      if (document.querySelector('[data-price-toggle]')) {
+        import('./modules/price-toggle').then(({ initPriceToggle }) => {
+          initPriceToggle();
+        });
+      }
+
+      // Current Time
+      if (document.querySelector('[data-current-time]')) {
+        import('./modules/current-time').then(({ initCurrentTime }) => {
+          initCurrentTime();
+        });
+      }
+
+      // Rotating Quotes
+      if (document.querySelector('.end-credits')) {
+        import('./modules/rotating-quotes').then(({ initRotatingQuotes }) => {
+          initRotatingQuotes();
+        });
+      }
+    };
+
+    // Load non-critical modules when browser is idle
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadNonCritical, { timeout: 2000 });
+    } else {
+      setTimeout(loadNonCritical, 1);
+    }
+
+    const loadTime = performance.now() - startTime;
+    console.log(`✅ Theme Loaded in ${loadTime.toFixed(2)}ms`);
   } catch (error) {
     console.error('❌ Theme initialization error:', error);
   }
 });
 
 /**
- * Handle window load for additional functionality
+ * Additional setup after full page load
  */
 window.addEventListener('load', function () {
-  // Add any post-load functionality here
   observeNewDates();
   console.log('🚀 Theme fully loaded');
 });
 
 /**
- * Handle errors gracefully
+ * Error handling
  */
 window.addEventListener('error', function (event) {
   console.error('Theme error:', event.error);

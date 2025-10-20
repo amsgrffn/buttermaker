@@ -1,29 +1,53 @@
 <!DOCTYPE html>
 <html lang="{{@site.locale}}">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>{{meta_title}}</title>
-		{{ghost_head}}
-		<link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}">
-		<link rel="stylesheet" href="https://use.typekit.net/unt3hxg.css">
-	</head>
-	<body class="{{body_class}}">
-		{{> "layout/site-header"}}
-		<div class="layout">
-			{{> "layout/sidebar"}}
-			<main class="main-content">
-				{{{body}}}
-			</main>
-		</div>
-		{{{block "scripts"}}}
-		{{ghost_foot}}
-		<script src="{{asset "built/script.js"}}"></script>
-		<script
-		  type="module"
-		  src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1/lite-youtube.min.js"
-		  crossorigin="anonymous">
-		</script>
-		{{> "utilities/livereload"}}
-	</body>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	{{!-- Performance: Resource Hints --}}
+	<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+	<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+	<link rel="dns-prefetch" href="https://use.typekit.net">
+	<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+	{{!-- Preload critical resources --}}
+	<link rel="preload" href="{{asset "built/screen.css"}}" as="style">
+	<link rel="preload" href="{{asset "built/script.js"}}" as="script" crossorigin>
+
+	<title>{{meta_title}}</title>
+	{{ghost_head}}
+
+	{{!-- Critical CSS --}}
+	<link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}">
+
+	{{!-- Non-blocking font loading --}}
+	<link rel="stylesheet" href="https://use.typekit.net/unt3hxg.css" media="print" onload="this.media='all'">
+	<noscript><link rel="stylesheet" href="https://use.typekit.net/unt3hxg.css"></noscript>
+</head>
+
+<body class="{{body_class}}">
+	{{> "layout/site-header"}}
+
+	<div class="layout">
+		{{> "layout/sidebar"}}
+		<main class="main-content">
+			{{{body}}}
+		</main>
+	</div>
+
+	{{{block "scripts"}}}
+	{{ghost_foot}}
+
+	{{!-- Main theme JavaScript (ES module for code-splitting) --}}
+	<script type="module" src="{{asset "built/script.js"}}"></script>
+
+	{{!-- External lite-youtube module --}}
+	<script
+		type="module"
+		src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1/lite-youtube.min.js"
+		crossorigin="anonymous">
+	</script>
+
+	{{> "utilities/livereload"}}
+</body>
 </html>
