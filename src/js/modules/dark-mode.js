@@ -16,6 +16,10 @@ export class DarkMode {
    * Initialize dark mode
    */
   init() {
+    // IMPORTANT: Set up toggle buttons FIRST before applying theme
+    // This ensures the DOM elements exist when we try to update them
+    this.setupToggleButtons();
+
     // Check for saved preference or system preference
     const savedTheme = localStorage.getItem(this.storageKey);
     const systemPrefersDark = window.matchMedia(
@@ -40,9 +44,6 @@ export class DarkMode {
           this.applyTheme(e.matches ? 'dark' : 'light');
         }
       });
-
-    // Set up toggle buttons
-    this.setupToggleButtons();
   }
 
   /**

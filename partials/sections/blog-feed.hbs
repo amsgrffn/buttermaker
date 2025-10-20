@@ -1,7 +1,7 @@
 <ul class="breadcrumb-list">
 <li class="breadcrumb-item home">{{> "icons/map-pin"}} <a class="title" href="{{@site.url}}">Home</a></li>
   <li class="breadcrumb-separator">{{> "icons/chevron"}}</li>
-  <li class="breadcrumb-item">The blog, or everything publish in chronological order</li>
+  <li class="breadcrumb-item">The blog, or everything published in chronological order</li>
 </ul>
 <section class="article-loop">
 {{#foreach posts}}
@@ -72,7 +72,7 @@
         </div>
       </div>
     </div>
-  </div> {{! ADD THIS CLOSING TAG! }}
+  </div>
 
   {{! FULL VERSION (for short posts) }}
   <div class="post-full">
@@ -123,4 +123,29 @@
 {{/foreach}}
 </section>
 
-<p>more posts here!</p>
+{{! Load More Button - only shows if there's a next page }}
+{{#if pagination.next}}
+  <div class="load-more">
+    <button id="load-more-btn" type="button" aria-label="Load more posts">
+      Load More Posts
+    </button>
+  </div>
+{{else}}
+  <div class="load-more">
+    <button id="load-more-btn" type="button" disabled class="no-more">
+      No more posts
+    </button>
+  </div>
+{{/if}}
+
+{{! Pagination data for JavaScript }}
+<script type="application/json" id="pagination-data">
+{
+  "currentPage": {{pagination.page}},
+  "totalPages": {{pagination.pages}},
+  "hasNext": {{#if pagination.next}}true{{else}}false{{/if}},
+  "hasPrev": {{#if pagination.prev}}true{{else}}false{{/if}},
+  "total": {{pagination.total}},
+  "limit": {{pagination.limit}}
+}
+</script>

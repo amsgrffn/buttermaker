@@ -9,12 +9,13 @@
       <ul>
         <li class='date-time-weather'>
           <span class='date-line'>{{date format='dddd, MMMM D, YYYY'}}</span>
-          <span class='time-weather-line'><span id='current-time'></span>
+          <span class='time-weather-line'>
+            <span id='current-time' data-current-time></span>
             &bull;
-            <a href='https://en.wikipedia.org/wiki/Maine'><span
-                id='current-temp'
-              ></span>
-              <span id='current-condition'></span></a>
+            <a href='https://en.wikipedia.org/wiki/Maine'>
+              <span id='current-temp' data-weather></span>
+              <span id='current-condition'></span>
+            </a>
           </span>
         </li>
       </ul>
