@@ -4,285 +4,309 @@
 
 /* Load More Button Styles */
 .load-more {
-	text-align: center;
-	margin: 6rem 0;
+  text-align: center;
+  margin: 6rem 0 0;
 }
 
 #load-more-btn {
-	background: var(--accent-color);
-	border: 1px solid var(--border-accent-color);
-	border-radius: var(--radius-base);
-	padding: var(--space-lg) var(--space-3xl);
-	color: #fff;
-	font-size: var(--font-size-md);
-	font-weight: var(--font-weight-bold);
-	cursor: pointer;
-	transition: all var(--transition-base);
-	text-decoration: none;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: var(--space-sm);
-	min-width: 150px;
-	position: relative;
-	overflow: hidden;
+  background: var(--link-color);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  padding: var(--space-lg) var(--space-3xl);
+  color: var(--link-color-muted);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  min-width: 150px;
+  position: relative;
+  overflow: hidden;
 }
 
 #load-more-btn:hover:not(:disabled) {
-	background: var(--color-primary);
-	border-color: var(--color-primary);
-	color: white;
-	transform: translateY(-2px);
-	box-shadow: var(--shadow-md);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 #load-more-btn:disabled {
-	cursor: not-allowed;
-	transform: none;
-	box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 /* Loading State */
 #load-more-btn.loading {
-	background: var(--color-background-light);
-	border-color: var(--color-border);
-	color: var(--color-text-medium);
-	cursor: wait;
+  background: var(--color-background-light);
+  border-color: var(--color-border);
+  color: var(--color-text-medium);
+  cursor: wait;
 }
 
 #load-more-btn.loading:hover {
-	background: var(--color-background-light);
-	border-color: var(--color-border);
-	color: var(--color-text-medium);
-	transform: none;
+  background: var(--color-background-light);
+  border-color: var(--color-border);
+  color: var(--color-text-medium);
+  transform: none;
 }
 
 /* Loading Spinner */
 .loading-spinner {
-	width: 16px;
-	height: 16px;
-	border: 2px solid var(--color-border);
-	border-radius: 50%;
-	border-top-color: var(--color-primary);
-	animation: spin 1s linear infinite;
-	flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  border-top-color: var(--color-primary);
+  animation: spin 1s linear infinite;
+  flex-shrink: 0;
 }
 
 /* No More Posts State */
 #load-more-btn.no-more {
-	background: var(--color-background);
-	border-color: var(--color-border-light);
-	color: var(--color-text-light);
-	opacity: 0.7;
+  background: var(--color-background);
+  border-color: var(--color-border-light);
+  color: var(--color-text-light);
+  opacity: 0.7;
 }
 
 #load-more-btn.no-more:hover {
-	background: var(--color-background);
-	border-color: var(--color-border-light);
-	color: var(--color-text-light);
-	transform: none;
+  background: var(--color-background);
+  border-color: var(--color-border-light);
+  color: var(--color-text-light);
+  transform: none;
 }
 
 /* Error State */
 #load-more-btn.error {
-	background: #fee;
-	border-color: #fcc;
-	color: #c66;
-	animation: shake 0.5s ease-in-out;
+  background: #fee;
+  border-color: #fcc;
+  color: #c66;
+  animation: shake 0.5s ease-in-out;
 }
 
 /* New Posts Container Animation */
 .new-posts-container {
-	opacity: 0;
-	transform: translateY(20px);
-	transition: all 0.6s ease-out;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
 }
 
 .new-posts-container.loaded {
-	opacity: 1;
-	transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Individual Post Animation */
 .new-posts-container .post-card {
-	animation: slideInUp 0.6s ease-out forwards;
-	opacity: 0;
-	transform: translateY(30px);
+  animation: slideInUp 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
 }
 
-.new-posts-container .post-card:nth-child(1) { animation-delay: 0.1s; }
-.new-posts-container .post-card:nth-child(2) { animation-delay: 0.2s; }
-.new-posts-container .post-card:nth-child(3) { animation-delay: 0.3s; }
-.new-posts-container .post-card:nth-child(4) { animation-delay: 0.4s; }
-.new-posts-container .post-card:nth-child(5) { animation-delay: 0.5s; }
-.new-posts-container .post-card:nth-child(6) { animation-delay: 0.6s; }
+.new-posts-container .post-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.new-posts-container .post-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.new-posts-container .post-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.new-posts-container .post-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.new-posts-container .post-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.new-posts-container .post-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
 
 /* Stagger animation for remaining posts */
-.new-posts-container .post-card:nth-child(n+7) {
-	animation-delay: 0.7s;
+.new-posts-container .post-card:nth-child(n + 7) {
+  animation-delay: 0.7s;
 }
 
 /* Smooth scroll behavior when new content loads */
 .post-feed {
-	scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 /* Loading indicator overlay */
 .infinite-scroll-loading {
-	position: relative;
+  position: relative;
 }
 
 .infinite-scroll-loading::after {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: rgba(255, 255, 255, 0.8);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 10;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 }
 
 /* Progress indicator */
 .load-progress {
-	position: fixed;
-	top: var(--header-height);
-	left: 0;
-	right: 0;
-	height: 3px;
-	background: var(--color-border-light);
-	z-index: 1000;
-	opacity: 0;
-	transition: opacity 0.3s ease;
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-border-light);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .load-progress.visible {
-	opacity: 1;
+  opacity: 1;
 }
 
 .load-progress::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100%;
-	background: var(--color-primary);
-	width: 0%;
-	transition: width 0.3s ease;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--color-primary);
+  width: 0%;
+  transition: width 0.3s ease;
 }
 
 .load-progress.loading::before {
-	width: 100%;
-	animation: progressPulse 1.5s ease-in-out infinite;
+  width: 100%;
+  animation: progressPulse 1.5s ease-in-out infinite;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-	.load-more {
-		margin: var(--space-3xl) 0;
-	}
+  .load-more {
+    margin: var(--space-3xl) 0;
+  }
 
-	#load-more-btn {
-		padding: var(--space-lg) var(--space-xl);
-		width: 100%;
-		max-width: 300px;
-		font-size: var(--font-size-sm);
-	}
+  #load-more-btn {
+    padding: var(--space-lg) var(--space-xl);
+    width: 100%;
+    max-width: 300px;
+    font-size: var(--font-size-sm);
+  }
 
-	.new-posts-container .post-card {
-		animation-delay: 0.1s;
-	}
+  .new-posts-container .post-card {
+    animation-delay: 0.1s;
+  }
 
-	.new-posts-container .post-card:nth-child(n+2) {
-		animation-delay: 0.2s;
-	}
+  .new-posts-container .post-card:nth-child(n + 2) {
+    animation-delay: 0.2s;
+  }
 }
 
 @media (max-width: 480px) {
-	#load-more-btn {
-		padding: var(--space-md) var(--space-lg);
-		min-width: 120px;
-	}
+  #load-more-btn {
+    padding: var(--space-md) var(--space-lg);
+    min-width: 120px;
+  }
 
-	.loading-spinner {
-		width: 14px;
-		height: 14px;
-	}
+  .loading-spinner {
+    width: 14px;
+    height: 14px;
+  }
 }
 
 /* Animation Keyframes */
 @keyframes spin {
-	to {
-		transform: rotate(360deg);
-	}
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes slideInUp {
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes shake {
-	0%, 100% { transform: translateX(0); }
-	25% { transform: translateX(-5px); }
-	75% { transform: translateX(5px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
 }
 
 @keyframes progressPulse {
-	0%, 100% { opacity: 1; }
-	50% { opacity: 0.6; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
 }
 
 /* Accessibility improvements */
 @media (prefers-reduced-motion: reduce) {
-	.new-posts-container,
-	.new-posts-container .post-card,
-	.loading-spinner,
-	#load-more-btn {
-		animation: none !important;
-		transition: none !important;
-	}
+  .new-posts-container,
+  .new-posts-container .post-card,
+  .loading-spinner,
+  #load-more-btn {
+    animation: none !important;
+    transition: none !important;
+  }
 
-	#load-more-btn:hover:not(:disabled) {
-		transform: none;
-	}
+  #load-more-btn:hover:not(:disabled) {
+    transform: none;
+  }
 
-	.load-progress::before {
-		transition: none;
-	}
+  .load-progress::before {
+    transition: none;
+  }
 }
 
 /* Focus states for accessibility */
 #load-more-btn:focus {
-	outline: 2px solid var(--color-primary);
-	outline-offset: 2px;
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-	#load-more-btn {
-		border-width: 2px;
-	}
+  #load-more-btn {
+    border-width: 2px;
+  }
 
-	.loading-spinner {
-		border-width: 3px;
-	}
+  .loading-spinner {
+    border-width: 3px;
+  }
 }
 
 /* Dark mode adjustments (if you implement dark mode) */
 @media (prefers-color-scheme: dark) {
-	.new-posts-container::after {
-		background: rgba(0, 0, 0, 0.8);
-	}
+  .new-posts-container::after {
+    background: rgba(0, 0, 0, 0.8);
+  }
 
-	#load-more-btn.error {
-		background: #422;
-		border-color: #633;
-		color: #f99;
-	}
+  #load-more-btn.error {
+    background: #422;
+    border-color: #633;
+    color: #f99;
+  }
 }

@@ -121,9 +121,7 @@
 </article>
 </div>
 {{/foreach}}
-</section>
-
-{{! Load More Button - only shows if there's a next page }}
+{{! Load More Button - Place INSIDE article-loop, after the posts }}
 {{#if pagination.next}}
   <div class="load-more">
     <button id="load-more-btn" type="button" aria-label="Load more posts">
@@ -138,6 +136,8 @@
   </div>
 {{/if}}
 
+</section>  {{! Close the article-loop section AFTER the button }}
+
 {{! Pagination data for JavaScript }}
 <script type="application/json" id="pagination-data">
 {
@@ -149,3 +149,4 @@
   "limit": {{pagination.limit}}
 }
 </script>
+</section>
