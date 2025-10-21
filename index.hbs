@@ -2,29 +2,6 @@
 <div class="split-content-wrapper">
 	<div class="main-content-area">
 		{{> "sections/blog-feed"}}
-		{{#if pagination.next}}
-			<div class="load-more">
-				<button id="load-more-btn" type="button" aria-label="Load more posts">
-					Load More Posts
-				</button>
-			</div>
-		{{else}}
-			<div class="load-more">
-				<button id="load-more-btn" type="button" disabled class="no-more">
-					No more posts
-				</button>
-			</div>
-		{{/if}}
-		<script type="application/json" id="pagination-data">
-		{
-			"currentPage": {{pagination.page}},
-			"totalPages": {{pagination.pages}},
-			"hasNext": {{#if pagination.next}}true{{else}}false{{/if}},
-			"hasPrev": {{#if pagination.prev}}true{{else}}false{{/if}},
-			"total": {{pagination.total}},
-			"limit": {{pagination.limit}}
-		}
-		</script>
 	</div>
 	<aside class="content-aside">
 		{{> "layout/aside-content"}}
