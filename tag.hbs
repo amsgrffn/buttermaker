@@ -1,15 +1,10 @@
 {{!< default}}
 
-{{!-- Tag Archive Page Template --}}
-{{!-- This displays all posts that belong to a specific tag --}}
-
-{{#tag}}
 <div class="split-content-wrapper">
 	<div class="main-content-area">
 
 		{{!-- Tag Archive Header --}}
 		<header class="archive-header">
-			{{!-- Breadcrumb Navigation --}}
 			<ul class="breadcrumb-list">
 				<li class="breadcrumb-item home">
 					{{> "icons/map-pin"}}
@@ -18,53 +13,85 @@
 				<li class="breadcrumb-separator">{{> "icons/chevron"}}</li>
 				<li class="breadcrumb-item">Topics</li>
 				<li class="breadcrumb-separator">{{> "icons/chevron"}}</li>
-				<li class="breadcrumb-item current">{{name}}</li>
+				{{#tag}}
+					<li class="breadcrumb-item current">{{name}}</li>
+				{{/tag}}
 			</ul>
 
-			{{!-- Tag Title & Description --}}
+			{{#tag}}
 			<div class="archive-title-wrapper">
-				{{#if feature_image}}
-					<div class="archive-feature-image">
-						<img src="{{img_url feature_image size="l"}}"
-							 alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{name}}{{/if}}">
-					</div>
-				{{/if}}
-
-				<h1 class="archive-title">{{name}}</h1>
-
+				<h2 class="archive-title">{{name}}</h2>
 				{{#if description}}
 					<p class="archive-description">{{description}}</p>
 				{{/if}}
-
 				<p class="archive-count">{{plural count.posts empty='No posts' singular='% post' plural='% posts'}}</p>
 			</div>
+			{{/tag}}
 		</header>
 
-		{{!-- Posts Feed with Infinite Scroll --}}
-		{{#if posts}}
-			{{!-- Post Feed Container --}}
-			<div class="post-feed masonry-grid">
+		{{!-- Masonry Grid Section - OUTSIDE the #tag block! --}}
+		<section class="featured-masonry-section">
+			<div class="masonry-grid">
 				{{#foreach posts}}
-					{{> "components/post-card"}}
+					<article class="masonry-card" data-tags="{{#foreach tags}}{{slug}} {{/foreach}}">
+						{{#if feature_image}}
+							<div class="masonry-image">
+								<img
+									srcset="{{img_url feature_image size='s' format='webp'}} 400w,
+											{{img_url feature_image size='m' format='webp'}} 800w"
+									sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+									src="{{img_url feature_image size='m' format='webp'}}"
+									alt="{{title}}"
+									width="800"
+									height="600"
+									loading="lazy">
+							</div>
+						{{/if}}
+						<div class="masonry-content">
+							<h3 class="masonry-title">
+								<a href="{{url}}">{{title}}</a>
+							</h3>
+							<div class="masonry-excerpt">{{excerpt words="25"}}</div>
+							<div class="masonry-meta">
+								{{#primary_author}}
+									<a class="avatar wiggle" href="{{url}}">
+										<img
+											srcset="{{img_url profile_image size='xxs' format='webp'}} 50w,
+													{{img_url profile_image size='xs' format='webp'}} 100w"
+											sizes="50vw"
+											src="{{img_url profile_image size='xs' format='webp'}}"
+											alt="{{name}}'s Avatar"
+											width="40"
+											height="40"
+											loading="lazy" />
+									</a>
+								{{/primary_author}}
+								&middot;
+								<time datetime="{{date published_at format='YYYY-MM-DD'}}">
+									{{date published_at timeago="true"}}
+								</time>
+								{{#if primary_tag}}
+									&middot; <span class="masonry-tag">{{primary_tag.name}}</span>
+								{{/if}}
+							</div>
+						</div>
+						<a href="{{url}}" class="masonry-link" aria-label="Read {{title}}"></a>
+					</article>
 				{{/foreach}}
 			</div>
+		</section>
 
-			{{!-- Load More Button --}}
-			{{#if pagination.next}}
-				<div class="load-more">
-					<button id="load-more-btn" type="button" aria-label="Load more posts">
-						Load More Posts
-					</button>
-				</div>
-			{{else}}
-				<div class="load-more">
-					<button id="load-more-btn" type="button" disabled class="no-more">
-						No more posts
-					</button>
-				</div>
-			{{/if}}
+		{{!-- Load More Button --}}
+		{{#if pagination.next}}
+			<div class="load-more">
+				<button id="load-more-btn" type="button" aria-label="Load more posts">
+					Load More Posts
+				</button>
+			</div>
+		{{/if}}
 
-			{{!-- Pagination Data for JavaScript --}}
+		{{!-- Pagination Data --}}
+		{{#if pagination}}
 			<script type="application/json" id="pagination-data">
 			{
 				"currentPage": {{pagination.page}},
@@ -75,19 +102,11 @@
 				"limit": {{pagination.limit}}
 			}
 			</script>
-
-		{{else}}
-			<div class="no-posts-message">
-				<p>No posts found with this tag yet.</p>
-				<a href="{{@site.url}}" class="button">Return Home</a>
-			</div>
 		{{/if}}
 
 	</div>
 
-	{{!-- Sidebar --}}
 	<aside class="content-aside">
 		{{> "layout/aside-content"}}
 	</aside>
 </div>
-{{/tag}}

@@ -18,10 +18,11 @@ export class InfiniteScroll {
 
   init() {
     // Find the post feed container and load more button
-    // Support both .post-feed (homepage) and .article-loop (blog page)
+    // Support .article-loop (blog page), .post-feed (homepage), and .masonry-grid (tag pages)
     this.postFeed =
       document.querySelector('.article-loop') ||
-      document.querySelector('.post-feed');
+      document.querySelector('.post-feed') ||
+      document.querySelector('.masonry-grid');
     this.loadMoreBtn = document.getElementById('load-more-btn');
 
     if (!this.postFeed || !this.loadMoreBtn) {
@@ -126,12 +127,17 @@ export class InfiniteScroll {
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, 'text/html');
 
-      // Extract posts from the response - support both blog and homepage
+      // Extract posts from the response - support blog, homepage, and tag pages
       let newPosts = doc.querySelectorAll('.article-loop .post-container');
 
       // Fallback to homepage post-feed if article-loop not found
       if (newPosts.length === 0) {
         newPosts = doc.querySelectorAll('.post-feed article.post-card');
+      }
+
+      // Fallback to masonry grid for tag pages
+      if (newPosts.length === 0) {
+        newPosts = doc.querySelectorAll('.masonry-grid article.masonry-card');
       }
 
       if (newPosts.length > 0) {
@@ -166,50 +172,115 @@ export class InfiniteScroll {
   async appendPosts(newPosts) {
     console.log('📝 Appending', newPosts.length, 'posts to feed');
 
-    // Create a container for new posts with animation
-    const newPostsContainer = document.createElement('div');
-    newPostsContainer.className = 'new-posts-container';
-    newPostsContainer.style.opacity = '0';
-    newPostsContainer.style.transform = 'translateY(20px)';
-
-    // Clone and append new posts
-    newPosts.forEach((post, index) => {
-      const clonedPost = post.cloneNode(true);
-      clonedPost.style.animationDelay = `${(index + 1) * 0.1}s`;
-      newPostsContainer.appendChild(clonedPost);
-    });
-
     // Get the load more button container
     const loadMoreContainer = this.loadMoreBtn.closest('.load-more');
 
-    // Insert new posts before the load more button
-    loadMoreContainer.parentNode.insertBefore(
-      newPostsContainer,
-      loadMoreContainer,
-    );
+    // Check if we're in a masonry grid context
+    const isMasonryGrid = this.postFeed.classList.contains('masonry-grid');
 
-    // Animate in the new posts
-    requestAnimationFrame(() => {
-      newPostsContainer.style.transition = 'all 0.6s ease-out';
-      newPostsContainer.style.opacity = '1';
-      newPostsContainer.style.transform = 'translateY(0)';
-    });
+    if (isMasonryGrid) {
+      console.log('🧱 Masonry grid detected - appending posts directly');
 
-    // After animation, unwrap posts but keep them BEFORE the button
-    setTimeout(() => {
-      // Move each post out of the wrapper, placing them before the load-more button
-      while (newPostsContainer.firstChild) {
-        loadMoreContainer.parentNode.insertBefore(
-          newPostsContainer.firstChild,
-          loadMoreContainer,
-        );
+      // For masonry grids, append directly to the grid
+      const fragment = document.createDocumentFragment();
+      newPosts.forEach((post) => {
+        const clonedPost = post.cloneNode(true);
+        // Remove the 'positioned' class so masonry can reposition it
+        clonedPost.classList.remove('positioned');
+        clonedPost.style.opacity = '0';
+        fragment.appendChild(clonedPost);
+      });
+
+      // Insert new posts before the load more button
+      loadMoreContainer.parentNode.insertBefore(fragment, loadMoreContainer);
+
+      // Wait for images to load, then reset masonry
+      console.log('⏳ Waiting for images to load...');
+      await this.waitForImages(this.postFeed);
+
+      console.log('🔄 Triggering masonry layout recalculation');
+
+      // Dispatch custom event for masonry reset
+      window.dispatchEvent(
+        new CustomEvent('masonryReset', {
+          detail: { grid: this.postFeed },
+        }),
+      );
+
+      // Also try calling the masonry directly if available
+      if (
+        window.MasonryGrid &&
+        typeof window.MasonryGrid.reset === 'function'
+      ) {
+        window.MasonryGrid.reset();
       }
-      // Remove the empty wrapper
-      newPostsContainer.remove();
-    }, 600);
+    } else {
+      // For regular feeds (blog page), use animation wrapper
+      const newPostsContainer = document.createElement('div');
+      newPostsContainer.className = 'new-posts-container';
+      newPostsContainer.style.opacity = '0';
+      newPostsContainer.style.transform = 'translateY(20px)';
+
+      // Clone and append new posts
+      newPosts.forEach((post, index) => {
+        const clonedPost = post.cloneNode(true);
+        clonedPost.style.animationDelay = `${(index + 1) * 0.1}s`;
+        newPostsContainer.appendChild(clonedPost);
+      });
+
+      // Insert new posts before the load more button
+      loadMoreContainer.parentNode.insertBefore(
+        newPostsContainer,
+        loadMoreContainer,
+      );
+
+      // Animate in the new posts
+      requestAnimationFrame(() => {
+        newPostsContainer.style.transition = 'all 0.6s ease-out';
+        newPostsContainer.style.opacity = '1';
+        newPostsContainer.style.transform = 'translateY(0)';
+      });
+
+      // After animation, unwrap posts but keep them BEFORE the button
+      setTimeout(() => {
+        // Move each post out of the wrapper, placing them before the load-more button
+        while (newPostsContainer.firstChild) {
+          loadMoreContainer.parentNode.insertBefore(
+            newPostsContainer.firstChild,
+            loadMoreContainer,
+          );
+        }
+        // Remove the empty container
+        newPostsContainer.remove();
+      }, 650);
+    }
 
     // Reinitialize any post-specific functionality
     this.reinitializePostFeatures();
+  }
+
+  /**
+   * Wait for all images in a container to load
+   */
+  waitForImages(container) {
+    const images = container.querySelectorAll('img');
+
+    if (images.length === 0) {
+      return Promise.resolve();
+    }
+
+    const imagePromises = Array.from(images)
+      .filter((img) => !img.complete) // Only wait for images that haven't loaded
+      .map((img) => {
+        return new Promise((resolve) => {
+          img.addEventListener('load', resolve, { once: true });
+          img.addEventListener('error', resolve, { once: true });
+          // Set a timeout in case image fails silently
+          setTimeout(resolve, 3000);
+        });
+      });
+
+    return Promise.all(imagePromises);
   }
 
   reinitializePostFeatures() {
