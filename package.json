@@ -72,16 +72,16 @@
     "posts_per_page": 30,
     "image_sizes": {
       "xxs": {
-        "width": 30
+        "width": 50
       },
       "xs": {
-        "width": 100
+        "width": 150
       },
       "s": {
-        "width": 300
+        "width": 400
       },
       "m": {
-        "width": 600
+        "width": 800
       },
       "l": {
         "width": 1200
@@ -89,7 +89,14 @@
       "xl": {
         "width": 2000
       }
+    },
+    "image_formats": {
+      "avif": {
+        "quality": 80
+      },
+      "webp": {
+        "quality": 80
+      }
     }
-  },
-  "type": "module"
+  }
 }

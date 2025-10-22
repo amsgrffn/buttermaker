@@ -90,6 +90,29 @@ pre code {
   padding: 0;
 }
 
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+/* Prevent layout shift with aspect-ratio */
+.post-card-image img,
+.masonry-image img,
+.scroll-card-image img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.post-hero-image img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.author-avatar {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
 /* Lists in content */
 .post-content ul,
 .post-content ol {

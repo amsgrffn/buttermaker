@@ -28,10 +28,16 @@
 		  {{#if feature_image}}
 			<div class='masonry-image'>
 			  <img
-				src='{{img_url feature_image size='m'}}'
-				alt='{{title}}'
-				loading='lazy'
-			  />
+				srcset="{{img_url feature_image size='s' format='webp'}} 400w,
+						{{img_url feature_image size='m' format='webp'}} 800w"
+				sizes="(max-width: 768px) 100vw,
+					   (max-width: 1200px) 50vw,
+					   400px"
+				src="{{img_url feature_image size='m' format='webp'}}"
+				alt="{{title}}"
+				width="800"
+				height="600"
+				loading="lazy">
 			</div>
 		  {{/if}}
 		  <div class='masonry-content'>

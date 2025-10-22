@@ -10,7 +10,16 @@
 					</div>
 					<div class="note-meta">
 						<div class="img-date">
-							<img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}" class="author-avatar">
+							<img
+							  srcset="{{img_url primary_author.profile_image size='xxs' format='webp'}} 50w,
+									  {{img_url primary_author.profile_image size='xs' format='webp'}} 150w"
+							  sizes="50px"
+							  src="{{img_url primary_author.profile_image size='xxs' format='webp'}}"
+							  alt="{{primary_author.name}}"
+							  width="50"
+							  height="50"
+							  loading="lazy"
+							  class="author-avatar">
 							<a href="{{url}}" aria-label="Read post from {{date published_at format="MMMM Do, YYYY"}}"><time datetime="{{date published_at format="YYYY-MM-DD"}}">
 									{{date published_at timeago="true"}}
 							</time> {{> "icons/arrow-right"}}</a>
