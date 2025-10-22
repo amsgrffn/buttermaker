@@ -1,11 +1,10 @@
 {
-  "name": "Riggs",
+  "name": "riggs",
   "description": "A Ghost theme with masonry layout for creative content",
   "demo": "https://your-demo-site.ghost.io",
   "version": "1.0.0",
   "engines": {
-    "ghost": ">=5.0.0",
-    "ghost-api": "v5"
+    "ghost": ">=5.0.0"
   },
   "license": "MIT",
   "screenshots": {

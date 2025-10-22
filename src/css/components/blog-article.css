@@ -59,6 +59,7 @@
   background: var(--color-cool-blue);
   border: 1px solid var(--border-blue-grey);
   border-radius: var(--radius-xl);
+  margin-bottom: 2rem;
   padding: 3rem 0;
 }
 

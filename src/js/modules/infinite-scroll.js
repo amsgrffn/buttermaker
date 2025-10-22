@@ -179,8 +179,10 @@ export class InfiniteScroll {
       newPostsContainer.appendChild(clonedPost);
     });
 
-    // Insert new posts before the load more button
+    // Get the load more button container
     const loadMoreContainer = this.loadMoreBtn.closest('.load-more');
+
+    // Insert new posts before the load more button
     loadMoreContainer.parentNode.insertBefore(
       newPostsContainer,
       loadMoreContainer,
@@ -193,11 +195,16 @@ export class InfiniteScroll {
       newPostsContainer.style.transform = 'translateY(0)';
     });
 
-    // After animation, move posts to main container and remove wrapper
+    // After animation, unwrap posts but keep them BEFORE the button
     setTimeout(() => {
+      // Move each post out of the wrapper, placing them before the load-more button
       while (newPostsContainer.firstChild) {
-        this.postFeed.appendChild(newPostsContainer.firstChild);
+        loadMoreContainer.parentNode.insertBefore(
+          newPostsContainer.firstChild,
+          loadMoreContainer,
+        );
       }
+      // Remove the empty wrapper
       newPostsContainer.remove();
     }, 600);
 
@@ -233,9 +240,9 @@ export class InfiniteScroll {
       this.loadMoreBtn.classList.add('loading');
       this.loadMoreBtn.classList.remove('no-more', 'error');
       this.loadMoreBtn.innerHTML = `
-				<span class="loading-spinner"></span>
-				Loading...
-			`;
+		<span class="loading-spinner"></span>
+		Loading...
+	  `;
     } else if (!this.hasMorePosts) {
       this.loadMoreBtn.disabled = true;
       this.loadMoreBtn.classList.add('no-more');

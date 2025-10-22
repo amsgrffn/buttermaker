@@ -3,7 +3,7 @@
     <h3 class='widget-title'>Recommended Reading</h3>
     {{#recommendations limit='10'}}
       <ul class='recommendations'>
-        {{#each recommendations as |rec|}}
+        {{#foreach recommendations as |rec|}}
           <li class='recommendation'>
             <a
               href='{{rec.url}}'
@@ -36,7 +36,7 @@
               {{/if}}
             </a>
           </li>
-        {{/each}}
+        {{/foreach}}
       </ul>
     {{/recommendations}}
     <div class='recommendations-footer'>
