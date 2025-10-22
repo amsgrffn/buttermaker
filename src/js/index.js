@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Masonry Grid
     if (document.querySelector('.masonry-grid')) {
       import('./modules/masonry-grid').then(({ MasonryGrid }) => {
-        new MasonryGrid();
+        window.MasonryGrid = new MasonryGrid(); // Store globally
         console.log('🧱 Masonry Grid loaded');
       });
     }

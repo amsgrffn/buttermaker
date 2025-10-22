@@ -172,9 +172,6 @@ export class InfiniteScroll {
   async appendPosts(newPosts) {
     console.log('📝 Appending', newPosts.length, 'posts to feed');
 
-    // Get the load more button container
-    const loadMoreContainer = this.loadMoreBtn.closest('.load-more');
-
     // Check if we're in a masonry grid context
     const isMasonryGrid = this.postFeed.classList.contains('masonry-grid');
 
@@ -185,37 +182,56 @@ export class InfiniteScroll {
       const fragment = document.createDocumentFragment();
       newPosts.forEach((post) => {
         const clonedPost = post.cloneNode(true);
-        // Remove the 'positioned' class so masonry can reposition it
+        // Remove the 'positioned' class and reset styles so masonry can reposition it
         clonedPost.classList.remove('positioned');
+        clonedPost.style.position = '';
+        clonedPost.style.top = '';
+        clonedPost.style.left = '';
+        clonedPost.style.width = '';
         clonedPost.style.opacity = '0';
+        clonedPost.style.transform = 'translateY(20px)';
         fragment.appendChild(clonedPost);
       });
 
-      // Insert new posts before the load more button
-      loadMoreContainer.parentNode.insertBefore(fragment, loadMoreContainer);
+      // Insert new posts INSIDE the masonry grid (at the end)
+      this.postFeed.appendChild(fragment);
 
-      // Wait for images to load, then reset masonry
       console.log('⏳ Waiting for images to load...');
+
+      // Wait for new images to load
       await this.waitForImages(this.postFeed);
 
       console.log('🔄 Triggering masonry layout recalculation');
 
-      // Dispatch custom event for masonry reset
+      // Give the DOM a moment to settle before triggering masonry
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
+      // Call the masonry reset/layout directly
+      if (
+        window.MasonryGrid &&
+        typeof window.MasonryGrid.reset === 'function'
+      ) {
+        console.log('📞 Calling MasonryGrid.reset()');
+        window.MasonryGrid.reset();
+      } else if (
+        window.MasonryGrid &&
+        typeof window.MasonryGrid.layoutMasonry === 'function'
+      ) {
+        console.log('📞 Calling MasonryGrid.layoutMasonry()');
+        window.MasonryGrid.layoutMasonry();
+      }
+
+      // Also dispatch the custom event as backup
       window.dispatchEvent(
         new CustomEvent('masonryReset', {
           detail: { grid: this.postFeed },
         }),
       );
 
-      // Also try calling the masonry directly if available
-      if (
-        window.MasonryGrid &&
-        typeof window.MasonryGrid.reset === 'function'
-      ) {
-        window.MasonryGrid.reset();
-      }
+      console.log('✅ New posts added and masonry recalculated');
     } else {
       // For regular feeds (blog page), use animation wrapper
+      const loadMoreContainer = this.loadMoreBtn.closest('.load-more');
       const newPostsContainer = document.createElement('div');
       newPostsContainer.className = 'new-posts-container';
       newPostsContainer.style.opacity = '0';
