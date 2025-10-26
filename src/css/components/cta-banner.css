@@ -3,7 +3,9 @@
    ========================================================================== */
 
 .cta-banner {
-  background: linear-gradient(135deg, #4a9eff 0%, #00d4aa 100%);
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+    url('/assets/img/maine.webp') center center / cover no-repeat;
   border-radius: 0.75rem;
   box-shadow: var(--shadow);
   color: white;
@@ -15,15 +17,7 @@
 }
 
 .cta-banner::before {
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>')
-    repeat;
-  bottom: 0;
-  content: '';
-  left: 0;
-  pointer-events: none;
-  position: absolute;
-  right: 0;
-  top: 0;
+  display: none;
 }
 
 .cta-content {

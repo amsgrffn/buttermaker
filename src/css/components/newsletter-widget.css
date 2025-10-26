@@ -3,7 +3,9 @@
    ========================================================================== */
 
 .newsletter-widget {
-  background: linear-gradient(135deg, #4a9eff 0%, #00d4aa 100%);
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+    url('/assets/img/maine.webp') center center / cover no-repeat;
   border-radius: 22px;
   box-shadow: var(--shadow);
   margin-bottom: var(--space-2xl);
@@ -57,7 +59,7 @@
   color: white;
   font-size: 0.95rem;
   line-height: 1.3;
-  margin: 0 0 var(--space-lg) 0;
+  margin: 0 0 var(--space-xl) 0;
   opacity: 0.95;
   text-align: center;
   text-wrap: balance;
@@ -98,6 +100,7 @@
   font-size: var(--font-size-base);
   outline: none;
   padding: var(--space-md) var(--space-lg);
+  text-align: center;
   transition: all var(--transition-base);
   width: 100%;
 }

@@ -5,30 +5,52 @@
 
 export class InfiniteScroll {
   constructor() {
+    console.log('🏗️ INFINITE SCROLL CONSTRUCTOR CALLED');
+    console.log('🏗️ Starting initialization...');
+
     this.postFeed = null;
     this.loadMoreBtn = null;
     this.isLoading = false;
     this.hasMorePosts = true;
-    this.nextDom = document; // Current document to search for next link
+    this.nextDom = document;
     this.currentPage = 1;
     this.totalPages = 1;
 
+    console.log('🏗️ About to call init()...');
     this.init();
+    console.log('🏗️ Init() completed');
   }
 
   init() {
+    console.log('=================================');
+    console.log('🚀 INFINITE SCROLL INIT CALLED');
+    console.log('=================================');
+
     // Find the post feed container and load more button
-    // Support .article-loop (blog page), .post-feed (homepage), and .masonry-grid (tag pages)
     this.postFeed =
       document.querySelector('.article-loop') ||
       document.querySelector('.post-feed') ||
       document.querySelector('.masonry-grid');
+
+    console.log('📦 Post feed found:', !!this.postFeed);
+    if (this.postFeed) {
+      console.log('📦 Post feed class:', this.postFeed.className);
+    }
+
     this.loadMoreBtn = document.getElementById('load-more-btn');
+    console.log('🔘 Load more button found:', !!this.loadMoreBtn);
+    console.log('🔘 Load more button element:', this.loadMoreBtn);
 
     if (!this.postFeed || !this.loadMoreBtn) {
-      console.log('📄 Infinite scroll: Required elements not found');
+      console.error('❌ INFINITE SCROLL: Required elements not found');
+      console.log('Missing:', {
+        postFeed: !this.postFeed,
+        loadMoreBtn: !this.loadMoreBtn,
+      });
       return;
     }
+
+    console.log('✅ Both elements found, continuing initialization...');
 
     // Get initial pagination data from Ghost
     this.readPaginationData();
@@ -37,7 +59,11 @@ export class InfiniteScroll {
     this.checkForNextPage();
 
     // Set up event listeners
-    this.loadMoreBtn.addEventListener('click', () => this.loadMorePosts());
+    console.log('🎯 Adding click event listener to button');
+    this.loadMoreBtn.addEventListener('click', () => {
+      console.log('🖱️ BUTTON CLICKED!');
+      this.loadMorePosts();
+    });
 
     // Initialize button state
     this.updateButtonState();
@@ -48,6 +74,8 @@ export class InfiniteScroll {
       'of',
       this.totalPages,
     );
+    console.log('Has more posts:', this.hasMorePosts);
+    console.log('=================================');
   }
 
   readPaginationData(doc = document) {
@@ -182,14 +210,12 @@ export class InfiniteScroll {
       const fragment = document.createDocumentFragment();
       newPosts.forEach((post) => {
         const clonedPost = post.cloneNode(true);
-        // Remove the 'positioned' class and reset styles so masonry can reposition it
+        // Remove the 'positioned' class and reset styles so masonry can position it
         clonedPost.classList.remove('positioned');
         clonedPost.style.position = '';
         clonedPost.style.top = '';
         clonedPost.style.left = '';
         clonedPost.style.width = '';
-        clonedPost.style.opacity = '0';
-        clonedPost.style.transform = 'translateY(20px)';
         fragment.appendChild(clonedPost);
       });
 
@@ -201,32 +227,21 @@ export class InfiniteScroll {
       // Wait for new images to load
       await this.waitForImages(this.postFeed);
 
-      console.log('🔄 Triggering masonry layout recalculation');
+      console.log('🔄 Calling masonry layoutMasonry (NOT reset)');
 
-      // Give the DOM a moment to settle before triggering masonry
+      // Give the DOM a moment to settle
       await new Promise((resolve) => setTimeout(resolve, 100));
 
-      // Call the masonry reset/layout directly
+      // DON'T call reset - just call layoutMasonry to position everything
       if (
-        window.MasonryGrid &&
-        typeof window.MasonryGrid.reset === 'function'
-      ) {
-        console.log('📞 Calling MasonryGrid.reset()');
-        window.MasonryGrid.reset();
-      } else if (
         window.MasonryGrid &&
         typeof window.MasonryGrid.layoutMasonry === 'function'
       ) {
         console.log('📞 Calling MasonryGrid.layoutMasonry()');
         window.MasonryGrid.layoutMasonry();
+      } else {
+        console.warn('⚠️ MasonryGrid.layoutMasonry not available');
       }
-
-      // Also dispatch the custom event as backup
-      window.dispatchEvent(
-        new CustomEvent('masonryReset', {
-          detail: { grid: this.postFeed },
-        }),
-      );
 
       console.log('✅ New posts added and masonry recalculated');
     } else {

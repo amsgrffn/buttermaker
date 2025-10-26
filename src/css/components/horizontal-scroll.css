@@ -6,9 +6,9 @@
   border-bottom: 1px solid var(--color-border-dark);
   overflow: visible;
   position: relative;
-  margin-bottom: var(--space-xl); /* Add spacing before split content */
+  margin-bottom: var(--space-xl);
   padding-bottom: var(--space-xl);
-  width: 100%; /* Takes full width of parent (homepage-container) */
+  width: 100%;
 }
 
 .horizontal-scroll-header {
@@ -16,10 +16,11 @@
 }
 
 .horizontal-scroll-title {
-  color: var(--color-headings);
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin: 0;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
 }
 
 .horizontal-scroll-title svg {
@@ -82,12 +83,13 @@
 }
 
 .scroll-card {
-  border-radius: 22px;
+  border-radius: 1rem;
   color: inherit;
   cursor: grab;
+  box-shadow: var(--shadow);
   display: flex;
-  flex: 0 0 295px; /* Exactly 4 cards fit in the container */
-  height: 295px; /* Keep it square */
+  flex: 0 0 295px;
+  height: 295px;
   overflow: hidden;
   position: relative;
   scroll-snap-align: start;
@@ -116,11 +118,11 @@
 }
 
 .scroll-card-image {
-  border-radius: 22px;
+  border-radius: 0.5rem;
   height: 100%;
   left: 0;
   overflow: hidden;
-  position: absolute; /* Position image to fill entire card */
+  position: absolute;
   top: 0;
   width: 100%;
 }
@@ -151,17 +153,22 @@
 }
 
 .scroll-card-content {
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  background: var(--color-background-card);
-  border-radius: 22px;
-  bottom: 0; /* Anchor to bottom of card */
-  box-shadow: var(--shadow);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  background: var(--color-background-blur);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  height: 160px;
+  justify-content: center;
   left: 0;
   margin: var(--space-md);
   padding: 1.25rem;
   position: absolute; /* Position content over the image */
   right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .scroll-card-title {
@@ -179,15 +186,18 @@
 }
 
 .scroll-card-content .post-topic {
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.02rem;
   margin-bottom: 1rem;
+  text-transform: uppercase;
 }
 
 .scroll-card-content .post-topic span {
   background: var(--color-red);
   border-radius: var(--radius-xl);
   color: #fff2ee;
+  opacity: 0.85;
   padding: 6px 12px;
 }
 
@@ -207,8 +217,9 @@
 }
 
 .scroll-card-meta time {
-  font-size: 14px;
-  font-weight: var(--font-weight-medium); /* Optional: makes it a bit bolder */
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
   margin: -4px 0 0 0;
 }
 

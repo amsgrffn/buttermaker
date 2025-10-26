@@ -11,11 +11,16 @@
 
 .post-feed .section-title {
   grid-column: 1 / -1;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
   margin-bottom: 0;
 }
 
 .post-card {
-  border-radius: 22px;
+  border-radius: 1rem;
   box-shadow: var(--shadow);
   height: 488px;
   overflow: hidden;
@@ -34,7 +39,7 @@
 
 /* Featured image fills the entire card as background */
 .post-card-image {
-  border-radius: 22px;
+  border-radius: 1rem;
   height: 100%;
   left: 0;
   overflow: hidden;
@@ -60,10 +65,10 @@
 }
 
 .post-card-content {
-  backdrop-filter: blur(10px);
-  background: var(--color-background-card);
-  border-radius: 22px;
-  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  background: var(--color-background-blur);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-lg);
   left: 50%;
   max-width: 700px;
   padding: var(--space-3xl);
@@ -75,7 +80,7 @@
 }
 
 /* Fallback for browsers without backdrop-filter support */
-@supports not (backdrop-filter: blur(10px)) {
+@supports not (backdrop-filter: blur(8px)) {
   .post-card-content {
     background: var(--color-background-card);
   }
@@ -93,9 +98,11 @@
 }
 
 .post-card-content .post-topic {
-  font-size: 0.75rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.02rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
 }
 
 .post-card-content .post-topic span {
@@ -160,7 +167,8 @@
   align-items: center;
   color: white;
   display: flex;
-  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   justify-content: space-between;
   left: var(--space-lg);
   padding: var(--space-xs) var(--space-xl);
@@ -189,7 +197,7 @@
 .go-to-blog span {
   background: var(--color-cool-blue);
   border: 1px solid #eee;
-  border-radius: 22px;
+  border-radius: 1rem;
   padding: 8px 12px;
 }
 

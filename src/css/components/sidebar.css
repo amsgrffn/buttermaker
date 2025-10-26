@@ -89,6 +89,14 @@
   list-style: none;
 }
 
+.sidebar-navigation p {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
 .sidebar-nav li {
   margin-bottom: 0;
 }

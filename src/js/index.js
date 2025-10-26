@@ -98,13 +98,45 @@ document.addEventListener('DOMContentLoaded', async function () {
       });
     }
 
-    // Infinite Scroll
-    if (document.querySelector('#load-more-btn')) {
-      import('./modules/infinite-scroll').then(({ InfiniteScroll }) => {
-        new InfiniteScroll();
-        console.log('♾️ Infinite Scroll loaded');
-      });
-    }
+    // Infinite Scroll - with retry logic for tag pages
+    const initInfiniteScroll = () => {
+      console.log('🔍 Checking for load-more-btn...');
+      const loadMoreBtn = document.querySelector('#load-more-btn');
+      console.log('Load more button:', loadMoreBtn);
+
+      if (loadMoreBtn) {
+        console.log(
+          '🎯 Load more button found! Loading infinite scroll module...',
+        );
+        import('./modules/infinite-scroll').then(({ InfiniteScroll }) => {
+          console.log('📦 Infinite scroll module imported');
+          new InfiniteScroll();
+          console.log('♾️ Infinite Scroll loaded');
+        });
+      } else {
+        console.log(
+          '⏳ Load more button not found yet, will retry in 500ms...',
+        );
+        // Retry after a short delay for dynamically loaded content
+        setTimeout(() => {
+          const retryBtn = document.querySelector('#load-more-btn');
+          console.log('🔄 Retry - Load more button:', retryBtn);
+          if (retryBtn) {
+            console.log('🎯 Load more button found on retry!');
+            import('./modules/infinite-scroll').then(({ InfiniteScroll }) => {
+              console.log('📦 Infinite scroll module imported (retry)');
+              new InfiniteScroll();
+              console.log('♾️ Infinite Scroll loaded (retry)');
+            });
+          } else {
+            console.log('📄 No load more button found after retry');
+          }
+        }, 500);
+      }
+    };
+
+    // Call the function
+    initInfiniteScroll();
 
     // Breadcrumb Dropdown
     if (document.querySelector('.breadcrumb-dropdown')) {

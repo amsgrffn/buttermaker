@@ -191,7 +191,7 @@ export class MasonryGrid {
     // Add entrance animation with stagger
     setTimeout(() => {
       card.classList.add('positioned');
-    }, index * 50); // Reduced from 100ms for faster animation
+    }, index * 5);
   }
 
   /**

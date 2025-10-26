@@ -5,13 +5,12 @@
 
 .breadcrumb-list {
   align-items: center;
-
   border-bottom: 1px solid var(--color-border);
   display: flex;
   flex-wrap: wrap;
-  font-size: 14px;
+  font-size: 0.75rem;
   list-style: none;
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-4xl);
   max-width: 720px;
   padding: 0 0 var(--space-sm);
 }
@@ -19,6 +18,7 @@
 .breadcrumb-item {
   align-items: center;
   color: var(--color-headlines);
+  font-family: var(--font-mono);
   display: flex;
 }
 
@@ -55,7 +55,6 @@
 
 .breadcrumb-item a.title {
   display: block;
-  font-size: 14px;
   font-weight: 600;
 }
 

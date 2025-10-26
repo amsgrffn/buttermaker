@@ -22,7 +22,7 @@
 /* Hero Header Container */
 .post-hero-header {
   border-radius: 22px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow);
   height: 600px; /* Adjust this height as needed */
   margin: 0 0 var(--space-4xl);
   overflow: hidden;
@@ -33,7 +33,7 @@
 .error-page-header img {
   border: 1px solid #000;
   border-radius: 22px;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow);
   filter: grayscale(70%);
   height: 100%;
   object-fit: cover;
@@ -72,7 +72,6 @@
 }
 
 .post-hero-image img {
-  filter: grayscale(70%); /* Matches your card style */
   height: 100%;
   object-fit: cover;
   transition:
@@ -134,10 +133,10 @@
 /* Content Card - Overlaid at bottom */
 /* Content Card - Centered in middle */
 .post-hero-content {
-  backdrop-filter: blur(10px);
-  background: var(--color-background);
+  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 22px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-lg);
   left: 50%; /* Position at horizontal center */
   max-width: 650px;
   padding: 2.5rem;
@@ -168,11 +167,12 @@
 .post-hero-title {
   color: var(--color-headings);
   font-family: 'ApexRoundedTrial-Heavy', sans-serif;
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.2;
   margin-bottom: var(--space-sm);
-  text-wrap: pretty;
+  text-align: center;
+  text-wrap: balanced;
 }
 
 /* Hero Meta - Author info */
@@ -213,7 +213,7 @@
 }
 
 .post-hero-meta .post-date {
-  color: var(--color-text-medium);
+  color: var(--color-text-muted);
   font-size: var(--font-size-sm);
 }
 
@@ -418,7 +418,14 @@
 
 .page-template .post-date,
 .post-template .post-date {
-  color: var(--color-text-medium);
+  color: var(--color-text);
+  font-size: 0.75rem;
+}
+
+.page-template .post-date time,
+.post-template .post-date time {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
   font-size: 0.75rem;
 }
 
@@ -904,9 +911,10 @@
 }
 
 .post-footer p {
-  color: var(--color-text-medium);
-  font-size: 0.9rem;
-  line-height: 1.45;
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.35;
   text-wrap: pretty;
 }
 

@@ -1,10 +1,10 @@
 {{!< default}}
+<!-- DEBUG: AUTHOR.HBS IS RENDERING -->
 
 <div class="split-content-wrapper">
-<!-- DEBUG: TAG.HBS IS RENDERING -->
 	<div class="main-content-area">
 
-		{{!-- Tag Archive Header --}}
+		{{!-- Author Archive Header --}}
 		<header class="archive-header">
 			<ul class="breadcrumb-list">
 				<li class="breadcrumb-item home">
@@ -12,25 +12,66 @@
 					<a class="title" href="{{@site.url}}">Home</a>
 				</li>
 				<li class="breadcrumb-separator">{{> "icons/chevron"}}</li>
-				<li class="breadcrumb-item">Topics</li>
+				<li class="breadcrumb-item">Authors</li>
 				<li class="breadcrumb-separator">{{> "icons/chevron"}}</li>
-				{{#tag}}
+				{{#author}}
 					<li class="breadcrumb-item current">{{name}}</li>
-				{{/tag}}
+				{{/author}}
 			</ul>
 
-			{{#tag}}
+			{{#author}}
 			<div class="archive-title-wrapper">
-				<h2 class="archive-title">{{name}}</h2>
-				{{#if description}}
-					<p class="archive-description">{{description}}</p>
+				{{!-- Author Avatar --}}
+				{{#if profile_image}}
+					<img
+						class="author-archive-avatar"
+						srcset="{{img_url profile_image size='s' format='webp'}} 100w,
+								{{img_url profile_image size='m' format='webp'}} 200w"
+						sizes="120px"
+						src="{{img_url profile_image size='m' format='webp'}}"
+						alt="{{name}}"
+						width="120"
+						height="120"
+						loading="eager">
 				{{/if}}
+
+				<h2 class="archive-title">{{name}}</h2>
+
+				{{#if bio}}
+					<p class="archive-description">{{bio}}</p>
+				{{/if}}
+
+				{{#if location}}
+					<p class="author-location">📍 {{location}}</p>
+				{{/if}}
+
+				{{#if website}}
+					<p class="author-website">
+						<a href="{{website}}" target="_blank" rel="noopener">🔗 {{website}}</a>
+					</p>
+				{{/if}}
+
 				<p class="archive-count">{{plural count.posts empty='No posts' singular='% post' plural='% posts'}}</p>
 			</div>
-			{{/tag}}
+			{{/author}}
 		</header>
 
-		{{!-- Masonry Grid Section - OUTSIDE the #tag block! --}}
+		{{!-- Debug Pagination Info --}}
+		{{!-- Remove this after testing --}}
+		<div style="background: yellow; padding: 20px; margin: 20px;">
+			<strong>DEBUG INFO:</strong><br>
+			Posts count: {{posts.length}}<br>
+			Pagination exists: {{#if pagination}}YES{{else}}NO{{/if}}<br>
+			{{#if pagination}}
+				Current page: {{pagination.page}}<br>
+				Total pages: {{pagination.pages}}<br>
+				Has next: {{#if pagination.next}}YES{{else}}NO{{/if}}<br>
+				Total posts: {{pagination.total}}<br>
+				Limit: {{pagination.limit}}<br>
+			{{/if}}
+		</div>
+
+		{{!-- Masonry Grid Section --}}
 		<section class="featured-masonry-section">
 			<div class="masonry-grid">
 				{{#foreach posts}}
@@ -80,7 +121,8 @@
 					</article>
 				{{/foreach}}
 			</div>
-			{{!-- Load More Button - MOVED OUTSIDE the masonry-grid --}}
+
+			{{!-- Load More Button --}}
 			{{#if pagination.next}}
 				<div class="load-more">
 					<button id="load-more-btn" type="button" aria-label="Load more posts">

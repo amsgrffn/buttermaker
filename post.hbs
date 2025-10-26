@@ -26,16 +26,22 @@
 
 				{{! NEW: Top Meta Bar }}
 				<div class="post-hero-top-meta">
-					<img
-					  srcset="{{img_url primary_author.profile_image size='xxs' format='webp'}} 50w,
-							  {{img_url primary_author.profile_image size='xs' format='webp'}} 150w"
-					  sizes="50px"
-					  src="{{img_url primary_author.profile_image size='xxs' format='webp'}}"
-					  alt="{{primary_author.name}}"
-					  width="50"
-					  height="50"
-					  loading="lazy"
-					  class="author-avatar-top">
+
+					{{#primary_author}}
+					  <a href="{{url}}" class="author-link">
+						<img
+						  srcset="{{img_url profile_image size='xxs' format='webp'}} 50w,
+								  {{img_url profile_image size='xs' format='webp'}} 150w"
+						  sizes="50px"
+						  src="{{img_url profile_image size='xxs' format='webp'}}"
+						  alt="{{name}}"
+						  width="50"
+						  height="50"
+						  loading="lazy"
+						  class="author-avatar-top">
+					  </a>
+					{{/primary_author}}
+
 					<time datetime="{{date published_at format="YYYY-MM-DD"}}">
 						{{date published_at timeago="true"}}
 					</time>
@@ -43,9 +49,7 @@
 
 				<div class="post-hero-content">
 					<h1 class="post-hero-title">{{title}}</h1>
-					{{#if custom_excerpt}}
-						<p class="excerpt">{{custom_excerpt}}</p>
-					{{/if}}
+
 				</div>
 
 				{{! Caption if exists }}
