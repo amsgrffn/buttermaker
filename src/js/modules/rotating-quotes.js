@@ -77,11 +77,6 @@ export function initRotatingQuotes() {
     quoteHTML += quote.author;
   }
 
-  // Add copyright year
-  const currentYear = new Date().getFullYear();
-  const siteTitle = endCredits.dataset.siteTitle || '';
-  quoteHTML += ` &bull; &copy; ${currentYear} ${siteTitle}`;
-
   // Update the paragraph content
   endCredits.innerHTML = quoteHTML;
 

@@ -8,7 +8,7 @@
   border-bottom: 1px solid var(--color-border);
   display: flex;
   flex-wrap: wrap;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   list-style: none;
   margin-bottom: var(--space-4xl);
   max-width: 720px;
@@ -123,7 +123,7 @@
 .dropdown-inner {
   background-color: #fefefe;
   border-radius: var(--radius-base);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-md);
   overflow: hidden;
   padding: var(--space-lg);
 }

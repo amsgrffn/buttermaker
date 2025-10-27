@@ -6,7 +6,7 @@
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
     url('/assets/img/maine.webp') center center / cover no-repeat;
-  border-radius: 22px;
+  border-radius: 1rem;
   box-shadow: var(--shadow);
   margin-bottom: var(--space-2xl);
   overflow: hidden;

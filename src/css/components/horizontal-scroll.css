@@ -91,7 +91,7 @@
   display: flex;
   flex: 0 0 295px;
   height: 295px;
-  overflow: hidden;
+
   position: relative;
   scroll-snap-align: start;
   text-decoration: none;
@@ -119,7 +119,7 @@
 }
 
 .scroll-card-image {
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   height: 100%;
   left: 0;
   overflow: hidden;
@@ -179,9 +179,9 @@
   -webkit-line-clamp: 3;
   color: var(--color-headings);
   display: -webkit-box;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.15;
   margin: 0 0 var(--space-xs) 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -232,6 +232,7 @@
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: var(--radius-full);
+  box-shadow: var(--shadow-md);
   filter: grayscale(70%);
   height: 38px;
   object-fit: cover;
@@ -278,8 +279,8 @@
 .category-tabs-container {
   background: var(--color-cool-blue);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
-  font-family: var(--font-family-sans);
+  border-radius: 0.5rem;
+  font-family: var(--font-mono);
   margin: 0;
   padding: var(--space-sm);
   position: relative;
@@ -307,9 +308,8 @@
   border-radius: var(--radius-pill);
   color: var(--color-text-dark);
   cursor: pointer;
-  font-family: var(--font-family-sans);
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 0.75rem;
+  font-weight: 400;
   min-width: fit-content;
   padding: var(--space-sm) var(--space-lg);
   transition: all var(--transition-base);
@@ -358,7 +358,7 @@
   cursor: pointer;
   display: flex;
   font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
+  font-weight: 400;
   height: 32px;
   justify-content: center;
   position: absolute;

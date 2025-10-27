@@ -87,23 +87,42 @@
 				{{content}}
 			</div>
 			<div class="share-links">
-			<p>Share and Subscribe</p>
-			<div class="icon-row">
-			{{> "icons/link"}}
-			{{> "icons/at-sign"}}
-			{{> "icons/bluesky"}}
-			{{> "icons/mastodon"}}
-			{{> "icons/reddit"}}
-			{{> "icons/whatsapp"}}
-			{{> "icons/thumb-up"}}
-			{{> "icons/beer"}}
-			</div>
+				<p>Search, Share, Subscribe</p>
+				<div class="icon-row">
+				<a href="#" class="share-icon" data-tooltip="Search this site">
+					{{> "icons/search"}}
+				</a>
+					<a href="#" class="share-icon" data-tooltip="Copy Post URL">
+						{{> "icons/link"}}
+					</a>
+					<a href="#" class="share-icon" data-tooltip="Email Article">
+						{{> "icons/mail"}}
+					</a>
+					<a href="https://bsky.app/intent/compose?text={{encode title}}{{encode (url absolute="true")}}" target="_blank" rel="noopener noreferrer" class="share-icon" data-tooltip="Share on Bluesky">
+						{{> "icons/bluesky"}}
+					</a>
+					<a href="#" class="share-icon" data-tooltip="Share on Mastodon">
+						{{> "icons/mastodon"}}
+					</a>
+					<a href="https://www.reddit.com/submit?url={{encode (url absolute="true")}}&title={{encode title}}" target="_blank" rel="noopener noreferrer" class="share-icon" data-tooltip="Share on Reddit">
+						{{> "icons/reddit"}}
+					</a>
+					<a href="whatsapp://send?text={{encode (concat title ' ' (url absolute="true"))}}" target="_blank" rel="noopener noreferrer" class="share-icon" data-tooltip="Share on WhatsApp">
+						{{> "icons/whatsapp"}}
+					</a>
+					<a href="#/portal/support" class="share-icon" data-tooltip="Subscribe">
+						{{> "icons/shopping-basket"}}
+					</a>
+					<a href="#/portal/support" class="share-icon" data-tooltip="Buy Us a Pint">
+						{{> "icons/beer"}}
+					</a>
+				</div>
 			</div>
 
 			{{! Rest of your post.hbs stays the same... }}
 			<footer class="post-footer">
 			<p>
-				<a href="{{primary_author.url}}">{{primary_author.name}}</a> published this post on {{date published_at format="MMMM DD, YYYY"}}. <a href="/">You can share this post</a> if you'd like. Members can leave a comment below. Anyone can use our contact page to <a href="/contact">reach out to us</a> via the various channels we offer. {{#match updated at}}This post was updated on <time class="updated" datetime="{{updated_at}}">{{date updated_at format="M/D/Y"}}</time>. <a href="/corrections-policy/">Check out our corrections policy</a> if you're curious about such things. Cheers!{{/match}}
+				<a href="{{primary_author.url}}">{{primary_author.name}}</a> published this post on {{date published_at format="MMMM DD, YYYY"}} and filed it under {{tags separator=", "}}. Members can leave a comment below. Anyone can use our contact page to <a href="/contact">reach out to us</a>. {{#match updated at}}This post was updated on <time class="updated" datetime="{{updated_at}}">{{date updated_at format="M/D/Y"}}</time>. <a href="/corrections-policy/">Check out our corrections policy</a> if you're curious about such things. Cheers!{{/match}}
 			</p>
 			</footer>
 		</div>
