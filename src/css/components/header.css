@@ -189,11 +189,11 @@
 /* Header Buttons */
 .header-btn {
   background: var(--color-cool-blue);
-  border: 1px solid var(--color-border);
   border-radius: 0.5rem;
   color: var(--color-text-dark);
-  font-size: 0.75rem;
-  font-weight: var(--font-weight-medium);
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
   padding: var(--space-sm) var(--space-lg);
   text-decoration: none;
   transition: all var(--transition-base);
@@ -213,6 +213,10 @@
 .header-btn.primary {
   background: var(--link-color);
   color: white;
+}
+
+.header-btn.secondary {
+  border: 1px solid var(--color-border);
 }
 
 .header-btn:hover {

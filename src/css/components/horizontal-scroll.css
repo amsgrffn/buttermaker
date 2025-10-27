@@ -19,14 +19,15 @@
   color: var(--color-text-muted);
   font-family: var(--font-mono);
   font-size: 0.75rem;
+  font-weight: 400;
   margin-bottom: 1rem;
   text-transform: uppercase;
 }
 
 .horizontal-scroll-title svg {
-  height: 22px;
-  margin-top: -3px;
-  width: 22px;
+  height: 20px;
+  margin: -3px -3px 0 -2px;
+  width: 20px;
 }
 
 .horizontal-scroll-controls {
@@ -128,9 +129,11 @@
 }
 
 .scroll-card-image img {
-  filter: grayscale(70%);
+  filter: grayscale(30%) blur(3px);
   height: 100%;
   object-fit: cover;
+  object-position: center center;
+  transform: scale(1.1);
   transition: transform var(--transition-base);
   width: 100%;
 }
@@ -189,7 +192,7 @@
   font-family: var(--font-mono);
   font-size: 0.65rem;
   letter-spacing: 0.02rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   text-transform: uppercase;
 }
 

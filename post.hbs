@@ -86,11 +86,24 @@
 			<div class="post-content">
 				{{content}}
 			</div>
+			<div class="share-links">
+			<p>Share and Subscribe</p>
+			<div class="icon-row">
+			{{> "icons/link"}}
+			{{> "icons/at-sign"}}
+			{{> "icons/bluesky"}}
+			{{> "icons/mastodon"}}
+			{{> "icons/reddit"}}
+			{{> "icons/whatsapp"}}
+			{{> "icons/thumb-up"}}
+			{{> "icons/beer"}}
+			</div>
+			</div>
 
 			{{! Rest of your post.hbs stays the same... }}
 			<footer class="post-footer">
 			<p>
-				<a href="/">You can share this post</a> if you'd like. Members can leave a comment below. Anyone can use our contact page to <a href="/contact">reach out to us</a> via the various channels we offer. {{#match updated at}}This post was updated on <time class="updated" datetime="{{updated_at}}">{{date updated_at format="M/D/Y"}}</time>. <a href="/corrections-policy/">Check out our corrections policy</a> if you're curious about such things. Cheers!{{/match}}
+				<a href="{{primary_author.url}}">{{primary_author.name}}</a> published this post on {{date published_at format="MMMM DD, YYYY"}}. <a href="/">You can share this post</a> if you'd like. Members can leave a comment below. Anyone can use our contact page to <a href="/contact">reach out to us</a> via the various channels we offer. {{#match updated at}}This post was updated on <time class="updated" datetime="{{updated_at}}">{{date updated_at format="M/D/Y"}}</time>. <a href="/corrections-policy/">Check out our corrections policy</a> if you're curious about such things. Cheers!{{/match}}
 			</p>
 			</footer>
 		</div>

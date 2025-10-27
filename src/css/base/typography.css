@@ -9,8 +9,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'ApexRoundedTrial-Bold', 'SF Pro Rounded', sans-serif;
-  font-weight: 700;
+  font-family:
+    'Zed Round Compact xsTRIAL', 'ApexRoundedTrial-Bold', 'SF Pro Rounded',
+    sans-serif;
+  font-weight: 800;
   line-height: var(--line-height-tight);
   color: var(--color-headings);
   margin-bottom: var(--space-lg);

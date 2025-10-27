@@ -4,9 +4,9 @@
 
 .cta-banner {
   background:
-    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
     url('/assets/img/maine.webp') center center / cover no-repeat;
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   box-shadow: var(--shadow);
   color: white;
   margin-bottom: var(--space-4xl);
@@ -27,7 +27,7 @@
 
 .cta-title {
   color: white;
-  font-family: 'ApexRoundedTrial-Heavy', sans-serif;
+  font-family: var(--font-display);
   font-size: 2.3rem;
   font-weight: 900;
   line-height: 1.1;
@@ -103,8 +103,9 @@
 
 .cta-email-input::placeholder {
   color: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 400;
   transition: opacity var(--transition-base);
 }
 
@@ -115,10 +116,10 @@
 .cta-submit-btn {
   background: rgba(255, 255, 255, 0.25);
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.4);
   color: white;
   cursor: pointer;
-  font-size: 1rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
   font-weight: 700;
   padding: var(--space-md) var(--space-xl);
   transition: all var(--transition-base);
@@ -192,7 +193,8 @@
   border: none;
   cursor: pointer;
   display: inline-flex;
-  font-size: 1rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
   font-weight: 700;
   justify-content: center;
   min-width: 140px;
