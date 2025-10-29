@@ -880,6 +880,12 @@
   text-transform: uppercase;
 }
 
+.share-links p svg {
+  display: inline;
+  margin: -2px 0 0 0;
+  vertical-align: middle;
+}
+
 /* Share icon links */
 .share-icon {
   position: relative;

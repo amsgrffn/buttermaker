@@ -179,6 +179,14 @@
   padding-top: 1rem;
 }
 
+.end-credits a {
+  text-decoration: underline;
+}
+
+.end-credits a:hover {
+  text-decoration: none;
+}
+
 .archive-header {
   margin-bottom: 3rem;
 }

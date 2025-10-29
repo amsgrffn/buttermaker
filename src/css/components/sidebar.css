@@ -46,18 +46,18 @@
 
 /* Sidebar Typography */
 .sidebar h1 {
-  color: var(--color-headings);
-  font-family: 'ZedRoundCompactxsTRIAL-Black', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 900;
-  line-height: 1;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 400;
   margin-bottom: 0.5rem;
+  text-transform: uppercase;
   text-wrap: balance;
 }
 
 .sidebar h1 a {
   color: var(--color-headings);
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .sidebar h1 a:hover {

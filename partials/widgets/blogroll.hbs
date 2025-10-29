@@ -1,6 +1,6 @@
 {{#match @site.recommendations_enabled}}
+  <h3 class='widget-title'>Recommended Reading</h3>
   <div class='recommendations-widget'>
-    <h3 class='widget-title'>Recommended Reading</h3>
     {{#recommendations limit='10'}}
       <ul class='recommendations'>
         {{#foreach recommendations as |rec|}}
