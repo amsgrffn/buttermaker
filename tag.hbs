@@ -21,11 +21,48 @@
 
 			{{#tag}}
 			<div class="archive-title-wrapper">
-				<h2 class="archive-title">{{name}}</h2>
+			<div class="featured-topic-img">
+				{{#if feature_image}}
+				<figure>
+					<picture>
+						<source
+							srcset="
+								{{img_url feature_image size="s" format="avif"}} 270w,
+								{{img_url feature_image size="m" format="avif"}} 400w
+							"
+							sizes="(min-width: 400px) 400px, 100vw"
+							type="image/avif">
+						<source
+							srcset="
+								{{img_url feature_image size="s" format="webp"}} 270w,
+								{{img_url feature_image size="m" format="webp"}} 400w
+							"
+							sizes="(min-width: 400px) 400px, 100vw"
+							type="image/webp">
+						<img
+							srcset="
+								{{img_url feature_image size="s"}} 270w,
+								{{img_url feature_image size="m"}} 400w
+							"
+							sizes="(min-width: 400px) 400px, 100vw"
+							src="{{img_url feature_image size="m"}}"
+							alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+							loading="lazy"
+							width="160"
+							height="160">
+					</picture>
+				</figure>
+				{{else}}
+				<img class="flex-shrink-0 mx-auto" src="{{asset 'img/dudeinlab.avif'}}" width="160" height="160" alt="Arrow pointing down">
+				{{/if}}
+			</div>
+			<div>
+				<h2 class="archive-title">{{name}} Archive</h2>
 				{{#if description}}
 					<p class="archive-description">{{description}}</p>
 				{{/if}}
 				<p class="archive-count">{{plural count.posts empty='No posts' singular='% post' plural='% posts'}}</p>
+			</div>
 			</div>
 			{{/tag}}
 		</header>

@@ -41,7 +41,7 @@
 .note-post .note-body ol,
 .note-post .note-body p,
 .note-post .note-body ul {
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: var(--line-height-base);
   margin-bottom: var(--space-lg);
 }
@@ -160,9 +160,9 @@
 .article-loop .post-content ol,
 .article-loop .post-content p,
 .article-loop .post-content ul,
-.article-loop .content-body blockquote {
+.article-loop .post-content blockquote {
   color: var(--color-text-dark);
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: var(--line-height-base);
   margin-bottom: var(--space-xl);
 }
@@ -194,15 +194,16 @@
 }
 
 .article-loop .post-topic {
-  background: var(--color-cool-blue);
-  border: 1px solid var(--border-cool-blue);
-  border-radius: var(--radius-xl);
-  color: var(--color-headings);
+  background: var(--link-color);
+  border-radius: var(--radius-pill);
+  color: var(--link-color-muted);
   display: inline-block;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.02rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  opacity: 0.85;
   padding: 6px 12px;
+  text-transform: uppercase;
 }
 
 .article-loop .post-topic:hover {
@@ -214,7 +215,8 @@
 /* Date display */
 .article-loop .post-date {
   color: var(--color-text-muted);
-  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   margin-top: -4px;
 }
 

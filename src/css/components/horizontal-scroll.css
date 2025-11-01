@@ -71,7 +71,7 @@
   display: flex;
   gap: var(--space-lg); /* 16px gap */
   overflow-x: auto;
-  padding-bottom: var(--space-sm);
+
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
@@ -179,10 +179,11 @@
   -webkit-line-clamp: 3;
   color: var(--color-headings);
   display: -webkit-box;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.2;
   margin: 0 0 var(--space-xs) 0;
+  opacity: 0.9;
   overflow: hidden;
   text-overflow: ellipsis;
   text-wrap: pretty;

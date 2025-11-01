@@ -53,7 +53,7 @@
   gap: var(--split-gap);
   align-items: start;
   max-width: var(--split-total-width); /* Exactly 1228px */
-  margin: var(--space-lg) auto 0 auto;
+  margin: 0.8rem auto 0 auto;
   width: 100%;
 }
 
@@ -65,14 +65,4 @@
 .content-aside {
   width: 100%;
   position: relative;
-}
-
-/* ==========================================================================
-   Content Sections (Consistent Width Across Site)
-   ========================================================================== */
-
-.horizontal-scroll-section {
-  max-width: var(--split-total-width); /* Exactly 1228px */
-  margin: 0 auto;
-  width: 100%;
 }

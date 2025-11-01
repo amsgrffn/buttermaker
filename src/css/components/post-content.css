@@ -135,7 +135,7 @@
 /* Content Card - Centered in middle */
 .post-hero-content {
   backdrop-filter: blur(6px);
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--color-background-blur);
   border-radius: 1rem;
   box-shadow: var(--shadow-lg);
   left: 50%; /* Position at horizontal center */
@@ -167,9 +167,8 @@
 /* Hero Title */
 .post-hero-title {
   color: var(--color-headings);
-  font-family: 'ApexRoundedTrial-Heavy', sans-serif;
-  font-size: 2rem;
-  font-weight: 800;
+  font-size: 1.8rem;
+  font-weight: 700;
   line-height: 1.2;
   margin-bottom: var(--space-sm);
   text-align: center;
@@ -1382,4 +1381,41 @@ lite-youtube:hover::part(playButton)::before {
 
 .post-content .kg-toggle-content p {
   font-size: 1.2rem;
+}
+
+.archive-header {
+  margin: 0 auto 3rem;
+}
+
+h2.archive-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.archive-description svg {
+  display: inline;
+  height: 18px;
+  vertical-align: middle;
+  width: 18px;
+}
+
+.archive-description {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-wrap: balance;
+}
+
+.archive-title-wrapper {
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+}
+
+.featured-topic-img img {
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  height: 140px;
+  width: 140px;
 }

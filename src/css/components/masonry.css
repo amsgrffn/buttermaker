@@ -97,8 +97,9 @@
 .masonry-title {
   color: var(--color-headings);
   font-size: 1.4rem;
-  line-height: 1.15;
+  line-height: 1.2;
   margin-bottom: var(--space-sm);
+  opacity: 0.9;
   text-wrap: pretty;
 }
 
@@ -185,20 +186,6 @@
 
 .end-credits a:hover {
   text-decoration: none;
-}
-
-.archive-header {
-  margin-bottom: 3rem;
-}
-
-h2.archive-title {
-  font-size: 1.5rem;
-  margin-bottom: 0;
-}
-
-.archive-description {
-  font-size: 1.1rem;
-  line-height: 1.3;
 }
 
 /* Responsive Masonry */

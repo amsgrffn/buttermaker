@@ -53,14 +53,16 @@
   ); /* #332f2c - For clarity in theming */
   --color-warning: #f39c12;
   --color-yellow: #ffffd1; /* Light yellow highlight */
+  --link-color: oklch(0.5439 0.2052 30.28); /* #cc2211 */
+  --link-color-muted: #ffede7;
 
   --content-max-width: 42.5rem; /* 680px */
   --content-max-width-wide: 47.5rem; /* 760px */
 
   --font-display:
-    'Zed Round Compact xsTRIAL', 'Apex Rounded Trial', 'SF Pro Rounded',
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    'Apex Rounded Trial', 'SF Pro Rounded', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+    'Helvetica Neue', sans-serif;
   --font-mono: 'JetBrains Mono', 'Monaco', 'Consolas', 'Courier New', monospace;
   --font-sans:
     'Suisse Intl Trial', 'SF Pro Display', -apple-system, BlinkMacSystemFont,
@@ -91,9 +93,6 @@
   --line-height-base: 1.4;
   --line-height-relaxed: 1.6;
   --line-height-tight: 1.2;
-
-  --link-color: oklch(0.5439 0.2052 30.28); /* #cc2211 */
-  --link-color-muted: #ffede7;
 
   --radius-base: 0.25rem; /* 4px */
   --radius-sm: 0.1875rem; /* 3px */
@@ -144,6 +143,7 @@
 body.dark-mode {
   /* Background colors */
   --color-background: #0f0f0f;
+  --color-background-blur: rgba(26, 26, 26, 0.7);
   --color-background-card: #1a1a1a;
   --color-background-light: #1e1e1e;
   --color-background-secondary: #252525;
