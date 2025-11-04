@@ -24,6 +24,17 @@
   text-transform: uppercase;
 }
 
+/* Blue dot before the text */
+.horizontal-scroll-title::before {
+  background: #3b82f6;
+  border-radius: 50%;
+  content: '';
+  display: inline-block;
+  height: 8px;
+  margin-right: var(--space-sm);
+  width: 8px;
+}
+
 .horizontal-scroll-title svg {
   height: 20px;
   margin: -3px -3px 0 -2px;

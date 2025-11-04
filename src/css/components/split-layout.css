@@ -19,6 +19,16 @@
   text-transform: uppercase;
 }
 
+.content-aside .widget-title::before {
+  background: #3b82f6;
+  border-radius: 50%;
+  content: '';
+  display: inline-block;
+  height: 8px;
+  margin-right: var(--space-xs);
+  width: 8px;
+}
+
 /* Common widget styling */
 .notes-widget,
 .stats-widget,

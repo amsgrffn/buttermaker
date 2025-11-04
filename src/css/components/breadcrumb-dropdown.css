@@ -10,7 +10,7 @@
   flex-wrap: wrap;
   font-size: 0.75rem;
   list-style: none;
-  margin-bottom: var(--space-4xl);
+  margin-bottom: var(--space-2xl);
   max-width: 720px;
   padding: 0 0 var(--space-sm);
 }
@@ -66,7 +66,7 @@
 .breadcrumb-item.current {
   color: var(--color-text-muted);
   display: inline-block;
-  max-width: 400px;
+  max-width: 440px;
   overflow: hidden;
   text-overflow: ellipsis;
   vertical-align: middle;

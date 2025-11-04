@@ -51,14 +51,13 @@
 					<h1 class="post-hero-title">{{title}}</h1>
 
 				</div>
-
-				{{! Caption if exists }}
-				{{#if feature_image_caption}}
-				<div class="post-hero-caption">
-					{{feature_image_caption}}
-				</div>
-				{{/if}}
 			</header>
+			{{! Caption if exists }}
+			{{#if feature_image_caption}}
+			<div class="post-hero-caption">
+				{{feature_image_caption}}
+			</div>
+			{{/if}}
 			{{else}}
 			{{! REGULAR HEADER - When there's no featured image }}
 			<header class="post-header">
@@ -87,7 +86,7 @@
 				{{content}}
 			</div>
 			<div class="share-links">
-				<p>	{{> "icons/arrow-box"}} Search, Share, Subscribe</p>
+				<p>Search, Share, Subscribe</p>
 				<div class="icon-row">
 				<a href="#" data-ghost-search class="share-icon" data-tooltip="Search this site">
 					{{> "icons/search"}}
