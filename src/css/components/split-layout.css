@@ -27,7 +27,7 @@
 .testimonial-widget {
   background: var(--color-cool-blue);
   border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   margin-bottom: var(--space-4xl);
   padding: var(--space-xl);
 }
@@ -43,7 +43,7 @@
 .note-item {
   background: var(--color-background-card);
   background-size: 16px 16px;
-  border-radius: 1rem;
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
   margin-bottom: var(--space-xl);
   padding: var(--space-3xl);
@@ -269,7 +269,7 @@
 
 .testimonial-widget .testimonials {
   background: var(--color-background-card);
-  border-radius: 1rem;
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
@@ -363,7 +363,7 @@
 
 .stat-item {
   background: var(--color-background-card);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: var(--space-md);
   text-align: center;
@@ -405,24 +405,25 @@
 }
 
 .movie-list li {
+  border: 8px solid var(--color-background);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   flex-basis: calc(33.33% - 7px); /* Roughly 1/3 width minus gap adjustment */
   /* Alternative without gap: flex-basis: 33.33%; */
+}
+
+.movie-list img {
+  border-radius: var(--radius-sm);
+  display: block;
+  filter: grayscale(70%);
+  height: auto;
+  width: 100%;
 }
 
 .movie-list img:hover {
   animation: wiggle 0.5s ease-in-out;
   filter: grayscale(20%);
   z-index: 10;
-}
-
-.movie-list img {
-  border: 8px solid var(--color-background);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-  display: block;
-  filter: grayscale(70%);
-  height: auto;
-  width: 100%;
 }
 
 .archive-item:last-child {

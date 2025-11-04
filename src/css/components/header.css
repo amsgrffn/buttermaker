@@ -49,7 +49,7 @@
 .header-extra p {
   background: var(--color-background-secondary);
   border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   margin: 0;
   padding: var(--space-sm) var(--space-lg);
 }
@@ -64,7 +64,7 @@
 
 .logo {
   align-items: center;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-full);
   color: white;
   display: flex;
   filter: grayscale(50%);
@@ -109,7 +109,7 @@
 .search-input {
   background: var(--color-cool-blue);
   border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   font-family: var(--font-mono);
   font-size: 0.75rem;
   outline: none;
@@ -191,7 +191,7 @@
 /* Header Buttons */
 .header-btn {
   background: var(--color-cool-blue);
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   color: var(--color-text-dark);
   font-family: var(--font-mono);
   font-size: 0.75rem;

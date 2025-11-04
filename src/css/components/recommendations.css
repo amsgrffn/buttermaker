@@ -4,7 +4,7 @@
 
 .recommendations-widget {
   background: var(--color-cool-blue);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius);
   padding: var(--space-lg, 20px);
   margin-bottom: var(--space-xl, 24px);
   border: 1px solid var(--border-blue-grey);
@@ -13,7 +13,7 @@
 /* 2-Column Grid Layout */
 .recommendations {
   column-count: 2;
-  column-gap: 10px;
+  column-gap: 0.5rem;
   column-fill: balance;
 }
 
@@ -25,7 +25,7 @@
 .recommendation a {
   display: block;
   background: var(--color-background-card, white);
-  border-radius: 1rem;
+  border-radius: var(--radius);
   padding: var(--space-lg);
   text-decoration: none;
   color: inherit;
@@ -141,7 +141,7 @@
   transition: color 0.2s ease;
   cursor: pointer;
   padding: var(--space-xs, 8px) var(--space-sm, 12px);
-  border-radius: var(--radius-sm, 4px);
+  border-radius: var(--radius);
   font-family: inherit;
 }
 

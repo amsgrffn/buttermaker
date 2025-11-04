@@ -71,7 +71,6 @@
   display: flex;
   gap: var(--space-lg); /* 16px gap */
   overflow-x: auto;
-
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
@@ -84,14 +83,13 @@
 }
 
 .scroll-card {
-  border-radius: 1rem;
+  border-radius: var(--radius);
   color: inherit;
   cursor: grab;
   box-shadow: var(--shadow);
   display: flex;
   flex: 0 0 295px;
   height: 295px;
-
   position: relative;
   scroll-snap-align: start;
   text-decoration: none;
@@ -119,7 +117,7 @@
 }
 
 .scroll-card-image {
-  border-radius: 1rem;
+  border-radius: var(--radius);
   height: 100%;
   left: 0;
   overflow: hidden;
@@ -145,7 +143,7 @@
 
 .scroll-card-badge {
   background: rgba(0, 0, 0, 0.7);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   color: white;
   font-size: 10px;
   font-weight: var(--font-weight-medium);
@@ -159,7 +157,7 @@
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   background: var(--color-background-blur);
-  border-radius: 1rem;
+  border-radius: var(--radius);
   box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
@@ -179,8 +177,9 @@
   -webkit-line-clamp: 3;
   color: var(--color-headings);
   display: -webkit-box;
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01rem;
   line-height: 1.2;
   margin: 0 0 var(--space-xs) 0;
   opacity: 0.9;
@@ -190,18 +189,15 @@
 }
 
 .scroll-card-content .post-topic {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.02rem;
-  margin-bottom: 1.25rem;
-  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 650;
+  margin-bottom: 1rem;
 }
 
 .scroll-card-content .post-topic span {
-  background: var(--color-red);
-  border-radius: var(--radius-xl);
-  color: #fff2ee;
-  opacity: 0.85;
+  background: rgba(26, 26, 26, 0.7);
+  border-radius: var(--radius-pill);
+  color: #fff;
   padding: 6px 12px;
 }
 
@@ -231,7 +227,6 @@
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   background: rgba(0, 0, 0, 0.3);
-
   border-radius: var(--radius-full);
   box-shadow: var(--shadow);
   filter: grayscale(70%);
@@ -260,7 +255,7 @@
 
 .scroll-card-tag {
   background: var(--color-border-light);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius);
   color: var(--color-text-medium);
   font-size: 10px;
   font-weight: var(--font-weight-medium);
@@ -291,7 +286,7 @@
   /* Simple flex layout for tabs */
   -ms-overflow-style: none;
   background: var(--color-background-light);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius);
   display: flex;
   gap: 2px;
   overflow-x: auto;

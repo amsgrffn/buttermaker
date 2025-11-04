@@ -6,7 +6,7 @@
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
     url('/assets/img/maine.webp') center center / cover no-repeat;
-  border-radius: 1rem;
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
   margin-bottom: var(--space-4xl);
   overflow: hidden;
@@ -96,7 +96,7 @@
   backdrop-filter: blur(4px);
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 22px;
+  border-radius: var(--radius);
   color: white;
   font-size: var(--font-size-base);
   outline: none;
@@ -137,7 +137,7 @@
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 22px;
+  border-radius: var(--radius);
   color: white;
   cursor: pointer;
   font-family: var(--font-display);
@@ -177,7 +177,7 @@
 
 /* Success/Error Messages */
 .newsletter-message {
-  border-radius: var(--radius-base);
+  border-radius: var(--radius);
   display: none;
   font-size: var(--font-size-sm);
   margin-top: var(--space-sm);
@@ -230,7 +230,7 @@
 .newsletter-manage {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-base);
+  border-radius: var(--radius);
   color: white;
   display: inline-block;
   font-size: var(--font-size-sm);

@@ -21,7 +21,7 @@
       </ul>
     </div>
     <div class='header-center'>
-      <div class='search-bar'>
+      <div class='search-bar' data-ghost-search>
         <input
           type='text'
           class='search-input'
@@ -119,6 +119,12 @@
         </button>
         <div class='theme-slider' aria-hidden='true'></div>
       </div>
+      <a href='{{@site.url}}'><img
+          src='{{asset "img/rss-icon.png"}}'
+          height='20"'
+          width='20'
+          alt='{{title}}'
+        /></a>
     </div>
   </div>
 </header>

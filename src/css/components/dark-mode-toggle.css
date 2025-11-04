@@ -5,7 +5,7 @@
 .theme-toggle-pill {
   background: var(--color-cool-blue);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius);
   display: flex;
   gap: 4px;
   padding: 4px;

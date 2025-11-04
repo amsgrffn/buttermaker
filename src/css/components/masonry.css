@@ -4,7 +4,7 @@
 
 .featured-masonry-section {
   background: var(--color-cool-blue);
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   border: 1px solid var(--border-cool-blue);
   margin-bottom: var(--space-4xl);
   padding: 2rem;
@@ -26,7 +26,7 @@
 
 .masonry-card {
   background: var(--color-background-card);
-  border-radius: 1rem;
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
   cursor: pointer;
   opacity: 0;
@@ -79,7 +79,7 @@
 .content-type-badge {
   backdrop-filter: blur(4px);
   background: rgba(0, 0, 0, 0.7);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius);
   color: white;
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
@@ -131,6 +131,7 @@
 }
 
 .masonry-meta img {
+  border-radius: var(--radius-full);
   filter: grayscale(70%);
   height: 30px;
   margin: 0;
@@ -140,7 +141,7 @@
 
 .masonry-tag a {
   align-items: center;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   color: var(--color-text-muted);
   display: inline-flex;
   font-weight: 400;
