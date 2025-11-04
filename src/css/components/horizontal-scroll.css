@@ -83,13 +83,14 @@
 }
 
 .scroll-card {
+  aspect-ratio: 16 / 10;
   border-radius: var(--radius);
   color: inherit;
   cursor: grab;
   box-shadow: var(--shadow);
   display: flex;
   flex: 0 0 295px;
-  height: 295px;
+  height: auto;
   position: relative;
   scroll-snap-align: start;
   text-decoration: none;
@@ -126,8 +127,26 @@
   width: 100%;
 }
 
+.scroll-card-image::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.05) 0%,
+    /* Very subtle at top */ rgba(0, 0, 0, 0.1) 40%,
+    /* Still light in middle */ rgba(0, 0, 0, 0.6) 100%
+      /* Darker at bottom third */
+  );
+  bottom: 0;
+  content: '';
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
 .scroll-card-image img {
-  filter: grayscale(70%) blur(3px);
+  filter: grayscale(80%) blur(1px);
   height: 100%;
   object-fit: cover;
   object-position: center center;
@@ -137,7 +156,7 @@
 }
 
 .scroll-card:hover .scroll-card-image img {
-  filter: grayscale(10%);
+  filter: grayscale(0);
   transform: scale(1.05);
 }
 
@@ -154,28 +173,23 @@
 }
 
 .scroll-card-content {
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  background: var(--color-background-blur);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
+  bottom: 0;
   display: flex;
   flex-direction: column;
-  height: 160px;
-  justify-content: center;
+  height: auto;
+  justify-content: flex-end;
   left: 0;
-  margin: var(--space-md);
-  padding: 1.25rem;
-  position: absolute; /* Position content over the image */
+
+  padding: var(--space-lg) var(--space-3xl);
+  position: absolute;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  z-index: 2;
 }
 
 .scroll-card-title {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
-  color: var(--color-headings);
+  color: #ffffff;
   display: -webkit-box;
   font-size: 1.15rem;
   font-weight: 800;
@@ -185,20 +199,25 @@
   opacity: 0.9;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   text-wrap: pretty;
 }
 
 .scroll-card-content .post-topic {
-  font-size: 0.75rem;
-  font-weight: 650;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.03rem;
   margin-bottom: 1rem;
+  text-transform: uppercase;
 }
 
 .scroll-card-content .post-topic span {
-  background: rgba(26, 26, 26, 0.7);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
   border-radius: var(--radius-pill);
   color: #fff;
-  padding: 6px 12px;
+  padding: 4px 8px;
 }
 
 .scroll-card-meta {
