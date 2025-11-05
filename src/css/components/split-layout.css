@@ -25,7 +25,7 @@
   content: '';
   display: inline-block;
   height: 8px;
-  margin-right: var(--space-xs);
+  margin-right: var(--space-sm);
   width: 8px;
 }
 
@@ -80,8 +80,8 @@
 .note-item p,
 .note-item ol,
 .note-item ul {
-  font-size: 15px;
-  line-height: 1.35;
+  font-size: 0.875rem;
+  line-height: 1.4;
   margin-bottom: var(--space-sm);
 }
 

@@ -3,7 +3,7 @@
 	<div class="main-content-area">
 		<article class="post-container">
 		<ul class="breadcrumb-list">
-			<li class="breadcrumb-item home">{{> "icons/map-pin"}} <a class="title" href="{{@site.url}}">Home</a></li>
+			<li class="breadcrumb-item home"><a class="title" href="{{@site.url}}">Home</a></li>
 			<li class="breadcrumb-separator">{{> "icons/chevron"}}</li>
 			<li class="breadcrumb-item pages-dropdown">
 				<a href="javascript:void(0)" class="dropdown-trigger">Pages</a>
@@ -28,20 +28,19 @@
 			<li class="breadcrumb-item current">{{statusCode}} Error ¯\_(ツ)_/¯</li>
 		</ul>
 			<header class="error-page-header">
-				{{! Background Image }}
-				<div class="">
-					<img
-					  src='{{asset "gifs/404.gif"}}'
-					  alt='{{title}}'
-					/>
-				</div>
+			  {{! Background GIF - now it's the actual background }}
+			  <div class="error-hero-image">
+				<img
+				  src='{{asset "gifs/404.gif"}}'
+				  alt='{{statusCode}} Error'
+				/>
+			  </div>
 
-				{{! Caption if exists }}
-				{{#if feature_image_caption}}
-				<div class="post-hero-caption">
-					{{feature_image_caption}}
-				</div>
-				{{/if}}
+			  {{! Title positioned over the GIF }}
+			  <div class="error-hero-content">
+				<h1 class="error-title">{{statusCode}} Error Page</h1>
+				<p class="error-subtitle"></p>
+			  </div>
 			</header>
 			<div class="post-content">
 			<h2>That's not happenin' Hoss</h2>

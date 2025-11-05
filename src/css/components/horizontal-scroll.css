@@ -203,14 +203,11 @@
   color: #ffffff;
   display: -webkit-box;
   font-size: 1.15rem;
-  font-weight: 800;
-  letter-spacing: -0.01rem;
-  line-height: 1.2;
+  line-height: 1.1;
   margin: 0 0 var(--space-xs) 0;
-  opacity: 0.9;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
   text-wrap: pretty;
 }
 

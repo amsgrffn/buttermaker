@@ -62,6 +62,7 @@
 					<p class="archive-description">{{description}}</p>
 				{{/if}}
 				<p class="archive-count">{{plural count.posts empty='No posts' singular='% post' plural='% posts'}}</p>
+				<p class="tag-feed"><a href="{{@site.url}}/{{slug}}/rss/">{{name}} Topic Rss Feed</a> {{> "icons/rss"}}</p>
 			</div>
 			</div>
 			{{/tag}}

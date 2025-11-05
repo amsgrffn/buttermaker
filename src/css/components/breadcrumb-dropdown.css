@@ -15,6 +15,16 @@
   padding: 0 0 var(--space-sm);
 }
 
+.breadcrumb-list::before {
+  background: #f6ae3b;
+  border-radius: 50%;
+  content: '';
+  display: inline-block;
+  height: 8px;
+  margin-right: var(--space-sm);
+  width: 8px;
+}
+
 .breadcrumb-item {
   align-items: center;
   color: var(--color-headlines);

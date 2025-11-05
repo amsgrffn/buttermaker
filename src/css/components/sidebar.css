@@ -46,17 +46,14 @@
 
 /* Sidebar Typography */
 .sidebar h1 {
-  color: var(--color-text-muted);
-  font-family: var(--font-sans);
-  font-size: 1.05rem;
-  letter-spacing: -0.01rem;
+  font-size: 1.2rem;
   margin-bottom: 0.5rem;
   text-wrap: balance;
 }
 
 .sidebar h1 a {
   color: var(--color-headings);
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .sidebar h1 a:hover {
@@ -95,6 +92,17 @@
   font-size: 0.75rem;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
+}
+
+/* Blue dot before the text */
+.sidebar-navigation p::before {
+  background: #f6ae3b;
+  border-radius: 50%;
+  content: '';
+  display: inline-block;
+  height: 8px;
+  margin-right: var(--space-sm);
+  width: 8px;
 }
 
 .sidebar-nav li {

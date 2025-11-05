@@ -1,5 +1,5 @@
 <ul class="breadcrumb-list">
-<li class="breadcrumb-item home">{{> "icons/map-pin"}} <a class="title" href="{{@site.url}}">Home</a></li>
+<li class="breadcrumb-item home"><a class="title" href="{{@site.url}}">Home</a></li>
   <li class="breadcrumb-separator">{{> "icons/chevron"}}</li>
   <li class="breadcrumb-item">The blog, or everything published in chronological order</li>
 </ul>
@@ -8,7 +8,7 @@
 <div class="post-container" data-post-id="{{id}}">
 <article class="post-card--with-image">
 
-{{#has tag="notes"}}
+{{#has tag="notes, quote"}}
   {{> "sections/note-card"}}
 {{else}}
 

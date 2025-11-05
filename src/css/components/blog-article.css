@@ -20,7 +20,8 @@
   margin-bottom: 2rem;
 }
 
-.note-post h2 {
+.note-post h2,
+.quote-post h2 {
   border: 0;
   clip: rect(0, 0, 0, 0);
   color: var(--color-text-dark);
@@ -163,25 +164,27 @@
 .article-loop .post-content blockquote {
   color: var(--color-text-dark);
   font-size: 1.1rem;
-  line-height: var(--line-height-base);
+  line-height: 1.4;
   margin-bottom: var(--space-xl);
 }
 
-.article-loop .post-content .lg-quote {
+.article-loop blockquote.lg-quote {
   border: none;
   font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 800;
   line-height: 1.2;
+  margin-bottom: 2rem;
   padding: 0;
 }
 
-.article-loop .post-content .lg-quote cite {
+.article-loop blockquote.lg-quote cite {
   display: block;
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
+  line-height: 1.4;
   margin-top: 1rem;
 }
 
@@ -191,24 +194,24 @@
   display: flex;
   justify-content: space-between;
   margin: 0 0 var(--space-3xl);
+  width: 100%;
 }
 
 .article-loop .post-topic {
-  background: var(--link-color);
+  background: var(--link-color-muted);
   border-radius: var(--radius-pill);
-  color: var(--link-color-muted);
+  color: var(--link-color);
   display: inline-block;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 400;
   opacity: 0.85;
-  padding: 6px 12px;
+  padding: 4px 8px;
   text-transform: uppercase;
 }
 
 .article-loop .post-topic:hover {
   background: var(--link-color);
-  border: 1px solid var(--link-color);
   color: var(--link-color-muted);
 }
 
@@ -317,6 +320,7 @@
   align-items: center;
   display: flex;
   gap: 1.5rem;
+  justify-content: space-between;
   margin-top: var(--space-xl);
 }
 
