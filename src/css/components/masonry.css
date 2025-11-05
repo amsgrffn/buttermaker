@@ -65,8 +65,7 @@
   background: var(--color-background-light);
   border-radius: 22px;
   height: auto; /* Natural height based on image aspect ratio */
-  max-height: 300px; /* Maximum to prevent too tall images */
-  min-height: 120px; /* Minimum for consistency */
+  max-height: 181.6875px;
   overflow: hidden;
   position: relative;
   width: 100%;

@@ -101,6 +101,10 @@
   font-size: 0.75rem;
 }
 
+.weather-icon-container .lucide-moon {
+  margin-top: -1px;
+}
+
 /* Search Bar */
 .search-bar {
   max-width: 500px;

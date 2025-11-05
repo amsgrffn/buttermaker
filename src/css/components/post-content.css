@@ -582,12 +582,11 @@
 .post-content h5,
 .post-content h6 {
   color: var(--color-headings);
-  font-family: var(--font-sans);
+
   font-weight: 700;
 }
 
 .post-content h2 {
-  font-family: var(--font-sans);
   font-size: 1.8rem;
   font-weight: 700;
   letter-spacing: -0.02rem;
@@ -595,14 +594,14 @@
 }
 
 .post-content h3 {
-  font-size: 1.6em;
+  font-size: 1.9em;
   letter-spacing: -0.02rem;
   margin-bottom: 0.346em;
   padding-top: 1em;
 }
 
 .post-content h4 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   letter-spacing: -0.02rem;
   margin-bottom: 0.5em;
   padding-top: 1em;
@@ -610,8 +609,7 @@
 
 .post-content h5,
 .post-content h6 {
-  font-family: var(--font-sans);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: -0.01rem;
   margin-bottom: 0.75rem;
