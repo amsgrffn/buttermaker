@@ -16,6 +16,23 @@
    Note Posts
    ========================================================================== */
 
+.article-loop .post-content-flex.note-post {
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(156, 195, 230, 0.2) 0px,
+      rgba(156, 195, 230, 0.2) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(156, 195, 230, 0.2) 0px,
+      rgba(156, 195, 230, 0.2) 1px,
+      transparent 1px
+    );
+  background-size: 24px 24px;
+}
+
 .note-body {
   margin-bottom: 2rem;
 }
@@ -59,14 +76,14 @@
 .article-loop {
   background: var(--color-cool-blue);
   border: 1px solid var(--border-blue-grey);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius);
   margin-bottom: 2rem;
   padding: 3rem 0;
 }
 
 .article-loop .post-container {
   margin: 0 0 3rem;
-  padding: 0 3rem 0 0; /* Adds 3rem padding on left and right */
+  padding: 0 3rem 0 0;
 }
 
 /* Main container for each article */
@@ -127,16 +144,20 @@
 
 .article-loop .post-content-flex {
   background: var(--color-background-card);
-  border-radius: 22px;
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
   flex: 1;
   min-width: 0;
-  padding: 3rem;
 }
 
 /* ==========================================================================
    Article Content Styling
    ========================================================================== */
+
+.article-loop .note-body,
+.article-loop .post-content-flex .post-content {
+  padding: 0 3rem;
+}
 
 /* Title */
 .article-loop .post-title {
@@ -145,6 +166,7 @@
   line-height: 1.2;
   margin-bottom: var(--space-lg);
   margin-top: 0;
+  padding: 0 3rem;
 }
 
 .article-loop .post-title a {
@@ -183,7 +205,7 @@
 .article-loop blockquote.lg-quote cite {
   display: block;
   font-family: var(--font-mono);
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1.4;
@@ -205,27 +227,24 @@
 /* Tags */
 .article-loop .post-tags {
   align-items: center;
+  background: #fff;
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid #e8505b;
   margin: 0 0 var(--space-3xl);
+  padding: 0.5rem 3rem;
   width: 100%;
 }
 
 .article-loop .post-topic {
-  background: var(--link-color-muted);
-  border-radius: var(--radius-pill);
-  color: var(--link-color);
+  color: var(--color-text);
   display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 400;
-  opacity: 0.85;
-  padding: 4px 8px;
-  text-transform: uppercase;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .article-loop .post-topic:hover {
-  background: var(--link-color);
   color: var(--link-color-muted);
 }
 
@@ -234,7 +253,6 @@
   color: var(--color-text-muted);
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  margin-top: -4px;
 }
 
 .article-loop a .post-date {
@@ -246,7 +264,7 @@
   color: var(--link-color);
 }
 
-.article-loop .post-item svg {
+.article-loop .post-tags svg {
   display: inline-block;
   height: 16px;
   transition: transform 0.3s ease;
@@ -254,7 +272,7 @@
   width: 16px;
 }
 
-.article-loop .post-item:hover svg {
+.article-loop .post-tags:hover svg {
   stroke: var(--link-color);
   transform: rotate(180deg);
 }
@@ -336,6 +354,7 @@
   gap: 1.5rem;
   justify-content: space-between;
   margin-top: var(--space-xl);
+  padding: 0 3rem 1rem;
 }
 
 .article-loop .post-footer-tags .tags-list {
@@ -392,7 +411,7 @@
 /* Preview card on the right */
 .article-loop .post-preview-card {
   background: var(--color-background-card);
-  border-radius: 22px;
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
   flex: 1;
   min-width: 0;
@@ -403,7 +422,8 @@
 /* Image container with overlay */
 .article-loop .post-preview-image {
   border-radius: 22px;
-  height: 280px;
+  max-height: 315px;
+  background-size: cover;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -417,7 +437,7 @@
 
 .article-loop .post-preview-image img {
   height: 100%;
-  object-fit: cover;
+  background-size: cover;
   transition: transform 0.3s ease;
   width: 100%;
 }

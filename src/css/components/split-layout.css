@@ -48,15 +48,35 @@
 
 .notes-content {
   space-y: var(--space-lg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.notes-content:hover {
+  box-shadow: var(--shadow-sm);
+  transform: scale(1.02);
 }
 
 .note-item {
   background: var(--color-background-card);
-  background-size: 16px 16px;
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(156, 195, 230, 0.2) 0px,
+      rgba(156, 195, 230, 0.2) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(156, 195, 230, 0.2) 0px,
+      rgba(156, 195, 230, 0.2) 1px,
+      transparent 1px
+    );
+  background-size: 24px 24px;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   margin-bottom: var(--space-xl);
   padding: var(--space-3xl);
+  position: relative;
 }
 
 .note-title {

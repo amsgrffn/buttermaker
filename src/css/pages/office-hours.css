@@ -91,6 +91,7 @@
 .office-hours-time {
   align-items: center;
   display: flex;
+  font-family: var(--font-mono);
   flex-grow: 1;
   font-size: 0.875rem;
   font-weight: 400;
@@ -104,7 +105,7 @@
   display: inline-block;
   font-size: 0.875rem;
   font-weight: 700;
-  margin: 0 auto 0.3rem;
+  margin: 0 auto 0.5rem;
   padding: 4px 12px;
 }
 
@@ -248,18 +249,15 @@ body.dark-mode .office-status-indicator.closed {
   margin-bottom: 3rem;
 }
 
-.holiday-title {
+.office-hours-header .holiday-title {
   color: var(--color-headlines);
-  font-family: var(--display);
-  font-size: 3.8rem;
-  font-weight: 800;
-  letter-spacing: 0.03rem;
+  font-size: 3rem;
   margin-bottom: 1.5rem;
 }
 
-.holiday-subtitle {
+.page-office-hours .holiday-subtitle {
   color: var(--color-text-muted);
-  font-size: 2rem;
+  font-size: 21rem;
   line-height: 1.4;
   margin: 0;
   text-wrap: balance;
@@ -300,8 +298,9 @@ body.dark-mode .office-status-indicator.closed {
   display: inline-block;
   font-family: var(--font-display);
   font-size: 2rem;
-  border-radius: 22px;
+  border-radius: var(--radius);
   font-weight: 700;
+  margin-bottom: 0;
 }
 
 .special-badge {
@@ -318,31 +317,31 @@ body.dark-mode .office-status-indicator.closed {
 .office-hours .holiday-item {
   align-items: center;
   display: flex;
-  border-radius: 22px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 0.5rem;
   padding: 1.5rem 1rem;
 }
 
 .office-hours .holiday-item:nth-child(odd) {
   background-color: var(--color-background-card);
-  border: 1px solid var(--border-cool-blue);
+  border: 1px solid #000;
 }
 
 .office-hours .holiday-item:nth-child(even) {
   background-color: var(--color-background-secondary);
-  border: 1px solid var(--border-cool-blue);
+  border: 1px solid #000;
 }
 
 .office-hours .holiday-item:last-child {
-  border-bottom: none;
   margin-bottom: 3rem;
 }
 
 .holiday-name {
   color: var(--color-headlines);
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 1.3rem;
   font-weight: 700;
 }
 
@@ -373,6 +372,7 @@ body.dark-mode .office-status-indicator.closed {
 
 .holiday-date {
   color: var(--color-text-muted);
+  font-family: var(--font-mono);
   font-size: 0.75rem;
 }
 
