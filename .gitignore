@@ -12,6 +12,11 @@ assets/built/
 # Theme package
 *.zip
 
+# Assets
+assets/fonts/
+assets/gifs/
+assets/img/
+
 # Development
 .DS_Store
 .env
