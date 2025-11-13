@@ -79,6 +79,12 @@
   position: relative;
 }
 
+.notes-content:has(.share-dropdown.dropdown-active) {
+  position: relative;
+  z-index: 100;
+  transform: none !important;
+}
+
 .note-title {
   border: 0;
   clip: rect(0, 0, 0, 0);
