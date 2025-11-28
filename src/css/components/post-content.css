@@ -875,6 +875,30 @@
 }
 
 /* Ghost card support - Enhanced for native Ghost editor */
+
+.post-content .kg-callout-card {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.post-content .kg-callout-card .kg-callout-text::before {
+  background: red;
+  border-radius: 50%;
+  content: '';
+  display: inline-block;
+  height: 10px;
+  margin-right: 0.5rem;
+  margin-right: var(--space-sm);
+  width: 10px;
+}
+
+.post-content .kg-callout-card .kg-callout-text {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+
 .post-content .kg-card {
   margin: var(--space-2xl) 0;
 }
