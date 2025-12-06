@@ -3,7 +3,32 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme-preference');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const shouldUseDarkMode = savedTheme === 'dark' || (!savedTheme && systemPrefersDark);
 
+            if (shouldUseDarkMode) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+            document.documentElement.classList.remove('no-js');
+        })();
+    </script>
+    <style>
+        /* Critical inline CSS to prevent flash - applies dark mode immediately */
+        html[data-theme="dark"] {
+            background-color: #0f0f0f;
+            color: #e5e5e5;
+        }
+        html[data-theme="dark"] body {
+            background-color: #0f0f0f;
+            color: #e5e5e5;
+        }
+    </style>
 	{{!-- Performance: Resource Hints --}}
 	<link rel="preconnect" href="https://use.typekit.net" crossorigin>
 	<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>

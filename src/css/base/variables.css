@@ -140,6 +140,7 @@
   --z-sticky: 200; /* Sticky headers */
   --z-tooltip: 1100; /* Tooltips (always on top) */
 }
+html.dark-mode,
 body.dark-mode {
   /* Background colors */
   --color-background: #0f0f0f;

@@ -20,20 +20,18 @@ export class DarkMode {
     // This ensures the DOM elements exist when we try to update them
     this.setupToggleButtons();
 
-    // Check for saved preference or system preference
+    // Note: The inline script in default.hbs already set the initial theme
+    // We just need to sync the toggle button states with the current theme
     const savedTheme = localStorage.getItem(this.storageKey);
     const systemPrefersDark = window.matchMedia(
       '(prefers-color-scheme: dark)',
     ).matches;
 
-    // Apply theme based on priority: saved preference > system preference > light (default)
-    if (savedTheme) {
-      this.applyTheme(savedTheme);
-    } else if (systemPrefersDark) {
-      this.applyTheme('dark');
-    } else {
-      this.applyTheme('light');
-    }
+    // Determine current theme (matching inline script logic)
+    const currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+
+    // Update toggle button states to match current theme (no re-application needed)
+    this.updateToggleButtons(currentTheme);
 
     // Listen for system theme changes
     window
@@ -50,10 +48,14 @@ export class DarkMode {
    * Apply theme to the page
    */
   applyTheme(theme) {
+    const html = document.documentElement;
+
     if (theme === 'dark') {
-      document.body.classList.add('dark-mode');
+      html.setAttribute('data-theme', 'dark');
+      html.classList.add('dark-mode');
     } else {
-      document.body.classList.remove('dark-mode');
+      html.setAttribute('data-theme', 'light');
+      html.classList.remove('dark-mode');
     }
 
     // Update toggle button states
