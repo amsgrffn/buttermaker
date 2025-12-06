@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Pile - Interactive Card Test | Buttermaker Theme</title>
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Colors */
+            --color-background: #ffffff;
+            --color-background-card: #ffffff;
+            --color-background-light: #f8f9fa;
+            --color-background-secondary: #f5f5f5;
+            --color-border: #e6e6e6;
+            --color-border-dark: #d0d0d0;
+            --color-border-light: #f0f0f0;
+            --color-headings: #2e2e31;
+            --color-text: #332f2c;
+            --color-text-medium: #6a6561;
+            --color-text-light: #9b9b9b;
+            --color-cool-blue: #F5F7FA;
+            --link-color: #cc2211;
+
+            /* Brand Colors */
+            --color-blue: #007aff;
+            --color-orange: #ff9500;
+            --color-pink: #ff2d55;
+            --color-green: #34c759;
+            --color-purple: #af52de;
+            --color-primary: #ff9f43;
+
+            /* Typography */
+            --font-display: 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-sans: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-size-xs: 0.6875rem;
+            --font-size-sm: 0.75rem;
+            --font-size-base: 0.875rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.75rem;
+            --font-size-4xl: 2rem;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --line-height-tight: 1.2;
+            --line-height-relaxed: 1.6;
+
+            /* Spacing */
+            --radius: 0.5rem;
+            --radius-sm: 0.25rem;
+            --radius-lg: 1rem;
+
+            /* Shadows */
+            --shadow-sm: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.04), 0 0.125rem 0.125rem rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 0.5rem 1.5625rem rgba(0, 0, 0, 0.15), 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dark Mode */
+        html.dark-mode {
+            --color-background: #0f0f0f;
+            --color-background-card: #1a1a1a;
+            --color-background-light: #1e1e1e;
+            --color-background-secondary: #252525;
+            --color-border: #2a2a2a;
+            --color-border-dark: #353535;
+            --color-border-light: #252525;
+            --color-headings: #f0f0f0;
+            --color-text: #e5e5e5;
+            --color-text-medium: #b3b3b3;
+            --color-text-light: #999999;
+            --color-cool-blue: #0f0f0f;
+            --link-color: #ff6b6b;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-background);
+            color: var(--color-text);
+            padding: 2rem 1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .test-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .test-header h1 {
+            font-family: var(--font-display);
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-headings);
+            margin-bottom: 0.5rem;
+        }
+
+        .test-header p {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-medium);
+            margin-bottom: 1rem;
+        }
+
+        .dark-mode-toggle {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-family: var(--font-sans);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-semibold);
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            transform: translateY(-2px);
+            background: #e55a15;
+        }
+
+        /* The Pile Styles */
+        .the-pile {
+            position: relative;
+            min-height: 750px;
+            padding: 4rem 2rem;
+            margin: 3rem auto;
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-background-light);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            overflow: visible;
+        }
+
+        .pile-card {
+            position: absolute;
+            width: 280px;
+            padding: 1.5rem;
+            background: var(--color-background-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center center;
+            left: 50%;
+            top: 50%;
+            margin-left: -140px;
+            margin-top: -120px;
+            will-change: transform;
+        }
+
+        .pile-card:hover,
+        .pile-card:focus,
+        .pile-card--active {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px var(--color-border-dark);
+            outline: none;
+        }
+
+        .pile-card:focus-visible {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 3px var(--color-primary);
+        }
+
+        .pile-card--dimmed {
+            opacity: 0.35;
+            filter: blur(2px);
+            transition: all 0.25s ease-out;
+        }
+
+        /* Card Type Variants */
+        .pile-card--photo {
+            background: var(--color-cool-blue);
+            border-left: 4px solid var(--color-blue);
+        }
+
+        .pile-card--link {
+            background: var(--color-background-card);
+            border-left: 4px solid var(--color-orange);
+        }
+
+        .pile-card--note {
+            background: var(--color-background-card);
+            border-left: 4px solid var(--color-pink);
+        }
+
+        .pile-card--article {
+            background: var(--color-background-card);
+            border-left: 4px solid var(--color-green);
+        }
+
+        .pile-card--default {
+            background: var(--color-background-card);
+            border-left: 4px solid var(--color-purple);
+        }
+
+        /* Card Content */
+        .pile-card__title {
+            font-family: var(--font-display);
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: 0.75rem;
+            line-height: var(--line-height-tight);
+            color: var(--color-headings);
+        }
+
+        .pile-card__title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .pile-card__title a:hover {
+            color: var(--link-color);
+        }
+
+        .pile-card__image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+            margin-bottom: 0.75rem;
+            background: var(--color-background-secondary);
+        }
+
+        .pile-card__excerpt {
+            font-family: var(--font-sans);
+            font-size: var(--font-size-base);
+            color: var(--color-text-medium);
+            line-height: var(--line-height-relaxed);
+            margin-bottom: 0.75rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .pile-card__meta {
+            font-family: var(--font-sans);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-light);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-border-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pile-card__tag {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background: var(--color-background-secondary);
+            color: var(--color-text-medium);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pile-card--photo .pile-card__tag {
+            background: var(--color-blue);
+            color: white;
+        }
+
+        .pile-card--link .pile-card__tag {
+            background: var(--color-orange);
+            color: white;
+        }
+
+        .pile-card--note .pile-card__tag {
+            background: var(--color-pink);
+            color: white;
+        }
+
+        .pile-card--article .pile-card__tag {
+            background: var(--color-green);
+            color: white;
+        }
+
+        /* Dark Mode Card Adjustments */
+        html.dark-mode .pile-card {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+
+        html.dark-mode .pile-card:hover,
+        html.dark-mode .pile-card:focus,
+        html.dark-mode .pile-card--active {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        html.dark-mode .pile-card--photo {
+            background: var(--color-background-card);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .the-pile {
+                min-height: 500px;
+                padding: 3rem 1.5rem;
+            }
+
+            .pile-card {
+                width: 260px;
+                padding: 1.25rem;
+                margin-left: -130px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .the-pile {
+                min-height: 400px;
+                padding: 2rem 1rem;
+            }
+
+            .pile-card {
+                width: 240px;
+                padding: 1rem;
+                margin-left: -120px;
+                margin-top: -100px;
+            }
+
+            .pile-card__title {
+                font-size: var(--font-size-lg);
+            }
+
+            .pile-card__image {
+                height: 120px;
+            }
+
+            .pile-card__excerpt {
+                font-size: var(--font-size-sm);
+                -webkit-line-clamp: 2;
+            }
+
+            .test-header h1 {
+                font-size: var(--font-size-3xl);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .the-pile {
+                min-height: 350px;
+                padding: 1.5rem 0.75rem;
+            }
+
+            .pile-card {
+                width: 220px;
+                margin-left: -110px;
+            }
+
+            .pile-card--dimmed {
+                opacity: 0.5;
+                filter: blur(1px);
+            }
+        }
+
+        /* Instructions */
+        .instructions {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--color-background-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+        }
+
+        .instructions h2 {
+            font-family: var(--font-display);
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-headings);
+            margin-bottom: 1rem;
+        }
+
+        .instructions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .instructions li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .instructions li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+
+        /* Accessibility - Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            .pile-card {
+                transition: none;
+            }
+
+            .pile-card--dimmed {
+                transition: opacity 0.15s ease;
+                filter: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="test-header">
+            <h1>🃏 The Pile</h1>
+            <p>Interactive scattered card layout for Buttermaker theme</p>
+            <button class="dark-mode-toggle" id="darkModeToggle">
+                Toggle Dark Mode
+            </button>
+        </header>
+
+        <!-- The Pile Section -->
+        <section class="the-pile">
+
+            <!-- Photo Card 1 -->
+            <article class="pile-card pile-card--photo">
+                <h3 class="pile-card__title">
+                    <a href="#">Morning Coffee Ritual</a>
+                </h3>
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=300&fit=crop"
+                     alt="Coffee cup"
+                     class="pile-card__image"
+                     loading="lazy">
+                <p class="pile-card__excerpt">
+                    There's something magical about that first cup of coffee in the morning light. The ritual grounds me.
+                </p>
+                <div class="pile-card__meta">
+                    <span class="pile-card__tag">Photo</span>
+                    <time datetime="2024-12-01">Dec 1, 2024</time>
+                </div>
+            </article>
+
+            <!-- Link Card 1 -->
+            <article class="pile-card pile-card--link">
+                <h3 class="pile-card__title">
+                    <a href="#">The Future of Web Design</a>
+                </h3>
+                <p class="pile-card__excerpt">
+                    An interesting article exploring minimalism and the return to content-first design principles in modern web development.
+                </p>
+                <div class="pile-card__meta">
+                    <span class="pile-card__tag">Link</span>
+                    <time datetime="2024-11-28">Nov 28, 2024</time>
+                </div>
+            </article>
+
+            <article class="pile-card pile-card--photo">
+                <h3 class="pile-card__title">
+                    <a href="#">Morning Coffee Ritual</a>
+                </h3>
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=300&fit=crop"
+                     alt="Coffee cup"
+                     class="pile-card__image"
+                     loading="lazy">
+                <p class="pile-card__excerpt">
+                    There's something magical about that first cup of coffee in the morning light. The ritual grounds me.
+                </p>
+                <div class="pile-card__meta">
+                    <span class="pile-card__tag">Photo</span>
+                    <time datetime="2024-12-01">Dec 1, 2024</time>
+                </div>
+            </article>
+
+            <!-- Note Card 1 -->
+            <article class="pile-card pile-card--note">
+                <h3 class="pile-card__title">
+                    <a href="#">Quick Thoughts on CSS Grid</a>
+                </h3>
+                <p class="pile-card__excerpt">
+                    CSS Grid has completely changed how I approach layout problems. No more flexbox hacks for 2D layouts.
+                </p>
+                <div class="pile-card__meta">
+                    <span class="pile-card__tag">Note</span>
+                    <time datetime="2024-11-25">Nov 25, 2024</time>
+                </div>
+            </article>
+
+            <!-- Article Card 1 -->
+            <article class="pile-card pile-card--article">
+                <h3 class="pile-card__title">
+                    <a href="#">Building a Ghost Theme</a>
+                </h3>
+                <p class="pile-card__excerpt">
+                    My journey creating Buttermaker, a minimal Ghost theme focused on content and readability.
+                </p>
+                <div class="pile-card__meta">
+                    <span class="pile-card__tag">Article</span>
+                    <time datetime="2024-11-20">Nov 20, 2024</time>
+                </div>
+            </article>
+
+            <!-- Photo Card 2 -->
+            <article class="pile-card pile-card--photo">
+                <h3 class="pile-card__title">
+                    <a href="#">Sunset Over the Bay</a>
+                </h3>
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop"
+                     alt="Sunset over water"
+                     class="pile-card__image"
+                     loading="lazy">
+                <p class="pile-card__excerpt">
+                    Caught this view last evening. Sometimes you just need to stop and appreciate the moment.
+                </p>
+                <div class="pile-card__meta">
+                    <span class="pile-card__tag">Photo</span>
+                    <time datetime="2024-11-15">Nov 15, 2024</time>
+                </div>
+            </article>
+
+            <!-- Article Card 1 -->
+            <article class="pile-card pile-card--article">
+                <h3 class="pile-card__title">
+                    <a href="#">Building a Ghost Theme</a>
+                </h3>
+                <p class="pile-card__excerpt">
+                    My journey creating Buttermaker, a minimal Ghost theme focused on content and readability.
+                </p>
+                <div class="pile-card__meta">
+                    <span class="pile-card__tag">Article</span>
+                    <time datetime="2024-11-20">Nov 20, 2024</time>
+                </div>
+            </article>
+
+            <!-- Link Card 2 -->
+            <article class="pile-card pile-card--link">
+                <h3 class="pile-card__title">
+                    <a href="#">Dark Mode Best Practices</a>
+                </h3>
+                <p class="pile-card__excerpt">
+                    A comprehensive guide to implementing dark mode that doesn't hurt your eyes at 2am. Contrast matters.
+                </p>
+                <div class="pile-card__meta">
+                    <span class="pile-card__tag">Link</span>
+                    <time datetime="2024-11-10">Nov 10, 2024</time>
+                </div>
+            </article>
+
+            <!-- Note Card 2 -->
+            <article class="pile-card pile-card--note">
+                <h3 class="pile-card__title">
+                    <a href="#">Remember: Less is More</a>
+                </h3>
+                <p class="pile-card__excerpt">
+                    Every design element should serve a purpose. If it doesn't add value, it's just noise.
+                </p>
+                <div class="pile-card__meta">
+                    <span class="pile-card__tag">Note</span>
+                    <time datetime="2024-11-05">Nov 5, 2024</time>
+                </div>
+            </article>
+
+            <!-- Article Card 2 -->
+            <article class="pile-card pile-card--default">
+                <h3 class="pile-card__title">
+                    <a href="#">JavaScript Animation Tips</a>
+                </h3>
+                <p class="pile-card__excerpt">
+                    Smooth animations make all the difference. Here's how to do them right without killing performance.
+                </p>
+                <div class="pile-card__meta">
+                    <span class="pile-card__tag">Tutorial</span>
+                    <time datetime="2024-10-30">Oct 30, 2024</time>
+                </div>
+            </article>
+
+            <!-- Photo Card 3 -->
+            <article class="pile-card pile-card--photo">
+                <h3 class="pile-card__title">
+                    <a href="#">Urban Architecture</a>
+                </h3>
+                <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=400&h=300&fit=crop"
+                     alt="Modern building"
+                     class="pile-card__image"
+                     loading="lazy">
+                <p class="pile-card__excerpt">
+                    Lines, shapes, and shadows. The geometry of the city tells its own story.
+                </p>
+                <div class="pile-card__meta">
+                    <span class="pile-card__tag">Photo</span>
+                    <time datetime="2024-10-25">Oct 25, 2024</time>
+                </div>
+            </article>
+
+            <!-- Note Card 3 -->
+            <article class="pile-card pile-card--note">
+                <h3 class="pile-card__title">
+                    <a href="#">On Writing Daily</a>
+                </h3>
+                <p class="pile-card__excerpt">
+                    The practice matters more than the output. Show up every day, even when you don't feel like it.
+                </p>
+                <div class="pile-card__meta">
+                    <span class="pile-card__tag">Note</span>
+                    <time datetime="2024-10-20">Oct 20, 2024</time>
+                </div>
+            </article>
+
+            <article class="pile-card pile-card--photo">
+                <h3 class="pile-card__title">
+                    <a href="#">Urban Architecture</a>
+                </h3>
+                <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=400&h=300&fit=crop"
+                     alt="Modern building"
+                     class="pile-card__image"
+                     loading="lazy">
+                <p class="pile-card__excerpt">
+                    Lines, shapes, and shadows. The geometry of the city tells its own story.
+                </p>
+                <div class="pile-card__meta">
+                    <span class="pile-card__tag">Photo</span>
+                    <time datetime="2024-10-25">Oct 25, 2024</time>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h2>How to Test</h2>
+            <ul>
+                <li>Hover over any card to "pick it up" from the pile</li>
+                <li>Cards will straighten and scale up on hover while others dim</li>
+                <li>Use keyboard navigation: Tab through cards, Enter to follow links</li>
+                <li>Try toggling dark mode to see theme variations</li>
+                <li>Resize your browser to test responsive behavior</li>
+                <li>On mobile: cards have reduced scatter for better usability</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark-mode');
+        });
+
+        // The Pile JavaScript
+        class ThePile {
+            constructor() {
+                this.pile = document.querySelector('.the-pile');
+                if (!this.pile) return;
+
+                this.cards = this.pile.querySelectorAll('.pile-card');
+                if (this.cards.length === 0) return;
+
+                this.isMobile = window.innerWidth < 768;
+                this.isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+
+                this.init();
+            }
+
+            init() {
+                console.log('🃏 The Pile initializing with', this.cards.length, 'cards');
+
+                // Scatter cards on load
+                this.scatterCards();
+
+                // Add hover interactions
+                this.addHoverInteractions();
+
+                // Add keyboard accessibility
+                this.addKeyboardSupport();
+
+                // Handle window resize
+                this.handleResize();
+
+                console.log('✅ The Pile initialized');
+            }
+
+            scatterCards() {
+                // Adjust scatter range based on device
+                let rotationRange, xRange, yRange;
+
+                if (this.isMobile) {
+                    rotationRange = 8;
+                    xRange = 40;
+                    yRange = 40;
+                } else if (this.isTablet) {
+                    rotationRange = 12;
+                    xRange = 100;
+                    yRange = 100;
+                } else {
+                    // Full scatter on desktop - spread across more of the container
+                    rotationRange = 15;
+                    xRange = 200;
+                    yRange = 180;
+                }
+
+                this.cards.forEach((card, index) => {
+                    const rotation = Math.random() * (rotationRange * 2) - rotationRange;
+                    const xOffset = Math.random() * (xRange * 2) - xRange;
+                    const yOffset = Math.random() * (yRange * 2) - yRange;
+                    const zIndex = Math.floor(Math.random() * this.cards.length);
+
+                    card.dataset.originalRotation = rotation;
+                    card.dataset.originalX = xOffset;
+                    card.dataset.originalY = yOffset;
+                    card.dataset.originalZ = zIndex;
+
+                    card.style.transform = `translate(${xOffset}px, ${yOffset}px) rotate(${rotation}deg)`;
+                    card.style.zIndex = zIndex;
+                });
+            }
+
+            addHoverInteractions() {
+                this.cards.forEach((card) => {
+                    card.addEventListener('mouseenter', () => {
+                        this.pickUpCard(card);
+                    });
+
+                    card.addEventListener('mouseleave', () => {
+                        this.putDownCard(card);
+                    });
+
+                    card.addEventListener('touchstart', (e) => {
+                        if (this.isMobile) {
+                            this.pickUpCard(card);
+                            setTimeout(() => {
+                                this.putDownCard(card);
+                            }, 2000);
+                        }
+                    });
+                });
+            }
+
+            pickUpCard(card) {
+                card.style.zIndex = this.cards.length + 10;
+
+                const xOffset = card.dataset.originalX;
+                const yOffset = card.dataset.originalY;
+                const scaleAmount = this.isMobile ? 1.05 : 1.08;
+
+                card.style.transform = `translate(${xOffset}px, ${yOffset}px) rotate(0deg) scale(${scaleAmount})`;
+                card.classList.add('pile-card--active');
+
+                this.cards.forEach((otherCard) => {
+                    if (otherCard !== card) {
+                        otherCard.classList.add('pile-card--dimmed');
+                    }
+                });
+            }
+
+            putDownCard(card) {
+                card.style.zIndex = card.dataset.originalZ;
+
+                const rotation = card.dataset.originalRotation;
+                const xOffset = card.dataset.originalX;
+                const yOffset = card.dataset.originalY;
+
+                card.style.transform = `translate(${xOffset}px, ${yOffset}px) rotate(${rotation}deg) scale(1)`;
+                card.classList.remove('pile-card--active');
+
+                this.cards.forEach((otherCard) => {
+                    otherCard.classList.remove('pile-card--dimmed');
+                });
+            }
+
+            addKeyboardSupport() {
+                this.cards.forEach((card) => {
+                    if (!card.hasAttribute('tabindex')) {
+                        card.setAttribute('tabindex', '0');
+                    }
+
+                    card.addEventListener('focus', () => {
+                        this.pickUpCard(card);
+                    });
+
+                    card.addEventListener('blur', () => {
+                        this.putDownCard(card);
+                    });
+
+                    card.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter') {
+                            const link = card.querySelector('a');
+                            if (link) {
+                                link.click();
+                            }
+                        }
+                    });
+                });
+            }
+
+            handleResize() {
+                let resizeTimer;
+                window.addEventListener('resize', () => {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(() => {
+                        const wasMobile = this.isMobile;
+                        const wasTablet = this.isTablet;
+
+                        this.isMobile = window.innerWidth < 768;
+                        this.isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+
+                        if (wasMobile !== this.isMobile || wasTablet !== this.isTablet) {
+                            this.scatterCards();
+                        }
+                    }, 250);
+                });
+            }
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new ThePile();
+        });
+    </script>
+</body>
+</html>

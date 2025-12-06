@@ -1,0 +1,77 @@
+{{!< default}}
+
+{{!-- Page template for testing The Pile feature --}}
+{{!-- Create a page in Ghost with slug "pile-test" to use this template --}}
+
+<article class="page-container">
+
+    {{!-- Page Header --}}
+    <header class="page-header">
+        <h1 class="page-title">{{title}}</h1>
+        {{#if custom_excerpt}}
+        <p class="page-excerpt">{{custom_excerpt}}</p>
+        {{/if}}
+    </header>
+
+    {{!-- The Pile Section --}}
+    {{> "sections/the-pile"}}
+
+    {{!-- Optional: Page Content Below --}}
+    {{#if content}}
+    <div class="page-content">
+        {{content}}
+    </div>
+    {{/if}}
+
+</article>
+
+<style>
+    /* Scoped styles for the pile test page */
+    .page-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .page-header {
+        text-align: center;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+
+    .page-title {
+        font-family: var(--font-display);
+        font-size: var(--font-size-5xl);
+        font-weight: var(--font-weight-bold);
+        color: var(--color-headings);
+        margin-bottom: 1rem;
+        line-height: var(--line-height-tight);
+    }
+
+    .page-excerpt {
+        font-family: var(--font-sans);
+        font-size: var(--font-size-lg);
+        color: var(--color-text-medium);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: var(--line-height-relaxed);
+    }
+
+    .page-content {
+        max-width: var(--content-max-width);
+        margin: 3rem auto 0;
+        padding: 0 1rem;
+        font-family: var(--font-sans);
+        line-height: var(--line-height-relaxed);
+    }
+
+    @media (max-width: 768px) {
+        .page-title {
+            font-size: var(--font-size-3xl);
+        }
+
+        .page-excerpt {
+            font-size: var(--font-size-md);
+        }
+    }
+</style>

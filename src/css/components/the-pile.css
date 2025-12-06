@@ -1,0 +1,294 @@
+/* ==========================================================================
+   The Pile - Scattered Card Layout Component
+   ========================================================================== */
+
+/* Container */
+.the-pile {
+  position: relative;
+  min-height: 750px;
+  padding: 4rem 2rem;
+  margin: 0 auto;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-background-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: visible;
+}
+
+/* Pile Card Base */
+.pile-card {
+  position: absolute;
+  width: 280px;
+  padding: 1.5rem;
+  background: var(--color-background-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center center;
+  left: 50%;
+  top: 50%;
+  margin-left: -140px; /* Half of width for centering */
+  margin-top: -120px; /* Approximate center */
+  will-change: transform;
+}
+
+/* Hover/Active State */
+.pile-card:hover,
+.pile-card:focus,
+.pile-card--active {
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 0 0 1px var(--color-border-dark);
+  outline: none;
+}
+
+.pile-card:focus-visible {
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 0 0 3px var(--color-primary);
+}
+
+/* Dimmed State (when another card is hovered) */
+.pile-card--dimmed {
+  opacity: 0.5;
+  filter: blur(2px);
+  transition: all 0.25s ease-out;
+}
+
+/* Card Type Variants */
+.pile-card--photo {
+    background: var(--color-background-card);
+}
+
+.pile-card--link {
+  background: var(--color-background-card);
+}
+
+.pile-card--note {
+  background: var(--color-background-card);
+}
+
+.pile-card--article {
+  background: var(--color-background-card);
+}
+
+.pile-card--default {
+  background: var(--color-background-card);
+}
+
+/* Card Content */
+.pile-card__title {
+  font-family: var(--font-display);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 0.75rem;
+  line-height: var(--line-height-tight);
+  color: var(--color-headings);
+}
+
+.pile-card__title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.pile-card__title a:hover {
+  color: var(--link-color);
+}
+
+/* Card Image */
+.pile-card__image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.75rem;
+  background: var(--color-background-secondary);
+}
+
+/* Card Excerpt */
+.pile-card__excerpt {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  color: var(--color-text-medium);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: 0.75rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card Meta */
+.pile-card__meta {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Card Tag Badge */
+.pile-card__tag {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background: var(--color-background-secondary);
+  color: var(--color-text-medium);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pile-card--photo .pile-card__tag {
+  background: var(--color-blue);
+  color: white;
+}
+
+/* Different tag colors based on card type */
+.pile-card--photo .pile-card__tag {
+  background: var(--color-blue);
+  color: white;
+}
+
+.pile-card--link .pile-card__tag {
+  background: var(--color-orange);
+  color: white;
+}
+
+.pile-card--note .pile-card__tag {
+  background: var(--color-pink);
+  color: white;
+}
+
+.pile-card--article .pile-card__tag {
+  background: var(--color-green);
+  color: white;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .the-pile {
+    min-height: 500px;
+    padding: 3rem 1.5rem;
+  }
+
+  .pile-card {
+    width: 260px;
+    padding: 1.25rem;
+    margin-left: -130px;
+  }
+}
+
+@media (max-width: 768px) {
+  .the-pile {
+    min-height: 400px;
+    padding: 2rem 1rem;
+    margin: 2rem auto;
+  }
+
+  .pile-card {
+    width: 240px;
+    padding: 1rem;
+    margin-left: -120px;
+    margin-top: -100px;
+  }
+
+  .pile-card__title {
+    font-size: var(--font-size-lg);
+  }
+
+  .pile-card__image {
+    height: 120px;
+  }
+
+  .pile-card__excerpt {
+    font-size: var(--font-size-sm);
+    -webkit-line-clamp: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Stack cards more vertically on very small screens */
+  .the-pile {
+    min-height: 350px;
+    padding: 1.5rem 0.75rem;
+  }
+
+  .pile-card {
+    width: 220px;
+    margin-left: -110px;
+  }
+
+  /* Reduce dimming effect on mobile */
+  .pile-card--dimmed {
+    opacity: 0.5;
+    filter: blur(1px);
+  }
+}
+
+/* Dark Mode Adjustments */
+html.dark-mode .pile-card,
+body.dark-mode .pile-card {
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+html.dark-mode .pile-card:hover,
+html.dark-mode .pile-card:focus,
+html.dark-mode .pile-card--active,
+body.dark-mode .pile-card:hover,
+body.dark-mode .pile-card:focus,
+body.dark-mode .pile-card--active {
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+html.dark-mode .pile-card--photo,
+body.dark-mode .pile-card--photo {
+  background: var(--color-background-card);
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .pile-card {
+    transition: none;
+  }
+
+  .pile-card--dimmed {
+    transition: opacity 0.15s ease;
+    filter: none;
+  }
+}
+
+/* Print Styles - Arrange cards in a grid for printing */
+@media print {
+  .the-pile {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    min-height: auto;
+    padding: 1rem;
+  }
+
+  .pile-card {
+    position: relative;
+    transform: none !important;
+    margin: 0;
+    left: auto;
+    top: auto;
+    page-break-inside: avoid;
+  }
+}

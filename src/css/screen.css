@@ -27,6 +27,7 @@
 @import 'components/sidebar.css';
 @import 'components/split-layout.css';
 @import 'components/share-dropdown.css';
+@import 'components/the-pile.css';
 
 /* Pages */
 @import 'pages/contact-page.css';

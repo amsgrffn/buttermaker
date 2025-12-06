@@ -74,6 +74,14 @@ document.addEventListener('DOMContentLoaded', async function () {
       });
     }
 
+    // The Pile
+    if (document.querySelector('.the-pile')) {
+      import('./modules/the-pile').then(({ ThePile }) => {
+        new ThePile();
+        console.log('🃏 The Pile loaded');
+      });
+    }
+
     // Search Handler
     if (document.querySelector('.search-trigger, .search-container')) {
       import('./modules/search').then(({ SearchHandler }) => {
