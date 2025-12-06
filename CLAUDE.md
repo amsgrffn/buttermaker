@@ -395,6 +395,61 @@ npm run zip
 - Adobe Fonts (Typekit): `https://use.typekit.net/unt3hxg.css`
 - Lite YouTube: `@justinribeiro/lite-youtube` (CDN)
 
+## Local Testing Workflow
+
+**Development Environment:**
+- Primary development machine: iMac
+- Local Ghost instance: `http://localhost:2368/`
+- Ghost admin interface: `http://localhost:2368/ghost/`
+- Live reload enabled via `npm run dev`
+
+**Testing Checklist:**
+- Verify changes render correctly at `localhost:2368`
+- Test dark mode toggle functionality after CSS/JS changes
+- Check mobile responsiveness at viewport breakpoints: 320px, 768px, 1024px
+- Confirm infinite scroll functionality works
+- Review all changes in both light and dark modes
+- Test custom page templates (contact, memberships, office hours, watched movies)
+- Check browser console for JavaScript errors
+- Verify masonry layout on homepage
+
+**Responsive Testing:**
+- Mobile-first approach (design for 320px first)
+- Tablet breakpoint: 768px
+- Desktop breakpoint: 1024px
+- Use browser dev tools for viewport testing
+
+## Design Philosophy
+
+The Buttermaker theme prioritizes:
+- **Privacy-focused**: No tracking, minimal external dependencies (only Adobe Fonts)
+- **Content-first**: Clean, minimal design that puts writing front and center
+- **Performance**: Fast loading times, optimized assets, code-splitting
+- **Accessibility**: Semantic HTML, ARIA labels, keyboard navigation
+- **Modern web standards**: CSS custom properties, ES6+ JavaScript, responsive design
+
+## Quick Ghost Helper Reference
+
+**Most commonly used Ghost helpers:**
+- `{{#foreach posts}}...{{/foreach}}` - Loop through posts collection
+- `{{content}}` - Render post content
+- `{{excerpt}}` - Post excerpt
+- `{{@blog.title}}`, `{{@blog.url}}` - Site-wide settings
+- `{{#is "home"}}...{{/is}}` - Context-based conditionals (home, post, page, tag, author)
+- `{{asset "built/screen.css"}}` - Generate asset URL
+- `{{img_url}}` - Generate responsive image URLs
+- `{{tags}}`, `{{primary_tag}}` - Post tags
+- `{{authors}}`, `{{primary_author}}` - Post authors
+- `{{reading_time}}` - Estimated reading time
+
+**Template contexts:**
+- `home` - Homepage
+- `post` - Single post
+- `page` - Static page
+- `tag` - Tag archive
+- `author` - Author archive
+- `error` - 404/error pages
+
 ---
 
 **Last Updated:** 2025-12-05
